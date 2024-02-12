@@ -1,0 +1,64 @@
+"DOTAAbilities"
+{
+	"item_recipe_phase_boots_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"450"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_phase_boots_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_int_custom;item_basic_stat_int_custom;item_basic_stat_int_custom;item_basic_stat_int_custom;item_basic_stat_spell_lifesteal_custom"
+		}
+	}
+
+	"item_phase_boots_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_phase_boots_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+        "AbilityTextureName"	                "item_phase_boots"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				        "8.0"	 
+		"AbilityDuration"   					"3"
+		"AbilitySharedCooldown"			        "phase_boots"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_movement_speed"	            "50"
+			"bonus_damage_melee"			    "18"
+			"bonus_damage_range"			    "12"
+			"phase_movement_speed"              "20"
+			"phase_movement_speed_range"        "10"
+			"bonus_armor"			            "4"
+		}       
+	}
+}

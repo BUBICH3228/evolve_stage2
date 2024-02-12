@@ -1,0 +1,184 @@
+#NeutralShopPanel
+{
+    align: center center;
+    margin-top: 35px;
+    width: 100%;
+    height: 600px;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_scoreboard_psd.vtex");
+    background-size: cover;
+    background-color: #000000da;
+    box-shadow: #000000f5 0px 0px 8px 0px;
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    opacity: 1;
+}
+
+#NeutralShopItemContainer{
+    align: center center;
+    width: fit-children;
+    height: 450px;
+    margin-bottom: 80px;
+    flow-children: right-wrap;
+    background-color: #00000054;
+    border-radius: 10px;
+}
+
+.NeutralShopItemTierContainerClass{
+    max-width: 360px;
+    width: fit-children;
+    height:  fit-children;
+    align: center top;
+    margin-top: 10px;
+    margin-right: 15px; 
+}
+
+.NeutralShopItemsHeaderClass{
+    align: left top;
+    width: 200px;
+    height: 25px;
+    font-size:25px;
+    margin-left: 15px;
+}
+
+#Tier1Header{
+    color: #c7c0c0c5;
+}
+
+#Tier2Header{
+    color: #6ac278e7;
+}
+
+#Tier3Header{
+    color: #86a3f19f;
+}
+
+#Tier4Header{
+    color: #e881ebc5;
+}
+
+#Tier5Header{
+    color: #e4d685;
+}
+
+.NeutralShopItemsTokensPanelClass{
+    align: right top;
+    height: 25px;
+    width: 75px;
+    margin-right: 2px;
+    border: 2px solid rgba(70, 69, 69, 0.705);
+    background-color: rgba(70, 69, 69, 0.105);
+}
+
+.NeutralShopItemsTokensImageClass{
+    align: right top;
+    width: 25px;
+    height: 25px;
+}
+
+.NeutralShopItemsTokensCountClass{
+    align: right center;
+    color:rgba(199, 195, 195, 0.71);
+    font-size:18px;
+    margin-right: 25px;
+}
+
+.TierContainerClass{
+    align: left top;
+    margin-top: 20px;
+    margin-left: 15px;
+    flow-children: right-wrap;
+}
+
+.ShopItemClass{
+    width: 80px;
+    height: width-percentage( 72.7% );
+    margin-top: 10px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border: 2px solid #ffffff1e;
+}
+
+#ItemImage{
+    align: center top;
+    width: 100%;
+    height: width-percentage( 72.7% );
+}
+
+#ItemCostPanel{
+    align: center bottom;
+    background-color: #000000b2;
+    height: 40%;
+    width: 100%;
+}
+
+#ItemCostPanel #ItemCost{
+    align: right center;
+    color:rgba(199, 195, 195, 0.71);
+    font-size:20px;
+    margin: 0px 20px 0px 0px;
+}
+
+#ItemCostPanel #ItemCostImage{
+    align: right center;
+    height: 20px;
+    width: 20px;
+    margin: 1px 1px 1px 1px;
+}
+
+#YourNeutralItemsList{
+    align: center bottom;
+    height: 80px;
+    width: 735px;
+    background-color: #00000054;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+#YourNeutralItemsHeader{
+    color:rgba(155, 155, 155, 0.9);
+    align: center top;
+    font-size:20px;
+    margin-left: 20px;
+    margin-top: 2px;
+}
+
+#YourNeutralItemsContainer{
+    align: center bottom;
+    height: 50px;
+    width: fit-children;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    flow-children: right;
+}
+
+#YourNeutralItem{
+    border: 1px solid #b9b11bf5;
+    width: 50px;
+    height: width-percentage( 72.7% );
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 6px;
+}
+
+.TeamNeutralsItemsTierTimes{
+    align: center Top;
+    width: 80px;
+    height: 25px;
+    color:#ffffff1e;
+    margin-top: 2px;
+    font-size:22px;
+    margin-left: 140px;
+}
+.Clock{
+    align: center Top;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+    margin-left: 30px;
+    background-image: url("s2r://panorama/images/status_icons/clock_psd.vtex");
+    background-size: contain;
+    opacity: 0.1;
+}

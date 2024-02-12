@@ -1,0 +1,58 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/top_bar/top_bar.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/top_bar/top_bar.js"/>
+    </scripts>
+    <snippets>
+        <snippet name="HeroSlot">
+            <Panel class="HeroContainer">
+                <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_pudge" heroimagestyle="landscape" />
+                <Panel id="PlayerColor"/>
+                <Label id="RespawnTimer" text="99"/>
+                <Panel id="DisconnectIcon"/>
+            </Panel>
+        </snippet>
+    </snippets>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="TopBarContainer" class="IsBossVisible IsBossTimerTicking" hittest="true" hittestchildren="true">
+            <Panel class="HeroesContainerWrapper">
+                <Panel id="HeroesContainer"/>
+            </Panel>
+            <Panel class="BossContainer">
+                <Panel class="BossTooltipContainer">
+                    <Panel class="BossTooltipContentWrapper">
+                        <Image class="BossIcon" src="s2r://panorama/images/hud/skull_stroke_png.vtex"/>
+                        <Label id="BossLabel" text="VERY LONG EPIC BOSS NAME"/>
+                    </Panel>
+                </Panel>
+                <Panel class="BossProgressBarContainer" hittest="false">
+                    <ProgressBar hittest="false" id="BossProgressBar" value="1.0">
+                        <DOTAScenePanel id="HealthBurner" map="scenes/hud/healthbarburner" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true"/>
+                        <Label id="BossHP" class="MonoNumbersFont" hittest="false" text="100.00%"/> 
+                    </ProgressBar>
+                </Panel>
+            </Panel>
+            <Panel class="TimersContainer">
+                <Panel class="TimersContainerWrapper">
+                    <Panel class="TimerContainer">
+                        <Panel class="TimerContainerWrapper">
+                            <Image id="TimeOfDayIcon" src="s2r://panorama/images/hud/reborn/icon_sun_psd.vtex"/>
+                            <Label id="TimeOfDayLabel" text="00:00"/>
+                        </Panel>
+                    </Panel>
+                    <Panel class="DifficultyContainer">
+                        <Image id="DifficultyIcon" src="none"/>
+                    </Panel>
+                    <Panel class="TimerContainer" onmouseover="UIShowTextTooltip( #ui_top_bar_boss_timer )" onmouseout="UIHideTextTooltip()">
+                        <Panel class="TimerContainerWrapper">
+                            <Image id="BossTimerIcon" src="s2r://panorama/images/hud/skull_stroke_png.vtex"/>
+                            <Label id="BossTimerLabel" text="00:00"/>
+                        </Panel>
+                    </Panel>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

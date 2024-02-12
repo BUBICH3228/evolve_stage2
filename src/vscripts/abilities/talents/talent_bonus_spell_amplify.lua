@@ -1,0 +1,51 @@
+require("abilities/talents/base/talent_base_class")
+
+talent_bonus_spell_amplify_base = class(talent_base_class)
+
+function talent_bonus_spell_amplify_base:GetIntrinsicModifierName()
+    return "modifier_talent_bonus_spell_amplify"
+end
+
+modifier_talent_bonus_spell_amplify = class({
+    IsHidden = function()
+        return true
+    end,
+    IsPurgable = function()
+        return false
+    end,
+    IsPurgeException = function()
+        return false
+    end,
+    RemoveOnDeath = function()
+        return false
+    end,
+	IsDebuff = function()
+		return false
+	end,
+    DeclareFunctions = function()
+        return {
+            MODIFIER_PROPERTY_SPELL_AMPLIFY_PERCENTAGE
+        }
+    end,
+    GetModifierSpellAmplify_Percentage = function(self)
+        return self.bonusSpellAmp
+    end,
+    GetAttributes = function()
+        return MODIFIER_ATTRIBUTE_MULTIPLE
+    end
+})
+
+function modifier_talent_bonus_spell_amplify:OnCreated()
+	self:OnRefresh()
+end
+
+function modifier_talent_bonus_spell_amplify:OnRefresh()
+    self.ability = self:GetAbility() or self.ability
+    if(not self.ability or self.ability:IsNull()) then
+        return
+    end
+    self.bonusSpellAmp = self.ability:GetSpecialValueFor("value")
+end
+
+LinkLuaModifier("modifier_talent_bonus_spell_amplify", "abilities/talents/talent_bonus_spell_amplify", LUA_MODIFIER_MOTION_NONE)
+LinkLuaAbility(talent_bonus_spell_amplify_base, "abilities/talents/talent_bonus_spell_amplify")

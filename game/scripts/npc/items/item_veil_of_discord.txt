@@ -1,0 +1,77 @@
+"DOTAAbilities"
+{
+	"item_recipe_veil_of_discord_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"150"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_veil_of_discord_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_str_custom;item_basic_stat_int_custom;item_basic_stat_agi_custom;item_basic_stat_mana_regen_custom"
+		}
+	}
+
+	"item_veil_of_discord_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_veil_of_discord_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		// Фильтр врагов
+        "AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		// Фильтр союзников
+        "AbilityUnitTargetTeam1"			    "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType1"			    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags1"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+        "AbilityTextureName"	        		"item_veil_of_discord"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				        "16.0"
+		"AbilitySharedCooldown"			        "veil"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_all_stats"					"5"
+			"aura_mana_regen"					"1.75"
+			"aura_radius"						"1200"
+			"spell_amp_debuff"					"18"
+			"AbilityCastRange"		
+			{
+				"value"							"600"
+				"affected_by_aoe_increase"		"1"
+			}
+			"resist_debuff_duration"			"16.0"
+			"bonus_all_stats_per_level"			"7"
+			"spell_amp_debuff_per_level"		"0.25"
+		}
+	}
+}  

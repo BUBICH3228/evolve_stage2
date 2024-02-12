@@ -1,0 +1,310 @@
+.Root
+{
+    height: 100%;
+    width: 100%;
+}
+
+.Text
+{
+    font-size: 15px;
+    color: rgb(154, 154, 154);
+    letter-spacing: 1px;
+    font-weight: normal;
+    text-overflow:clip;
+}
+
+.TitleText
+{
+    font-size: 20px;
+    color: rgb(154, 154, 154);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 5px 5px 5px 5px;
+}
+
+#MainWindow.Hidden
+{
+    opacity: 0;
+}
+
+#MainWindow
+{
+    height: 500px;
+    width:  800px;
+    background-image: url("file://{images}/custom_game/ui/frames/frame.png");
+    background-size: 800px 500px;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #050609));
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    opacity: 1;
+    align: center center;
+}
+
+#UpgradeHeroStatsPanel.Hidden
+{
+    opacity: 0;
+}
+
+#UpgradeHeroStatsPanel
+{
+    height: 95px;
+    width:  350px;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #050609));
+    box-shadow: #3e3269f5 0px 0px 8px 0px;
+    transition-duration: 0.15s;
+    transition-property: opacity, box-shadow;
+    transition-timing-function: linear;
+    opacity: 1;
+    align: center center;
+}
+
+#StatsContentPanel
+{
+    align: center top;
+    height: 25px;
+    width:  100%;
+    margin: 5px 1px 5px 1px;
+}
+
+#StatsContentPanel #IconStat
+{
+    align: left bottom;
+    height: 20px;
+    width: 20px;
+}
+
+#StatsContentPanel #IconLabel
+{
+    align: left bottom;
+    margin-left: 24px;
+    width: 180px;
+}
+
+#InfoStatContainer
+{
+    align: right top;
+    height: 25px;
+    width:  157px;
+}
+
+#InfoStatContainer #OldStat
+{
+    align: left bottom;
+}
+
+#InfoStatContainer #NewStat
+{
+    align: right bottom;
+}
+
+#InfoStatContainer #Arrow
+{
+    align: center bottom;
+    height: 10px;
+    width: 20px;
+    opacity: 0.3;
+    margin-bottom: 5px;
+    margin-right: 6px;
+}
+
+#UpgradeHeroStatsPanel #SliderContentPanel 
+{
+    width: 100%;
+    height: 35px;
+    align: center center;
+    margin: 5px 5px 5px 5px;
+}
+
+#UpgradeHeroStatsPanel #PointSliderLabel
+{
+    width: 80%;
+    align: left top;
+}
+
+#UpgradeHeroStatsPanel #PointSlider
+{
+    width: 80%;
+    height: 17px;
+    margin: 0px 0px 0px 0px;
+    align: center bottom;
+}
+
+#UpgradeHeroStatsPanel #SliderThumb
+{
+    width: 5px;
+    height: 100%;
+    vertical-align: center;
+    background-color:gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #91a5b9 ), to( #444f52 ) );
+}
+
+#UpgradeHeroStatsPanel #SliderTrack
+{
+    width: 100%;
+    height: 15%;
+    vertical-align: center;
+    background-color:gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #36393bc4 ), to( #3f4446a2 ) );
+}
+
+#UpgradeHeroStatsPanel #SliderTrackProgress
+{
+    width: 100%;
+    height: 10%;
+    vertical-align: center;
+}
+
+.ZoomButtonClass
+{
+    width: 17px;
+    height: 17px;
+    align: center bottom;
+    background-color:gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #36393ba2 ), to( #3f44467c ) );
+}
+
+#ButtonMax
+{
+    margin-left: 93%;
+}
+
+#ButtonMin
+{
+    margin-right: 93%;
+}
+
+#UpgardeStatButton
+{
+    align: center bottom;
+    border-radius: 5px;
+    margin: 5px 0px 5px 0px;
+}
+
+#UpgardeStatButton #UpgardeStatButtonLable:hover
+{
+    color: rgb(139, 139, 139);
+}
+
+#HeroModelPanel
+{
+    align: left center;
+    height: 100%;
+    width:  50%;
+    margin: 3px 10px 10px 10px;
+}
+
+#HeroModel
+{
+    align: center center;
+    height: 95%;
+    width:  100%;
+}
+
+#HeroName
+{
+    align: center top;
+}
+
+#CountPoint
+{
+    align: center bottom;
+    font-size: 20px;
+    color: rgb(154, 154, 154);
+}
+#ScrollThumb
+{
+    opacity: .1;
+}
+
+#StatsPanel
+{
+    align: right center;
+    height: 100%;
+    width:  320px;
+    margin: 3px 35px 10px 10px;
+    flow-children: right-wrap;
+}
+
+#PrimaryAttribute
+{
+    align: center top;
+    height: 85px;
+    width: 100%;
+    flow-children: down;
+    border-top: 2px solid rgba(70, 69, 69, 0.705);
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+    overflow: clip scroll;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #111318));
+}
+
+#AttackAttribute
+{
+    align: center top;
+    height: 85px;
+    width: 100%;
+    border-top: 2px solid rgba(70, 69, 69, 0.705);
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+    overflow: clip scroll;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #111318));
+    flow-children: down;
+}
+
+#DefenseAttribute
+{
+    align: center top;
+    height: 85px;
+    width: 100%;
+    flow-children: down;
+    border-top: 2px solid rgba(70, 69, 69, 0.705);
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+    overflow: clip scroll;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #111318));
+}
+
+#OthersStats
+{
+    align: left top;
+    height: 85px;
+    width: 100%;
+    flow-children: down;
+    border-top: 2px solid rgba(70, 69, 69, 0.705);
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+    overflow: clip scroll;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #111318));
+}
+
+#Stat
+{
+    align: left top;
+    height: 20px;
+    width: 300px;
+    margin: 3px 0px 3px 10px;
+}
+
+#Stat #IconStat
+{
+    align: left center;
+    width: 20px;
+}
+
+#NameStat 
+{
+    margin-left: 25px;
+    width: 250px;
+    height: 15px;
+    align: left bottom;
+}
+
+#NumberStat
+{   
+    align: right bottom;
+    margin-right: 5px;
+    width: 75px;
+    height: 15px;
+    text-align: right bottom;
+}
+
+#LevelUpButton
+{
+    align: right bottom;
+    width: 15px;
+    height: 15px;
+}

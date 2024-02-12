@@ -1,0 +1,214 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+	// Meepo: Earthbind (1 Ability)
+	//=================================================================================================================
+	"meepo_earthbind"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_YES"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_1"
+		"AbilitySound"								"Hero_Meepo.Earthbind.Cast"
+		"FightRecapLevel"							"1"
+		"AbilityCastRange"							"750"
+		"AbilityCastPoint"							"0.3"
+		"AbilityCooldown"							"8"
+		"AbilityManaCost"							"53"
+		"MaxLevel"									"12"
+		"AbilityValues"
+		{
+			"duration"								"2"
+			"speed"									"1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100"
+			"radius"					
+			{	
+				"value"								"220 230 240 250 260 270 280 290 300 310 320 330"
+				"affected_by_aoe_increase"			"1"
+			}	
+			"megameepo_net_offset"			
+			{	
+				"value"								"160 170 180 190 200 210 220 230 240 250 260 270"
+				"affected_by_aoe_increase"			"1"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Meepo: Poof (2 Ability)
+	//=================================================================================================================
+	"meepo_poof"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_POINT | | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_ALT_CASTABLE"
+		"AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"						"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitDamageType"						"DAMAGE_TYPE_MAGICAL"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_2"
+		"AbilitySound"								"Hero_Meepo.Poof"
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"							"1"
+		"AbilityChannelTime"						"0"
+		"AbilityCooldown"							"7"
+		"AbilityManaCost"							"60"
+		"MaxLevel"									"12"
+		"AbilityValues"
+		{
+			"AbilityCastPoint"						"1.5"
+			"radius"				
+			{
+				"value"								"400"
+				"affected_by_aoe_increase"			"1"
+			}
+			"poof_damage"			
+			{
+				"value"								"60 90 140 200 280 400 560 720 940 1220 1460 1760"
+				"special_bonus_unique_meepo_2"		"+560"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Meepo: Ransack (3 Ability)
+	//=================================================================================================================
+	"meepo_ransack"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"						"DAMAGE_TYPE_PURE"	
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_3"
+		"AbilitySound"								"Hero_Meepo.Geostrike"
+		"MaxLevel"									"12"
+		"AbilityValues"
+		{		
+			"health_steal_heroes"	
+			{
+				"value"								"9 14 20 30 40 60 80 110 140 180 220 260"
+				"LinkedSpecialBonus"				"special_bonus_unique_meepo_6"
+				"DamageTypeTooltip"					"DAMAGE_TYPE_PURE"
+			}
+			"health_steal_creeps"	
+			{
+				"value"								"9 14 20 30 40 60 80 110 140 180 220 260"
+				"LinkedSpecialBonus"				"special_bonus_unique_meepo_6"
+				"DamageTypeTooltip"					"DAMAGE_TYPE_PURE"
+			}			
+		}	
+	}
+	//=================================================================================================================
+	// Meepo: Divided We Stand (4 Ability)
+	//=================================================================================================================
+	"meepo_divided_we_stand"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"								"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_4"
+		"DisplayAdditionalHeroes"					"1"
+		"LevelsBetweenUpgrades"						"7"
+		"RequiredLevel"								"4"
+		"AbilityDamage"								"0"
+		"MaxLevel"									"4"
+		"AbilityValues"
+		{
+			"tooltip_share_percentage"				"20"
+			"tooltip_share_percentage_scepter"		"100"
+			"respawn"								"0"
+			"tooltip_respawn"						"20"
+			"magic_resist"							"10 15 20 25"
+			"tooltip_clones"		
+			{
+				"value"								"1 2 3 4"
+				"LinkedSpecialBonus"				"special_bonus_unique_meepo_5"
+			}
+			"rat_pack"
+			{
+				"value"								"0"
+				"special_bonus_unique_meepo_7"		"+1"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Meepo: Petrify (Aghanim's Shard Ability)
+	//=================================================================================================================
+	"meepo_petrify"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_NO"
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_YES"	
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_5"	
+		"MaxLevel"									"1"
+		"FightRecapLevel"							"1"
+		"IsGrantedByShard"							"1"
+		"AbilityCastPoint"							"0"
+		"AbilityCooldown"							"40"
+		"AbilityManaCost"							"125"
+		"AbilityValues"
+		{
+			"duration"								"3"
+			"hp_restore"							"35"
+		}
+	}
+	//=================================================================================================================
+	// Ability: Meepo Fair Share (Aghanim's Scepter Ability)
+	//=================================================================================================================
+	"meepo_megameepo"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_NO"
+		"LinkedAbility"								"meepo_megameepo_fling"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_3"
+		"AbilityCastGestureSlot"					"DEFAULT"
+		"AbilityCooldown"							"60"
+		"MaxLevel"									"1"
+		"IsGrantedByScepter"						"1"
+		"AbilityCastPoint"							"0.0"
+		"AbilityManaCost"							"0"
+		"AbilityValues"
+		{
+			"duration"								"25"
+			"model_scale"							"0"
+			"damage_distribution_duration"			"6"	
+			"end_knockback_duration"				"0.3"
+			"end_knockback_distance"				"400"
+			"end_knockback_height"					"0"		
+			"stats_pct"								"50"
+			"radius"						
+			{
+				"value"								"600"
+				"affected_by_aoe_increase"			"1"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Ability: Meepo Megameepo Fling (Aghanim's Scepter Ability)
+	//=================================================================================================================
+	"meepo_megameepo_fling"
+	{
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_NO"
+		"AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"						"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"						"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_YES"
+		"AbilitySound"								"Hero_Sven.StormBoltImpact"
+		"LinkedAbility"								"meepo_megameepo"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_6"
+		"AbilityCastGestureSlot"					"DEFAULT"
+		"AbilityCastRange"							"900"
+		"AbilityCastPoint"							"0.2 0.2 0.2 0.2"
+		"AbilityCooldown"							"0.5"
+		"AbilityManaCost"							"0"
+		"FightRecapLevel"							"1"
+		"MaxLevel"									"1"
+		"IsGrantedByScepter"						"1"
+		"AbilityValues"	
+		{	
+			"fling_damage"							"225"
+			"fling_movespeed"						"900"
+			"fling_slow_duration"					"3"
+			"movement_slow"							"-60"
+			"fling_radius" 						
+			{	
+				"value"								"300"
+				"affected_by_aoe_increase"			"1"
+			}	
+		}	
+	}
+}

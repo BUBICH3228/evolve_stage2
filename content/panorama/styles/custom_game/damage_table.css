@@ -1,0 +1,251 @@
+.MainPanel{
+    height: 100%;
+    width: 100%;
+    align: left center;
+}
+
+.ShopOpened #InteractionPanel{
+    opacity: 0;
+}
+
+#InteractionPanel{
+    align: left center;
+    width: 280px;
+    height: 100%;
+    border-radius: 5px;
+}
+  
+#InteractionPanel #DamagePanel{
+    align: left center;
+    width: 280px;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#InteractionPanel #DamagePanel #AdditionalInfo{
+    align: left center;
+    width: 280px;
+    height: 75px; 
+    border-radius: 15px;
+    background-color: rgb(18, 8, 54);
+    visibility: collapse;
+}
+
+#InteractionPanel #DamagePanel #AdditionalInfo #DamageNew{
+    align: left top;
+    color:rgba(255, 255, 255, 0.9);
+    margin-top: 23px;
+    margin-left: 20px;
+    font-size:20px;
+    border-radius: 10px;
+}
+
+#InteractionPanel #DamagePanel #AdditionalInfo #DamageOld{
+    align: left top;
+    color:rgba(255, 255, 255, 0.9);
+    margin-top: 23px;
+    margin-left: 120px;
+    font-size:20px;
+    border-radius: 10px;
+}
+
+#InteractionPanel #DamagePanel #AdditionalInfo #DamageBarPanel{
+    width: 160px;
+    height: 15%;
+    margin-top: 53px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+#InteractionPanel #DamagePanel #AdditionalInfo #DamageBarPanel #DamageBarBackground1{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 0, 0,1);
+    border-radius: 0px;
+}
+#InteractionPanel #DamagePanel #AdditionalInfo #DamageBarPanel #DamageBarBackground2{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 132, 255, 1);
+    border-radius: 0px;
+}
+#InteractionPanel #DamagePanel #AdditionalInfo #DamageBarPanel #DamageBarBackground3{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(202, 160, 22, 1);
+    border-radius: 0px;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo{
+    align: left center;
+    width: 280px;
+    height: 75px;  
+    border-radius: 15px;
+    background-color: rgb(18, 8, 54);
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #HeroIcon{
+    width: 36%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #Damage{
+    align: left top;
+    color:rgba(255, 255, 255, 0.9);
+    margin-left: 105px;
+    font-size:20px;
+    font-weight: bold;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #PhysicalT{
+    align: left top;
+    color:rgba(255, 255, 255, 0.9);
+    margin-top: 20px;
+    margin-left: 110px;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #MagiсalT {
+    align: left top;
+    color:rgba(255, 255, 255, 0.9);
+    margin-top: 35px;
+    margin-left: 110px;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #PureT {
+    align: left top;
+    color:rgba(255, 255, 255, 0.9);
+    margin-top: 50px;
+    margin-left: 110px;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #PhysicalV{
+    align: left top;
+    color:rgba(255, 0, 0, 1);
+    margin-top: 20px;
+    margin-left: 180px;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #MagiсalV {
+    align: left top;
+    color:rgba(0, 132, 255, 1);
+    margin-top: 35px;
+    margin-left: 180px;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#InteractionPanel #DamagePanel #HeroInfo #PureV {
+    align: left top;
+    color:rgba(202, 160, 22, 1);
+    margin-top: 50px;
+    margin-left: 180px;
+    font-size:15px;
+    font-weight: bold;
+}
+
+#InteractionPanel #ButtonsPanel{
+    align: left center;
+    width: 280px;
+    height: 75px;  
+
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#InteractionPanel #ButtonsPanel #OpenButton{
+    align: left center;
+    width: 10%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    visibility: collapse;
+}
+
+#InteractionPanel #ButtonsPanel #OpenButton #OpenButton{
+    width: 10%;
+    height: 100%;
+    margin-right: 10px;
+}
+
+#InteractionPanel #ButtonsPanel #CloseButton{
+    align: right bottom;
+    width: 10%;
+    height: 30%;
+    border-radius: 15px;
+}
+
+#InteractionPanel #ButtonsPanel #CloseButton #CloseButtonImage{
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;
+}
+
+#InteractionPanel #ButtonsPanel #OpenAdditionalInfoButton{
+    align: right bottom;
+    width: 10%;
+    height: 30%;
+    border-radius: 25px;
+    margin-bottom: 25px;
+}
+
+#InteractionPanel #ButtonsPanel #OpenAdditionalInfoButton #OpenAdditionalInfoButtonImage{
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;    
+}
+
+#InteractionPanel #ButtonsPanel #ReturnHeroInfoButton{
+    align: right bottom;
+    width: 10%;
+    height: 30%;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    visibility: collapse;
+}
+
+#InteractionPanel #ButtonsPanel #ReturnHeroInfoButton #ReturnHeroInfoButtonImage{
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;  
+}
+
+#InteractionPanel #ButtonsPanel #TimerButton1{
+    align: right bottom;
+    width: 10%;
+    height: 30%;
+    border-radius: 25px;
+    margin-bottom: 50px;
+    margin-right: 65px;
+    visibility: collapse;
+}
+
+#InteractionPanel #ButtonsPanel #TimerButton1 #TimerButton1Image{
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;  
+}
+
+#InteractionPanel #ButtonsPanel #TimerButton2{
+    align: right bottom;
+    width: 10%;
+    height: 30%;
+    border-radius: 25px;
+    margin-bottom: 50px;
+    margin-right: 35px;
+    visibility: collapse;
+}
+
+#InteractionPanel #ButtonsPanel #TimerButton2 #TimerButton2Image{
+    width: 25px;
+    height: 25px;
+    margin-left: 4px;  
+}

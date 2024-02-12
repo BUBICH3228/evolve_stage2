@@ -1,0 +1,51 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/talent_tree/talent_tree_tree_button.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/talent_tree/talent_tree_tree_button.js" />
+	</scripts>
+	<Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="LevelUpGlow" hittest="false" />
+        <Panel id="StatBranch" class="ShowStatBranch" onactivate="OnTalentTreeButtonPressed()">
+            <Panel id="StatBranchBG" />
+            <Panel id="StatBranchBGBranchWell" />
+            <Panel id="StatBranchGraphics" require-composition-layer="true" always-cache-composition-layer="true">
+                <Panel id="StatBranchChannel">
+                    <Panel id="StatPipContainer" class="">
+                        <Panel id="StatRow25" class="StatBranchRow">
+                            <Panel class="StatBranchPip LeftBranchPip PipBlur" />
+                            <Panel class="StatBranchPip RightBranchPip PipBlur" />
+                            <Panel class="StatBranchPip LeftBranchPip" />
+                            <Panel class="StatBranchPip RightBranchPip" />
+                        </Panel>
+                        <Panel id="StatRow20" class="StatBranchRow">
+                            <Panel class="StatBranchPip LeftBranchPip PipBlur" />
+                            <Panel class="StatBranchPip RightBranchPip PipBlur" />
+                            <Panel class="StatBranchPip LeftBranchPip" />
+                            <Panel class="StatBranchPip RightBranchPip" />
+                        </Panel>
+                        <Panel id="StatRow15" class="StatBranchRow">
+                            <Panel class="StatBranchPip LeftBranchPip PipBlur" />
+                            <Panel class="StatBranchPip RightBranchPip PipBlur" />
+                            <Panel class="StatBranchPip LeftBranchPip" />
+                            <Panel class="StatBranchPip RightBranchPip" />
+                        </Panel>
+                        <Panel id="StatRow10" class="StatBranchRow">
+                            <Panel class="StatBranchPip LeftBranchPip PipBlur" />
+                            <Panel class="StatBranchPip RightBranchPip PipBlur" />
+                            <Panel class="StatBranchPip LeftBranchPip" />
+                            <Panel class="StatBranchPip RightBranchPip" />
+                        </Panel>
+                    </Panel>
+                    <Panel class="LevelProgress">
+                        <ProgressBar id="StatLevelProgressBar" min="0" max="100" value="0" />
+                    </Panel>
+                    <Panel class="LevelProgressBlur">
+                        <ProgressBar id="StatLevelProgressBarBlur" min="0" max="100" value="0" />
+                    </Panel>
+                </Panel>
+            </Panel>
+        </Panel>
+	</Panel>
+</root>

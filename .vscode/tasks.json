@@ -1,0 +1,37 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build (Release)",
+            "type": "npm",
+            "script": "release",
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "clear": true
+            }
+        },
+        {
+            "label": "Build (Development)",
+            "type": "npm",
+            "script": "dev",
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+			"runOptions": 
+			{ 
+				"runOn": "folderOpen"
+			},
+            "presentation": {
+                "clear": true
+            }
+        }
+    ]
+}

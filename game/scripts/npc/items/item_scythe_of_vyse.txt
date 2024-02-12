@@ -1,0 +1,50 @@
+"DOTAAbilities"
+{    
+    "item_recipe_scythe_of_vyse_custom"
+	{
+		"AbilityTextureName" 					"recipe"				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"                     		"item_datadriven"
+		
+		"ItemCost"								"0"	
+		"ItemShopTags"							"artifacts"
+		
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_scythe_of_vyse_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_mystic_staff;item_ultimate_orb;item_void_stone"
+		}
+	}
+
+	"item_scythe_of_vyse_custom"
+	{
+		"BaseClass"								"item_lua"
+		"ScriptFile"							"items/item_scythe_of_vyse"
+		"AbilityTextureName"					"sheepstick"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_POINT"
+        "AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"				"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityCastRange" 						"700"
+        "AbilityCooldown"               		"45"
+		"MaxUpgradeLevel"						"8"
+		"ItemBaseLevel"							"1"
+		"AbilitySharedCooldown"			        "scythe_of_vyse"
+
+		"IsDisabledInNormalShop"                "0"
+        //special
+        "AbilityValues"
+		{
+			"bonus_strength"					"10 15 23 34 50 80 110 170"
+			"bonus_agility"						"10 15 23 34 50 80 110 170"
+			"bonus_intellect"					"35 53 79 118 180 270 400 600"
+			"bonus_mana_regen"					"9 14 20 30 46 68 103 154"
+            "health"            				"45 60 75 90 105 120 135 150"
+			"health_per_attack"					"3"
+			"health_per_attack_boss"			"9"
+			"radius"							"750"
+			"duration"							"15"
+		}
+	}
+}

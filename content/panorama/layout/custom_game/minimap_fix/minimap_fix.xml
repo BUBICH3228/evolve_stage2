@@ -1,0 +1,11 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/minimap_fix/minimap_fix.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/minimap_fix/minimap_fix.js"/>
+    </scripts>
+    <Panel class="Root">
+        <DOTAHUDOverlayMap id="Map" maptexture= "materials/overviews/test_map_tga_71dde796.vtex" mapscale= "1" fixedoffsetenabled="true" SetFixedOffset = "244,244"/>
+    </Panel>
+</root>

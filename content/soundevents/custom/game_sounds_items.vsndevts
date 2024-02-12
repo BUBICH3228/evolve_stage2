@@ -1,0 +1,404 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	MountainItem.TeleportScroll.Loop_Appear = 
+	{
+		type = "dota_update_default"
+		volume = 0.500000
+		volume_falloff_max = 2000.000000
+		mixgroup = "Weapons"
+		volume_fade_in = 1.500000
+		volume_fade_out = 0.500000
+		vsnd_files = "sounds/ui/portal_loop.vsnd"
+		vsnd_duration = 4.053333
+	}
+	
+	MountainItem.TeleportScroll.Loop_Disappear = 
+	{
+		type = "dota_update_default"
+		volume = 0.500000
+		volume_falloff_max = 2000.000000
+		mixgroup = "Weapons"
+		volume_fade_in = 1.500000
+		volume_fade_out = 0.500000
+		vsnd_files = "sounds/ui/portal_loop_alt.vsnd"
+		vsnd_duration = 4.053333
+	}
+
+	MountainItem.TeleportScroll.Hero_Appear = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		soundlevel = 81.000000
+		distance_max = 2500.000000
+		limiter_on = 1.000000
+		vsnd_files = "sounds/ui/portal_appear.vsnd"
+		vsnd_duration = 2.091995
+	}
+
+	MountainItem.TeleportScroll.Hero_Disappear = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		soundlevel = 81.000000
+		distance_max = 2500.000000
+		delay = 0.250000
+		vsnd_files = "sounds/ui/portal_disappear.vsnd"
+		vsnd_duration = 2.556077
+	}
+
+	MountainItem.TeleportKey.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 84.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/dust_of_appearance.vsnd"
+		vsnd_duration = 5.489433
+	}
+
+	MountainItem.ScytheOfVyse.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.025000
+		pitch_rand_max = 0.025000
+		pitch = 0.975000
+		soundlevel = 81.000000
+		distance_max = 3500.000000
+		limiter_on = 1.000000
+		block_duration = 1.000000
+		block_distance = 300.000000
+		limiter_match_entity = 0.000000
+		limiter_match_type = 0.000000
+		vsnd_files = "sounds/misc/morph_in.vsnd"
+		vsnd_duration = 1.333265
+	}
+
+	MountainItem.MonkeyKingBar.Proc = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.100000
+		pitch_rand_max = 0.100000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		mixgroup = "Weapons"
+		distance_max = 1500.000000
+		soundevent_layer2 = "Damage_Melee.Gore"
+		soundevent_layer2_on = 1.000000
+		block_match_entity = 0.000000
+		block_duration = 0.100000
+		block_distance = 300.000000
+		block_multiple_instances = 1.000000
+		vsnd_files = "sounds/items/mkb_pierce.vsnd"
+		vsnd_duration = 0.574104
+	}
+
+	MountainItem.Khanda.Proc = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.100000
+		pitch_rand_max = 0.100000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		mixgroup = "Weapons"
+		distance_max = 1500.000000
+		soundevent_layer2 = "Damage_Melee.Gore"
+		soundevent_layer2_on = 1.000000
+		block_match_entity = 0.000000
+		block_duration = 0.100000
+		block_distance = 300.000000
+		block_multiple_instances = 1.000000
+		vsnd_files = "sounds/items/phylactery_target.vsnd"
+		vsnd_duration = 0.574104
+	}
+
+	MountainItem.SpiritVessel.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.100000
+		pitch_rand_max = 0.100000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		mixgroup = "Weapons"
+		distance_max = 1500.000000
+		soundevent_layer2 = "Damage_Melee.Gore"
+		soundevent_layer2_on = 1.000000
+		block_match_entity = 0.000000
+		block_duration = 0.100000
+		block_distance = 300.000000
+		block_multiple_instances = 1.000000
+		vsnd_files = "sounds/items/spirit_vessel_cast.vsnd"
+		vsnd_duration = 0.574104
+	}
+
+	MountainItem.SpiritVessel.CastAlly = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.100000
+		pitch_rand_max = 0.100000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		mixgroup = "Weapons"
+		distance_max = 1500.000000
+		soundevent_layer2 = "Damage_Melee.Gore"
+		soundevent_layer2_on = 1.000000
+		block_match_entity = 0.000000
+		block_duration = 0.100000
+		block_distance = 300.000000
+		block_multiple_instances = 1.000000
+		vsnd_files = "sounds/items/spirit_vessel_ally.vsnd"
+		vsnd_duration = 0.574104
+	}
+
+	MountainItem.SpiritVessel.CastEnemy = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.100000
+		pitch_rand_max = 0.100000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		mixgroup = "Weapons"
+		distance_max = 1500.000000
+		soundevent_layer2 = "Damage_Melee.Gore"
+		soundevent_layer2_on = 1.000000
+		block_match_entity = 0.000000
+		block_duration = 0.100000
+		block_distance = 300.000000
+		block_multiple_instances = 1.000000
+		vsnd_files = "sounds/items/spirit_vessel_enemy.vsnd"
+		vsnd_duration = 0.574104
+	}
+
+	MountainItem.Parasma.Proc = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.100000
+		pitch_rand_max = 0.100000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		mixgroup = "Weapons"
+		distance_max = 1500.000000
+		soundevent_layer2 = "Damage_Melee.Gore"
+		soundevent_layer2_on = 1.000000
+		block_match_entity = 0.000000
+		block_duration = 0.100000
+		block_distance = 300.000000
+		block_multiple_instances = 1.000000
+		vsnd_files = "sounds/items/witch_blade.vsnd"
+		vsnd_duration = 0.574104
+	}
+
+	MountainItem.Mjollnir.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 81.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/item_mjoll_on.vsnd"
+		vsnd_duration = 4.443583
+	}
+
+	MountainItem.Mjollnir.End = 
+	{
+		type = "dota_src1_3d"
+		volume = 0.299805
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 75.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/item_mjoll_off.vsnd"
+		vsnd_duration = 0.571837
+	}
+
+	MountainItem.Mjollnir.Loop = 
+	{
+		type = "dota_src1_3d"
+		volume = 0.299805
+		pitch = 1.000000
+		soundlevel = 75.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/item_mjoll_loop.vsnd"
+		vsnd_duration = 5.393946
+	}
+	
+	MountainItem.Maelstrom.Chain_Lightning = 
+	{
+		type = "dota_src1_3d"
+		volume = 0.849609
+		pitch = 1.000000
+		soundlevel = 81.000000
+		distance_max = 2500.000000
+		limiter_on = 0.000000
+		vsnd_files = 
+		[
+			"sounds/items/item_mael_lightning_01.vsnd",
+			"sounds/items/item_mael_lightning_02.vsnd",
+			"sounds/items/item_mael_lightning_03.vsnd",
+			"sounds/items/item_mael_lightning_04.vsnd",
+			"sounds/items/item_mael_lightning_05.vsnd",
+		]
+		vsnd_duration = 2.393106
+	}
+
+	MountainItem.Maelstrom.Chain_Lightning.Jump = 
+	{
+		type = "dota_src1_3d"
+		volume = 0.750000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 81.000000
+		distance_max = 2500.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/item_mael_lightning_chain.vsnd"
+		vsnd_duration = 2.393106
+	}
+
+	MountainItem.HealthPotion.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch = 1.000000
+		soundlevel = 81.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/faerie_spark.vsnd"
+		vsnd_duration = 2.963061
+	}
+
+	MountainItem.ManaPotion.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 78.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/mango.vsnd"
+		vsnd_duration = 2.035828
+	}
+
+	MountainItem.HeartOfShivas.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 84.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/shivas_guard.vsnd"
+		vsnd_duration = 3.735918
+	}
+
+	Mountainitem.Bloodstone.Cast = 
+	{
+		type = "dota_update_default"
+		volume = 1.000000
+		pitch = 1.000000
+		soundlevel = 81.000000
+		mixgroup = "Weapons"
+		spread_radius = 300.000000
+		vsnd_files = "sounds/items/bloodstone_cast.vsnd"
+		vsnd_duration = 2.220113
+	}
+
+	Mountainitem.VampireClaw.Cast = 
+	{
+		type = "dota_update_default"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 81.000000
+		mixgroup = "Weapons"
+		spread_radius = 300.000000
+		limiter_on = 1.000000
+		limiter_event_name = "hero_bloodseeker.bloodRite.silence"
+		limiter_max = 2.000000
+		limiter_stop_oldest = false
+		limiter_match_event_duration = 0.250000
+		vsnd_files = "sounds/weapons/hero/bloodseeker/blood_rite_silence.vsnd"
+		vsnd_duration = 3.659909
+	}
+
+	Mountainitem.Satanic.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 84.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/item_satanic.vsnd"
+		vsnd_duration = 3.308005
+	}
+
+	Mountainitem.Solar.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 84.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/items/pavise_target.vsnd"
+		vsnd_duration = 3.308005
+	}
+
+	Mountainitem.Vladmir.Cast = 
+	{
+		type = "dota_src1_3d"
+		volume = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		pitch = 1.000000
+		soundlevel = 84.000000
+		limiter_on = 0.000000
+		vsnd_files = "sounds/weapons/hero/doom_bringer/devour.vsnd"
+		vsnd_duration = 3.308005
+	}
+
+	ItemBanana.Use = 
+    {
+        type = "dota_src1_2d"
+        vsnd_files = "sounds/items/mango.vsnd"
+        volume = 1.0000
+        pitch = 1.0000
+        vsnd_duration = 2.546962
+    }
+
+    ItemGlovesOfGold.Use = 
+    {
+        type = "dota_src1_3d"
+		volume = 1.000000
+		pitch = 1.000000
+		pitch_rand_min = -0.050000
+		pitch_rand_max = 0.050000
+		soundlevel = 81.000000
+		distance_max = 2500.000000
+		delay = 0
+		vsnd_files = "sounds/items/item_handofmidas.vsnd"
+    }
+}

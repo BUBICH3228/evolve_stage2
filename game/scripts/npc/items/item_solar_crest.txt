@@ -1,0 +1,76 @@
+"DOTAAbilities"
+{
+    "item_recipe_solar_crest_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"50"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_solar_crest_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_str_custom;item_basic_stat_int_custom;item_basic_stat_agi_custom;item_basic_stat_attack_custom;item_basic_stat_armor_custom;item_basic_stat_health_custom;item_basic_stat_mana_custom"
+		}
+	}
+
+	"item_solar_crest_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_solar_crest_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityTextureName"	                "item_solar_crest"
+
+        // Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				        "900"
+		"AbilityManaCost"						"100"
+		"AbilityCooldown"				        "16.0"	 
+		"AbilityDuration"   					"8.0"
+		"AbilitySharedCooldown"			        "solar_crest"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+            "bonus_armor"			            "4"
+			"bonus_all_stats"		            "4"
+			"bonus_movement_speed"	            "25"
+			"bonus_mana"			            "300"
+			"bonus_health"			            "200"
+			"target_attack_speed_limit_bonus"	"350"
+            "target_movement_speed"	            "15"
+			"target_attack_speed"	            "70"
+			"target_armor"			            "7"
+			"shild_per_health_pct"			    "35"
+
+            "target_armor_per_level"            "0.9"
+            "bonus_all_stats_per_level"         "1.6"
+		}
+	}
+}

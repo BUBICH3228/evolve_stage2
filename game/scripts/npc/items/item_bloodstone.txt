@@ -1,0 +1,66 @@
+"DOTAAbilities"
+{
+	"item_recipe_bloodstone_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"1250"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_bloodstone_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_health_custom;item_basic_stat_mana_custom;item_basic_stat_spell_lifesteal_custom"
+		}
+	}
+
+	"item_bloodstone_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_bloodstone_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	                "item_bloodstone"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"						"35.0"
+		"AbilityDuration"						"6"
+		"AbilitySharedCooldown"			        "bloodstone"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_health"						"500"
+			"bonus_mana"						"500"
+			"spell_lifesteal"					"25"
+			"lifesteal_multiplier"				"2.5"
+			"bonus_aoe"							"150"
+
+			"bonus_health_per_level"			"150"
+			"bonus_mana_per_level"				"150"
+		}
+	}
+}

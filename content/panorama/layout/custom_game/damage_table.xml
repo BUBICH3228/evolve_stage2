@@ -1,0 +1,54 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/damage_table.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/damage_table.js" />
+    </scripts>
+    <Panel class="MainPanel" hittest="false" hittestchildren="true">
+        <Panel id="InteractionPanel" hittest="true" hittestchildren="true">
+            <Panel id="DamagePanel">
+                <Panel id="HeroInfo">
+                    <DOTAHeroImage id="HeroIcon" heroname="npc_dota_hero_pudge" heroimagestyle="landscape" />
+                    <Label id="Damage" text="Damage:" />
+				    <Label id="PhysicalT" text="Physical:" />
+                    <Label id="MagiсalT" text="Magiсal:" />
+                    <Label id="PureT" text="Pure:" />
+                    <Label id="PhysicalV" text="0" />
+                    <Label id="MagiсalV" text="0" />
+                    <Label id="PureV" text="0" />  
+			    </Panel>
+                <Panel id="AdditionalInfo">
+                    <Label id="DamageNew" text="0" />
+                    <Label id="DamageOld" text="0" />
+                    <Panel id="DamageBarPanel">
+                        <Panel id="DamageBarBackground1" />
+                        <Panel id="DamageBarBackground2" />
+                        <Panel id="DamageBarBackground3" />
+                    </Panel> 
+			    </Panel>
+            </Panel>
+            <Panel id="ButtonsPanel">
+		        <Button id="OpenButton" onactivate="OpenDamagePanel()">
+		    	    <Image id="OpenButtonImage" src="file://{resources}/images/ButtonOpen.png"/>
+		        </Button>
+		        <Button id="CloseButton" onactivate="CloseDamagePanel()">
+		    	    <Image id="CloseButtonImage" src="file://{resources}/images/close_button.png"/>
+		        </Button>
+                <Button id="OpenAdditionalInfoButton" onactivate="OpenHeroInfoPanel()">
+		    	    <Image id="OpenAdditionalInfoButtonImage" src="file://{resources}/images/return_button.png"/>
+		        </Button>
+                <Button id="ReturnHeroInfoButton" onactivate="ReturnHeroInfoPanel()">
+		    	    <Image id="ReturnHeroInfoButtonImage" src="file://{resources}/images/return_button.png"/>
+		        </Button>
+                <Button id="TimerButton1" onactivate="TimerButton1ChangeValue()">
+		    	    <Image id="TimerButton1Image" src="file://{resources}/images/timer_button1B.png"/>
+		        </Button>
+                <Button id="TimerButton2" onactivate="TimerButton2ChangeValue()">
+		    	    <Image id="TimerButton2Image" src="file://{resources}/images/timer_button2A.png"/>
+		        </Button>
+	        </Panel> 
+        </Panel>
+    </Panel>
+
+</root>

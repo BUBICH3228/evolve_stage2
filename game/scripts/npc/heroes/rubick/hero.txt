@@ -1,0 +1,59 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_rubick"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_rubick"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"rubick_telekinesis"
+		"Ability2"	"rubick_fade_bolt"
+		"Ability3"	"rubick_arcane_supremacy"
+		"Ability6"	"rubick_spell_steal"
+		"Ability7"	"rubick_telekinesis_land"
+		"Ability11"	"rubick_telekinesis_land_self"
+		"Ability12"	"special_bonus_unique_rubick_8"
+		"Ability13"	"special_bonus_unique_rubick_2"
+		"Ability14"	"special_bonus_unique_rubick_6"
+		"Ability15"	"special_bonus_unique_rubick_7"
+		"Ability16"	"special_bonus_unique_rubick_3"
+		"Ability17"	"special_bonus_unique_rubick"
+		"Ability18"	"special_bonus_unique_rubick_4"
+		"Ability19"	"special_bonus_unique_rubick_5"
+		"AbilityTalentStart"	"12"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"1"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"	"24"
+		"AttackDamageMax"	"30"
+		"BaseAttackSpeed"	"100"
+		"AttackRate"	"1.7"
+		"AttackAnimationPoint"	"0.4"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"	"550"
+		"ProjectileModel"	"particles/units/heroes/hero_rubick/rubick_base_attack.vpcf"
+		"ProjectileSpeed"	"1125"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"	"21"
+		"AttributeStrengthGain"	"2"
+		"AttributeBaseIntelligence"	"25"
+		"AttributeIntelligenceGain"	"3.1"
+		"AttributeBaseAgility"	"23"
+		"AttributeAgilityGain"	"2.5"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusManaRegen"	"0.5"
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"290"
+		"MovementTurnRate"	"0.7"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

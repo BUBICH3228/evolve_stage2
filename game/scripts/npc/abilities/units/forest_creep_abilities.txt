@@ -1,0 +1,208 @@
+"DOTAAbilities"
+{
+    "suicide_attack"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/suicide_attack"
+        "AbilityTextureName"                "techies_suicide"
+        "AbilityUnitDamageType"			    "DAMAGE_TYPE_MAGICAL"	
+        "SpellImmunityType"				    "SPELL_IMMUNITY_ENEMIES_NO"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage_pct_per_max_health"
+            {
+                "value"                     "6 12"
+            }
+            "chance"                        "100"
+            "radius"                        "350"
+        }
+	}
+
+    "creep_boiling_blood"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_boiling_blood"
+        "AbilityTextureName"                "bloodseeker_blood_mist"
+        "AbilityUnitDamageType"			    "DAMAGE_TYPE_PURE"	
+        "SpellImmunityType"				    "SPELL_IMMUNITY_ENEMIES_YES"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage_pct_per_max_health"
+            {
+                "value"                     "2 4"
+            }
+            "interval"                      "0.55"
+            "radius"                        "200"
+            "duration"                      "4"
+        }
+	}
+
+	"creep_curse_of_the_dead_movement_slow"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_curse_of_the_dead_movement_slow"
+        "AbilityTextureName"                "creep_curse_of_the_dead_movement_slow"
+		"SpellDispellableType"				"SPELL_DISPELLABLE_YES"
+        "SpellImmunityType"				    "SPELL_IMMUNITY_ENEMIES_YES"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "movement_slow_pct_per_stack"   "5 10"
+            "duration"                      "15"
+        }
+	}
+
+	"creep_curse_of_the_dead_reduced_health"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_curse_of_the_dead_reduced_health"
+        "AbilityTextureName"                "creep_curse_of_the_dead_reduced_health"
+		"SpellDispellableType"				"SPELL_DISPELLABLE_YES"
+        "SpellImmunityType"				    "SPELL_IMMUNITY_ENEMIES_YES"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "reduced_health_pct_per_stack"  "4 8"
+            "duration"                      "15"
+        }
+	}
+
+	"creep_curse_of_the_dead_reduced_mana"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_curse_of_the_dead_reduced_mana"
+        "AbilityTextureName"                "creep_curse_of_the_dead_reduced_mana"
+		"SpellDispellableType"				"SPELL_DISPELLABLE_YES"
+        "SpellImmunityType"				    "SPELL_IMMUNITY_ENEMIES_YES"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "reduced_mana_pct_per_stack"  	"4 8"
+            "duration"                      "15"
+        }
+	}
+
+    "creep_buff_movement_speed"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_buff_movement_speed"
+        "AbilityTextureName"                "centaur_stampede"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "movement_speed_buff"  			"100 200"
+        }
+	}
+
+	"creep_buff_attack_speed"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_buff_attack_speed"
+        "AbilityTextureName"                "furbolg_enrage_attack_speed"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "attack_speed_buff"  			"50 100"
+        }
+	}
+
+	"creep_buff_health"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_buff_health"
+        "AbilityTextureName"                "sven_warcry"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "health_buff_pct"  				"50 100"
+        }
+	}
+
+	"creep_buff_attack_damage"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_buff_attack_damage"
+        "AbilityTextureName"                "furbolg_enrage_damage"
+        "MaxLevel"                          "2"
+		
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "attack_damage_buff_pct"  		"50 100"
+        }
+	}
+
+	"creep_critical_strike"
+	{
+		"BaseClass"                         "ability_lua"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "ScriptFile"                        "abilities/units/forest_creep/creep_critical_strike"
+        "AbilityTextureName"                "skeleton_king_mortal_strike"
+        "MaxLevel"                          "2"
+		
+		"AbilityCooldown"					"2"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "critical_strike_damage_pct"  	"200 300"
+        }
+	}
+}

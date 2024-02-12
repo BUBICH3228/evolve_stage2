@@ -1,0 +1,161 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/custom_shop/custom_shop.css" />
+        <include src="file://{resources}/styles/custom_game/custom_shop/custom_shop_neutral_shop.css" />
+        <include src="file://{resources}/styles/custom_game/custom_shop/custom_shop_upgrade_item.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_shop/custom_shop.js" />
+        <include src="file://{resources}/scripts/custom_game/custom_shop/custom_shop_neutral_shop.js" />
+    </scripts>
+    <snippets>
+		<snippet name="NeutralShopItemSnippet">
+			<Panel id="ShopItem" class="ShopItemClass" hittest="true">
+                <DOTAItemImage id="ItemImage" itemname="item_spy_gadget"/>
+                <Panel id="ItemCostPanel" class="PanelClass" hittest="false">
+                    <Label id="ItemCost" text="123" /> 
+                    <Image id="ItemCostImage"  src="" scaling="stretch-to-cover-preserve-aspect"/>
+                </Panel>
+            </Panel>
+		</snippet>
+        <snippet name="UpgradeItemSnippet">
+            <Panel>
+                <DOTAItemImage id="ItemIcon" itemname=""/>
+			    <Label id="ItemName" text="name" /> 
+            </Panel>
+		</snippet>
+        <snippet name="YourNeutralShopItemSnippet">
+            <Panel id="YourNeutralItem">
+                <DOTAItemImage id="YourNeutralItemIcon" itemname=""/>
+            </Panel>
+		</snippet>
+	</snippets>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="ShopMenuPanel" class="ShopMenuPanel">
+            <Panel class="TabContainerClass">
+                <Button id="NeutralShopButtonTab" class="TabButtonClass" onactivate="OnNeutralShopButtonPressed()">
+                    <Label class="TabLabelClass" text="#ui_custom_shop_neutral_shop" />
+                </Button>
+                <Button id="UpgradeButtonTab" class="TabButtonClass" onactivate="OnUpgradeButtonPressed()">
+                    <Label class="TabLabelClass" text="#ui_custom_shop_upgrade_item" />
+                </Button>
+            </Panel>
+            <Panel id="NeutralShopPanel" hittest="true">
+                <Panel id="NeutralShopItemContainer">
+                    <Panel class="NeutralShopItemTierContainerClass">
+                        <Label id="Tier1Header" class="NeutralShopItemsHeaderClass" text="#ui_custom_shop_neutral_shop_header_tier1" />
+                        <Panel class="Clock" styles=""/>
+                        <Label class="TeamNeutralsItemsTierTimes" text="2:00+" />
+                        <Panel class="NeutralShopItemsTokensPanelClass">
+                            <Label id="Tier1Tokens" class="NeutralShopItemsTokensCountClass" text="" />
+                            <Image class="NeutralShopItemsTokensImageClass" src="file://{resources}/images/custom_game/ui/custom_shop/neutral_shop/tier1_token_png.png" scaling="stretch-to-cover-preserve-aspect"/>
+                        </Panel>
+                        <Panel id="NeutralShopItemContainerTier1" class="TierContainerClass"/>
+                    </Panel>
+                    <Panel class="NeutralShopItemTierContainerClass">
+                        <Label id="Tier2Header" class="NeutralShopItemsHeaderClass" text="#ui_custom_shop_neutral_shop_header_tier2" />
+                        <Panel class="Clock" styles=""/>
+                        <Label class="TeamNeutralsItemsTierTimes" text="12:00+" />
+                        <Panel class="NeutralShopItemsTokensPanelClass">
+                            <Label id="Tier2Tokens" class="NeutralShopItemsTokensCountClass" text="" />
+                            <Image class="NeutralShopItemsTokensImageClass" src="file://{resources}/images/custom_game/ui/custom_shop/neutral_shop/tier2_token_png.png" scaling="stretch-to-cover-preserve-aspect"/>
+                        </Panel>
+                        <Panel id="NeutralShopItemContainerTier2" class="TierContainerClass"/>
+                    </Panel>
+                    <Panel class="NeutralShopItemTierContainerClass">
+                        <Label id="Tier3Header" class="NeutralShopItemsHeaderClass" text="#ui_custom_shop_neutral_shop_header_tier3" />
+                        <Panel class="Clock" styles=""/>
+                        <Label class="TeamNeutralsItemsTierTimes" text="22:00+" />
+                        <Panel class="NeutralShopItemsTokensPanelClass">
+                            <Label id="Tier3Tokens" class="NeutralShopItemsTokensCountClass" text="" />
+                            <Image class="NeutralShopItemsTokensImageClass" src="file://{resources}/images/custom_game/ui/custom_shop/neutral_shop/tier3_token_png.png" scaling="stretch-to-cover-preserve-aspect"/>
+                        </Panel>
+                        <Panel id="NeutralShopItemContainerTier3" class="TierContainerClass"/>
+                    </Panel>
+                    <Panel class="NeutralShopItemTierContainerClass">
+                        <Label id="Tier4Header" class="NeutralShopItemsHeaderClass" text="#ui_custom_shop_neutral_shop_header_tier4" />
+                        <Panel class="Clock" styles=""/>
+                        <Label class="TeamNeutralsItemsTierTimes" text="32:00+" />
+                        <Panel class="NeutralShopItemsTokensPanelClass">
+                            <Label id="Tier4Tokens" class="NeutralShopItemsTokensCountClass" text="" />
+                            <Image class="NeutralShopItemsTokensImageClass" src="file://{resources}/images/custom_game/ui/custom_shop/neutral_shop/tier4_token_png.png" scaling="stretch-to-cover-preserve-aspect"/>
+                        </Panel>
+                        <Panel id="NeutralShopItemContainerTier4" class="TierContainerClass"/>
+                    </Panel>
+                    <Panel class="NeutralShopItemTierContainerClass">
+                        <Label id="Tier5Header" class="NeutralShopItemsHeaderClass" text="#ui_custom_shop_neutral_shop_header_tier5" />
+                        <Panel class="Clock" styles=""/>
+                        <Label class="TeamNeutralsItemsTierTimes" text="42:00+" />
+                        <Panel class="NeutralShopItemsTokensPanelClass">
+                            <Label id="Tier5Tokens" class="NeutralShopItemsTokensCountClass" text="" />
+                            <Image class="NeutralShopItemsTokensImageClass" src="file://{resources}/images/custom_game/ui/custom_shop/neutral_shop/tier5_token_png.png" scaling="stretch-to-cover-preserve-aspect"/>
+                        </Panel>
+                        <Panel id="NeutralShopItemContainerTier5" class="TierContainerClass"/>
+                    </Panel>
+                </Panel>
+                <Panel id="YourNeutralItemsList">
+                    <Label id="YourNeutralItemsHeader" text="#ui_custom_shop_neutral_shop_your_neutral_items" />  
+                    <Panel id="YourNeutralItemsContainer"/>
+                </Panel>
+            </Panel>
+            <Panel id="UpgradePanel" hittest="true">  
+                <Panel id="StatusPanel">
+                    <Label id="Status" text="#ui_custom_shop_upgrade_item_status_lable" /> 
+                </Panel>  
+		    	<Panel id="UpgradeItemPanel" hittest="false"/>
+                <Panel id="UpgradeInfoPanel">
+                    <DOTAItemImage id="ItemIconNew" itemname=""/>
+                    <Image id="ItemIconBorderNew" src="file://{resources}/images/custom_game/ui/custom_shop/item_border.png"/>
+                    <Image id="chanceArrow" src="file://{resources}/images/custom_game/ui/custom_shop/chance_arrow.png"/>
+                    <Label id="OldLevelItem" text="1 lvl" /> 
+                    <Label id="NewLevelItem" text="2 lvl" /> 
+                    <Panel id="ExtensionsPanel">
+                        <Panel id="LifeCrystal">
+                            <Image id="CrystalIcon" src="file://{resources}/images/custom_game/ui/custom_shop/LifeCrystal.png" />
+                            <Label id="CrystalName" text="#ui_custom_shop_upgrade_item_crystal_name1" />
+                            <Panel id="CrystalCounter">
+                                <Label id="UsedСrystals" text="999" />
+                                <Label id="Separation" text="/" />
+                                <Label id="CurrentCrystals" text="999" />
+                            </Panel>
+                            <Button id="ButtonMinus" class="ZoomButtonClass" onactivate="OnButtonPressed()">
+                                <Image src="file://{resources}/images/custom_game/ui/custom_shop/Minus.png" scaling="stretch-to-fit-preserve-aspect"/>
+                            </Button>
+                            <Slider id="UsedСrystalsSlider" onvaluechanged="" direction="horizontal"/>
+                            <Button id="ButtonPlus" class="ZoomButtonClass" onactivate="OnButtonPressed()">
+                                <Image src="file://{resources}/images/custom_game/ui/custom_shop/Plus.png" scaling="stretch-to-fit-preserve-aspect"/>
+                            </Button>
+                        </Panel>
+                        <Panel id="DeathCrystal">
+                            <Image id="CrystalIcon" src="file://{resources}/images/custom_game/ui/custom_shop/DeathCrystal.png"/>
+                            <Label id="CrystalName" text="#ui_custom_shop_upgrade_item_crystal_name2" />
+                            <Panel id="CrystalCounter">
+                                <Label id="UsedСrystals" text="999" />
+                                <Label id="Separation" text="/" />
+                                <Label id="CurrentCrystals" text="999" />
+                            </Panel>
+                            <Button id="ButtonMinus" class="ZoomButtonClass" onactivate="OnButtonPressed()">
+                                <Image src="file://{resources}/images/custom_game/ui/custom_shop/Minus.png" scaling="stretch-to-fit-preserve-aspect"/>
+                            </Button>
+                            <Slider id="UsedСrystalsSlider" onvaluechanged="" direction="horizontal"/>
+                            <Button id="ButtonPlus" class="ZoomButtonClass" onactivate="OnButtonPressed()">
+                                <Image src="file://{resources}/images/custom_game/ui/custom_shop/Plus.png" scaling="stretch-to-fit-preserve-aspect"/>
+                            </Button>
+                        </Panel>
+                    </Panel>
+
+                    <Panel id="UpgradeItemCostPanel">
+                        <Label id="CostText" text="#ui_custom_shop_upgrade_item_cost" /> 
+                        <Label id="GoldCostNumber" text="0" />
+                        <Image id="GoldIcon" src="s2r://panorama/images/hud/reborn/gold_small_psd.vtex"/> 
+                        <Label id="PointBossCostNumber" text="0" /> 
+                        <Image id="PointBossIcon" src="file://{resources}/images/custom_game/ui/custom_shop/gold_small.png"/>
+                    </Panel>
+                    <Button id="UpgradeButtonPanel">
+                        <Label class="UpgradeButtonClass" text="#ui_custom_shop_upgrade_item_upgrade_button" />
+                    </Button>
+		    	</Panel>
+		    </Panel>
+        </Panel>
+    </Panel>
+</root>

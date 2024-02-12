@@ -1,0 +1,131 @@
+"DOTAAbilities"
+{
+	"talent_curse_of_the_silent_aoe"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"					"750"
+			"duration"					"5"
+			"cooldown"					"7"
+		}
+
+		"HasDescription" 				"1"
+	}
+
+	"talent_curse_of_the_silent_cast_on_death"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"explosion_radius"			"750"
+			"damage_pct"				"150"
+		}
+
+		"HasDescription" 				"1"
+	}
+
+
+	"talent_silencer_glaives_of_wisdom_bounces"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/talents/talent_base"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bounces"						"2"
+			"radius"						"600"
+		}
+
+		"HasDescription" 					"1"
+	}
+
+	"talent_silencer_glaives_of_wisdom_bonus_int_per_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/talents/talent_base"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_int_per_unit"			"4"
+			"bonus_int_per_boss"			"20"
+			"duration"						"35"
+		}
+
+		"HasDescription" 					"1"
+	}
+
+	"talent_silencer_last_word_instant_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/talents/talent_base"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+
+	"talent_silencer_last_word_deals_periodic_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/talents/talent_base"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"damage_pct"				"75"
+			"interval"					"0.5"
+		}   
+		"HasDescription" 					"1"
+	}
+
+	"talent_silencer_global_silence_cast_last_word"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/talents/talent_base"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE" 
+	}
+
+	"talent_silencer_global_silence_give_spell_amplification"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/talents/talent_base"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"spell_amp_per_unit"		"130"
+			"duration_spell_amp"		"30"
+		}   
+		"HasDescription" 					"1"
+	}
+}

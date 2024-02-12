@@ -1,0 +1,57 @@
+"DOTAAbilities"
+{
+	"item_recipe_daedalus_custom"
+    {
+        "AbilityTextureName" 					"item_recipe_greater_crit"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+	    "Model"									"models/props_gameplay/recipe.vmdl"
+	    "BaseClass"                     		"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"700"	
+		"ItemShopTags"							""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+        "ItemRecipe"                            "1"
+        "ItemResult"                            "item_daedalus_custom"
+        "ItemRequirements"
+        {
+            "01"                                "item_basic_stat_damage_custom;item_basic_stat_damage_custom;item_basic_stat_damage_custom;item_basic_stat_damage_custom;"
+        }
+    }
+
+	"item_daedalus_custom"
+    {       
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_daedalus_custom"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityTextureName"	                "item_greater_crit" 
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+        {
+            "bonus_damage"			            "75"
+            "crit_chance"						"30"
+			"crit_multiplier"					"225"
+            "bonus_damage_per_level"            "15"
+            "crit_multiplier_per_level"         "0.5"
+        }
+    }
+}

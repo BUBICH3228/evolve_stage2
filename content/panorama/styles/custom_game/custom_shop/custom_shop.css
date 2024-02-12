@@ -1,0 +1,64 @@
+.Root
+{
+    width: 100%;
+    height: 100%;
+}
+
+.ShopMenuPanel
+{
+    align: center center;
+    width: 755px;
+    height: 600px;
+    visibility: collapse;
+}
+
+.TabContainerClass
+{
+    width: 100%;
+    height: 35px;
+    align: center top;
+}
+
+.TabButtonClass
+{
+    align: left center;
+    width: 150px;
+    height: 100%;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_scoreboard_psd.vtex");
+    background-size: cover;
+    background-color: #000000da;
+    box-shadow: #000000f5 0px 0px 8px 0px;
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    opacity: 1;
+}
+
+#NeutralShopButtonTab:hover
+{
+    border: 2px solid #000000f5;
+}
+
+#UpgradeButtonTab
+{
+    color:rgb(177, 30, 50);  
+    margin-left: 150px;
+}
+
+#UpgradeButtonTab:hover
+{
+    border: 2px solid #000000f5;
+}
+
+.TabLabelClass
+{
+    align: center center;
+    font-size:15px;
+    white-space: normal;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#NeutralShopButtonTab
+{
+    color:rgba(155, 155, 155, 0.9);  
+}

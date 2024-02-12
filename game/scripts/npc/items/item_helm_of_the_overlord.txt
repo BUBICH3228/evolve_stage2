@@ -1,0 +1,69 @@
+"DOTAAbilities"
+{
+	"item_recipe_helm_of_the_overlord_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"900"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_helm_of_the_overlord_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_str_custom;item_basic_stat_int_custom;item_basic_stat_agi_custom;item_basic_stat_armor_custom;item_basic_stat_hp_regen_custom"
+		}
+	}
+
+	"item_helm_of_the_overlord_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_helm_of_the_overlord_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityTextureName"	                "item_helm_of_the_overlord"
+
+        // Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				        "30.0"
+        "AbilityDuration"                       "120.0"
+        "AbilityCastRange"                      "800"
+        "AbilityManaCost"                       "150"
+		"AbilitySharedCooldown"			        "helm_of_the_overlord"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+            "bonus_all_stats"			        "21"
+			"bonus_armor"			            "7"
+			"bonus_regen"			            "7"
+
+            "bonus_all_stats_per_level"         "7"
+            "bonus_regen_per_level"             "2"
+		}
+	}
+}

@@ -1,0 +1,375 @@
+#UpgradePanel
+{
+    align: center center;
+    margin-top: 35px;
+    width: 100%;
+    height: 600px;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_scoreboard_psd.vtex");
+    background-size: cover;
+    background-color: #000000da;
+    box-shadow: #000000f5 0px 0px 8px 0px;
+    transition-duration: 0.2s;
+    transition-property: opacity;
+    opacity: 1;
+    visibility: collapse;
+}
+
+#StatusPanel
+{
+    width: 100%;
+    height: 100%;
+    align: center center;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.363); 
+    border-radius:  10px 10px 10px 10px;
+}
+
+#backgroundImage
+{
+    width: 100%;
+    height: 100%;
+}
+
+#StatusPanel #Status
+{
+    color:rgb(177, 30, 50);
+    font-size:28px;
+    font-weight: normal;
+    text-overflow:ellipsis;
+    letter-spacing: 3px;
+    align: center center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#UpgradeItemPanel
+{
+    align: left top;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:  fit-children;
+    height: fit-children;
+    background-color: rgba(0, 0, 0, 0.363);
+    border-radius:  5px;
+}
+
+#UpgradeInfoPanel
+{
+    align: right bottom;
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 350px;
+    height: 560px;
+    background-color: rgba(0, 0, 0, 0.363);
+    border-radius:  5px;
+    visibility: collapse;
+}
+
+#UpgradeInfoPanel #ItemIconNew
+{
+    align: center top;
+    margin-top: 100px;
+    
+}
+
+#UpgradeInfoPanel #ItemIconBorderNew
+{
+    align: center top;
+    margin-top: 76px;
+    height: 110px;
+    width: 146px;
+    opacity: 0.2;
+}
+
+#UpgradeInfoPanel #ItemUpgradeChance
+{
+    color:rgba(155, 155, 155, 0.9);
+    align: center top;
+    margin-top: 25px;
+    margin-left: 10px;
+    font-size:18px;
+}
+
+#UpgradeInfoPanel #OldLevelItem
+{
+    color:rgba(155, 155, 155, 0.9);
+    align: center top;
+    margin-top: 38px;
+    margin-right: 78px;
+    font-size:22px;
+}
+
+#UpgradeInfoPanel #NewLevelItem
+{
+    color:rgba(155, 155, 155, 0.9);
+    align: center top;
+    margin-top: 38px;
+    margin-left: 75px;
+    font-size:22px;
+}
+
+#UpgradeInfoPanel #chanceArrow
+{
+    align: center top;
+    margin-top: 42px;
+    opacity: 0.3;
+}
+
+#ExtensionsPanel
+{
+    align: center bottom;
+    margin-bottom: 155px;
+    width: 100%;
+    height: 145px;
+    border-top: 2px solid rgba(70, 69, 69, 0.705);
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+}
+
+#ExtensionsPanel #LifeCrystal
+{
+    align: left top;
+    width: 100%;
+    height: 50%;
+    margin-top: 0%;
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+}
+
+#ExtensionsPanel #LifeCrystal #CrystalIcon
+{
+    align: left bottom;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+#ExtensionsPanel #DeathCrystal
+{
+    align: left top;
+    width: 100%;
+    height: 50%;
+    margin-top: 50%;
+}
+
+#ExtensionsPanel #DeathCrystal #CrystalIcon
+{
+    align: left bottom;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+#CrystalCounter
+{
+    align: left bottom;
+    height: 30px;
+    width: 110px;
+    margin-bottom: 10px;
+    margin-left: 70px;
+    border: 2px solid rgba(70, 69, 69, 0.705);
+    background-color: rgba(70, 69, 69, 0.105);
+}
+
+#CrystalCounter #UsedСrystals
+{
+    align: center bottom;
+    margin-right: 50px;
+    color:rgba(155, 155, 155, 0.9);
+    font-size:20px;
+}
+
+#Separation
+{
+    align: center bottom;
+    margin-bottom:2px;
+    color:rgba(225, 220, 164, 0.9);
+    font-size:22px;
+}
+
+#CrystalCounter #CurrentCrystals
+{
+    align: center bottom;
+    margin-left: 50px;
+    color:rgba(225, 220, 164, 0.9);
+    font-size:20px;
+}
+
+#CrystalName
+{
+    align: left top;
+    margin-left: 70px;
+    margin-top:10px;
+    color:rgba(155, 155, 155, 0.9);
+    font-size:15px;
+}
+
+#UsedСrystalsSlider
+{
+    width: 80px;
+    height: 15px;
+    align: right bottom;
+    margin-bottom: 10px;
+    margin-right: 40px;
+}
+
+#SliderThumb
+{
+    width: 5%;
+    height: 100%;
+    vertical-align: center;
+    background-color:gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #91a5b9 ), to( #444f52 ) );
+}
+
+#SliderTrack
+{
+    width: 100%;
+    height: 15%;
+    vertical-align: center;
+    background-color:gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #36393b80 ), to( #3f444670 ) );
+}
+
+#SliderTrackProgress
+{
+    width: 100%;
+    height: 10%;
+    vertical-align: center;
+}
+
+.ZoomButtonClass
+{
+    width: 17px;
+    height: 17px;
+    align: right bottom;
+    background-color:gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #36393b80 ), to( #3f444670 ) );
+}
+
+#ButtonPlus
+{
+    margin-bottom: 10px;
+    margin-right: 17px;
+}
+
+#ButtonMinus
+{
+    margin-bottom: 10px;
+    margin-right: 127px;
+}
+
+#UpgradeItemCostPanel
+{
+    align: center bottom;
+    margin-bottom: 75px;
+    width: 100%;
+    height: 60px;
+    border-top: 2px solid rgba(70, 69, 69, 0.705);
+    border-bottom: 2px solid rgba(70, 69, 69, 0.705);
+}
+
+#UpgradeItemCostPanel #CostText
+{
+    color:rgba(155, 155, 155, 0.9);
+    font-size:18px;
+    margin-top: 5px;
+    margin-left: 5px;
+    text-shadow: 1px 1px 2px 3.0 #333333b0;
+}
+
+#UpgradeItemCostPanel #GoldCostNumber
+{
+    align: right top;
+    color:rgba(155, 155, 155, 0.9);
+    font-size:20px;
+    margin-top: 8px;
+    margin-right: 30px;
+    text-shadow: 1px 1px 2px 3.0 #333333b0;
+}
+
+#UpgradeItemCostPanel #GoldIcon
+{
+    align: right top;
+    margin-top: 3px;
+    margin-right: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+
+#UpgradeItemCostPanel #PointBossCostNumber
+{
+    align: right bottom;
+    color:rgba(155, 155, 155, 0.9);
+    font-size:20px;
+    margin-right: 30px;
+    margin-bottom: 2px;
+    text-shadow: 1px 1px 2px 3.0 #333333b0;
+}
+
+#UpgradeItemCostPanel #PointBossIcon
+{
+    align: right bottom;
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.UpgradeButtonClass
+{
+    align: center center;
+    color:rgba(155, 155, 155, 0.9);
+    font-size:20px;
+}
+
+#UpgradeButtonPanel:hover
+{
+    border: 2px solid rgba(180, 175, 175, 0.705);
+    background-color: rgba(70, 69, 69, 0.205);
+}
+
+#UpgradeButtonPanel
+{
+    align: center bottom;
+    margin-bottom: 15px;
+    width:  150px;
+    height: 45px;
+    border: 2px solid rgba(70, 69, 69, 0.705);
+    border-radius: 5px;
+}
+
+#Item:hover
+{
+    border: 2px solid rgba(70, 69, 69, 0.705);
+}
+
+#Item{
+    width:  340px;
+    height: 75px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    align: left top;
+    border-radius:  5px;
+    background-color: rgba(0, 0, 0, 0.527);
+}
+
+#UpgradeItemPanel #ItemIcon
+{
+    border-radius:  2px;
+    margin-left: 5px;
+    align: left center;
+}
+#UpgradeItemPanel #ItemName{
+    color:rgba(155, 155, 155, 0.9);
+    font-size:18px;
+    white-space: nowrap;
+    text-overflow:shrink;
+    text-shadow: 1px 1px 2px 3.0 #333333b0;
+    margin-right: 10px;
+    margin-left: 105px;
+    align: left center;
+}

@@ -1,0 +1,105 @@
+"DOTAAbilities"
+{
+	"talent_lion_impale_custom_split"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"dmg_from_orig_pct"								"25"
+			"divisions"										"6"
+		}
+		"HasDescription" 									"1"
+	}
+	"talent_lion_impale_custom_debuff"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"debuff_dps"									"250"
+			"debuff_dps_int_to_dmg_pct"						"25"
+			"debuff_duration"								"3"
+			"damage_interval"								"0.5"
+		}
+		"HasDescription" 									"1"
+	}
+	"talent_lion_impale_custom_autocast"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"dmg_increase_pct"								"50"
+			"cooldown_reduction"							"3"
+		}
+		"HasDescription" 									"1"
+	}
+	"talent_lion_voodoo_custom_autocast"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"dmg_increase_pct"								"50"
+			"cooldown"										"3"
+		}
+		"HasDescription" 									"1"
+	}
+	"talent_lion_voodoo_custom_aoe"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"aoe_radius"									"250"
+		}
+	}
+	"talent_lion_mana_drain_custom_passive"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"radius"										"450"
+			"mult"											"2"
+		}
+		"HasDescription" 									"1"
+	}
+	"talent_lion_finger_of_death_custom_autocast"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"manacost_increase_pct"							"10"
+			"stack_duration"								"30"
+		}
+		"HasDescription" 									"1"
+	}
+	"talent_lion_finger_of_death_custom_hp"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"hp_per_stack"									"100"
+		}
+	}
+}

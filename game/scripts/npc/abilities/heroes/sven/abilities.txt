@@ -1,0 +1,196 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+  // Ability: Storm Bolt (Storm Hammer)
+  //=================================================================================================================
+  "sven_storm_bolt"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"          "5094"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    "AbilityUnitDamageType"     "DAMAGE_TYPE_MAGICAL" 
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_NO"
+    "SpellDispellableType"      "SPELL_DISPELLABLE_YES_STRONG"
+    "FightRecapLevel"       "1"
+    "AbilitySound"          "Hero_Sven.StormBoltImpact"
+
+    "HasScepterUpgrade"       "1"
+    "MaxLevel"                "12"
+
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"        "600"
+    "AbilityCastPoint"        "0.2"
+
+    // Time   
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"       "9"
+
+    // Damage.
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityDamage"         "100 140 210 300 420 590 820 1070 1390 1800 2160 2600"
+
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"       "83"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+        "bolt_speed"              "1300"
+        "bolt_stun_duration"
+        {
+          "value"                 "1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 3 3.2 3.4 3.6"
+          "LinkedSpecialBonus"    "special_bonus_unique_sven_4"
+        }
+        "bolt_aoe"      "255"
+        "vision_radius"   "225"
+        "cast_range_bonus_scepter"
+        {
+          "value" "550"
+          "RequiresScepter"     "1"
+        }
+    }
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_1"
+  }
+  
+  //=================================================================================================================
+  // Ability: Great Cleave
+  //=================================================================================================================
+  "sven_great_cleave"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"          "5095"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+    "MaxLevel"                "12"
+        
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "strength_bonus"		"3 5 7 10 14 20 28 36 47 61 73 88"
+      "cleave_starting_width"     "250"
+      "cleave_ending_width"     "360"
+      "cleave_distance"     "700"
+      "great_cleave_damage"
+      {
+       "value"   "30 45 60 75 90 105 120 135 150 165 180 195"
+       "LinkedSpecialBonus"    "special_bonus_unique_sven_8"
+      } 
+    }
+    "AbilityCastAnimation"    "ACT_DOTA_CAST_ABILITY_2"
+  }
+  
+  //=================================================================================================================
+  // Ability: Warcry
+  //=================================================================================================================
+  "sven_warcry"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"          "5096"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "SpellDispellableType"      "SPELL_DISPELLABLE_YES"
+    "SpellImmunityType"       "SPELL_IMMUNITY_ALLIES_YES"
+    "AbilitySound"          "Hero_Sven.WarCry"
+        "HasShardUpgrade"               "1"
+        "MaxLevel"              "12"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastAnimation"      "ACT_DOTA_OVERRIDE_ABILITY_3"
+    "AbilityCastGestureSlot"    "DEFAULT"
+    "AbilityCastPoint"        "0.0"
+
+    // Time   
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"       "13"
+  
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"       "23"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "movespeed"     
+      {
+        "value" "16 19 22 25 28 31 34 37 40 43 46"
+        "LinkedSpecialBonus"    "special_bonus_unique_sven_6"
+      }
+      
+      "bonus_armor"
+      {
+        "value" "6 8 10 12 17 22 27 32 39 46 53 60"
+        "LinkedSpecialBonus"    "special_bonus_unique_sven_7"
+      }
+      "radius"    "700"
+      "duration"		
+			{
+				"value"			"10"
+				"LinkedSpecialBonus"		"special_bonus_unique_sven_5"
+			}
+			"shard_passive_armor"	
+			{
+				"value"		"6"
+				"RequiresShard"			"1"
+			}
+			"shard_radius"			
+			{
+				"value"	"1200"
+				"RequiresShard"			"1"
+			}
+    }
+  }
+  
+  //=================================================================================================================
+  // Ability: God's Strength
+  //=================================================================================================================
+  "sven_gods_strength"
+  {
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+    "ID"          "5097"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+    "AbilityType"         "DOTA_ABILITY_TYPE_ULTIMATE"
+    "SpellDispellableType"      "SPELL_DISPELLABLE_NO"
+    "FightRecapLevel"       "1"
+    "AbilitySound"          "Hero_Sven.GodsStrength"
+    "MaxLevel"            "4"
+    
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastAnimation"      "ACT_DOTA_OVERRIDE_ABILITY_4"
+    "AbilityCastGestureSlot"    "DEFAULT"
+    "AbilityCastPoint"        "0.3"
+
+    // Time   
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"       "38"
+    "AbilityDuration"       "20"
+  
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"       "75"
+
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityValues"
+    {
+      "bonus_slow_resistance"		"30"
+      "gods_strength_damage"
+      {
+        "value"    "120 160 200 240" 
+        "LinkedSpecialBonus"    "special_bonus_unique_sven_2" 
+      }
+    } 
+  }
+}

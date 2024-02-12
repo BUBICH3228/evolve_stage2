@@ -1,0 +1,53 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_legion_commander"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_legion_commander"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"					"legion_commander_overwhelming_odds_custom"
+		"Ability2"					"legion_commander_press_the_attack_custom"
+		"Ability3"					"legion_commander_moment_of_courage_custom"
+		"Ability4"					"generic_hidden"
+		"Ability5"					"generic_hidden"
+		"Ability6"					"legion_commander_duel_custom"
+		"Ability10"					"talent_legion_commander_overwhelming_odds_multicast"
+		"Ability11"					"talent_legion_commander_duel_reward_damage_bonus"
+		"Ability12"					"talent_legion_commander_moment_of_courage_self_attacks"
+		"Ability13"					"talent_legion_commander_press_the_attack_aoe"
+		"Ability14"					"talent_legion_commander_press_the_attack_armor_and_mag_res"
+		"Ability15"					"talent_legion_commander_overwhelming_odds_attack_damage_pct"
+		"Ability16"					"talent_legion_commander_duel_aura"
+		"Ability17"					"talent_legion_commander_press_the_attack_passive"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"0"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"	"35"
+		"AttackDamageMax"	"39"
+		"AttackRate"	"1.7"
+		"AttackAnimationPoint"	"0.46"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"	"150"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"	"25"
+		"AttributeStrengthGain"	"3.3"
+		"AttributeBaseIntelligence"	"20"
+		"AttributeIntelligenceGain"	"2.2"
+		"AttributeBaseAgility"	"18"
+		"AttributeAgilityGain"	"1.7"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"330"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

@@ -1,0 +1,8 @@
+kabinka
+{
+	material materials/overviews/kabinka.vmat
+	pos_x -2093
+	pos_y 2138
+	scale 4.088
+}
+

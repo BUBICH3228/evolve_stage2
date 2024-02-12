@@ -1,0 +1,69 @@
+"DOTAAbilities"
+{
+	"item_recipe_radiance_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"350"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_radiance_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_damage_custom;item_basic_stat_damage_custom;item_basic_stat_evasion_custom;item_basic_stat_evasion_custom"
+		}
+	}
+
+	"item_radiance_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_radiance_custom"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+        "AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        "AbilityUnitDamageType"		            "DAMAGE_TYPE_MAGICAL"
+		"AbilityTextureName"					"item_radiance"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"						"700"
+		"AbilitySharedCooldown"			        "radiance"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_damage"						"55"
+			"aura_damage"						"40"
+			"aura_damage_illusions"				"35"
+			"evasion"							"15"
+			"blind_pct"							"15"
+			"illusion_multiplier_pct"			"150"
+			"bonus_damage_per_level"			"15"
+			"aura_damage_per_level"				"13"
+		}
+	}
+}

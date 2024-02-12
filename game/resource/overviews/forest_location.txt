@@ -1,0 +1,8 @@
+forest_location
+{
+	material materials/overviews/forest_location.vmat
+	pos_x -5120
+	pos_y 5120
+	scale 10.000
+}
+

@@ -1,0 +1,20 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/dota_hud/top_bar_hud_buttons_hide.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/unit_detailed_stats_tooltip.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/hero_level_label_fix.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/hero_gold_fix.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/hero_ability_level_fix.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/talent_tree_hide_lvl_up_button.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/talent_tree_add_lvl_up_button_custom.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/talent_tree_hide_tree_button.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/talent_tree_add_tree_button_custom.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/talent_tree_hide_talents_list.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/talent_tree_add_talents_list_custom.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/hero_stats.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/fix_shop_grid.js" />
+		<!--<include src="file://{resources}/scripts/custom_game/dota_hud/wave_counter.js" />!-->
+		<include src="file://{resources}/scripts/custom_game/dota_hud/hero_stats_progress_bar.js"/>
+	</scripts>
+	<Panel hittest="false" hittestchildren="false"/>
+</root>

@@ -1,0 +1,9 @@
+"AddonInfo"
+{
+    "EnablePickRules"        "0"
+    "maps"        "mountain_new"
+    "mountain_new"
+    {
+        "MaxPlayers"        "5"
+    }
+}

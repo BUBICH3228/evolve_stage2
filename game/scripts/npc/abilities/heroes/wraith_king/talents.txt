@@ -1,0 +1,115 @@
+"DOTAAbilities"
+{
+	"talent_wraith_king_hellfire_blast_custom_explosion"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"										"300"
+			"damage_per_max_health"							"10"
+			"delay"											"2"
+		}
+
+		"HasDescription" 									"1"
+	}
+
+	"talent_wraith_king_hellfire_blast_custom_aoe"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"										"300"
+		}
+	}
+
+	"talent_wraith_king_vampiric_aura_custom_not_stun"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+
+	"talent_wraith_king_vampiric_aura_custom_additional_ability"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+
+	"talent_wraith_king_mortal_strike_custom_insta_kill"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"chance"										"10"
+			"health_pct"									"12"
+		}
+
+		"HasDescription" 									"1"
+	}
+
+	"talent_wraith_king_mortal_strike_custom_critical_increases"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"critical_increases_per_stack"					"15"
+			"duration"										"5"
+		}
+
+		"HasDescription" 									"1"
+	}
+
+	"talent_wraith_king_reincarnation_custom_inspiration"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_outgoing_damge"							"350"
+			"duration"										"5"
+		}
+
+		"HasDescription" 									"1"
+	}
+
+	"talent_wraith_king_reincarnation_custom_shild"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"health_shild_per_max_health"					"350"
+		}
+
+		"HasDescription" 									"1"
+	}
+}

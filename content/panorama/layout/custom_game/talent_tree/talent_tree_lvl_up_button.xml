@@ -1,0 +1,25 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/talent_tree/talent_tree_lvl_up_button.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/talent_tree/talent_tree_lvl_up_button.js" />
+	</scripts>
+	<Panel class="Root" hittest="true">
+		<DOTAScenePanel id="LevelUpBurstFX" map="scenes/hud/levelupburst" renderdeferred="false" rendershadows="false" camera="camera_1" hittest="false" particleonly="true" />
+		<Button id="LevelUpTab" hittest="true" onactivate="OnTalentTreeButtonPressed()">
+			<Panel id="LevelUpButton">
+				<Panel id="LevelUpIcon" />
+			</Panel>
+			<Panel id="LearnModeButton" hittest="false" />
+		</Button>
+		<Panel hittest="false" id="ButtonWell">
+			<Panel hittest="false" id="RecommendedUpgradeOverlay">
+				<Panel hittest="false" class="BorderEdge BorderTop" />
+				<Panel hittest="false" class="BorderEdge BorderRight" />
+				<Panel hittest="false" class="BorderEdge BorderBottom" />
+				<Panel hittest="false" class="BorderEdge BorderLeft" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,297 @@
+"DOTAAbilities"
+{
+	"wraith_king_hellfire_blast_custom"
+	{
+		"BaseClass"		                  			"ability_lua"
+    	"AbilityTextureName"		        	  	"skeleton_king_hellfire_blast"
+    	"ScriptFile"                    			"abilities/heroes/wraith_king/hellfire_blast"
+    	"AbilityBehavior"                   		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    	"AbilityUnitTargetTeam"             		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+    	"AbilityUnitTargetType"             		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    	"AbilityUnitDamageType"             		"DAMAGE_TYPE_MAGICAL"  
+    	"SpellImmunityType"                 		"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_YES_STRONG"
+		"FightRecapLevel"							"1"
+		"AbilitySound"								"Hero_SkeletonKing.Hellfire_Blast"
+		"MaxLevel"									"12"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"							"525"
+		"AbilityCastPoint"							"0.35"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"							"8"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"							"95"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"				"0.5"	// Applies two modifiers
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"blast_speed"							"1000"
+			"blast_stun_duration"					"4"
+			"blast_dot_duration"					"4"
+			"blast_slow"							"20"
+			"damage"
+			{
+				"value"								"75 110 170 250 350 500 690 900 1170 1530 1830 2200"
+			}
+			"blast_dot_damage"	
+			{
+				"value"								"20 30 50 70 90 130 190 240 310 410 490 590"
+			}
+
+			"talent_radius_explosion"
+			{
+				"value"								"0"
+				"talent_wraith_king_hellfire_blast_custom_explosion" "+radius"
+			}
+
+			"talent_damage_per_max_health"
+			{
+				"value"								"0"
+				"talent_wraith_king_hellfire_blast_custom_explosion" "+damage_per_max_health"
+			}
+
+			"talent_delay"
+			{
+				"value"								"0"
+				"talent_wraith_king_hellfire_blast_custom_explosion" "+delay"
+			}
+
+			"talent_radius"
+			{
+				"value"								"0"
+				"talent_wraith_king_hellfire_blast_custom_aoe" "+radius"
+			}
+		}
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_1"
+	}
+	
+	"wraith_king_vampiric_aura_custom"
+	{
+		"BaseClass"		                  			"ability_lua"
+    	"AbilityTextureName"		        	  	"skeleton_king_vampiric_aura"
+    	"ScriptFile"                    			"abilities/heroes/wraith_king/vampiric_aura"
+    	"AbilityBehavior"                   		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		//Защитывает стаки за убийство
+		"AbilityUnitTargetTeam1"             		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+    	"AbilityUnitTargetType1"             		"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags1"					"DOTA_UNIT_TARGET_FLAG_DEAD"
+		"MaxLevel"									"12"
+			
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"							"0.1"	
+		"AbilityCooldown"							"80"					
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"							"150"
+
+		"AbilityValues"
+		{
+			"vampiric_aura"
+			{
+				"value"								"9 13 17 21 25 29 33 37 41 45 49 53"
+			}
+			"max_stack"								"150 200 250 300 350 400 450 500 550 600 650 700"
+			"max_stack_per_kill"					"0.3"
+			"stack_per_kill_boss"					"5"
+			"stack_per_kill_creep"					"1"
+
+			"health_per_stack"						"30 35 40 45 50 55 60 65 70 75 80 85"
+			"mana_per_stack"						"15 17 20 22 25 27 30 32 35 37 40 42"
+			"damage_per_stack"						"4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5"
+			"movespeed_per_stack"					"0.75"
+			"attack_speed_per_stack"				"0.75"
+			"armor_per_stack"						"0.125"
+			"heal_and_mana_regeneration_pct"		"1.2"
+		}
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+	"wraith_king_mortal_strike_custom"
+	{
+
+		"BaseClass"		                  			"ability_lua"
+    	"AbilityTextureName"		        	  	"skeleton_king_mortal_strike"
+    	"ScriptFile"                    			"abilities/heroes/wraith_king/mortal_strike"
+    	"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"						"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilitySound"								"Hero_SkeletonKing.CriticalStrike"
+		"MaxLevel"									"12"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"							"0.6"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"crit_mult"								"150 170 190 210 230 250 270 290 310 330 350 370"
+
+			"talent_chance"
+			{
+				"value"								"0"
+				"talent_wraith_king_mortal_strike_custom_insta_kill" "+chance"
+			}
+
+			"talent_health_pct"
+			{
+				"value"								"0"
+				"talent_wraith_king_mortal_strike_custom_insta_kill" "+health_pct"
+			}
+
+			"talent_critical_increases_per_stack"
+			{
+				"value"								"0"
+				"talent_wraith_king_mortal_strike_custom_critical_increases" "+critical_increases_per_stack"
+			}
+
+			"talent_duration"
+			{
+				"value"								"0"
+				"talent_wraith_king_mortal_strike_custom_critical_increases" "+duration"
+			}
+		}
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_3"
+	}
+
+	"wraith_king_tombstone_custom"
+	{
+
+		"BaseClass"		                  			"ability_lua"
+    	"AbilityTextureName"		        	  	"wraith_king_tombstone_custom"
+    	"ScriptFile"                    			"abilities/heroes/wraith_king/tombstone"
+    	"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN  | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"						"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"						"DAMAGE_TYPE_PHYSICAL"
+		"AbilitySound"								"Hero_SkeletonKing.CriticalStrike"
+		"FightRecapLevel"							"1"
+		"MaxLevel"									"1"
+		"IsGrantedByShard"							"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"							"525"
+		"AbilityCastPoint"							"0.35"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"							"45"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityHealthCost"							"150"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"ability_health_cost_pct"				"35"
+			"duration"								"10"
+			"radius"								"800"
+			"damage_per_attack_pct"					"85"
+			"move_speed_pct_slow"					"15"
+			"interval"								"0.75"
+		}
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_3"
+	}
+	
+	"wraith_king_reincarnation_custom"
+	{
+
+		"BaseClass"		                  			"ability_lua"
+		"AbilityTextureName"		        	  	"skeleton_king_reincarnation"
+    	"ScriptFile"                    			"abilities/heroes/wraith_king/reincarnation"
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityType"								"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityUnitTargetTeam1"					"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType1"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetTeam2"					"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType2"					"DOTA_UNIT_TARGET_HERO"
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"						"SPELL_DISPELLABLE_YES"
+		"AbilitySound"								"Hero_SkeletonKing.Reincarnate"
+		"MaxLevel"									"4"
+		"HasScepterUpgrade"			       	 		"1"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"							"180"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"							"30"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue"				"0.2"	// Slow isn't the main function of this ability.
+
+		"AbilityValues"
+		{
+			"reincarnate_time"						"4 3 2 1"
+			"slow_radius"							"2000"
+			"move_speed_pct_slow"					"20 30 40 50"
+			"attack_slow"							"75 150 225 300"
+			"slow_duration"							"6"
+			"scepter_duration"
+			{
+				"value"								"0"
+				"special_bonus_scepter"				"+6"
+				"RequiresScepter"					"1"
+			}
+			"scepter_aura_radius"
+			{
+				"value"								"0"
+				"special_bonus_scepter"				"+1200"
+				"RequiresScepter"					"1"
+			}
+			"scepter_attack_speed"
+			{
+				"value"								"0"
+				"special_bonus_scepter"				"+75 +150 +225 +300"
+				"RequiresScepter"					"1"
+			}
+			"scepter_move_speed_pct"
+			{
+				"value"								"0"
+				"special_bonus_scepter"				"+20 +30 +40 +50"
+				"RequiresScepter"					"1"
+			}
+
+			"talent_inspiration_bonus_outgoing_damge"
+			{
+				"value"								"0"
+				"talent_wraith_king_reincarnation_custom_inspiration" "+bonus_outgoing_damge"
+			}
+
+			"talent_inspiration_duration"
+			{
+				"value"								"0"
+				"talent_wraith_king_reincarnation_custom_inspiration" "+duration"
+			}
+
+			"talent_shild_health_shild_per_max_health"
+			{
+				"value"								"0"
+				"talent_wraith_king_reincarnation_custom_shild" "+health_shild_per_max_health"
+			}
+		}
+
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_4"
+	}
+}

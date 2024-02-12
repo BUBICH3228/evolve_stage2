@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../../game/scripts/vscripts",
+    "target": "esnext",
+	"removeComments": true,
+    "lib": [
+      "esnext"
+    ],
+    "plugins": [
+      {
+        "transform": "../../local_modules/dota_typescript/vscript/transformer"
+      }
+    ],
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "strict": true
+  },
+  "tstl": {
+    "luaTarget": "JIT",
+    "sourceMapTraceback": true
+  },
+  "include": [
+    "**/*.ts",
+    "../common/**/*.d.ts",
+    "../../local_modules/dota_typescript/vscript/types/*"
+  ]
+}

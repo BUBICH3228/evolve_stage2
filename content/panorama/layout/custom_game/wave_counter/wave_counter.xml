@@ -1,0 +1,25 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/wave_counter/wave_counter.css" />
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/wave_counter/wave_counter.js" />
+    </scripts>
+    <snippets>
+	</snippets>
+    <Panel class="Root" hittest="false">
+    <Panel id="WaveNamePanel">
+            <Label id="WaveName" class="PanelTextFormat" text="Древний Энтн 'КУРИЛИО'. Скурит тебя, а потом твою маму."/>
+        </Panel>
+        <Panel class="TimerWaveProgressClass">
+            <Label id="TimerText" class="PanelTextFormat" text="До следующей волны: " />
+            <Label id="Timer" class="PanelTextFormat" text="5" />
+            <Panel id="TimerProgressPanel"/>
+        </Panel>
+        <Panel id="WaveCounterPanel">
+            <Label id="Wave" class="PanelTextFormat" text="Волна:"/>
+            <Label id="WaveNumber" class="PanelTextFormat" text="10"/>
+        </Panel>
+        <Panel id="InformationPanel" onmouseover="UIShowTextTooltip( Тут Инфа о волне )" onmouseout="UIHideTextTooltip()"/>
+    </Panel>
+</root>

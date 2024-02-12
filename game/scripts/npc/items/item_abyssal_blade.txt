@@ -1,0 +1,75 @@
+"DOTAAbilities"
+{
+    "item_recipe_abyssal_blade_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"1300"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_abyssal_blade_custom"
+		"ItemRequirements"
+		{
+			"01"								""
+		}
+	}
+
+	"item_abyssal_blade_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_abyssal_blade_custom"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityTextureName"	                "item_abyssal_blade"
+
+        // Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				        "150"
+		"AbilityManaCost"						"75"
+		"AbilityCooldown"				        "35"
+		"AbilitySharedCooldown"			        "abyssal_blade"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+            "bonus_damage"		                "35"
+			"bonus_health"			            "250"
+			"bonus_health_regen"	            "10"
+			"block_damage_melee"	            "70"
+			"block_damage_ranged"	            "35"
+			"block_chance"			            "60"
+			"bonus_strength"		            "10"
+			"bash_chance_melee"		            "25"
+			"bash_chance_ranged"		        "10"
+			"bash_duration"			            "1.2"
+			"bash_cooldown"			            "2.3"
+			"bonus_chance_damage"	            "120"
+			"stun_duration"				        "1.6"
+		}
+	}
+}

@@ -1,0 +1,53 @@
+"DOTAAbilities"
+{
+    "upgrade_base"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						                "ability_lua"
+        "ScriptFile"								    "abilities/units/upgrade_base"
+		
+		"AbilityBehavior"							    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"						    "holdout_guardian_angel"
+		"MaxLevel"									    "1"
+		"AbilityCooldown"			                    "60"
+
+        //Special
+        "AbilityValues"
+        {
+            "heal_per_interval"                         "250"
+            "damage_per_interval"                       "25"
+            "armor_per_interval"                        "0.5"
+            "max_armor"                                 "90"
+        }
+	}
+
+    "fortification"
+    {
+        "BaseClass"						                "ability_lua"
+        "ScriptFile"								    "abilities/units/fortification"
+        "AbilityBehavior"							    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName"						    "modifier_invulnerable"
+	    "MaxLevel"									    "1"
+	    "AbilityCooldown"			                    "90"
+
+        //Special
+        "AbilityValues"
+        {
+            "duration_of_invulnerability"               "3"
+        }
+    }
+
+    "tower_protection"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/units/tower_protection"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"							"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"							"DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetFlags"						"DOTA_UNIT_TARGET_FLAG_NONE"
+		"MaxLevel"										"1"	
+	}
+}

@@ -1,0 +1,54 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_dragon_knight"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_dragon_knight"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"dragon_knight_breathe_fire_custom"
+		"Ability2"	"dragon_knight_dragon_tail_custom"
+		"Ability3"	"dragon_knight_dragon_blood_custom"
+		"Ability4"	"dragon_knight_fireball_custom"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"dragon_knight_elder_dragon_form_custom"
+		"Ability10"	"talent_dragon_knight_elder_dragon_form_toggle"
+		"Ability11"	"talent_dragon_knight_dragon_blood_dragon_form_armor_and_hp_regen"
+		"Ability12"	"talent_dragon_knight_dragon_tail_aoe"
+		"Ability13"	"talent_dragon_knight_dragon_blood_ally_aura"
+		"Ability14"	"talent_dragon_knight_breathe_fire_multicast"
+		"Ability15"	"talent_dragon_knight_dragon_blood_enemy_aura"
+		"Ability16"	"talent_dragon_knight_dragon_blood_active"
+		"Ability17"	"talent_dragon_knight_elder_dragon_form_fire_breath_on_attack"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"0"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"	"32"
+		"AttackDamageMax"	"38"
+		"AttackRate"	"1.7"
+		"AttackAnimationPoint"	"0.5"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"	"150"
+		"ProjectileSpeed"	"900"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"	"21"
+		"AttributeStrengthGain"	"3.4"
+		"AttributeBaseIntelligence"	"18"
+		"AttributeIntelligenceGain"	"1.7"
+		"AttributeBaseAgility"	"16"
+		"AttributeAgilityGain"	"2"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"310"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

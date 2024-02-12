@@ -1,0 +1,55 @@
+"itembuilds"
+{	
+	"Items"
+	{
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"	"item_ogres_bracer"
+			"item"	"item_gold_armor_custom"
+			"item"	"item_vanguard"
+		}
+		"#ui_guide_category_middle_game"
+		{	
+			"item" "item_heart"
+			"item" "item_crimson_guard"
+			"item" "item_radiance_custom"
+			"item" "item_armlet_of_strength_custom"
+			"item" "item_gold_armor_custom"
+			"item" "item_sange_and_yasha_custom"
+		}
+		"#ui_guide_category_by_situation"
+		{	
+			"item" "item_silver_edge"
+			"item" "item_scythe_of_vyse_custom"
+            "item" "item_gold_armlet_custom"
+            "item" "item_gold_armor_custom"
+            "item" "item_hand_of_midas"
+            "item" "item_radiance_of_discord_custom"
+            "item" "item_radiance_guard_custom"
+            "item" "item_heart_of_shivas"
+            "item" "item_wizards_heart_custom"
+             
+		}
+		//"#ui_guide_category_end_game"
+		//{	
+		//	"item" "item_butterfly8"
+		//	"item" "item_desolator8"
+		//	"item" "item_bow8"	
+		//	"item" "item_assault_cuirass_custom8"
+		//	"item" "item_satanic_custom8"
+		//	"item" "item_greater_crit8"
+		//	"item" "item_rapier_custom8"
+		//	"item" "item_skadi8"
+		//	"item" "item_silver_edge8"
+		//	"item" "item_monkey_king_bar_custom8"
+		//	"item" "item_sange_and_yasha_custom8"
+		//}
+		//"#ui_guide_category_neutral_items"
+		//{	
+		//	"item" "item_possessed_mask"
+		//	"item" "item_quicksilver_amulet"	
+		//	"item" "item_titan_sliver"
+		//	"item" "item_ninja_gear"
+		//}
+	}
+}

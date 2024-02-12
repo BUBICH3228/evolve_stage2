@@ -1,0 +1,30 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/shared/window.css" />
+		<include src="file://{resources}/styles/custom_game/lobby_settings/lobby_settings.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/lobby_settings/lobby_settings.js" />
+	</scripts>
+	<snippets>
+		<snippet name="DifficultyButtonSnippet">
+			<Button class="DifficultyButton">
+				<Image id="DifficultyIcon" src="none"/>
+				<Label id="DifficultyLabel" text="DIFFICULTY NAME"/>
+			</Button>
+		</snippet>
+	</snippets>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel hittest="true" id="MainWindow">
+            <Panel class="WindowTitle">
+                <Panel class="WindowTitleContainer">
+					<Label class="WindowTitleLabel" text="#ui_lobby_settings_select_difficulty"/>
+                </Panel>
+            </Panel>
+            <Panel class="WindowContent">
+				<Label id="TimeLeftLabel" text=""/>
+				<Panel id="DifficultyButtonsContainer"/>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

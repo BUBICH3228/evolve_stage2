@@ -1,0 +1,41 @@
+.TooltipContent
+{
+    flow-children: down;
+    width: fit-children;
+    height: fit-children;
+}
+
+.IconValuePair
+{
+    flow-children: right;
+}
+
+.Icon
+{
+    width: 24px;
+    height: 24px;
+    horizontal-align: right;
+    margin-right: 2px;
+}
+
+.ModifierTooltip
+{
+    width: 250px;
+    text-overflow: shrink;
+    font-size: 16px;
+    height: 16px;
+    vertical-align: center;
+    color: white;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.ValueLabel
+{
+    font-size: 16px;
+    height: 16px;
+    vertical-align: center;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+}

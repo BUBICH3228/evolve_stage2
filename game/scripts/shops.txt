@@ -1,0 +1,126 @@
+"dota_shops"
+{
+  "consumables"
+  {
+    "item"		"item_ward_observer"
+		"item"		"item_faerie_fire"				
+		"item"		"item_enchanted_mango"
+    "item"		"item_flask"
+		"item"		"item_tango"
+    "item"		"item_clarity"	
+	  "item"		"item_aghanims_shard" 
+    "item"    "item_ultimate_scepter"
+    "item"    "item_moon_shard"
+    "item"    "item_phase_boots_custom"
+    "item"    "item_power_treads_custom"
+    "item"    "item_travel_boots_custom"
+  }
+
+  "attributes"
+  {
+    "item"    "item_basic_stat_str_custom"										
+    "item"    "item_basic_stat_int_custom"										
+    "item"    "item_basic_stat_agi_custom"										
+    "item"    "item_basic_stat_damage_custom"							
+    "item"    "item_basic_stat_armor_custom"									
+    "item"    "item_basic_stat_mana_custom"									
+    "item"    "item_basic_stat_health_custom"							
+    "item"    "item_basic_stat_attack_custom"								
+    "item"    "item_basic_stat_hp_regen_custom"							
+    "item"    "item_basic_stat_lifesteal_custom"							
+    "item"    "item_basic_stat_mana_regen_custom"					
+    "item"    "item_basic_stat_spell_amp_custom"						
+    "item"    "item_basic_stat_move_speed_custom"					
+    "item"    "item_basic_stat_evasion_custom"							
+    "item"    "item_basic_stat_spell_lifesteal_custom"			
+    "item"    "item_basic_stat_attack_range_custom"				
+    "item"    "item_basic_stat_attack_range_melee_custom"	
+    "item"    "item_basic_stat_status_resist_custom"				
+    "item"    "item_basic_stat_cooldown_reduction_custom"  
+  }
+
+  "weapons_armor"
+  {
+    "item"    "item_ethereal_blade_custom"
+    "item"    "item_bloodstone_custom"
+    "item"    "item_octarine_core_custom"
+    "item"    "item_veil_of_discord_custom"
+    "item"    "item_daedalus_staff_custom"
+    "item"    "item_bloodthorn_custom"
+    "item"    "item_dagon_custom"
+    "item"    "item_khanda_custom"
+    "item"    "item_parasma_custom"
+    "item"    "item_spirit_vessel_custom"
+  }
+      
+  "misc"
+  {
+    "item"    "item_battle_fury_custom"
+    "item"    "item_bow_custom"
+    "item"    "item_butterfly_custom"
+    "item"    "item_daedalus_custom"
+    "item"    "item_divine_rapier_custom"
+    "item"    "item_satanic_custom"
+    "item"    "item_skadi_custom"
+    "item"    "item_monkey_king_bar_custom"
+    "item"    "item_silver_edge_custom"
+    "item"    "item_mjollnir_custom"
+    "item"    "item_desolator_custom"
+    "item"    "item_hand_of_midas_custom"
+    "item"    "item_echo_sabre_custom"
+    "item"    "item_abyssal_blade_custom"
+    "item"    "item_solar_crest_custom"
+    "item"    "item_helm_of_the_overlord_custom"
+  } 
+
+  "secretshop"
+  {
+    "item"    "item_radiance_custom"    
+    "item"    "item_heart_of_tarrasque_custom"
+    "item"    "item_crimson_guard_custom"
+    "item"    "item_shivas_guard_custom"
+    "item"    "item_assault_cuirass_custom"
+    "item"    "item_armlet_custom"
+    "item"    "item_blade_mail_custom"   
+    "item"    "item_vladmir_custom" 
+  } 
+
+  // Level 1 - Green Recipes
+  "basics"
+  {
+  }
+
+  // Level 2 - Blue Recipes
+  "support"
+  {
+  }
+        
+  "magics"      
+  {
+  }
+    
+  // Level 3 - Purple Recipes 
+  "defense"
+  {
+  }
+      
+  "weapons"
+  {
+  }
+    
+  // Level 4 - Orange / Orb / Artifacts       
+  "artifacts"
+  {
+  }
+
+  "sideshop1"
+  {
+  }
+
+  "sideshop2"
+  {
+  }
+  
+  
+
+}

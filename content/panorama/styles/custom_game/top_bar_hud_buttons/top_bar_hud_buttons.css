@@ -1,0 +1,87 @@
+.Root {
+    vertical-align: top;
+    horizontal-align: left;
+    margin-left: 8px;
+    margin-right: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+#ButtonsContainer {
+    flow-children: right;
+}
+
+#ButtonsContainer Button {
+    tooltip-position: bottom;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+    margin-right: 8px;
+    vertical-align: middle;
+    horizontal-align: center;
+    background-position: center;
+    opacity: 0.5;
+    wash-color: #CDF;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    img-shadow: 0px 0px 3px 3 black;
+}
+
+#ButtonsContainer Button:hover {
+    opacity: 1.0;
+    wash-color: white;
+}
+
+#ButtonsContainer Button:active {
+    opacity: 1.0;
+}
+
+#DashboardButton {
+    background-image: url("s2r://panorama/images/control_icons/return_to_game_png.vtex");
+    transform: scaleY(-1);
+}
+
+#SettingsButton {
+    background-image: url("s2r://panorama/images/control_icons/gear_png.vtex");
+    background-size: 27px;
+    margin-top: 2px;
+}
+
+#ToggleScoreboardButton {
+    background-image: url("s2r://panorama/images/control_icons/hamburger_png.vtex");
+    background-size: 26px;
+}
+
+#DiscordButton {
+    background-image: url("file://{images}/custom_game/ui/top_hud_buttons/discord.png");
+    background-size: 26px;
+}
+
+#DebugButton {
+    background-image: url("s2r://panorama/images/control_icons/gear_png.vtex");
+    background-size: 26px;
+}
+
+#InformationPanelButton {
+    background-image: url("s2r://panorama/images/status_icons/information_psd.vtex");
+    background-size: 27px;
+    border-radius: 100px;
+}
+
+#DonationPanelButton {
+    background-image: url("file://{images}/custom_game/ui/top_hud_buttons/donate.png");
+    background-size: 23px;
+}
+
+#PlayersTopButton {
+    background-image: url("file://{images}/custom_game/ui/top_hud_buttons/top.png");
+    background-size: 23px;
+}
+
+.Hidden {
+    visibility: collapse;
+}

@@ -1,0 +1,379 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// Ability: Nevermore Shadowraze #1
+	//=================================================================================================================
+	"nevermore_shadowraze1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"					"5059"														// unique ID number for this ability.	Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitDamageType"		 "DAMAGE_TYPE_MAGICAL" 
+		"SpellImmunityType"			 "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"			 "1"
+		"AbilitySound"					"Hero_Nevermore.Shadowraze"
+		"LinkedAbility"				 "nevermore_shadowraze2"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_RAZE_1"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"				"0.55"
+		"MaxLevel"								"12"
+
+		// Time	 
+		//-------------------------------------------------------------------------------------------------------------
+
+
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			 "57"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"shadowraze_damage" 
+			{
+				"value"			 "90 140 200 300 430 600 830 1080 1410 1830 2200 2640"	
+				"LinkedSpecialBonus"	"special_bonus_unique_nevermore_2"	
+			}
+			"shadowraze_radius" "250"	 
+			"shadowraze_range"	"200"
+			"shadowraze_cooldown" "3"
+			"stack_bonus_damage" 
+			{
+				"value"			 "50 80 110 170 240 330 460 600 780 1020 1220 1460"
+				"CalculateSpellDamageTooltip" "0"
+				"special_bonus_unique_nevermore_7"	"+250"
+			}
+			"duration"	
+			{
+				"value"			 "3"
+			}
+			"procs_attack"
+			{
+				"value"				 "0"
+				"special_bonus_unique_nevermore_raze_procsattacks"		"+1"
+			}
+			"movement_speed_pct"						"-15"
+			"turn_rate_pct"							 "-30" 
+			"AbilityCooldown"			 
+			{ 
+				"value"								 "6"	
+				"special_bonus_unique_nevermore_shadowraze_cooldown"		"-3"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Ability: Nevermore Shadowraze #2
+	//=================================================================================================================
+	"nevermore_shadowraze2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"					"5060"														// unique ID number for this ability.	Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"OnLearnbar"					"0"
+		"AbilityUnitDamageType"		 "DAMAGE_TYPE_MAGICAL" 
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"SpellImmunityType"			 "SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"			 "1"
+		"LinkedAbility"				 "nevermore_shadowraze3"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_RAZE_2"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"				"0.55"
+		"MaxLevel"								"12"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			 "57"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"shadowraze_damage" 
+			{
+				"value"			 "90 140 200 300 430 600 830 1080 1410 1830 2200 2640"	
+				"LinkedSpecialBonus"	"special_bonus_unique_nevermore_2"	
+			}
+			"shadowraze_radius" "250"	 
+			"shadowraze_range"	"450"
+			"shadowraze_cooldown" "3"
+			"stack_bonus_damage" 
+			{
+				"value"			 "50 80 110 170 240 330 460 600 780 1020 1220 1460"
+				"CalculateSpellDamageTooltip" "0"
+				"special_bonus_unique_nevermore_7"	"+25"
+			}
+			"duration"	
+			{
+				"value"			 "3"
+			}
+			"procs_attack"
+			{
+				"value"				 "0"
+				"special_bonus_unique_nevermore_raze_procsattacks"		"+1"
+			}
+			"movement_speed_pct"						"-15"
+			"turn_rate_pct"							 "-30"
+			"AbilityCooldown"			 
+			{ 
+				"value"								 "6"	
+				"special_bonus_unique_nevermore_shadowraze_cooldown"		"-3"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Ability: Nevermore Shadowraze #3
+	//=================================================================================================================
+	"nevermore_shadowraze3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"					"5061"														// unique ID number for this ability.	Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"OnLearnbar"					"0"
+		"AbilityUnitDamageType"		 "DAMAGE_TYPE_MAGICAL" 
+		"SpellImmunityType"			 "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"			 "1"
+		"LinkedAbility"				 "nevermore_shadowraze1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			"ACT_DOTA_RAZE_3"
+		"AbilityCastGestureSlot"		"DEFAULT"
+		"AbilityCastPoint"				"0.55"
+		"MaxLevel"			 "12"
+
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			 "57"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"shadowraze_damage" 
+			{
+				"value"			 "90 140 200 300 430 600 830 1080 1410 1830 2200 2640"	
+				"LinkedSpecialBonus"	"special_bonus_unique_nevermore_2"	
+			}
+			"shadowraze_radius" "250"	 
+			"shadowraze_range"	"700"
+			"shadowraze_cooldown" "3"
+			"stack_bonus_damage" 
+			{
+				"value"			 "50 80 110 170 240 330 460 600 780 1020 1220 1460"
+				"CalculateSpellDamageTooltip" "0"
+				"special_bonus_unique_nevermore_7"	"+25"
+			}
+			"duration"	
+			{
+				"value"			 "3"
+			}
+			"procs_attack"
+			{
+				"value"				 "0"
+				"special_bonus_unique_nevermore_raze_procsattacks"		"+1"
+			} 
+			"movement_speed_pct"						"-15"
+			"turn_rate_pct"							 "-30"		 
+			"AbilityCooldown"			 
+			{ 
+				"value"								 "6"	
+				"special_bonus_unique_nevermore_shadowraze_cooldown"		"-3"
+			}				 
+		}
+	}
+	
+	//=================================================================================================================
+	// Ability: Nevermore Necromastery
+	//=================================================================================================================
+	"nevermore_necromastery"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"										"5062"														// unique ID number for this ability.	Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"							"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"OnCastbar"									"0"
+		"AbilityCastAnimation"						"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityUnitDamageType"						"DAMAGE_TYPE_PHYSICAL"	
+		"AbilityUnitTargetTeam"						"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"						"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"					"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"							"SPELL_IMMUNITY_ENEMIES_YES"
+		"HasShardUpgrade"							"1"
+		"HasScepterUpgrade"							"1"
+		"MaxLevel"									"12"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"							"625"
+		"AbilityCastPoint"							"0"
+
+		// Time	 
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"							"3"
+
+		"AbilityValues"
+		{
+			"necromastery_max_souls"			"7 10 13 16 19 22 25 28 31 34 37 40"
+			"necromastery_soul_release"			"0.6"
+			"attack_range_bonus" 				"0"
+			"necromastery_damage_per_soul"
+			{
+				"value"							"1 2 3 5 7 9 12 15 18 21 25 29"
+				"CalculateSpellDamageTooltip"	"0"
+				"LinkedSpecialBonus"			"special_bonus_unique_nevermore_1"
+				"DamageTypeTooltip"				"DAMAGE_TYPE_NONE"
+			}
+			"necromastery_max_souls_scepter"
+			{
+				"value"							"16 19 22 25 28 31 34 37 40 43 46 49"
+				"RequiresScepter"		 		"1"
+			}
+			"shard_souls_per_kill"
+			{
+				"value"							"2"
+				"RequiresShard"					"1"
+			}
+			"shard_crit_pct"
+			{
+				"value"							"190"
+				"RequiresShard"					"1"
+			}
+			"shard_fear_duration"
+			{
+				"value"							"0.3"
+				"RequiresShard"					"1"
+			}		 
+		}
+	}
+	
+	//=================================================================================================================
+	// Ability: Presence of the Dark Lord
+	//=================================================================================================================
+	"nevermore_dark_lord"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"					"5063"														// unique ID number for this ability.	Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"		 "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"SpellImmunityType"			 "SPELL_IMMUNITY_ENEMIES_YES"
+		"OnCastbar"				 "0"
+		"MaxLevel"		 "12"
+		"LevelsBetweenUpgrades"				 "3"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_5"
+		"AbilityCooldown"		 "10"
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"presence_armor_reduction"
+			{
+				"value"		"-4 -6 -8 -10 -12 -14 -16 -20 -22 -24 -26 -28"
+				"special_bonus_unique_nevermore_5"			"-4"
+			}
+			"presence_radius"				"1200"
+			"bonus_armor_per_stack"			"2"
+			"kill_buff_duration"			"20"
+		}
+	}
+	
+	//=================================================================================================================
+	// Ability: Nevermore Requiem of Souls
+	//=================================================================================================================
+	"nevermore_requiem"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"					"5064"														// unique ID number for this ability.	Do not change this once established or it will invalidate collected stats.
+		"AbilityType"				 "DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"			 "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
+		"AbilityUnitDamageType"		 "DAMAGE_TYPE_MAGICAL" 
+		"SpellImmunityType"			 "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"			 "2"
+		"HasScepterUpgrade"		 "1"
+		"AbilitySound"					"Hero_Nevermore.RequiemOfSouls"
+		"MaxLevel" "4"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"1.67"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_6"
+
+		// Time	 
+		//-------------------------------------------------------------------------------------------------------------
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"				 "80 240 720 2160"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			 "113" 
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityModifierSupportValue" "0.5" // Primarily about the damage
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"AbilityCooldown"			 
+			{
+				"value"	 "35"
+				"special_bonus_scepter" "-10"
+			}
+			"requiem_radius"	"1000"		
+			"requiem_reduction_ms"	"-25"
+			"requiem_reduction_mres"	"-15"
+			"requiem_slow_duration" 
+			{
+				"value"	 "0.9"
+				"LinkedSpecialBonus"		"special_bonus_unique_nevermore_6"
+			}
+			"requiem_slow_duration_max" 
+			{
+				"value"				 "2.7"
+				"LinkedSpecialBonus"		"special_bonus_unique_nevermore_6"
+				"LinkedSpecialBonusField"	 "value2"
+			}
+			"requiem_reduction_radius"	"1000"
+			"requiem_soul_conversion" "1"
+			"requiem_line_width_start"	"125"
+			"requiem_line_width_end"	"350"
+			"requiem_line_speed"	"700 700 700"
+			"soul_death_release"	"1"
+			"requiem_heal_pct_scepter"	
+			{
+				"value"		 "100"
+				"RequiresScepter"		 "1"
+			} 
+			"requiem_damage_pct_scepter"	
+			{
+				"value"		 "40"
+				"RequiresScepter"		 "1"
+				"CalculateSpellDamageTooltip" "0"
+			}
+		}
+	}
+}

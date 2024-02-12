@@ -1,0 +1,137 @@
+"DOTAAbilities"
+{
+	"talent_dragon_knight_breathe_fire_multicast"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"multicasts"								"5"
+			"delay"										"0.20"
+		}
+
+		"HasDescription"								"1"
+	}
+
+	"talent_dragon_knight_dragon_tail_aoe"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"aoe_radius"								"300"
+		}
+	}
+
+	"talent_dragon_knight_dragon_blood_dragon_form_armor_and_hp_regen"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"armor_bonus_pct"							"40"
+			"hp_regen_bonus_pct"						"6"
+		}
+
+		"HasDescription"								"1"
+	}
+
+	"talent_dragon_knight_dragon_blood_ally_aura"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"									"900"
+		}
+
+		"HasDescription"								"1"
+	}
+
+	"talent_dragon_knight_dragon_blood_enemy_aura"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"radius"									"1200"
+			"damage_reduction_pct"						"40"
+			"armor_reduction_pct"						"40"
+			"magic_resistance_reduction_pct"			"40"
+		}
+
+		"HasDescription"								"1"
+	}
+	"talent_dragon_knight_dragon_blood_active"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"redirect_radius"							"3000"
+			"redirect_pct"								"50"
+			"duration"									"10"
+			"cooldown"									"20"
+			"caster_hp_pct_for_inactive"				"20"
+		}
+
+		"HasDescription"								"1"
+	}
+
+	"talent_dragon_knight_elder_dragon_form_fire_breath_on_attack"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"cooldown"									"0.3"
+			"proc_chance"								"40"
+		}
+
+		"HasDescription"								"1"
+	}
+
+	"talent_dragon_knight_elder_dragon_form_toggle"
+	{
+		"BaseClass"										"ability_lua"
+		"ScriptFile"									"abilities/talents/talent_base"
+		"AbilityBehavior"								"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"dmg_from_max_hp_pct"						"6"
+			"dmg_interval"								"1"
+			"cooldown"									"10"
+		}
+
+		"HasDescription"								"1"
+	}
+}

@@ -1,0 +1,215 @@
+"DOTAAbilities"
+{
+    "mirana_starfall_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"							"ability_lua"
+		"ScriptFile"						"abilities/heroes/mirana/starfall"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"		        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"AbilityTextureName"		        "mirana_starfall"
+		"MaxLevel"							"12"
+
+		"HasScepterUpgrade"			"1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.4"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"7"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"60"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"starfall_radius"						"650"		
+			"secondary_starfall_damage_percent"	 	"75"
+			"damage"	 
+			{
+				"value"								"80 110 170 250 350 500 690 900 1170 1530 1830 2200"
+				"CalculateSpellDamageTooltip"		"1"					
+			}
+			"agility_pct_to_damage"	 
+			{
+				"value"								"50"	
+				"CalculateSpellDamageTooltip"		"0"				
+			}
+			"wave_delay"							"0.57"
+			"secondary_wave_delay"					"0.8"
+			"scepter_interval"						"8"
+			"blind_duration"	 
+			{
+				"value"										"0"	
+				"talent_mirana_starstorm_blind"				"+duration"	
+			}
+			"blind_pct"	 
+			{
+				"value"										"0"	
+				"talent_mirana_starstorm_blind"				"+blind_pct"		
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+		"AbilityCastGestureSlot"		"DEFAULT"
+	}
+
+	"mirana_blessing_of_the_moon_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"							"ability_lua"
+		"ScriptFile"						"abilities/heroes/mirana/blessing_of_the_moon"
+        "AbilityType"					    "DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"			        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"		        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"		        "DAMAGE_TYPE_PHYSICAL"
+		"AbilityTextureName"		        "mirana_invis"
+		"MaxLevel"							"4"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"critical_strike_chance"                    "15"
+            "critical_strike_chance_night"              "30"
+            "critical_strike_damage"                    "250"
+            "agility_pct_to_critical_strike_damage"     "10 15 20 25"
+
+            "bonus_evasion"             			
+			{
+				"value"											"0"
+				"talent_mirana_blessing_of_the_moon_evasion"	"+value"
+			}	
+
+            "radius"             			
+			{
+				"value"											"0"
+				"talent_mirana_blessing_of_the_moon_aura"		"+radius"
+			}					
+		}
+	}
+
+	"mirana_sacred_arrow_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"							"ability_lua"
+		"ScriptFile"						"abilities/heroes/mirana/sacred_arrow"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"		        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES_STRONG"
+		"AbilityTextureName"		        "mirana_arrow"
+        "HasScepterUpgrade"             "1"
+		"MaxLevel"						"12"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.5"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"68"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"arrow_speed"                    			"900"
+            "arrow_width"              		 			"125"
+            "arrow_range"                    			"3000"
+            "arrow_bonus_max_range"     	 			"1500"	
+            "arrow_min_stun"              	 			"0.01"
+            "arrow_max_stun"                 			"5.0"		
+             "arrow_base_damage"              		
+			{
+				"value"									"60 90 140 200 280 400 560 720 940 1220 1460 1760"
+				"CalculateSpellDamageTooltip"			"1"
+			}
+			"arrow_agility_pct_to_base_damage"        	"50"
+            "arrow_bonus_damage"             			
+			{
+				"value"									"180 270 410 610 850 1190 1670 2170 2820 3660 4390 5270"
+				"CalculateSpellDamageTooltip"			"1"
+			}
+			"arrow_agiltiy_pct_to_bonus_damage"         "50"
+			"arrow_vision"             		 			"400"	
+			"arrow_min_lvl_for_insta_kill"             	"100"	
+			"scepter_radius"             	 			"500"
+
+            "AbilityCooldown"             			
+			{
+				"value"									"10"
+				"talent_mirana_sacred_arrow_cooldown"	"-cooldown_reduction"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+	"mirana_leap_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"							"ability_lua"
+		"ScriptFile"						"abilities/heroes/mirana/leap"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityUnitTargetTeam"		        "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"		        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityTextureName"				"mirana_leap"
+		"MaxLevel"							"12"
+
+        "HasShardUpgrade"               "1"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"30"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"AbilityCharges"				"0"
+			"AbilityChargeRestoreTime"		"0"
+			"leap_distance"			
+			{
+				"value"							"575"
+				"special_bonus_unique_mirana_6"	"+125"
+			}
+			"leap_speed"					"1300.0"
+			"leap_height"					"250"
+			"bonus_agility_pct"
+			{
+				"value"							"45 50 55 60 65 70 75 80 85 90 95 100"
+				"talent_mirana_leap_bonus_agility"			"+value"
+			}
+
+			"duration"						"4"
+
+			"shard_radius"					"600"
+
+			"bonus_bat"	 
+			{
+				"value"										"0"	
+				"talent_mirana_leap_bat_reduction"	"-bat_reduction"		
+			}
+		}
+
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+}

@@ -1,0 +1,65 @@
+"DOTAAbilities"
+{
+	"item_recipe_echo_sabre_custom"
+    {
+        "AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+	    "Model"									"models/props_gameplay/recipe.vmdl"
+	    "BaseClass"                     		"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"700"	
+		"ItemShopTags"							""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+        "ItemRecipe"                            "1"
+        "ItemResult"                            "item_echo_sabre_custom"
+        "ItemRequirements"
+        {
+            "01"                                "item_basic_stat_str_custom;item_basic_stat_str_custom;item_basic_stat_damage_custom;item_basic_stat_damage_custom;"
+        }
+    }
+
+	"item_echo_sabre_custom"
+    {       
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_echo_sabre_custom"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "item_echo_sabre" 
+
+        // Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				        "6.0"
+        "AbilityDuration"                       "1.5"
+		"AbilitySharedCooldown"			        "echo_sabre"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+        {
+            "bonus_damage"			            "15"
+			"bonus_strength"		            "13"
+			"bonus_intellect"			        "10"
+			"bonus_attack_speed"			    "10"
+			"bonus_mana_regen"		            "1.75"
+            "additional_attacks"                "1"
+
+            "additional_attacks_per_level"      "0.02"
+            "bonus_attack_speed_per_level"      "10"
+        }
+    }
+}

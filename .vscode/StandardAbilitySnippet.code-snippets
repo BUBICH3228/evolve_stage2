@@ -1,0 +1,21 @@
+{
+	"Creates a new standard ability file": {
+		"prefix": ["StandardAbility", "BaseAbility"],
+		"body": [
+		  "import { BaseAbility , registerAbility } from \"../../../libraries/dota_ts_adapter\";",		  
+		  "",
+		  "@registerAbility()",
+		  "export class ability_name_custom extends BaseAbility",
+		  "{",
+		  "\t// Ability properties",
+		  "\tprivate caster: CDOTA_BaseNPC = this.GetCaster();",
+		  "",
+		  "\toverride OnSpellStart(): void",
+		  "\t{",
+		  "\t\t",
+		  "\t}",
+		  "}",		  
+		],
+		"description": "Creates a new standard ability file"
+	  }
+}

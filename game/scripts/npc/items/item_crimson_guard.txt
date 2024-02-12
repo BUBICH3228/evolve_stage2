@@ -1,0 +1,68 @@
+"DOTAAbilities"
+{
+    "item_recipe_crimson_guard_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"1300"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_crimson_guard_custom"
+		"ItemRequirements"
+		{
+			"01"								""
+		}
+	}
+
+	"item_crimson_guard_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_crimson_guard_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	                "item_crimson_guard"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_health"						"250"
+			"bonus_health_regen"				"12"
+			"bonus_armor"						"8"
+			"block_damage_melee"				"75"
+			"block_damage_ranged"				"50"
+			"block_chance"						"60"
+			"duration"							"8"
+			"bonus_aoe_radius"		
+			{
+				"value"							"1200"
+				"affected_by_aoe_increase"		"1"
+			}
+			"block_damage_active"				"70"
+			"block_chance_active"				"100"
+			"tooltip_reapply_time"				"35"
+			"strength_pct"						"50"
+		}
+	}
+}

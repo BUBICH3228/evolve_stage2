@@ -1,0 +1,124 @@
+.Root
+{
+    width: 100%;
+    height: 100%;
+}
+
+.PanelTextFormat
+{
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.582) ;
+}
+
+#TimerText
+{
+    align: left center;
+    margin-left: 8px;
+}
+
+#Timer
+{
+    align: right center;
+    margin-right: 8px;
+}
+
+#Wave
+{
+    align: center top;
+    margin: 3px 0px 0px 0px;
+    font-size: 17px;
+}
+
+#WaveNumber
+{
+    align: center center;
+    margin: 15px 0px 0px 0px;
+    font-size: 25px;
+}
+
+.TimerWaveProgressClass
+{
+    align: left center;
+    height: 25px;
+    width: 210px;
+    margin: 45px 0px 0px 80px;
+    
+    background-image: url("s2r://panorama/images/hud/reborn/bg_scoreboard_psd.vtex");
+    background-size: cover;
+    background-color: #000000da;
+    box-shadow: #000000f5 0px 0px 2px 0px;
+    border-radius: 10px;
+    opacity: 1;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#TimerProgressPanel
+{
+    align: left center;
+    width: 100%;
+    height: 25px;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #645252da;
+    opacity: 0.4;
+    transition-property: width;
+	transition-duration: 0.25s;
+	transition-timing-function: ease-in-out;
+}
+
+#WaveCounterPanel
+{
+    align: left center;
+    height: 70px;
+    width: 70px;
+    margin: 0px 0px 0px 3px;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_scoreboard_psd.vtex");
+    background-size: cover;
+    background-color: #000000da;
+    box-shadow: #000000f5 0px 0px 2px 0px;
+    opacity: 1;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#WaveName
+{
+    align: left bottom;
+    width: 229px;
+    margin: 2px 3px 2px 3px;
+}
+
+#WaveNamePanel
+{
+    margin: 0px 0px 25px 80px;
+    height: fit-children;
+    width: fit-children;
+    background-image: url("s2r://panorama/images/hud/reborn/bg_scoreboard_psd.vtex");
+    background-size: cover;
+    background-color: #000000da;
+    box-shadow: #000000f5 0px 0px 2px 0px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+#WaveInfoContainer
+{
+    align: left top;
+    height: fit-children;
+    width: fit-children;
+}
+
+#InformationPanel 
+{
+    align: left center;
+    background-image: url("s2r://panorama/images/status_icons/information_psd.vtex");
+    background-size: 25px;
+    height: 25px;
+    width: 25px;
+    margin: 45px 0px 0px 295px;
+    wash-color: rgb(71, 72, 87);
+}
+
+.HUDFlipped .Root
+{
+    transform:scaleX(-1);
+}

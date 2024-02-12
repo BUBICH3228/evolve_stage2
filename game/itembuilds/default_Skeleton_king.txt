@@ -1,0 +1,50 @@
+"itembuilds"
+{	
+	"Items"
+	{
+		"#DOTA_Item_Build_Early_Game"
+		{
+			"item"	"item_basic_stat_agi_custom"
+			"item"	"item_basic_stat_lifesteal_custom"
+			"item"	"item_basic_stat_damage_custom"
+			"item"	"item_basic_stat_damage_custom"
+			"item"	"item_basic_stat_str_custom"
+		}
+		"#ui_guide_category_middle_game"
+		{	
+			"item" "item_hand_of_midas_custom"
+			"item" "item_desolator"
+			"item" "item_battlefury_custom"
+			"item" "item_assault_cuirass_custom"
+			"item" "item_satanic_custom"
+			"item" "item_greater_crit"
+		}
+		"#ui_guide_category_by_situation"
+		{	
+			"item" "item_silver_edge"
+			"item" "item_scythe_of_vyse_custom"
+            "item" "item_gold_armlet_custom"
+            "item" "item_gold_armor_custom"
+            "item" "item_hand_of_midas_custom"
+            "item" "item_radiance_of_discord_custom"
+            "item" "item_radiance_guard_custom"
+            "item" "item_heart_of_shivas"
+            "item" "item_wizards_heart_custom"
+		}
+		"#ui_guide_category_end_game"
+		{	
+			"item" "item_battle_fury_custom"
+			"item" "item_butterfly_custom"
+			"item" "item_divine_rapier_custom"	
+			"item" "item_assault_cuirass_custom"
+			"item" "item_monkey_king_bar_custom"
+			"item" "item_mjollnir_custom"
+			"item" "item_desolator_custom"
+			"item" "item_skadi8"
+			"item" "item_silver_edge8"
+			"item" "item_monkey_king_bar_custom8"
+			"item" "item_sange_and_yasha_custom8"
+			"item" "item_heart8"
+		}
+	}
+}

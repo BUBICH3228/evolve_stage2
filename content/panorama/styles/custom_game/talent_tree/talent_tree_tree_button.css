@@ -1,0 +1,319 @@
+.Root {
+    width: fit-children;
+    height: fit-children;
+	vertical-align: bottom;
+}
+
+.Hidden {
+	visibility: collapse;
+}
+
+#StatBranchHotkey {
+	z-index: 10;
+	vertical-align: bottom;
+	margin-left: 216px;
+	margin-bottom: 125px;
+	border-radius: 4px;
+	box-shadow: fill #000000dd 1px 0px 2px 2px;
+	background-color: #212726;
+	border: 1px solid black;
+}
+
+.LowVisualQuality #StatBranchHotkey {
+	border-radius: 0px;
+}
+
+.HideStatBranchHotkey #StatBranchHotkey {
+	visibility: collapse;
+}
+
+#StatBranch {
+	width: 62px;
+	height: 62px;
+	vertical-align: bottom;
+	margin-bottom: 26px;
+	margin-left: 0px;
+	margin-right: 4px;
+	z-index: 3;
+	tooltip-position: top;
+	tooltip-body-position: 50% 50%;
+}
+
+#StatBranchBGBranchWell {
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_bg_all_off_psd.vtex");
+	background-size: contain;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: noclip;
+}
+
+#StatBranchBG {
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_bg_psd.vtex");
+	background-size: contain;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	overflow: noclip;
+}
+
+.NonHero #StatBranchBG {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_bg_nonhero_psd.vtex");
+}
+
+.NonHero #StatBranchBGBranchWell {
+	visibility: collapse;
+}
+
+.TreeHasHighlight #StatBranchBGBranchWell {
+	wash-color: #020208bf;
+}
+
+#StatBranchChannel {
+	width: 100%;
+	height: 78px;
+	vertical-align: top;
+	horizontal-align: center;
+	overflow: noclip;
+	z-index: 21;
+}
+
+.LevelProgressBlur,
+.LevelProgress {
+	border-radius: 0px;
+	width: 88px;
+	width: 50px;
+	height: 4px;
+	transform: rotateZ(-90deg) translateX(-6px) translateY(43px);
+	opacity-mask: url("s2r://panorama/images/hud/reborn/statbranch_progress_mask_psd.vtex") 1.0;
+	horizontal-align: right;
+}
+
+.LevelProgressBlur {
+	height: 12px;
+	blur: gaussian(3);
+	z-index: -1;
+	transform: rotateZ(-90deg) translateX(-6px) translateY(40px);
+}
+
+#StatLevelProgressBarBlur {
+	visibility: collapse;
+	width: 100%;
+	height: 14px;
+	background-color: none;
+	box-shadow: none;
+	border: 0px solid transparent;
+	padding: 4px;
+	vertical-align: middle;
+	border-radius: 0px;
+}
+
+.LevelProgress .ProgressBarLeft,
+.LevelProgressBlur .ProgressBarLeft {
+	border-radius: 2px;
+	transition-property: width;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+}
+
+.LevelProgressBlur #StatLevelProgressBarBlur .ProgressBarLeft {
+	background-color: #FF6F0022;
+}
+
+.LevelProgressBlur #StatLevelProgressBarBlur .ProgressBarRight {
+	background-color: transparent;
+}
+
+#StatLevelProgressBar {
+	width: 100%;
+	height: 100%;
+	border: 0px solid transparent;
+	height: 3px;
+	height: 6px;
+	vertical-align: middle;
+	visibility: collapse;
+	border-radius: 1px;
+	background-color: none;
+	box-shadow: none;
+}
+
+#StatBranch.ShowStatBranch #StatLevelProgressBar,
+#StatBranch.ShowStatBranch #StatLevelProgressBarBlur {
+	visibility: visible;
+}
+
+.StatBranchRow {
+	flow-children: none;
+	horizontal-align: center;
+	overflow: noclip;
+}
+
+.StatBranchPip {
+	width: 62px;
+	height: 62px;
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_pip_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 0.0s;
+	transition-timing-function: ease-in-out;
+	z-index: 1;
+}
+
+.ShowStatBranch .StatBranchPip {
+	transition-duration: .4s;
+}
+
+#StatRow25 .StatBranchPip {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_pip25_psd.vtex");
+}
+
+#StatRow20 .StatBranchPip {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_pip20_psd.vtex");
+}
+
+#StatRow15 .StatBranchPip {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_pip15_psd.vtex");
+}
+
+#StatRow10 .StatBranchPip {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_pip10_psd.vtex");
+}
+
+#StatRow25 .LeftBranchPip {
+	transform: scaleX(-1) translateX(1px);
+}
+
+.RightBranchSelected .RightBranchPip,
+.LeftBranchSelected .LeftBranchPip {
+	opacity: 1;
+}
+
+.TreeHasHighlight .RightBranchSelected .RightBranchPip,
+.TreeHasHighlight .LeftBranchSelected .LeftBranchPip {
+	opacity: 0.15;
+}
+
+.RightBranchSelected.RightBranchHighlighted .RightBranchPip,
+.LeftBranchSelected.LeftBranchHighlighted .LeftBranchPip {
+	opacity: 1;
+	wash-color: #FFFF3FFF;
+	blur: gaussian(0.5px);
+}
+
+.PipBlur {
+	opacity: 0;
+	blur: gaussian(0px);
+}
+
+.RightBranchSelected.RightBranchHighlighted .RightBranchPip.PipBlur,
+.LeftBranchSelected.LeftBranchHighlighted .LeftBranchPip.PipBlur {
+	opacity: 0.5;
+	blur: gaussian(3px);
+}
+
+.LeftBranchPip.StatBranchPip {
+	horizontal-align: left;
+	transform: scaleX(-1);
+}
+
+.RightBranchPip.StatBranchPip {
+	horizontal-align: right;
+}
+
+#StatPipContainer {
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+}
+
+#StatLevelProgressBar .ProgressBarLeft {
+	background-color: #E7D291;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from(#E7D291), color-stop(.35, #E7D291), to(#f36f1d));
+}
+
+#level_stats_frame {
+	margin-left: 216px;
+	vertical-align: bottom;
+	width: 68px;
+	height: 232px;
+	z-index: 3;
+}
+
+#levelup {
+	margin-left: 10px;
+	margin-bottom: 170px;
+	vertical-align: bottom;
+	z-index: 5;
+	visibility: collapse;
+}
+
+#StatBranchGraphics {
+	width: 100%;
+	height: 100%;
+}
+
+.NonHero #StatBranchGraphics {
+	opacity-mask: none;
+}
+
+#LevelUpGlow {
+	width: 62px;
+	height: 62px;
+	vertical-align: bottom;
+	margin-bottom: 26px;
+	margin-left: 0px;
+	margin-right: 4px;
+
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_lvlup_psd.vtex");
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	opacity: 0;
+	visibility: collapse;
+	transition-property: opacity;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	brightness: 1.5;
+	animation-name: OpacityPulse;
+	animation-duration: .82s;
+	animation-iteration-count: infinite;
+}
+
+.SkillUpgradable #LevelUpGlow {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_attribs_lvlup_psd.vtex");
+	opacity: 1;
+	visibility: visible;
+}
+
+.CanLevelStats.SkillUpgradable #LevelUpGlow,
+.CanLevelStats #LevelUpGlow {
+	background-image: url("s2r://panorama/images/hud/reborn/statbranch_button_lvlup_psd.vtex");
+}
+
+.NonHero #LevelUpGlow,
+.NonHero #StatBranch
+{
+	opacity: 0;
+	visibility: collapse;
+}
+
+@keyframes 'OpacityPulse'
+{
+    0%
+    {
+        opacity: 1;
+    }
+    50%
+    {
+        opacity: 0.2;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}

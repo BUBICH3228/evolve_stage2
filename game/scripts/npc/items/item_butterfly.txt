@@ -1,0 +1,58 @@
+"DOTAAbilities"
+{
+	"item_recipe_butterfly_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"350"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_butterfly_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_agi_custom;item_basic_stat_agi_custom;item_basic_stat_attack_custom;item_basic_stat_evasion_custom;item_basic_stat_damage_custom"
+		}
+	}
+
+	"item_butterfly_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_butterfly_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	                "item_butterfly"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_agility"						"35"
+			"bonus_damage"						"25"
+			"bonus_evasion"						"35"
+			"bonus_attack_speed"				"30"
+			"bonus_agility_per_level"			"12"
+			"bonus_damage_per_level"			"15"
+		}
+	}
+}

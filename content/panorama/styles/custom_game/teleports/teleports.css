@@ -1,0 +1,111 @@
+#TeleportButtonsContainer {
+    horizontal-align: center;
+    flow-children: right-wrap;
+    min-height: 350px;
+}
+
+.TeleportButtonContainer
+{
+    width: 300px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.87);
+    margin: 5px;
+    brightness: 1;
+    transition-property: brightness, border;
+	transition-duration: .25s;
+	transition-timing-function: ease-in-out;
+    border: 1px solid black;
+}
+
+.TeleportButtonContainer:not(.Locked):hover
+{
+    brightness: 1.4;
+    border: 1px solid rgba(128, 128, 128, 0.315);
+}
+
+.TeleportButtonContainer:not(.Locked):active {
+    sound: "Item.PickUpGemShop";
+}
+
+.TeleportButtonContainer.Center {
+    horizontal-align: center;
+}
+
+#TeleportButtonIcon
+{
+    margin: 5px;
+    z-index: 1;
+}
+
+#TeleportButtonTitle
+{
+    vertical-align: bottom;
+    background-color: rgba(0, 0, 0, 0.863);
+    font-size: 18px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: defaultFont;
+    text-align: center;
+    width: fill-parent-flow(1.0);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 2;
+    text-overflow: shrink;
+    padding: 5px;
+}
+
+.TeleportButtonLockedContainer
+{
+    flow-children: down;
+    width: 250px;
+    height: 65px;
+    horizontal-align: center;
+    vertical-align: center;
+    z-index: 3;
+    visibility: collapse;
+}
+
+.TeleportButtonLockedLabel
+{
+    width: fill-parent-flow(1.0);
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: defaultFont;
+    text-align: center;
+    z-index: 2;
+}
+
+.TeleportUnlockBossName
+{
+    width: fill-parent-flow(1.0);
+    text-align: center;
+    font-size: 15px;
+    color: rgb(186, 152, 50);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-family: defaultFont;
+    text-align: center;
+    z-index: 2;
+}
+
+.Locked #TeleportButtonIcon
+{
+	saturation: 0;
+	wash-color: #666666;
+}
+
+.Locked .TeleportButtonLockedContainer
+{
+    visibility: visible;
+}
+
+.Locked .TeleportButtonContainer:active {
+    sound: "";
+}

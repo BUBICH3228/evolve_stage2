@@ -1,0 +1,89 @@
+"DOTAAbilities"
+{
+	"item_recipe_spirit_vessel_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"250"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_spirit_vessel_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_str_custom;item_basic_stat_int_custom;item_basic_stat_agi_custom;item_basic_stat_armor_custom;item_basic_stat_health_custom;item_basic_stat_mana_regen_custom"
+		}
+	}
+
+	"item_spirit_vessel_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_spirit_vessel_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        //На кого применяется
+        "AbilityUnitTargetTeam"					"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"					"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+        //Для проверки кто ближе из союзников
+        "AbilityUnitTargetTeam1"				"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType1"				"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags1"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+        "SpellImmunityType"             		"SPELL_IMMUNITY_ENEMIES_NO"
+    	"SpellDispellableType"          		"SPELL_DISPELLABLE_NO"
+		"AbilityUnitDamageType"		            "DAMAGE_TYPE_MAGICAL"
+		"AbilityTextureName"	                "item_spirit_vessel"
+
+        // Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				        "750"
+        "ItemInitialCharges"			        "0"
+		"ItemRequiresCharges"			        "1"
+		"ItemDisplayCharges"			        "1"
+        "AbilityHealthCost"                     "0"
+		"AbilityCooldown"				        "7.0"	 
+		"AbilityDuration"   					"8.0"
+		"AbilitySharedCooldown"			        "spirit_vessel"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+            "bonus_mana_regen"		            "1.75"
+			"bonus_all_stats"		            "6"
+			"bonus_armor"			            "2"
+			"bonus_health"			            "125"
+            
+			"soul_radius"			            "1400"
+			"kills_for_charge"	                "25"
+			"soul_heal_amount"		            "40"
+			"soul_damage_amount"	            "35"
+			"hp_regen_reduction_enemy"	        "45"
+			"enemy_hp_drain"		            "4"
+            "mana_regen_multiplier"				"250"
+
+			"bonus_arnor_per_level"				"0.3"
+			"bonus_mana_regen_per_level"		"0.55"
+		}
+	}
+}

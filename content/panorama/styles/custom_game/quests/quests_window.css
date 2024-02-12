@@ -1,0 +1,245 @@
+.QuestButtonsContainer
+{
+    width: fill-parent-flow(1.0);
+    margin-top: 10px;
+    horizontal-align: center;
+    vertical-align: bottom;
+}
+
+#QuestAcceptButton
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+}
+
+.QuestDescriptionContainer
+{
+    margin-bottom: 0px;
+    height: 100px;
+}
+
+.QuestTabContainer
+{
+    width: fill-parent-flow(1.0);
+    height: fit-children;
+    flow-children: down;
+    margin-top: 10px;
+}
+
+.QuestTabTitle
+{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+#QuestActionsContainer
+{
+    width: fill-parent-flow(1.0);
+    height: fit-children;
+    flow-children: down;
+}
+
+.QuestActionContainer
+{
+    width: fill-parent-flow(1.0);
+    height: fit-children;
+    flow-children: right;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.QuestActionContainer.First
+{
+    margin-top: 5px;
+}
+
+.QuestActionContainer.Last
+{
+    margin-bottom: 0px;
+}
+
+.QuestActionIcon
+{
+    width: 12px;
+    height: 12px;
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_right_png.vtex");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-right: 3px;
+    wash-color: white;
+    vertical-align: center;
+}
+
+.QuestActionSubContainer
+{
+    width: 100%;
+    height: fit-children;
+    flow-children: right;
+}
+
+#QuestActionProgress
+{
+    horizontal-align: right;
+    vertical-align: center;
+    text-align: right;
+}
+
+#QuestItemRewardContainer
+{
+    flow-children: right;
+}
+
+.RewardDisabled
+{
+    visibility: collapse;
+}
+
+.QuestItemReward
+{
+    width: 48px;
+    height: 32px;
+}
+
+.QuestRewardLabelWithIcon
+{
+    width: fit-children;
+    height: fit-children;
+    flow-children: right;
+    margin-left: 5px;
+}
+
+.QuestRewardLabelWithIcon.First
+{
+    margin-left: 0px;
+}
+
+.QuestRewardIcon
+{
+    width: 24px;
+    height: 24px;
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_right_png.vtex");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin-right: 3px;
+    wash-color: white;
+    vertical-align: center;
+}
+
+.QuestRewardLabel
+{
+    vertical-align: center;
+}
+
+.QuestRewardIcon.Gold
+{
+    background-image: url("s2r://panorama/images/hud/reborn/gold_small_psd.vtex");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.QuestRewardIcon.HeroExperience
+{
+    background-image: url("file://{images}/custom_game/ui/lobby_settings/stats/exp.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.QuestGenericRewardsContainer
+{
+    width: 100%;
+    height: fit-children;
+    flow-children: right-wrap;
+    margin-bottom: 3px;
+}
+
+.LeftButton
+{
+    horizontal-align: left;
+}
+
+.RightButton
+{
+    horizontal-align: right;
+}
+
+#MainWindow
+{
+    width: 500px;
+    min-height: 500px;
+}
+
+.MainWindowArrowsContainer
+{
+    vertical-align: center;
+    horizontal-align: center;
+    width: fit-children;
+    flow-children: right;
+}
+
+.WindowArrow
+{
+    width: 36px;
+    height: 36px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: 50% 50%;
+    brightness: 1;
+    wash-color: #dfdbdb;
+    vertical-align: center;
+    transition-timing-function: ease-in-out;
+    transition-property: brightness, wash-color;
+    transition-duration: 0.35s;
+    transition-delay: 0s;
+}
+
+.WindowArrow:hover
+{
+    wash-color: #e0dfdf;
+    brightness: 1.5;
+}
+
+.WindowArrow:active
+{
+    sound: "Item.PickUpGemShop";
+    wash-color: #666666;
+}
+
+#LeftArrow
+{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_left_png.vtex");
+    margin-right: 5px;
+}
+
+#RightArrow
+{
+    background-image: url("s2r://panorama/images/control_icons/arrow_solid_right_png.vtex");
+    margin-left: 5px;
+}
+
+.ArrowsHidden #LeftArrow,
+.ArrowsHidden #RightArrow
+{
+    visibility: collapse;
+}
+
+#QuestName
+{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: bold;
+    horizontal-align: center;
+    max-height: 25px;
+    text-overflow: shrink;
+    text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.8);
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+}

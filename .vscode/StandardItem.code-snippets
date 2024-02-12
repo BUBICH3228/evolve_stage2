@@ -1,0 +1,20 @@
+{
+	"Creates a new standard item file": {
+		"prefix": ["StandardItem", "BaseItem"],
+		"body": [
+		  "import { BaseItem , registerAbility } from \"../libraries/dota_ts_adapter\";",
+		  "",
+		  "@registerAbility()",
+		  "export class item_name_custom extends BaseItem",
+		  "{",
+		  "\tprivate caster: CDOTA_BaseNPC = this.GetCaster();",
+		  "",
+		  "\toverride OnSpellStart(): void",
+		  "\t{",
+		  "\t\t",
+		  "\t}",
+		  "}",		  
+		],
+		"description": "Creates a new standard item file"
+	  }
+}

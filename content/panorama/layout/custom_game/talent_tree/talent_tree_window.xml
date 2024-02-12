@@ -1,0 +1,194 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="s2r://panorama/styles/hudstyles.vcss_c" />
+		<include src="s2r://panorama/styles/hud/dota_hud_ability_panel.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/talent_tree/talent_tree_window.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/talent_tree/talent_tree_window.js" />
+	</scripts>
+	<snippets>
+		<snippet name="BottomBranchLevelPanel">
+			<Panel class="LevelPanel" />
+		</snippet>
+	</snippets>
+	<Panel class="Root" hittest="false" hittestchildren="true">
+		<Panel id="DOTAStatBranch" class="Hidden">
+			<Panel id="StatBranchOuter">
+				<Panel id="TalentDescriptions" class="TopBottomFlow">
+					<Panel id="TalentPair4" class="BranchPair">
+						<Panel id="Upgrade8Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade8DescriptionContainer" hittest="false" class="DescriptionDrawer LeftRightFlow">
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+								<Panel id="Upgrade8Description" hittest="false" class="BranchDescription">
+									<Label id="Description8" class="StatBonusDescription" hittest="false" text="" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="Upgrade7Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade7DescriptionContainer" hittest="false" class="DescriptionDrawer RightDrawer LeftRightFlow">
+								<Panel id="Upgrade7Description" hittest="false" class="BranchDescription RightBranch">
+									<Label id="Description7" class="StatBonusDescription" hittest="false" text="" />
+								</Panel>
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel id="TalentPair3" class="BranchPair">
+						<Panel id="Upgrade6Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade6DescriptionContainer" hittest="false" class="DescriptionDrawer LeftRightFlow">
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+								<Panel id="Upgrade6Description" hittest="false" class="BranchDescription">
+									<Label id="Description6" class="StatBonusDescription" hittest="false" text="" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="Upgrade5Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade5DescriptionContainer" hittest="false" class="DescriptionDrawer RightDrawer LeftRightFlow">
+								<Panel id="Upgrade5Description" hittest="false" class="BranchDescription RightBranch">
+									<Label id="Description5" class="StatBonusDescription" hittest="false" text="" />
+								</Panel>
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel id="TalentPair2" class="BranchPair">
+						<Panel id="Upgrade4Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade4DescriptionContainer" hittest="false" class="DescriptionDrawer LeftRightFlow">
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+								<Panel id="Upgrade4Description" hittest="false" class="BranchDescription">
+									<Label id="Description4" class="StatBonusDescription" text="" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="Upgrade3Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade3DescriptionContainer" hittest="false" class="DescriptionDrawer RightDrawer LeftRightFlow">
+								<Panel id="Upgrade3Description" hittest="false" class="BranchDescription RightBranch">
+									<Label id="Description3" class="StatBonusDescription" hittest="false" text="" />
+								</Panel>
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel id="TalentPair1" class="BranchPair">
+						<Panel id="Upgrade2Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade2DescriptionContainer" hittest="false" class="DescriptionDrawer LeftRightFlow">
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+								<Panel id="Upgrade2Description" hittest="false" class="BranchDescription">
+									<Label id="Description2" class="StatBonusDescription" text="" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="Upgrade1Container" hittest="false" class="UpgradeContainer">
+							<Panel id="Upgrade1DescriptionContainer" class="DescriptionDrawer RightDrawer LeftRightFlow">
+								<Panel id="Upgrade1Description" class="BranchDescription RightBranch">
+									<Label id="Description1" class="StatBonusDescription" text="" />
+								</Panel>
+								<Panel class="EndCap">
+									<Panel class="InfoIcon" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel class="StatBranchCenter">
+					<Label id="BranchTitle" text="#DOTA_StatBranch_Title" />
+					<Label id="TooltipBranchTitle" text="#DOTA_StatBranch_TooltipTitle" />
+					<Panel id="StatBranchColumn" class="TopBottomFlow">
+						<Panel id="UpgradeOption4" class="BranchPair">
+							<Panel id="Upgrade8Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade8" class="BranchChoice LeftBranch" onactivate="OnTalentBranchButtonPressed('LEFT_BRANCH_100')">
+									<Label id="UpgradeName8" html="true" class="StatBonusLabel" text="{s:name_8}" />
+								</Button>
+							</Panel>
+							<Panel id="Upgrade7Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade7" class="BranchChoice RightBranch" onactivate="OnTalentBranchButtonPressed('RIGHT_BRANCH_100')">
+									<Label id="UpgradeName7" class="StatBonusLabel" html="true" text="{s:name_7}" />
+								</Button>
+							</Panel>
+						</Panel>
+						<Panel id="UpgradeOption3" class="BranchPair">
+							<Panel id="Upgrade6Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade6" class="BranchChoice LeftBranch" onactivate="OnTalentBranchButtonPressed('LEFT_BRANCH_75')">
+									<Label id="UpgradeName6" class="StatBonusLabel" html="true" text="{s:name_6}" />
+								</Button>
+							</Panel>
+							<Panel id="Upgrade5Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade5" class="BranchChoice RightBranch" onactivate="OnTalentBranchButtonPressed('RIGHT_BRANCH_75')">
+									<Label id="UpgradeName5" class="StatBonusLabel" html="true" text="{s:name_5}" />
+								</Button>
+							</Panel>
+						</Panel>
+						<Panel id="UpgradeOption2" class="BranchPair">
+							<Panel id="Upgrade4Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade4" class="BranchChoice LeftBranch" onactivate="OnTalentBranchButtonPressed('LEFT_BRANCH_50')">
+									<Label id="UpgradeName4" class="StatBonusLabel" html="true" text="{s:name_4}" />
+								</Button>
+							</Panel>
+							<Panel id="Upgrade3Container" hittest="false" class="UpgradeContainer">
+								<!-- BranchChoice RightBranch Activated -->
+								<!-- BranchChoice RightBranch Activated Disabled BranchChosen -->
+								<Button id="Upgrade3" class="BranchChoice RightBranch" onactivate="OnTalentBranchButtonPressed('RIGHT_BRANCH_50')">
+									<Label id="UpgradeName3" class="StatBonusLabel" html="true" text="{s:name_3}" />
+								</Button>
+							</Panel>
+						</Panel>
+						<!-- LeftBranchActive RightBranchActive -->
+						<Panel id="UpgradeOption1" class="BranchPair">
+							<Panel id="Upgrade2Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade2" class="BranchChoice LeftBranch" onactivate="OnTalentBranchButtonPressed('LEFT_BRANCH_25')">
+									<Label id="UpgradeName2" class="StatBonusLabel" html="true" text="{s:name_2}" />
+								</Button>
+							</Panel>
+							<Panel id="Upgrade1Container" hittest="false" class="UpgradeContainer">
+								<Button id="Upgrade1" class="BranchChoice RightBranch" onactivate="OnTalentBranchButtonPressed('RIGHT_BRANCH_25')">
+									<Label id="UpgradeName1" class="StatBonusLabel" html="true" text="{s:name_1}" />
+								</Button>
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel id="LevelColumn" class="TopBottomFlow">
+						<Panel class="LevelBG">
+							<Label text="0" class="ReqLabel" id="TalentRow4Label" />
+						</Panel>
+						<Panel class="LevelBG">
+							<Label text="0" class="ReqLabel" id="TalentRow3Label"/>
+						</Panel>
+						<Panel class="LevelBG">
+							<Label text="0" class="ReqLabel" id="TalentRow2Label"/>
+						</Panel>
+						<Panel class="LevelBG">
+							<Label text="0" class="ReqLabel" id="TalentRow1Label"/>
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="StatUpgradeOption">
+				<!-- StatChoice StatBranchActive could_level_up -->
+					<Button id="UpgradeStat" class="StatChoice" onactivate="OnTalentBranchButtonPressed('BOTTOM_BRANCH_ATTRIBUTES')">
+						<Panel id="UpgradeStatBG" />
+						<Panel id="UpgradeStatLevelContainer" hittest="false">
+							<!-- LevelPanel active_level -->
+							<!-- LevelPanel next_level -->
+						</Panel>
+						<Label id="UpgradeStatName" class="StatBonusLabel " html="true" text="Tooltip missing" />
+					</Button>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
