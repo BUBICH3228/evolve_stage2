@@ -1,0 +1,9 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/dota_hud/top_bar_hud_buttons_hide.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/unit_detailed_stats_tooltip.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/hero_level_label_fix.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/fix_shop_grid.js" />
+	</scripts>
+	<Panel hittest="false" hittestchildren="false"/>
+</root>

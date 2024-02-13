@@ -1,0 +1,197 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+		<include src="file://{resources}/styles/custom_game/debug_panel/debug_panel.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/debug_panel/debug_panel.js" />
+	</scripts>
+    <snippets>
+        <snippet name="LabelWithHTML">
+            <Label html="true" text="" />
+        </snippet>
+    </snippets>
+	<Panel hittest="false" class="CustomHudRoot">
+		<Panel id="SelectHeroContainer" acceptsfocus="true" oncancel="SetHeroPickerVisible(false)">
+			<DOTAUIHeroPicker id="HeroPicker" />
+			<Button id="CancelButton" class="CloseButton" acceptsjoyfocus="true" onactivate="SetHeroPickerVisible(false)" />
+		</Panel>
+        <Panel id="DummyDamageLogContainer" acceptsfocus="true" oncancel="ShowDummyDamageLog(false)">
+            <Button id="CancelButton" class="CloseButton" acceptsjoyfocus="true" onactivate="ShowDummyDamageLog(false)" />
+            <Label class="CategoryHeader" id="DummyTotalDamage" text="#ui_debug_panel_dummy_target_total_damage" />
+            <Label class="CategoryHeader" id="DummyDPS" text="#ui_debug_panel_dummy_target_dps" />
+            <Label class="CategoryHeader" id="DummyLastHit" text="#ui_debug_panel_dummy_target_last_hit" />
+            <Panel id="DamageLogJournal"/>
+        </Panel>
+        <Panel id="UnitTestsContainer" acceptsfocus="true" oncancel="ShowUnitTests(false)">
+            <Button id="CancelButton" class="CloseButton" acceptsjoyfocus="true" onactivate="ShowUnitTests(false)" />
+            <Panel id="UnitTestsJournal"/>
+            <Panel class="Row UnitTestsControlButtonsContainer">
+                <Button class="DemoButton" acceptsjoyfocus="true" onactivate="RunUnitTests()">
+                    <Label text="#ui_debug_panel_unit_tests_run" />
+                </Button>
+            </Panel>
+        </Panel>
+		<Panel id="DebugPanelRoot" class="ControlPanel Minimized" hittest="false" hittestchildren="true">
+			<Panel class="ControlPanelContainer" hittest="true">
+				<Panel id="SpawnUnitsCategory" class="Category">
+					<Panel class="CategoryButtonContainer">
+						<Panel id="SpawnHeroButton" class="Row DemoButton" onactivate="ToggleHeroPicker( false )" acceptsjoyfocus="true">
+							<DOTAHeroImage id="HeroPickerImage" class="HeroImage" heroimagestyle="landscape" />
+							<Label id="SpawnHeroName" text="LOADING..." />
+							<Panel class="HeroPickerArrow" />
+						</Panel>
+                        <Panel class="HorizontalRule" />
+                        <Panel class="Row">
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="CreateDummy()">
+                                <Label text="#ui_debug_panel_dummy_target" />
+                            </Button>
+                        </Panel>
+                        <Panel class="Row">
+                            <Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="ResetDummy()">
+                                <Label text="#ui_debug_panel_dummy_target_reset" />
+                            </Button>
+                            <Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="ToggleDummyDamageLog()">
+                                <Label text="#ui_debug_panel_dummy_target_show_log" />
+                            </Button>
+                        </Panel>
+                        <Panel class="HorizontalRule" />
+						<Panel class="Row">
+							<Button class="RuneButton" acceptsjoyfocus="true" onactivate="OnSpawnRuneRequest('DOTA_RUNE_DOUBLEDAMAGE')" onmouseover="MouseOverRune( 'RuneEmoticonDoubleDamage', '#DOTA_HUD_Rune_DoubleDamage' )" onmouseout="MouseOutRune( 'RuneEmoticonDoubleDamage' )">
+								<DOTAEmoticon id="RuneEmoticonDoubleDamage" alias="doubledamage" animating="false" />
+							</Button>
+							<Panel class="FillWidth" />
+							<Button class="RuneButton" acceptsjoyfocus="true" onactivate="OnSpawnRuneRequest('DOTA_RUNE_HASTE')" onmouseover="MouseOverRune( 'RuneEmoticonHaste', '#DOTA_HUD_Rune_Haste' )" onmouseout="MouseOutRune( 'RuneEmoticonHaste' )">
+								<DOTAEmoticon id="RuneEmoticonHaste" alias="haste" animating="false" />
+							</Button>
+							<Panel class="FillWidth" />
+							<Button class="RuneButton" acceptsjoyfocus="true" onactivate="OnSpawnRuneRequest('DOTA_RUNE_ILLUSION')" onmouseover="MouseOverRune( 'RuneEmoticonIllusion', '#DOTA_HUD_Rune_Illusion' )" onmouseout="MouseOutRune( 'RuneEmoticonIllusion' )">
+								<DOTAEmoticon id="RuneEmoticonIllusion" alias="illusion" animating="false" />
+							</Button>
+							<Panel class="FillWidth" />
+							<Button class="RuneButton" acceptsjoyfocus="true" onactivate="OnSpawnRuneRequest('DOTA_RUNE_INVISIBILITY')" onmouseover="MouseOverRune( 'RuneEmoticonInvisibility', '#DOTA_HUD_Rune_Invisibility' )" onmouseout="MouseOutRune( 'RuneEmoticonInvisibility' )">
+								<DOTAEmoticon id="RuneEmoticonInvisibility" alias="invisibility" animating="false" />
+							</Button>
+							<Panel class="FillWidth" />
+							<Button class="RuneButton" acceptsjoyfocus="true" onactivate="OnSpawnRuneRequest('DOTA_RUNE_REGENERATION')" onmouseover="MouseOverRune( 'RuneEmoticonRegeneration', '#DOTA_HUD_Rune_Regeneration' )" onmouseout="MouseOutRune( 'RuneEmoticonRegeneration' )">
+								<DOTAEmoticon id="RuneEmoticonRegeneration" alias="regeneration" animating="false" />
+							</Button>
+							<Panel class="FillWidth" />
+							<Button class="RuneButton" acceptsjoyfocus="true" onactivate="OnSpawnRuneRequest('DOTA_RUNE_ARCANE')" onmouseover="MouseOverRune( 'RuneEmoticonArcane', '#DOTA_HUD_Rune_Arcane' )" onmouseout="MouseOutRune( 'RuneEmoticonArcane' )">
+								<DOTAEmoticon id="RuneEmoticonArcane" alias="arcane_rune" animating="false" />
+							</Button>
+						</Panel>
+                        <Panel class="HorizontalRule" />
+
+					</Panel>
+				</Panel>
+				<Panel id="EditUnitsCategory" class="Category">
+					<Panel class="CategoryButtonContainer">
+                        <Panel class="Row ToolsModeOnly">
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="ToggleUnitTests()">
+                                <Label text="#ui_debug_panel_unit_tests" />
+                            </Button>
+                        </Panel>
+						<Panel class="Row ToolsModeOnly">
+							<Button class="DemoButton" acceptsjoyfocus="true" onactivate="OnReloadKVRequest()">
+								<Label text="#ui_debug_panel_reload_kv" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnIncreaseLvlRequest(1)">
+								<Label text="#ui_debug_panel_increase_lvl" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnIncreaseLvlRequest(-1)">
+								<Label text="#ui_debug_panel_max_lvl" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnScepterRequest()">
+								<Label text="#ui_debug_panel_scepter" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnShardRequest()">
+								<Label text="#ui_debug_panel_shard" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnInvulnerableRequest()">
+								<Label text="#ui_debug_panel_invulnerable" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnGraveRequest()">
+								<Label text="#ui_debug_panel_grave" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnResetHeroRequest()">
+								<Label text="#ui_debug_panel_reset" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnRestoreRequest()">
+								<Label text="#ui_debug_panel_restore" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnRespawnRequest()">
+								<Label text="#ui_debug_panel_respawn" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnKillRequest()">
+								<Label text="#ui_debug_panel_kill" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(0)">
+								<Label text="#ui_debug_panel_min_gold" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(99999)">
+								<Label text="#ui_debug_panel_max_gold" />
+							</Button>
+						</Panel>
+						<Panel class="Row">
+							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(1000000)">
+								<Label text="#ui_debug_panel_one_million" />
+							</Button>
+							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(100000000)">
+								<Label text="#ui_debug_panel_one_hundred_million" />
+							</Button>
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="GlobalCategory" class="Category Last">
+					<Panel class="CategoryButtonContainer">
+						<Panel class="Row">
+							<ToggleButton id="FreeSpellsButton" class="DemoToggleButton" acceptsjoyfocus="true" onactivate="OnWTFRequest()">
+								<Label text="#ui_debug_panel_free_spells" />
+							</ToggleButton>
+							<Button id="RefreshButton" acceptsjoyfocus="true" onactivate="OnRefreshAbilitiesAndItemsRequest()" onmouseover="UIShowTextTooltip(#ui_debug_panel_refresh_tooltip)" onmouseout="UIHideTextTooltip()">
+								<Panel class="RefreshIcon" />
+							</Button>
+						</Panel>
+                        <Panel class="HorizontalRule" />
+                        <Panel class="Row">
+                            <Label class="CategoryHeader" id="HostTimescaleLabel" text="#ui_debug_panel_host_timescale" />
+                        </Panel>
+                        <Panel class="Row">
+                            <Slider id="HostTimescaleSlider" class="HorizontalSlider" onvaluechanged="OnHostTimeScaleSliderValueChanged()" direction="horizontal"/>
+                        </Panel>
+                        <Panel class="Row">
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="AdjustTimescaleSlider(1, true)">
+                                <Label text="1" />
+                            </Button>
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="AdjustTimescaleSlider(5, true)">
+                                <Label text="5" />
+                            </Button>
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="AdjustTimescaleSlider(10, true)">
+                                <Label text="10" />
+                            </Button>
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="AdjustTimescaleSlider(15, true)">
+                                <Label text="15" />
+                            </Button>
+                            <Button class="DemoButton" acceptsjoyfocus="true" onactivate="AdjustTimescaleSlider(20, true)">
+                                <Label text="20" />
+                            </Button>
+                        </Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,6 @@
+<root>
+    <Panel>
+        <!-- Loading screen -->
+        <Image src="file://{images}/custom_game/ui/loading_screen/load_screen.png" />
+    </Panel>
+</root>

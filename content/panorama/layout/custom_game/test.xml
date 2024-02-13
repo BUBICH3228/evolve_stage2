@@ -1,5 +1,0 @@
-<root>
-    <Panel hittest="false" class="MainHud">
-        <Label class="ExampleParagraph" text="123" />
-    </Panel>
-</root>

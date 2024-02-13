@@ -1,0 +1,72 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/shared/window.css" />
+		<include src="file://{resources}/styles/custom_game/quests/quests_window.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/quests/quests_window.js" />
+	</scripts>
+	<snippets>
+		<snippet name="QuestAction">
+			<Panel class="QuestActionContainer">
+				<!-- First Last -->
+				<Panel class="QuestActionIcon"/>
+				<Panel class="QuestActionSubContainer">
+					<Label id="QuestActionDescription" class="QuestAction" text="Skin` popu"/>
+					<Label id="QuestActionProgress" text="0 / 1"/>
+				</Panel>
+			</Panel>
+		</snippet>
+	</snippets>
+	<Panel class="Root" hittest="false" hittestchildren="true">
+		<Panel hittest="true" id="MainWindow"> <!-- ArrowsHidden-->
+			<Panel class="WindowTitle">
+				<Panel class="WindowTitleContainer">
+					<Panel class="MainWindowArrowsContainer">
+						<Button id="LeftArrow" class="WindowArrow"/>
+						<Label class="WindowTitleLabel" text="#ui_quests_window_title"/>
+						<Button id="RightArrow" class="WindowArrow"/>
+					</Panel>
+					<Panel class="CloseButtonContainer">
+						<Button id="CancelButton" class="CloseButton"/>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel class="WindowContent">
+				<Label id="QuestName" text="Quest name"/>
+				<Panel class="WindowContentSeperator"/>
+				<Panel class="QuestDescriptionContainer">
+					<Label id="QuestDescription" text="Quest description"/>
+				</Panel>
+				<Panel class="QuestTabContainer">
+					<Label class="QuestTabTitle" text="#ui_quests_window_tasks"/>
+					<Panel class="WindowContentSeperator"/>
+					<Panel id="QuestActionsContainer"/>
+				</Panel>
+				<Panel class="QuestTabContainer">
+					<Label class="QuestTabTitle" text="#ui_quests_window_rewards"/>
+					<Panel class="WindowContentSeperator"/>
+					<Panel class="QuestGenericRewardsContainer">
+						<Panel id="QuestGoldReward" class="QuestRewardLabelWithIcon First">
+							<!-- First RewardDisabled -->
+							<Panel class="QuestRewardIcon Gold"/>
+							<Label class="QuestRewardLabel" id="QuestGoldRewardLabel" text="0"/>
+						</Panel>
+						<Panel id="QuestExperienceReward" class="QuestRewardLabelWithIcon">
+							<!-- RewardDisabled -->
+							<Panel class="QuestRewardIcon HeroExperience"/>
+							<Label class="QuestRewardLabel" id="QuestExperienceRewardLabel" text="0"/>
+						</Panel>
+					</Panel>
+					<!-- RewardDisabled -->
+					<Panel id="QuestItemRewardContainer"/>
+				</Panel>
+				<Panel class="QuestButtonsContainer">
+					<Button id="QuestAcceptButton" class="WindowButton">
+						<Label class="WindowButtonLabel" text="#ui_quests_window_accept"/>
+					</Button>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
