@@ -1,8 +1,0 @@
-mountain_old
-{
-	material materials/overviews/mountain_old.vmat
-	pos_x -16384
-	pos_y 16384
-	scale 32.000
-}
-

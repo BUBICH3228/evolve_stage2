@@ -1,3 +1,0 @@
-interface CustomEventAddonPrecacheEvent {
-    context: CScriptPrecacheContext;
-}

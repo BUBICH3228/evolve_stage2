@@ -1,8 +1,0 @@
-arena_location
-{
-	material materials/overviews/arena_location.vmat
-	pos_x -6400
-	pos_y 6400
-	scale 12.500
-}
-

@@ -1,9 +1,0 @@
-import "modifier_custom_properties";
-import "modifier_generic_arc";
-import "modifier_heroes_passive_stats";
-import "modifier_unit_boss";
-import "modifier_quest_npc";
-import "modifier_hero_stats";
-import "modifier_game_difficulty_stunlock_aura";
-import "difficulty_modifiers/require";
-import "modifier_passive_gold";
