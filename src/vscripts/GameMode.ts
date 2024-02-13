@@ -53,6 +53,10 @@ export class GameMode {
 
         GameRules.SetShowcaseTime(0);
         GameRules.SetHeroSelectionTime(heroSelectionTime);
+        GameRules.SetHeroMinimapIconScale( 0.6 )
+        GameRules.SetCreepMinimapIconScale( 0.6 )
+        GameRules.SetRuneMinimapIconScale( 0.6 )
+
     }
 
     public OnStateChange(): void {
