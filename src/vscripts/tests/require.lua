@@ -1,0 +1,1 @@
+require("unit_tests/initializer")

@@ -1,12 +1,23 @@
 {
-    "compilerOptions": {
-        "rootDir": ".",
-        "outDir": "../../content/panorama/scripts/custom_game",
-        "target": "es2017",
-        "lib": ["es2017"],
-        "types": ["@moddota/panorama-types"],
-        "moduleResolution": "node",
-        "strict": true
-    },
-    "include": ["**/*.ts", "../common/**/*.ts"]
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../../scripts/temp/panorama",
+    "target": "es2017",
+	"removeComments": true,
+    "lib": [
+      "es2017"
+    ],
+    "plugins": [
+      {
+        "transform": "../../local_modules/dota_typescript/panorama/transformer"
+      }
+    ],
+    "moduleResolution": "node",
+    "strict": true
+  },
+  "include": [
+    "**/*.ts",
+    "../common/**/*.d.ts",
+    "../../local_modules/dota_typescript/panorama/types/*"
+  ]
 }

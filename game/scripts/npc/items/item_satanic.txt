@@ -1,0 +1,65 @@
+"DOTAAbilities"
+{
+	"item_recipe_satanic_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"900"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_satanic_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_str_custom;item_basic_stat_str_custom;item_basic_stat_damage_custom;item_basic_stat_lifesteal_custom;"
+		}
+	}
+
+	"item_satanic_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_satanic_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"	                "item_satanic"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"						"30.0"
+		"AbilityDuration"						"6"
+		"AbilitySharedCooldown"			        "satanic"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_strength"					"25"
+			"bonus_damage"						"15"
+			"lifesteal_percent"					"25"
+			"unholy_lifesteal_percent"			"145"
+			
+			"bonus_strength_per_level"          "9"
+            "bonus_damage_per_level"         	"13"
+		}
+	}
+}

@@ -1,0 +1,25 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_void_spirit"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_void_spirit"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"					"void_spirit_aether_remnant"
+		"Ability2"					"void_spirit_dissimilate"
+		"Ability3"					"void_spirit_resonant_pulse"
+		"Ability4"					"generic_hidden"
+		"Ability5"					"generic_hidden"
+		"Ability6"					"void_spirit_astral_step"
+		"Ability10"					"talent_mp_regen_3"
+		"Ability11"					"special_bonus_unique_void_spirit_2"
+		"Ability12"					"talent_hp_1000"
+		"Ability13"					"special_bonus_unique_void_spirit_dissimilate_outerring"
+		"Ability14"					"special_bonus_unique_void_spirit_4"
+		"Ability15"					"special_bonus_unique_void_spirit_1"
+		"Ability16"					"special_bonus_unique_void_spirit_8"
+		"Ability17"					"special_bonus_unique_void_spirit_3"
+	}
+}

@@ -1,0 +1,56 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_snapfire"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_snapfire"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"snapfire_scatterblast"
+		"Ability2"	"snapfire_firesnap_cookie"
+		"Ability3"	"snapfire_lil_shredder"
+		"Ability4"	"snapfire_gobble_up"
+		"Ability5"	"snapfire_spit_creep"
+		"Ability6"	"snapfire_mortimer_kisses"
+		"Ability10"	"special_bonus_unique_snapfire_7"
+		"Ability11"	"special_bonus_unique_snapfire_5"
+		"Ability12"	"special_bonus_unique_snapfire_2"
+		"Ability13"	"special_bonus_unique_snapfire_3"
+		"Ability14"	"special_bonus_unique_snapfire_6"
+		"Ability15"	"special_bonus_unique_snapfire_mortimer_kisses_impact_damage"
+		"Ability16"	"special_bonus_unique_snapfire_8"
+		"Ability17"	"special_bonus_unique_snapfire_1"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"1"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"	"26"
+		"AttackDamageMax"	"32"
+		"AttackRate"	"1.6"
+		"AttackAnimationPoint"	"0.35"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"	"500"
+		"ProjectileModel"	"particles/units/heroes/hero_snapfire/hero_snapfire_base_attack.vpcf"
+		"ProjectileSpeed"	"1800"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_ALL"
+		"AttributeBaseStrength"	"20"
+		"AttributeStrengthGain"	"3.5"
+		"AttributeBaseIntelligence"	"21"
+		"AttributeIntelligenceGain"	"2.2"
+		"AttributeBaseAgility"	"16"
+		"AttributeAgilityGain"	"1.9"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"	"0.75"
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"300"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

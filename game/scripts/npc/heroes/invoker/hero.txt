@@ -1,0 +1,35 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_invoker"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"			"npc_dota_hero_invoker"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"				"invoker_quas"
+		"Ability2"				"invoker_wex"
+		"Ability3"				"invoker_exort"
+		"Ability4"				"invoker_empty1"
+		"Ability5"				"invoker_empty2"
+		"Ability6"				"invoker_invoke"
+		"Ability7"				"invoker_cold_snap"
+		"Ability8"				"invoker_ghost_walk"
+		"Ability9"				"invoker_tornado"
+		"Ability10"				"special_bonus_unique_invoker_ice_wall_dps"
+		"Ability11"				"special_bonus_unique_invoker_3"
+		"Ability12"				"special_bonus_unique_invoker_11"
+		"Ability13"				"special_bonus_unique_invoker_9"
+		"Ability14"				"special_bonus_unique_invoker_additional_chaos_meteors"
+		"Ability15"				"special_bonus_unique_invoker_5"
+		"Ability16"				"special_bonus_unique_invoker_2"
+		"Ability17"				"special_bonus_unique_invoker_13"
+		"Ability18"				"invoker_emp"
+		"Ability19"				"invoker_alacrity"
+		"Ability20"				"invoker_chaos_meteor"
+		"Ability21"				"invoker_sun_strike"
+		"Ability22"				"invoker_forge_spirit"
+		"Ability23"				"invoker_ice_wall"
+		"Ability24"				"invoker_deafening_blast"
+	}
+}

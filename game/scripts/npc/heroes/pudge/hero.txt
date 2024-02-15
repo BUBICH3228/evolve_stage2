@@ -1,0 +1,54 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_pudge"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"							"npc_dota_hero_pudge"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"pudge_meat_hook_custom"
+		"Ability2"	"pudge_rot_custom"
+		"Ability3"	"pudge_flesh_heap_custom"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"pudge_dismember_custom"
+		"Ability10"	"talent_pudge_rot_custom_spell_lifesteal"
+		"Ability11"	"talent_pudge_dismember_custom_aoe" 
+		"Ability12"	"talent_pudge_flesh_heap_custom_heal_regen"
+		"Ability13"	"talent_pudge_meat_hook_custom_pierce" 
+		"Ability14"	"talent_pudge_rot_custom_always_on"
+		"Ability15"	"talent_pudge_dismember_custom_damage_per_kill" 
+		"Ability16"	"talent_pudge_flesh_heap_custom_stack_multiplier"
+		"Ability17"	"talent_pudge_meat_hook_custom_rupture" 
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"							"-1"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"					"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"						"45"
+		"AttackDamageMax"						"51"
+		"AttackRate"							"1.7"
+		"AttackAnimationPoint"					"0.5"
+		"AttackAcquisitionRange"				"600"
+		"AttackRange"							"175"
+		"ProjectileSpeed"						"0"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"						"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"					"25"
+		"AttributeStrengthGain"					"3"
+		"AttributeBaseIntelligence"				"16"
+		"AttributeIntelligenceGain"				"1.8"
+		"AttributeBaseAgility"					"14"
+		"AttributeAgilityGain"					"1.4"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"						"2"
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"							"280"
+		"MovementTurnRate"						"0.7"
+	}
+}

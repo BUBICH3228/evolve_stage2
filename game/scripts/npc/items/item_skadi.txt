@@ -1,0 +1,64 @@
+"DOTAAbilities"
+{
+	"item_recipe_skadi_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"750"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_skadi_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_str_custom;item_basic_stat_int_custom;item_basic_stat_agi_custom;item_basic_stat_mana_custom;item_basic_stat_health_custom"
+		}
+	}
+
+	"item_skadi_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_skadi_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityTextureName"	                "item_skadi"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_all_stats"					"22"
+			"bonus_health"						"220"
+			"bonus_mana"						"220"
+			"cold_slow"							"20"
+			"cold_attack_slow"					"30"
+			"cold_duration"						"3.0"
+			"heal_reduction"					"40"
+
+			"bonus_all_stats_per_level"			"8"
+		}
+	}
+}

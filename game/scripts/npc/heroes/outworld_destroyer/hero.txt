@@ -1,0 +1,56 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_obsidian_destroyer"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_obsidian_destroyer"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"obsidian_destroyer_arcane_orb"
+		"Ability2"	"obsidian_destroyer_astral_imprisonment"
+		"Ability3"	"obsidian_destroyer_equilibrium"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"obsidian_destroyer_sanity_eclipse"
+		"Ability10"	"talent_hp_200"
+		"Ability11"	"talent_attack_speed_20"
+		"Ability12"	"special_bonus_unique_outworld_devourer_astral_castrange"
+		"Ability13"	"talent_movement_speed_30"
+		"Ability14"	"talent_bonus_strength_20"
+		"Ability15"	"special_bonus_unique_outworld_devourer_4"
+		"Ability16"	"special_bonus_unique_outworld_devourer"
+		"Ability17"	"special_bonus_unique_outworld_devourer_5"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"2.5"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"	"19"
+		"AttackDamageMax"	"31"
+		"AttackRate"	"1.9"
+		"AttackAnimationPoint"	"0.46"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"	"450"
+		"ProjectileModel"	"particles/units/heroes/hero_obsidian_destroyer/obsidian_destroyer_base_attack.vpcf"
+		"ProjectileSpeed"	"900"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"	"21"
+		"AttributeStrengthGain"	"2.9"
+		"AttributeBaseIntelligence"	"30"
+		"AttributeIntelligenceGain"	"4.2"
+		"AttributeBaseAgility"	"22"
+		"AttributeAgilityGain"	"1.6"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"	"1"
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"320"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

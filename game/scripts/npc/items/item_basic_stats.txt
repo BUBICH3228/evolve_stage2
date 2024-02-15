@@ -1,0 +1,439 @@
+"DOTAAbilities"
+{
+    "item_basic_stat_str_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/str"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_str"                          "8"
+        }
+	}
+
+    "item_basic_stat_int_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/int"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_int"                          "8"
+        }
+	}
+
+    "item_basic_stat_agi_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/agi"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_agi"                          "8"
+        }
+	}
+
+    "item_basic_stat_damage_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/damage"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_damage"                       "13"
+        }
+	}
+
+    "item_basic_stat_armor_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/armor"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_armor"                        "3"
+        }
+	}
+
+    "item_basic_stat_mana_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/mana"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_mana"                         "180"
+        }
+	}
+
+    "item_basic_stat_health_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/health"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_health"                       "240"
+        }
+	}
+
+    "item_basic_stat_attack_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/attack"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_attack"                       "20"
+        }
+	}
+
+    "item_basic_stat_hp_regen_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/hp_regen"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_hp_regen"                     "1.6"
+        }
+	}
+
+    "item_basic_stat_lifesteal_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/lifesteal"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_lifesteal"                    "10"
+        }
+	}
+
+    "item_basic_stat_mana_regen_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/mana_regen"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_mana_regen"                   "1"
+        }
+	}
+
+    "item_basic_stat_spell_amp_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/spell_amp"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_spell_amp"                    "4"
+        }
+	}
+
+    "item_basic_stat_move_speed_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/move_speed"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_move_speed"                   "45"
+        }
+	}
+
+    "item_basic_stat_evasion_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/evasion"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_evasion"                      "10"
+        }
+	}
+
+    "item_basic_stat_spell_lifesteal_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/spell_lifesteal"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_spell_lifesteal"              "7"
+        }
+	}
+
+    "item_basic_stat_attack_range_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/attack_range"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_attack_range"                 "125"
+        }
+	}
+
+    "item_basic_stat_attack_range_melee_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/attack_range_melee"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_attack_range_melee"           "35"
+        }
+	}
+
+    "item_basic_stat_status_resist_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/status_resist"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_status_resist"                "8"
+        }
+	}
+
+    "item_basic_stat_cooldown_reduction_custom"
+	{
+		"BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_basic_stats"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "AbilityTextureName"	                "stats/cooldown_reduction"
+        
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"450"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+
+        "IsModifiable"                          "0"
+        //special
+        "AbilityValues"
+        {
+            "stat_cooldown_reduction"           "8"
+        }
+    }
+}

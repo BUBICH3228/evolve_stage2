@@ -1,0 +1,158 @@
+"DOTAUnits"
+{
+	"npc_quests_base_1"
+	{
+		// General
+		//----------------------------------------------------------------
+		"BaseClass"				 	"npc_dota_creature"
+		"Model"					 	"models/creeps/item_creeps/i_creep_necro_warrior/necro_warrior.vmdl"
+		"Level"					 	"999"
+		"ModelScale"				"1"
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability5"					""
+		"Ability6"					""
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"			 	"0"
+		"MagicalResistance"		 	"0"
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"		 	"0"
+		"AttackDamageMax"		 	"0"
+		"AttackRate"				"1.2"
+		"AttackAnimationPoint"		"0.4"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"			 	"150"
+		"ProjectileModel"		 	""
+		"ProjectileSpeed"		 	""
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"70"
+		"HealthBarOffset"		 	"300"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"
+		"BountyGoldMin"			 	"0"
+		"BountyGoldMax"			 	"0"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"			 	"450"
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100"
+		"StatusHealthRegen"		 	"0"
+		"StatusMana"				"100"
+		"StatusManaRegen"		 	"0"
+				
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"
+		"VisionNighttimeRange"		"800"
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+
+	"npc_quests_base_2"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_base_3"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_base_4"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_training_ground_1"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_training_ground_2"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_training_ground_3"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_forest_1"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_forest_2"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_water_1"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_water_2"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_alliance_1"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_alliance_2"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_dead_forest_1"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+
+	"npc_quests_dead_forest_2"
+	{
+		"include_keys_from" 		"npc_quests_base_1"
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl"
+	}
+}
+

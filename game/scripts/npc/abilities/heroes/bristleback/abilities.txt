@@ -1,0 +1,240 @@
+"DOTAAbilities"
+{
+    //=================================================================================================================
+	// Bristleback: Hairball (Shard)
+	//=================================================================================================================
+	"bristleback_hairball"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							                    "643"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				                    "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"			                    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			                    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				                    "SPELL_IMMUNITY_ALLIES_YES"
+		"SpellDispellableType"			                    "SPELL_DISPELLABLE_YES"
+		"MaxLevel"						                    "1"
+		"FightRecapLevel"				                    "1"
+		"IsGrantedByShard"			                        "1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"			                        "1500"
+		"AbilityCastPoint"			                        "0.1"
+		"AbilityCastAnimation"		                        "ACT_DOTA_CAST_ABILITY_4"
+		
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"			                    	"10"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			                    	"30"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"projectile_speed"		                        "1200"
+            "quill_stacks"		                            "1"
+			"goo_stacks"		                            "2"
+			"radius"			
+			{
+				"value"		                                "700"
+				"affected_by_aoe_increase"	                "1"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Bristleback: Viscous Nasal Goo
+	//=================================================================================================================
+	"bristleback_viscous_nasal_goo"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							                    "5548"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				                    "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+		"AbilityUnitTargetTeam"			                    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			                    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				                    "SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			                    "SPELL_DISPELLABLE_YES"
+		"FightRecapLevel"				                    "1"
+		"AbilitySound"					                    "Hero_Bristleback.ViscousGoo.Cast"
+		"HasShardUpgrade"		                        	"1"
+        "MaxLevel"                                          "12"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				                    "0.3"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				                    "1.75"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				                    "9"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"goo_speed"			                            "1000"
+			"goo_duration"		                            "5"
+			"base_armor"		                            "2 2 3 3 4 4 5 5 6 6 7 7"
+            "base_move_slow"	                            "15"
+			"move_slow_per_stack"                           "5"
+            "goo_duration_creep"                            "5"
+			"armor_per_stack"
+			{
+				"value"	                                	"1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7"
+				"special_bonus_unique_bristleback_4"	    "+0.75"
+			}
+			"stack_limit"
+			{
+				"value"		                               	"4"
+				"special_bonus_shard"	                    "+3"
+			}
+			"AbilityCastRange"
+			{
+				"value"			                        	"650"
+				"special_bonus_unique_bristleback_5"		"+250"
+			}
+		}
+		"AbilityCastAnimation"		                        "ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	//=================================================================================================================
+	// Bristleback: Quill Spray
+	//=================================================================================================================
+	"bristleback_quill_spray"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							                    "5549"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				                    "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityUnitDamageType"			                    "DAMAGE_TYPE_PHYSICAL"	
+		"SpellImmunityType"				                    "SPELL_IMMUNITY_ENEMIES_YES"
+		"SpellDispellableType"			                    "SPELL_DISPELLABLE_NO"
+		"FightRecapLevel"				                    "1"
+		"AbilitySound"					                    "Hero_Bristleback.QuillSpray"
+		"AbilityDraftShardAbility"                          "bristleback_hairball"
+        "MaxLevel"                                          "12"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"			                    "ACT_INVALID"
+		"AbilityCastPoint"				                    "0"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				                    "3"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				                    "27"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+            "quill_stack_duration"	                        "14"
+			"max_damage"			                        "5500"
+			"projectile_speed"		                        "2400"
+            "quill_base_damage"		                        "25 40 60 80 120 170 230 300 390 510 610 730"
+			"radius"				
+			{
+				"value"			                            "700"
+				"affected_by_aoe_increase"                 	"1"
+			}
+			"quill_stack_damage"	
+			{
+				"value"			                            "28 42 60 95 130 190 260 340 440 570 680 820"
+				"LinkedSpecialBonus"	                    "special_bonus_unique_bristleback_2"
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Bristleback: Bristleback
+	//=================================================================================================================
+	"bristleback_bristleback"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"						                    	"5550"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"			                    	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilitySound"				                    	"Hero_Bristleback.Bristleback"
+		"HasScepterUpgrade"			                    	"1"
+		"AbilityCastPoint"			                    	"0"
+        "MaxLevel"                                          "12"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+            "side_angle"							        "110"
+			"back_angle"							        "70"
+			"quill_release_threshold"				        "225"
+			"quill_release_interval"				        ".1"
+			"activation_cooldown"					        "20"
+			"activation_manacost"					        "100"
+			"activation_delay"						        "0.5"
+			"activation_num_quill_sprays"			        "6"
+			"activation_spray_interval"				        "0.35"
+			"activation_angle"						        "45"
+			"cast_range_bonus"						        "0"
+			"activation_movement_speed_pct"			        "-40"
+			"activation_turn_rate_pct"				        "-100"
+			"activation_disable_turning"			        "1"
+			"activation_ignore_cast_angle"			        "1"
+			"activation_turn_rate"					        "500"
+			"side_damage_reduction"
+			{
+				"value"										"8 10 12 14 16 18 20 22 24 26 28 30"
+				"special_bonus_unique_bristleback_6"		"+4"
+			}
+			"back_damage_reduction"
+			{
+				"value"			                            "16 20 24 28 32 36 40 44 48 52 56 60"
+				"special_bonus_unique_bristleback_6"        "+8"
+			}
+		}
+		"AbilityCastAnimation"		                        "ACT_DOTA_SPAWN"
+	}
+
+	//=================================================================================================================
+	// Bristleback: Warpath
+	//=================================================================================================================
+	"bristleback_warpath"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"						                    	"5551"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityType"				                    	"DOTA_ABILITY_TYPE_ULTIMATE"
+		"AbilityBehavior"			                    	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"SpellDispellableType"		                    	"SPELL_DISPELLABLE_NO"
+		"AbilityCastAnimation"		                    	"ACT_DOTA_CAST_ABILITY_4"
+        "MaxLevel"                                          "4"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDuration"		                    		"10"
+				
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+            "move_speed_per_stack"				            "2 3 4 5"
+			"stack_duration"			                	"16 18 20 22"
+			"max_stacks"				                	"8 10 12 14"
+			"damage_per_stack"
+            {
+                "value"                                     "15 45 135 415"
+                "LinkedSpecialBonus"                       	"special_bonus_unique_bristleback_3"
+            }					
+		}
+	}
+}

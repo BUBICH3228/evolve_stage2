@@ -1,0 +1,76 @@
+"DOTAAbilities"
+{
+    "item_recipe_hand_of_midas_custom"
+    {
+        "AbilityTextureName" 					"item_recipe_hand_of_midas"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+	    "Model"									"models/props_gameplay/recipe.vmdl"
+	    "BaseClass"                     		"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"1250"	
+		"ItemShopTags"							""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+        "ItemRecipe"                            "1"
+        "ItemResult"                            "item_hand_of_midas_custom"
+        "ItemRequirements"
+        {
+            "01"                                "item_basic_stat_attack_custom;item_basic_stat_attack_custom"
+        }
+    }
+
+    "item_hand_of_midas_custom"
+    {       
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                             "item_lua"
+        "ScriptFile"                            "items/item_hand_of_midas_custom"
+        "AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_CREEP"
+        "AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+        "AbilityTextureName"	                "item_hand_of_midas"
+        
+        // Stats
+		//-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                       "0.1"
+        "AbilityCharges"				        "2"
+        "ItemInitialCharges"			        "1"
+		"ItemRequiresCharges"			        "1"
+		"ItemDisplayCharges"			        "1"
+        "AbilityChargeRestoreTime"		        "70"
+        "AbilityCastRange"				        "600"
+        "AbilitySharedCooldown"			        "midas"
+        // Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+        {
+            "bonus_attack_speed"                "35"
+            "gold_bounty"                       "100"
+            "XP_bounty"                         "200"
+            "gold_bounty_pct"                   "150"
+            "XP_bounty_pct"                     "210"
+            "max_level_gap"                     "10"
+            "max_bonus_gold"                    "1000"
+            "max_bonus_exp"                     "1000"
+            "activation_level_max_bonus_gold_XP""20"
+
+            "XP_and_gold_bounty_per_level"      "10"
+            "bonus_attack_speed_per_level"      "7"
+        }
+    }     
+}

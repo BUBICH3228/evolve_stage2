@@ -1,0 +1,36 @@
+"DOTAAbilities"
+{
+	"boss_will_to_survive"
+	{
+		"BaseClass"					 			"ability_lua"
+		"AbilityBehavior"			 			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"							"abilities/bosses/boss_will_to_survive"
+		"AbilityTextureName"					"slark_shadow_dance"
+		"MaxLevel"								"1"
+ 
+		"AbilityValues"
+		{
+			"bonus_regen_pct"		 			"2"
+			"radius"							"800"
+		}		
+	}
+
+	"boss_berserk"
+	{
+		"BaseClass"					 			"ability_lua"
+		"AbilityBehavior"			 			"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ScriptFile"							"abilities/bosses/boss_berserk"
+		"AbilityTextureName"					"boss_berserk"
+		"MaxLevel"								"1"
+ 
+		"AbilityValues"
+		{
+			"health_pct_to_activate"		 	"15"
+			"bonus_movement_speed"				"100"
+			"bonus_attack_speed"				"120"
+			"purge_interval"					"1"
+			"bonus_model_scale"					"20"
+			"bonus_health_pct_to_activate_per_death""10"
+		}		
+	}
+}

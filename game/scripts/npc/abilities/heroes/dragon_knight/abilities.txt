@@ -1,0 +1,377 @@
+"DOTAAbilities"
+{
+	"dragon_knight_breathe_fire_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"														"ability_lua"
+		"ScriptFile"													"abilities/heroes/dragon_knight/breathe_fire"
+		"AbilityTextureName"											"dragon_knight_breathe_fire"
+		"AbilityBehavior"       										"DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"     									"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     									"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"    									"DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"       										"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"      									"SPELL_DISPELLABLE_YES"
+		"AbilityUnitDamageType"     									"DAMAGE_TYPE_MAGICAL"
+		"FightRecapLevel"      	 										"1"
+		"AbilitySound"          										"Hero_DragonKnight.BreathFire"
+		"MaxLevel"            											"12"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"        										"0.2"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"       										"8"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"       										"68"
+		"AbilityCastRange"      										"600"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"start_radius"      										"150"
+			"end_radius"      											"250"
+			"range"         											"750"
+			"speed"         											"1050"
+			"damage"              										"110 170 250 370 520 730 1020 1320 1720 2240 2690 3220"
+			"str_to_damage_pct"											"5 10 15 20 25 30 35 40 45 50 55 60"
+			"damage_reduction_pct"										"30"
+			"ignite_duration"											"10"
+
+			"talent_breathe_fire_cooldown"
+			{
+				"value"														   "0"
+				"talent_dragon_knight_elder_dragon_form_fire_breath_on_attack" "+cooldown"
+			}
+
+			"talent_breathe_fire_proc_chance"
+			{
+				"value"														   "0"
+				"talent_dragon_knight_elder_dragon_form_fire_breath_on_attack" "+proc_chance"
+			}
+
+			"talent_dragon_knight_breathe_fire_multicasts"
+			{
+				"value"														   "0"
+				"talent_dragon_knight_breathe_fire_multicast" 					"+multicasts"
+			}
+
+			"talent_dragon_knight_breathe_fire_multicasts_delay"
+			{
+				"value"														   "0"
+				"talent_dragon_knight_breathe_fire_multicast" 					"+delay"
+			}
+		}
+		"AbilityCastAnimation"    										"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	"dragon_knight_dragon_tail_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"														"ability_lua"
+		"ScriptFile"													"abilities/heroes/dragon_knight/dragon_tail"
+		"AbilityTextureName"											"dragon_knight_dragon_tail"
+		"AbilityBehavior"       										"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"     									"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     									"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"    									"DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityUnitDamageType"     									"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"       										"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"      									"SPELL_DISPELLABLE_YES_STRONG"
+		"FightRecapLevel"      	 										"1"
+		"AbilitySound"          										"Hero_DragonKnight.DragonTail.Target"
+		"MaxLevel"            											"12"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"        										"150"
+		"AbilityCastPoint"        										"0.0 0.0 0.0 0.0"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"       										"12"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"       										"53"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"damage"													"150 230 340 510 710 990 1390 1810 2350 3050 3660 4390"
+			"str_to_dmg_pct"											"5 10 15 20 25 30 35 40 45 50 55 60"
+			"stun_duration"												"3.5"
+			"projectile_speed"      									"1600"
+			"cast_range_in_dragon_form"									"600"
+			"talent_aoe_radius"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_tail_aoe"					"+aoe_radius"
+			}
+		}
+		"AbilityCastAnimation"    										"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+	"dragon_knight_dragon_blood_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"														"ability_lua"
+		"ScriptFile"													"abilities/heroes/dragon_knight/dragon_blood"
+		"AbilityTextureName"											"dragon_knight_dragon_blood"
+		"AbilityBehavior"       										"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		// Талант на ауру
+		"AbilityUnitTargetTeam"											"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"											"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"										"DOTA_UNIT_TARGET_FLAG_NONE"
+		// Талант на ауру для врагов
+		"AbilityUnitTargetTeam1"										"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType1"										"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags1"										"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		// Талант на перенаправление урона
+		"AbilityUnitTargetTeam2"										"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType2"										"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags2"										"DOTA_UNIT_TARGET_FLAG_NONE"
+
+		"MaxLevel"            											"12"
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_health_regen"      									"12 18 27 38 53 75 105 135 175 230 275 330"
+			"bonus_armor"         										"5 10 15 20 25 30 35 40 45 50 55 60"
+			"talent_armor_bonus_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_dragon_form_armor_and_hp_regen" "+armor_bonus_pct"
+			}
+			"talent_hp_regen_bonus_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_dragon_form_armor_and_hp_regen" "+hp_regen_bonus_pct"
+			}
+			"talent_active_redirect_radius"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_active"				"+redirect_radius"
+			}
+			"talent_active_redirect_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_active"				"+redirect_pct"
+			}
+			"talent_active_duration"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_active"				"+duration"
+			}
+			"talent_active_cooldown"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_active"				"+cooldown"
+			}
+			"talent_caster_hp_pct_for_inactive"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_active"				"+caster_hp_pct_for_inactive"
+			}
+			"talent_ally_aura_radius"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_ally_aura"			"+radius"
+			}
+			"talent_enemy_aura_radius"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_enemy_aura"		"+radius"
+			}
+			"talent_enemy_aura_attack_damage_reduction_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_enemy_aura"		"-damage_reduction_pct"
+			}
+			"talent_enemy_aura_armor_reduction_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_enemy_aura"		"-armor_reduction_pct"
+			}
+			"talent_enemy_aura_magic_resistance_reduction_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_dragon_blood_enemy_aura"		"-magic_resistance_reduction_pct"
+			}
+		}
+		"AbilityCastAnimation"    										"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	"dragon_knight_elder_dragon_form_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"														"ability_lua"
+		"ScriptFile"													"abilities/heroes/dragon_knight/elder_dragon_form"
+		"AbilityTextureName"											"dragon_knight_elder_dragon_form"
+		"AbilityBehavior"       										"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityType"         											"DOTA_ABILITY_TYPE_ULTIMATE"
+		// Тултип
+		"AbilityUnitTargetTeam"											"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"											"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"										"DOTA_UNIT_TARGET_FLAG_NONE"
+		// Corrosive Breath (1 лвл)
+		"AbilityUnitTargetTeam1"										"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType1"										"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetFlags1"										"DOTA_UNIT_TARGET_FLAG_NONE"
+		// Splash Attack (2 лвл)
+		"AbilityUnitTargetTeam2"										"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType2"										"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags2"										"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		// Frost Breath (3 лвл)
+		"AbilityUnitTargetTeam3"										"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType3"										"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags3"										"DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"       										"SPELL_IMMUNITY_ALLIES_YES_ENEMIES_NO"
+		"SpellDispellableType"      									"SPELL_DISPELLABLE_NO"
+		"AbilitySound"          										"Hero_DragonKnight.ElderDragonForm"
+		"HasScepterUpgrade"             								"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastAnimation"      									"ACT_INVALID"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"       										"40"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"       										"38"
+
+		"MaxLevel"            											"4"
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"duration"          										"25"
+			"bonus_movement_speed"
+			{
+				"value"													"50 75 100 125"
+				"special_bonus_scepter"									"+25"
+			}
+
+			"bonus_attack_range"    									"200"
+			"corrosive_breath_damage" 									"40 120 360 1080"
+			"corrosive_breath_damage_interval" 							"1"
+			"corrosive_breath_str_to_dmg_pct"
+			{
+				"value"													"10"
+				"special_bonus_scepter"									"+5"
+			}
+			"corrosive_breath_duration" 								"5.0"
+			"splash_radius"       										"250"
+			"splash_damage_percent"
+			{
+				"value"													"60 120 180 240"
+				"special_bonus_scepter"									"+25"
+			}
+			"frost_ms_reduction_pct"  									"10 20 30 40"
+			"frost_as_reduction"    									"10 20 30 40"
+			"frost_duration"        									"3.0"
+
+			"bonus_magic_resistance"
+			{
+				"value"													"0"
+				"special_bonus_scepter"									"+30"
+				"RequiresScepter" 										"1"
+			}
+
+			"bonus_strength_pct"
+			{
+				"value"													"0"
+				"special_bonus_scepter"									"+25"
+				"RequiresScepter" 										"1"
+			}
+
+			"bonus_status_resistance"
+			{
+				"value"													"0"
+				"special_bonus_scepter"									"+30"
+				"RequiresScepter" 										"1"
+			}
+
+			"model_scale"
+			{
+				"value"													"5 10 15 20"
+				"special_bonus_scepter"									"+30"
+			}
+
+			"talent_dmg_from_max_hp_pct"
+			{
+				"value"													"0"
+				"talent_dragon_knight_elder_dragon_form_toggle"			"+dmg_from_max_hp_pct"
+			}
+			"talent_dmg_interval"
+			{
+				"value"													"0"
+				"talent_dragon_knight_elder_dragon_form_toggle"			"+dmg_interval"
+			}
+			"talent_toggle_cooldown"
+			{
+				"value"													"0"
+				"talent_dragon_knight_elder_dragon_form_toggle"			"+cooldown"
+			}
+		}
+	}
+
+	"dragon_knight_fireball_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"														"ability_lua"
+		"ScriptFile"													"abilities/heroes/dragon_knight/fireball"
+		"AbilityTextureName"											"dragon_knight_fireball"
+		"AbilityType"													"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"												"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_HIDDEN  | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+		"AbilityUnitTargetTeam"     									"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     									"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"											"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"												"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"												"1"
+		"MaxLevel"														"1"
+		"IsGrantedByShard"												"1"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"												"0.2"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"												"20"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"												"60"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"duration"													"8.0"
+			"radius"													"350"
+			"damage"													"150"
+			"str_to_damage_pct"											"120"
+			"burn_interval"												"0.5"
+			"linger_duration"											"2"
+			"cast_range_in_dragon_form"									"600"
+			"cast_range_in_melee"										"150"
+		}
+		"AbilityCastAnimation"											"ACT_DOTA_CAST_ABILITY_5"
+	}
+}

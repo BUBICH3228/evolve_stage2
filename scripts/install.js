@@ -2,6 +2,7 @@ const assert = require("assert");
 const fs = require("fs-extra");
 const path = require("path");
 const { getAddonName, getDotaPath } = require("./utils");
+const utils = require("./utils");
 
 (async () => {
     const dotaPath = await getDotaPath();
@@ -21,16 +22,17 @@ const { getAddonName, getDotaPath } = require("./utils");
         if (fs.existsSync(targetPath)) {
             const isCorrect = fs.lstatSync(sourcePath).isSymbolicLink() && fs.realpathSync(sourcePath) === targetPath;
             if (isCorrect) {
-                console.log(`Skipping '${sourcePath}' since it is already linked`);
+				utils.print("log", `Skipping '${sourcePath}' since it is already linked`);
                 continue;
             } else {
-                throw new Error(`'${targetPath}' is already linked to another directory`);
+				utils.print("error", `'${targetPath}' is already linked to another directory`);
+				continue;
             }
         }
 
         fs.moveSync(sourcePath, targetPath);
         fs.symlinkSync(targetPath, sourcePath, "junction");
-        console.log(`Linked ${sourcePath} <==> ${targetPath}`);
+		utils.print("success", `Linked ${sourcePath} <==> ${targetPath}`);
     }
 })().catch(error => {
     console.error(error);

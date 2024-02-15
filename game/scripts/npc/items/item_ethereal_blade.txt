@@ -1,0 +1,81 @@
+"DOTAAbilities"
+{
+	"item_recipe_ethereal_blade_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"450"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_ethereal_blade_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_int_custom;item_basic_stat_int_custom;item_basic_stat_int_custom;item_basic_stat_spell_amp_custom;item_basic_stat_spell_lifesteal_custom"
+		}
+	}
+
+	"item_ethereal_blade_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_ethereal_blade_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags"		        "DOTA_UNIT_TARGET_FLAG_NONE"
+		"SpellImmunityType"             		"SPELL_IMMUNITY_ENEMIES_NO"
+    	"SpellDispellableType"          		"SPELL_DISPELLABLE_YES"
+		"AbilityUnitDamageType"		            "DAMAGE_TYPE_MAGICAL"
+        "AbilityTextureName"	                "item_ethereal_blade"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				        "800"
+		"AbilityManaCost"						"100"
+		"AbilityCooldown"				        "16.0"	 
+		"AbilityDuration"   					"4"
+		"AbilitySharedCooldown"			        "ethereal"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_agility"						"5"
+			"bonus_strength"					"5"
+			"bonus_intellect"					"25"
+			"spell_amp"							"12"
+			"spell_lifesteal_amp"				"24"
+			"mana_regen_multiplier"				"75"
+
+			"blast_movement_slow"				"80"
+			"blast_damage_base"					"250"
+			"ethereal_damage_bonus"				"40"
+			"projectile_speed"					"1275"
+
+			"bonus_spell_amp_per_level"			"6"
+			"blast_damage_base_per_level"		"20"
+		}
+	}
+}

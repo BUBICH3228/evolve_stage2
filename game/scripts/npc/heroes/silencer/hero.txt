@@ -1,0 +1,55 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_silencer"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_silencer"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"silencer_curse_of_the_silent_custom"
+		"Ability2"	"silencer_glaives_of_wisdom_custom"
+		"Ability3"	"silencer_last_word_custom"
+		"Ability6"	"silencer_global_silence_custom"
+		"Ability10" "talent_curse_of_the_silent_aoe"
+		"Ability11" "talent_silencer_last_word_instant_attack"
+		"Ability12" "talent_silencer_glaives_of_wisdom_bounces"
+		"Ability13" "talent_silencer_global_silence_cast_last_word"
+		"Ability14" "talent_silencer_last_word_deals_periodic_damage"
+		"Ability15" "talent_silencer_glaives_of_wisdom_bonus_int_per_attack"
+		"Ability16" "talent_curse_of_the_silent_cast_on_death"
+		"Ability17" "talent_silencer_global_silence_give_spell_amplification"
+		
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"-1"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"	"18"
+		"AttackDamageMax"	"32"
+		"BaseAttackSpeed"	"100"
+		"AttackRate"	"1.6"
+		"AttackAnimationPoint"	"0.5"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"	"600"
+		"ProjectileModel"	"particles/units/heroes/hero_silencer/silencer_base_attack.vpcf"
+		"ProjectileSpeed"	"900"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"	"19"
+		"AttributeStrengthGain"	"2.2"
+		"AttributeBaseIntelligence"	"25"
+		"AttributeIntelligenceGain"	"2.9"
+		"AttributeBaseAgility"	"22"
+		"AttributeAgilityGain"	"2.4"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"290"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

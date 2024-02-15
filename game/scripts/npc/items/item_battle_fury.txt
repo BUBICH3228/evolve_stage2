@@ -1,0 +1,75 @@
+"DOTAAbilities"
+{
+	"item_recipe_battle_fury_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"750"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_battle_fury_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_attack_range_melee_custom;item_basic_stat_damage_custom;item_basic_stat_mana_regen_custom;item_basic_stat_hp_regen_custom"
+		}
+	}
+
+	"item_battle_fury_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_battle_fury_custom"
+		"AbilityBehavior"				        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			        "DOTA_UNIT_TARGET_TREE"
+        "AbilityUnitTargetFlags" 		        "DOTA_UNIT_TARGET_FLAG_NONE"
+		"AbilityUnitTargetTeam1"			    "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType1"			    "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitTargetFlags1" 		        "DOTA_UNIT_TARGET_FLAG_DEAD | DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityTextureName"	                "item_bfury"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"						"7.0"
+		"AbilityCastRange"						"350"
+		"AbilitySharedCooldown"			        "battle_fury"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"bonus_damage"						"35"
+			"bonus_health_regen"				"7.5"
+			"bonus_mana_regen"					"2.75"
+			"cleave_damage_percent_creep"		"40"
+			"quelling_bonus"					"20"
+			"cleave_starting_width"				"150"
+			"cleave_ending_width"				"360"
+			"cleave_distance"					"650"
+			"bonus_damage_per_level"			"12"
+			"cleave_damage_percent_creep_per_level""1"
+			"bonus_attack_range_melee"			"50"
+		}
+	}
+}

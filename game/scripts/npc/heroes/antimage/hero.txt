@@ -1,0 +1,55 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_antimage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_antimage"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"antimage_mana_break_custom"
+		"Ability2"	"antimage_blink_custom"
+		"Ability3"	"antimage_counterspell_custom"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"antimage_mana_void_custom"
+		"Ability10"	"talent_antimage_mana_break_toggle"
+		"Ability11"	"talent_antimage_blink_ilussion"
+		"Ability12"	"talent_antimage_blink_damage_between_points"
+		"Ability13"	"talent_antimage_mana_void_mana_burn"
+		"Ability14"	"talent_antimage_counterspell_reduces_magical_resistance"
+		"Ability15"	"talent_antimage_mana_void_multicast"
+		"Ability16"	"talent_antimage_counterspell_toggle"
+		"Ability17"	"talent_antimage_mana_break_damage_max_mana"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"0"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"	"29"
+		"AttackDamageMax"	"33"
+		"AttackRate"	"1.4"
+		"AttackAnimationPoint"	"0.3"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"	"150"
+		"ProjectileSpeed"	"0"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"	"21"
+		"AttributeStrengthGain"	"1.6"
+		"AttributeBaseIntelligence"	"12"
+		"AttributeIntelligenceGain"	"1.8"
+		"AttributeBaseAgility"	"24"
+		"AttributeAgilityGain"	"2.8"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"	"0.25"
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"310"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+}

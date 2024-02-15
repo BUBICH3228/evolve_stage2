@@ -1,0 +1,25 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_magnataur"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_magnataur"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"		"magnataur_shockwave"
+		"Ability2"		"magnataur_empower"
+		"Ability3"		"magnataur_skewer"
+		"Ability4"		"magnataur_horn_toss"
+		"Ability5"		"generic_hidden"
+		"Ability6"		"magnataur_reverse_polarity"
+		"Ability10"		"special_bonus_unique_magnus_5"
+		"Ability11"		"special_bonus_unique_magnus_6"
+		"Ability12"		"talent_cleave_25"
+		"Ability13"		"special_bonus_unique_magnus_7"
+		"Ability14"		"special_bonus_unique_magnus"
+		"Ability15"		"special_bonus_unique_magnus_3"
+		"Ability16"		"special_bonus_unique_magnus_2"
+		"Ability17"		"special_bonus_unique_magnus_4"
+	}
+}

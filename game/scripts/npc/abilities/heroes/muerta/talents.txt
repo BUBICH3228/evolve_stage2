@@ -1,0 +1,80 @@
+"DOTAAbilities"
+{	
+	//=================================================================================================================
+	// Talent: MUERTA Deadshot charges
+	//=================================================================================================================
+  	"special_bonus_unique_muerta_dead_shot_charges"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"									"5755"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityType"							"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"value"							"2"
+				"ad_linked_abilities"			"muerta_dead_shot"				// this is the ability this bonus affects.  This line is required for Ability Draft to correctly choose talents.
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Talent: MUERTA Deadshot damage
+	//=================================================================================================================
+  	"special_bonus_unique_muerta_dead_shot_damage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"									"5756"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityType"							"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ad_linked_abilities"					"muerta_dead_shot"				// this is the ability this bonus affects.  This line is required for Ability Draft to correctly choose talents.
+		"BaseClass"								"special_bonus_base"
+	}
+
+	//=================================================================================================================
+	// Talent: MUERTA Deadshot range
+	//=================================================================================================================
+	"special_bonus_unique_muerta_dead_shot_range"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"									"5757"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityType"							"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ad_linked_abilities"					"muerta_dead_shot"				// this is the ability this bonus affects.  This line is required for Ability Draft to correctly choose talents.
+		"BaseClass"								"special_bonus_base"
+	}
+
+	//=================================================================================================================
+	// Talent: MUERTA The Calling Num Revenants
+	//=================================================================================================================
+	"special_bonus_unique_muerta_the_calling_num_revenants"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"									"5758"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityType"							"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ad_linked_abilities"					"muerta_the_calling"				// this is the ability this bonus affects.  This line is required for Ability Draft to correctly choose talents.
+		"BaseClass"								"special_bonus_base"
+	}
+
+	//=================================================================================================================
+	// Talent: MUERTA Gunslinger Double Shot Chance
+	//=================================================================================================================
+  	"special_bonus_unique_muerta_gunslinger_double_shot_chance"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"									"5759"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityType"							"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"						"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"ad_linked_abilities"					"muerta_gunslinger"				// this is the ability this bonus affects.  This line is required for Ability Draft to correctly choose talents.
+		"BaseClass"								"special_bonus_base"
+	}
+}

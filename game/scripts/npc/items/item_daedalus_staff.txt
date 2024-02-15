@@ -1,0 +1,61 @@
+"DOTAAbilities"
+{
+	"item_recipe_daedalus_staff_custom"
+	{
+		"AbilityTextureName" 					"recipe"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+				
+		"Model"									"models/props_gameplay/recipe.vmdl"
+		"BaseClass"								"item_datadriven"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"								"700"	
+		"ItemShopTags"							"artifacts"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"							"1"
+		"ItemResult"							"item_daedalus_staff_custom"
+		"ItemRequirements"
+		{
+			"01"								"item_basic_stat_spell_amp_custom;item_basic_stat_spell_amp_custom;item_basic_stat_spell_amp_custom;item_basic_stat_spell_amp_custom;"
+		}
+	}
+
+	"item_daedalus_staff_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"								"item_lua"
+		"ScriptFile"                            "items/item_daedalus_staff_custom"
+		"AbilityBehavior"				 		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"	                "daetdalus_staff"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				        "1"	   
+		"AbilitySharedCooldown"			        "daedalus_staff"
+
+		// Item Info
+        //-------------------------------------------------------------------------------------------------------------
+        "ItemCost"								"0"
+        "ItemKillable"                          "1"
+        "ItemSellable"                          "1"
+        "ItemDroppable"                         "1"
+        "ItemPurchasable"				        "1"
+        "MaxUpgradeLevel"						"100"
+        "ItemBaseLevel"							"1"
+
+        "IsModifiable"                          "1"
+        //special
+        "AbilityValues"
+		{
+			"spell_amp"							"22"
+            "damage_multiple"                   "175"
+			"spell_amp_per_level"				"1"
+            "damage_multiple_per_level"         "0.5"
+		}
+	}
+}

@@ -1,0 +1,56 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_lina"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_lina"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"lina_dragon_slave_custom"
+		"Ability2"	"lina_light_strike_array_custom"
+		"Ability3"	"lina_fiery_soul_custom"
+		"Ability4"	"lina_flame_cloak_custom"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"lina_laguna_blade_custom"
+		"Ability10"	"talent_lina_dragon_slave_multicast"
+		"Ability11"	"talent_lina_fiery_soul_bat"
+		"Ability12"	"talent_lina_dragon_slave_cooldown"
+		"Ability13"	"talent_lina_light_strike_array_multicast"
+		"Ability14"	"talent_lina_laguna_blade_aoe_pure_damage"
+		"Ability15"	"talent_lina_dragon_slave_armor_melting"
+		"Ability16"	"talent_lina_laguna_blade_cooldown"
+		"Ability17"	"talent_lina_dragon_slave_fiery_soul_active"
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"	"0"
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"	"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"	"21"
+		"AttackDamageMax"	"29"
+		"AttackRate"	"1.6"
+		"AttackAnimationPoint"	"0.65"
+		"AttackAcquisitionRange"	"800"
+		"AttackRange"	"670"
+		"ProjectileModel"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		"ProjectileSpeed"	"1000"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"	"20"
+		"AttributeStrengthGain"	"2.4"
+		"AttributeBaseIntelligence"	"30"
+		"AttributeIntelligenceGain"	"3.8"
+		"AttributeBaseAgility"	"23"
+		"AttributeAgilityGain"	"2.4"
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"	"290"
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+	}
+
+}

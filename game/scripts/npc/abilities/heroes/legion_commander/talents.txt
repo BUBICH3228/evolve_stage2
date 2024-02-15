@@ -1,0 +1,102 @@
+"DOTAAbilities"
+{
+	"talent_legion_commander_press_the_attack_armor_and_mag_res"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"bonus_armor_pct"								"25"
+			"bonus_mag_res_pct"								"25"
+		}
+
+		"HasDescription"									"1"
+	}
+	"talent_legion_commander_press_the_attack_aoe"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityValues"
+		{
+			"aoe_radius"									"400"
+		}
+	}
+
+	"talent_legion_commander_press_the_attack_passive"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"HasDescription"									"1"
+	}
+
+	"talent_legion_commander_overwhelming_odds_multicast"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"multicast_count"								"2"
+			"multicast_delay"								"1"
+		}
+
+		"HasDescription"									"1"
+	}
+	"talent_legion_commander_overwhelming_odds_attack_damage_pct"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"attack_damage_pct"								"75"
+		}
+
+		"HasDescription"									"1"
+	}
+
+	"talent_legion_commander_moment_of_courage_self_attacks"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	}
+
+	"talent_legion_commander_duel_aura"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"aura_radius"									"1200"
+			"damage_share_pct"								"50"
+		}
+
+		"HasDescription"									"1"
+	}
+	"talent_legion_commander_duel_reward_damage_bonus"
+	{
+		"BaseClass" 										"ability_lua"
+		"ScriptFile"										"abilities/talents/talent_base"
+		"AbilityBehavior"									"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityValues"
+		{
+			"bonus_reward_damage"							"10"
+		}
+	}
+}
