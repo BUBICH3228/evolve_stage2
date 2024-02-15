@@ -5,7 +5,6 @@ declare global {
     interface CDOTA_BaseNPC {
         SetInitialWaypoint(cornerName: string): void;
         HasShard(): boolean;
-        HasTalent(talentName: string): boolean;
         BeginChannel(
             time: number,
             target: CDOTA_BaseNPC,
@@ -52,10 +51,6 @@ CDOTA_BaseNPC.HasShard = function () {
 
 CDOTA_BaseNPC.GetCountRelics = function () {
     return tonumber(GetUnitKV(this.GetUnitName(), "CountDropRelic")) || 0;
-};
-
-CDOTA_BaseNPC.HasTalent = function (talentName: string) {
-    return Talents.IsTalentLearned(this, talentName);
 };
 
 CDOTA_BaseNPC.BeginChannel = function (

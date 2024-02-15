@@ -24,35 +24,12 @@ interface CDOTABaseAbilityExtended extends CDOTABaseAbility {
     _GetLevelSpecialValueNoOverrideVanilla(name: string, level: number): number;
 }
 
-function GetLevelSpecialValueNoOverrideInternal(
-    this: void,
-    ability: CDOTABaseAbility,
-    baseSpecivalValue: number,
-    name: string,
-    level: number,
-    ignoreTalents?: boolean
-): number {
-    if (ignoreTalents == true) {
-        return baseSpecivalValue;
-    }
-
-    return Talents.GetAbilitySpecialValueAfterTalentsModifiers(ability.GetCaster(), ability.GetAbilityName(), name, baseSpecivalValue);
-}
-
 // @ts-ignore
 CDOTABaseAbility = CDOTABaseAbility || C_DOTABaseAbility;
 
-(CDOTABaseAbility as unknown as CDOTABaseAbilityExtended)._GetLevelSpecialValueNoOverrideVanilla =
-    (CDOTABaseAbility as unknown as CDOTABaseAbilityExtended)._GetLevelSpecialValueNoOverrideVanilla ??
-    CDOTABaseAbility.GetLevelSpecialValueNoOverride;
-
-CDOTABaseAbility.GetLevelSpecialValueNoOverride = function (name: string, level: number, ignoreTalents?: boolean) {
-    const convertedAbility = this as unknown as CDOTABaseAbilityExtended;
-
-    const baseValue: number = convertedAbility._GetLevelSpecialValueNoOverrideVanilla(name, level);
-
-    return GetLevelSpecialValueNoOverrideInternal(this, baseValue, name, level, ignoreTalents);
-};
+(CDOTABaseAbility as unknown as CDOTABaseAbilityExtended)._GetLevelSpecialValueNoOverrideVanilla = (
+    CDOTABaseAbility as unknown as CDOTABaseAbilityExtended
+)._GetLevelSpecialValueNoOverrideVanilla;
 
 CDOTABaseAbility.IsModifiable = function () {
     return tonumber(GetItemKV(this.GetName(), "IsModifiable")) == 1;

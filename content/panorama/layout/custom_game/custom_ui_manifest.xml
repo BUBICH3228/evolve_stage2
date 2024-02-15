@@ -6,7 +6,7 @@
 		<include src="file://{resources}/scripts/custom_game/api/dota_hud.js" />
 		<include src="file://{resources}/scripts/custom_game/api/top_bar_hud_buttons.js" />
 		<include src="file://{resources}/scripts/custom_game/api/selection.js" />
-		<include src="file://{resources}/scripts/custom_game/api/fix_DotaDefaultUIElement.js" />
+		<!--<include src="file://{resources}/scripts/custom_game/api/fix_DotaDefaultUIElement.js" /> !-->
 	</scripts>
 
 	<Panel>
@@ -15,6 +15,8 @@
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/top_bar_hud_buttons/top_bar_hud_buttons.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/debug_panel/debug_panel.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dota_hud/dota_hud.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/quests/quests_window.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/quests/quests_tracker.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/players_top/players_top.xml" />
 	</Panel>
 </root>
