@@ -8,7 +8,6 @@
 		<include src="file://{resources}/scripts/custom_game/api/selection.js" />
 		<include src="file://{resources}/scripts/custom_game/api/quests.js" />
 		<include src="file://{resources}/scripts/custom_game/api/game_settings.js" />
-		<!--<include src="file://{resources}/scripts/custom_game/api/fix_DotaDefaultUIElement.js" /> !-->
 	</scripts>
 
 	<Panel>

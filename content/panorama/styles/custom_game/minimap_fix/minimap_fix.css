@@ -1,5 +1,11 @@
+.Root {
+    align: left bottom;
+    width: 260px;
+    height: 260px;
+}
+
 #Map {
     align: left bottom;
-    width: 244px;
-    height: 244px;
+    width: 100%;
+    height: 100%;
 }

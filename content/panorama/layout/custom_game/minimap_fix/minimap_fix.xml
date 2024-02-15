@@ -6,6 +6,6 @@
         <include src="file://{resources}/scripts/custom_game/minimap_fix/minimap_fix.js"/>
     </scripts>
     <Panel class="Root">
-        <DOTAHUDOverlayMap id="Map" maptexture= "materials/overviews/wraith_trap_map_tga_1d8098dc.vtex" mapscale= "1" fixedoffsetenabled="true" SetFixedOffset = "244,244"/>
+        <DOTAHUDOverlayMap id="Map" maptexture= "" mapscale= "1" fixedoffsetenabled="true" SetFixedOffset = "0,0"/>
     </Panel>
 </root>

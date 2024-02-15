@@ -3,6 +3,7 @@ interface PanelWithSubscription extends Panel {
 }
 
 interface Panel {
+    text: string;
     /**
      * contains the WorldPanel configuration
      */
