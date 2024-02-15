@@ -1,0 +1,49 @@
+"lang"
+{
+	"Language"		"russian"
+	"Tokens"
+	{
+		// Variables
+		//"dota_ability_variable_health"				"к здоровью"					// $health
+		//"dota_ability_variable_mana"				"к мане"						// $mana
+		//"dota_ability_variable_armor"				"к броне"						// $armor
+		//"dota_ability_variable_damage"				"к урону"					// $damage
+		//"dota_ability_variable_str"					"к силе"					// $str
+		//"dota_ability_variable_int"					"к интеллекту"				// $int
+		//"dota_ability_variable_agi"					"к ловкости"					// $agi
+		//"dota_ability_variable_all"					"ко всем атрибутам"			// $all
+		//"dota_ability_variable_primary_attribute"	"к основному атрибуту"			// $primary_attribute
+		//"dota_ability_variable_attack"				"к скорости атаки"				// $attack
+		//"dota_ability_variable_hp_regen"			"к восстановлению здоровья"		// $hp_regen
+		//"dota_ability_variable_lifesteal"			"к вампиризму"					// $lifesteal
+		//"dota_ability_variable_mana_regen"			"к восстановлению маны"			// $mana_regen
+		//"dota_ability_variable_mana_regen_aura"		"к восстановлению маны в ауре"	// $mana_regen_aura
+		//"dota_ability_variable_spell_amp"			"к урону от заклинаний"				// $spell_amp
+		//"dota_ability_variable_debuff_amp"			"к длительности отрицательных эффектов"			// $debuff_amp
+		//"dota_ability_variable_move_speed"			"к скорости передвижения"			// $move_speed
+		//"dota_ability_variable_evasion"				"к уклонению"					// $evasion
+		//"dota_ability_variable_spell_resist"		"к сопротивлению магии"			// $spell_resist
+		//"dota_ability_variable_spell_lifesteal"		"к вампиризму заклинаниями"			// $spell_lifesteal
+		//"dota_ability_variable_spell_lifesteal_creep"	"к вампиризму заклинаниями (от крипов)"	// $spell_lifesteal_creep
+		//"dota_ability_variable_spell_lifesteal_hero"	"к вампиризму заклинаниями (от героев)"	// $spell_lifesteal_hero
+		//"dota_ability_variable_selected_attrib"		"к выбранному атрибуту"		// $selected_attribute
+		//"dota_ability_variable_attack_range"		"к дальности атаки <font color='#7d7d7d'>(в дальнем бою)</font>"	// $attack_range
+		//"dota_ability_variable_attack_range_melee"	"к дальности атаки <font color='#7d7d7d'>(в ближнем бою)</font>"	// $attack_range_melee
+		//"dota_ability_variable_cast_range"			"к дальности применения заклинаний"				// $cast_range
+		//"dota_ability_variable_status_resist"		"к сопротивлению эффектам"			// $status_resist
+		//"dota_ability_variable_projectile_speed"	"к скорости снарядов"			// $projectile_speed
+		//"dota_ability_variable_manacost_reduction"	"к уменьшению расхода маны"		// $manacost_reduction
+		//"dota_ability_variable_cooldown_reduction"	"к уменьшению перезарядок заклинаний"		// $cooldown_reduction
+		//"dota_ability_variable_max_mana_percentage"	"к максимальной мане"			// $max_mana_percentage
+		//"dota_ability_variable_damage_int_hero"	"к урону (у героев интеллекта)" // $damage_int_hero
+		//"dota_ability_variable_damage_agi_hero"	"к урону (у героев ловкости)" // $damage_agi_hero
+		//"dota_ability_variable_damage_str_hero"	"к урону (у героев силы)" // $damage_str_hero
+
+		"DOTA_ability_variable_max_health_regen"		"макс. здоровья в секунду"			// $max_health_regen
+		"DOTA_ability_variable_hp_regen_amp"			"к здоровью от восстановления и вампиризма"			// $hp_regen_amp
+		"DOTA_ability_variable_status_resistance"		"к сопротивлению эффекта"			// $status_resistance
+		"DOTA_ability_variable_spell_amp"				"к урону от заклинаний"			// $spell_amp
+		"DOTA_ability_variable_spell_lifesteal_amp"		"к усилению вампиризма от заклинаний"			// $spell_lifesteal_amp
+		"DOTA_ability_variable_mana_regen_amp"			"к усилению восстановления маны"			// $mana_regen_amp
+	}
+}

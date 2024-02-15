@@ -6,6 +6,8 @@
 		<include src="file://{resources}/scripts/custom_game/api/dota_hud.js" />
 		<include src="file://{resources}/scripts/custom_game/api/top_bar_hud_buttons.js" />
 		<include src="file://{resources}/scripts/custom_game/api/selection.js" />
+		<include src="file://{resources}/scripts/custom_game/api/quests.js" />
+		<include src="file://{resources}/scripts/custom_game/api/game_settings.js" />
 		<!--<include src="file://{resources}/scripts/custom_game/api/fix_DotaDefaultUIElement.js" /> !-->
 	</scripts>
 

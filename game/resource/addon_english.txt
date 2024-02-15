@@ -1,0 +1,48 @@
+"lang"
+{
+	"Language"		"English"
+	"Tokens"
+	{
+		// Variables
+		//"dota_ability_variable_health"				"Health"					// $health
+		//"dota_ability_variable_mana"				"Mana"						// $mana
+		//"dota_ability_variable_armor"				"Armor"						// $armor
+		//"dota_ability_variable_damage"				"Damage"					// $damage
+		//"dota_ability_variable_str"					"Strength"					// $str
+		//"dota_ability_variable_int"					"Intelligence"				// $int
+		//"dota_ability_variable_agi"					"Agility"					// $agi
+		//"dota_ability_variable_all"					"All Attributes"			// $all
+		//"dota_ability_variable_primary_attribute"	"Primary Attribute"			// $primary_attribute
+		//"dota_ability_variable_attack"				"Attack Speed"				// $attack
+		//"dota_ability_variable_hp_regen"			"Health Regeneration"		// $hp_regen
+		//"dota_ability_variable_lifesteal"			"Lifesteal"					// $lifesteal
+		//"dota_ability_variable_mana_regen"			"Mana Regeneration"			// $mana_regen
+		//"dota_ability_variable_mana_regen_aura"		"Mana Regeneration Aura"	// $mana_regen_aura
+		//"dota_ability_variable_spell_amp"			"Spell Damage"				// $spell_amp
+		//"dota_ability_variable_debuff_amp"			"Debuff Duration"			// $debuff_amp
+		//"dota_ability_variable_move_speed"			"Movement Speed"			// $move_speed
+		//"dota_ability_variable_evasion"				"Evasion"					// $evasion
+		//"dota_ability_variable_spell_resist"		"Magic Resistance"			// $spell_resist
+		//"dota_ability_variable_spell_lifesteal"		"Spell Lifesteal"			// $spell_lifesteal
+		//"dota_ability_variable_spell_lifesteal_creep"	"Spell Lifesteal (Creeps)"	// $spell_lifesteal_creep
+		//"dota_ability_variable_spell_lifesteal_hero"	"Spell Lifesteal (Heroes)"	// $spell_lifesteal_hero
+		//"dota_ability_variable_selected_attrib"		"Selected Attribute"		// $selected_attribute
+		//"dota_ability_variable_attack_range"		"Attack Range <font color='#7d7d7d'>(Ranged Only)</font>"	// $attack_range
+		//"dota_ability_variable_attack_range_melee"	"Attack Range <font color='#7d7d7d'>(Melee Only)</font>"	// $attack_range_melee
+		//"dota_ability_variable_cast_range"			"Cast Range"				// $cast_range
+		//"dota_ability_variable_status_resist"		"Status Resistance"			// $status_resist
+		//"dota_ability_variable_projectile_speed"	"Projectile Speed"			// $projectile_speed
+		//"dota_ability_variable_manacost_reduction"	"Manacost Reduction"		// $manacost_reduction
+		//"dota_ability_variable_cooldown_reduction"	"Cooldown Reduction"		// $cooldown_reduction
+		//"dota_ability_variable_max_mana_percentage"	"Max Mana Bonus"			// $max_mana_percentage
+		//"dota_ability_variable_damage_int_hero"	"Damage (Intelligence Heroes)" // $damage_int_hero
+		//"dota_ability_variable_damage_agi_hero"	"Damage (Agility Heroes)" // $damage_agi_hero
+		//"dota_ability_variable_damage_str_hero"	"Damage (Strength Heroes)" // $damage_str_hero
+
+		"dota_ability_variable_max_health_regen"		"Max Health Regen"			// $max_health_regen
+		"dota_ability_variable_hp_regen_amp"			"Health Regen and Lifesteal Amp"			// $hp_regen_amp
+		"dota_ability_variable_status_resistance"		"Status Resistance"			// $status_resistance
+		"dota_ability_variable_spell_lifesteal_amp"		"Spell Lifesteal Amplification"			// $spell_lifesteal_amp
+		"dota_ability_variable_mana_regen_amp"			"Mana Regen Amplification"			// $mana_regen_amp
+	}
+}

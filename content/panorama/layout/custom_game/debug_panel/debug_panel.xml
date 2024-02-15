@@ -136,23 +136,7 @@
 							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnKillRequest()">
 								<Label text="#ui_debug_panel_kill" />
 							</Button>
-						</Panel>
-						<Panel class="Row">
-							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(0)">
-								<Label text="#ui_debug_panel_min_gold" />
-							</Button>
-							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(99999)">
-								<Label text="#ui_debug_panel_max_gold" />
-							</Button>
-						</Panel>
-						<Panel class="Row">
-							<Button class="DemoButton LeftButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(1000000)">
-								<Label text="#ui_debug_panel_one_million" />
-							</Button>
-							<Button class="DemoButton RightButton" acceptsjoyfocus="true" onactivate="OnSetGoldRequest(100000000)">
-								<Label text="#ui_debug_panel_one_hundred_million" />
-							</Button>
-						</Panel>
+						</Panel>						
 					</Panel>
 				</Panel>
 				<Panel id="GlobalCategory" class="Category Last">
