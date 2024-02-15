@@ -1,0 +1,85 @@
+"addon"
+{	
+	"addon_game_name"									"Evolve Stage 2"
+
+	//Top Hud
+	"ui_top_hud_buttons_discord"						"Дискорд"
+	"ui_top_hud_buttons_debug_panel"					"Отладка"
+	"ui_top_hud_buttons_players_top_panel"				"Топ Игроков"
+	"ui_top_hud_buttons_donation_panel"					"Поддержать Разработчика"
+
+	//Debug Panel
+	"ui_debug_panel_dummy_target"						"+ ТЕСТЕР УРОНА"
+	"ui_debug_panel_dummy_target_reset"					"СБРОСИТЬ"
+	"ui_debug_panel_dummy_target_show_log"				"ЛОГ УРОНА"
+	"ui_debug_panel_dummy_target_reset"					"СБРОСИТЬ"
+	"ui_debug_panel_dummy_target_total_damage"			"ВСЕГО УРОНА: {s:value}"
+	"ui_debug_panel_dummy_target_dps"					"ДПС: {s:value}"
+	"ui_debug_panel_dummy_target_last_hit"				"ПОСЛЕДНИЙ УРОН: {s:value}"
+	"ui_debug_panel_dummy_target_damage"				"Тестер получил %damage% (%original_damage%) урона с типом %damage_type% от атаки"
+	"ui_debug_panel_dummy_target_damage_ability"		"Тестер получил %damage% (%original_damage%) урона с типом %damage_type% от  [%ability%]"
+	"ui_debug_panel_unit_tests"							"ТЕСТ НА БУБИЧА"
+	"ui_debug_panel_unit_tests_run"						"ЗАПУСТИТЬ"
+	"ui_debug_panel_reload_kv"							"ПЕРЕЗАГРУЗИТЬ KV"
+	"ui_debug_panel_increase_lvl"						"+ УРОВЕНЬ"
+	"ui_debug_panel_max_lvl"							"МАКС. УРОВЕНЬ"
+	"ui_debug_panel_scepter"							"АГАНИМ"
+	"ui_debug_panel_shard"								"ШАРД"
+	"ui_debug_panel_invulnerable"						"НЕУЯЗВИМОСТЬ"
+	"ui_debug_panel_grave"								"КРЕСТ"
+	"ui_debug_panel_reset"								"СБРОС"
+	"ui_debug_panel_restore"							"ВОССТАНОВИТЬ"
+	"ui_debug_panel_respawn"							"ВОСКРЕШЕНИЕ"
+	"ui_debug_panel_kill"								"УБИТЬ"
+	"ui_debug_panel_min_gold"							"МИН. ЗОЛОТА"
+	"ui_debug_panel_max_gold"							"МАКС. ЗОЛОТА"
+	"ui_debug_panel_one_million"						"1M ЗОЛОТА"
+	"ui_debug_panel_one_hundred_million"				"100M ЗОЛОТА"
+	"ui_debug_panel_free_spells"						"БЕСПЛАТНЫЕ СПОСОБНОСТИ"
+	"ui_debug_panel_refresh_tooltip"					"Сбрасывает время перезарядки способности, предметов, а также заряды способностей (если есть)"
+	"ui_debug_panel_host_timescale"						"СКОРОСТЬ ИГРЫ ({s:value})"
+
+	
+
+	//Fix unit stats
+	"ui_unit_stats_detailed_strength_details"  			"= %HEALTH% здоровья, %HEALTH_REGENERATION% его восстановления и %MAGIC_RESISTANCE%%% сопр. магии"
+	"ui_unit_stats_detailed_agility_details"  			"= %ARMOR% брони, %ATTACK_SPEED% скорости атаки и %MOVE_SPEED% скорости передвижения"
+	"ui_unit_stats_detailed_intelligence_details"		"= %MANA% маны, %MANA_REGEN% её восстановления и %SPELL_AMP%%% ур. от заклинаний"
+	
+	//Fix guide category
+	"ui_guide_category_end_game"						"Конец игры"
+	"ui_guide_category_Middle_Game"						"Середина игры"
+	"ui_guide_category_by_situation"					"По ситуации"
+	"ui_guide_category_neutral_items"					"Нейтральные предметы"
+
+
+	"ui_hero_stats_auto_use_info"						"Двойной клик включает авто покупку"
+	"ui_hero_stats_autofill_button"						"ON/OFF покупку очков улучшения"
+
+	//Qest
+	"ui_quests_action_kill_enemies"						"Убейте [%UNIT_NAME%]"
+	"ui_quests_action_collect_gold"						"Получить золото"
+	"ui_quests_action_deal_damage"						"Нанести урон врагам"
+	"ui_quests_action_talk_to_npc"						"Поговорить с [%NPC_NAME%]"
+	"ui_quests_action_reach_hero_level"					"Получить %HERO_LEVEL% уровень героя"
+	"ui_quests_window_title"							"Задание"
+	"ui_quests_window_tasks"							"Задачи"
+	"ui_quests_window_rewards"							"Награды"
+	"ui_quests_window_accept"							"Принять"
+
+	//Players top
+	"ui_players_top_rating_button"						"Рейтинг"
+	"ui_players_top_min_game_time_button"				"Мин. время прохождения"
+	"ui_players_top_max_game_time_button"				"Макс. время прохождения"
+	"ui_players_top_count_bosses_killed_button"			"Убиств боссов"
+	"ui_players_top_count_creps_killed_button"			"Убиств крипов"
+
+	"ui_players_top_easy_button"						"Легкий"
+	"ui_players_top_normal_button"						"Нормальный"
+	"ui_players_top_hard_button"						"Сложный"
+	"ui_players_top_impossible_button"					"Невозможный"
+
+	"ui_players_top_rank"								"Место"
+	"ui_players_top_player"								"Игрок"
+	"ui_players_top_score"								"Счёт"
+}

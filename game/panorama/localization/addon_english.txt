@@ -1,0 +1,79 @@
+"addon"
+{
+	"addon_game_name"									"Evolve Stage 2"
+
+	//Top Hud
+	"ui_top_hud_buttons_discord"						"Discord"
+	"ui_top_hud_buttons_debug_panel"					"Debug"
+	"ui_top_hud_buttons_players_top_panel"				"Top Players"
+	"ui_top_hud_buttons_donation_panel"					"Support the Developer"
+	
+	//Debug Panel
+	"ui_debug_panel_dummy_target"						"+ DUMMY TARGET"
+	"ui_debug_panel_dummy_target_reset"					"RESET"
+	"ui_debug_panel_dummy_target_show_log"				"SHOW LOG"
+	"ui_debug_panel_dummy_target_reset"					"RESET"
+	"ui_debug_panel_dummy_target_total_damage"			"TOTAL DAMAGE: {s:value}"
+	"ui_debug_panel_dummy_target_dps"					"DPS: {s:value}"
+	"ui_debug_panel_dummy_target_last_hit"				"LAST HIT: {s:value}"
+	"ui_debug_panel_dummy_target_damage"				"Dummy received %damage% (%original_damage%) damage as %damage_type% from attack"
+	"ui_debug_panel_dummy_target_damage_ability"		"Dummy received %damage% (%original_damage%) damage as %damage_type% from  [%ability%]"
+	"ui_debug_panel_unit_tests"							"BUBICH TEST"
+	"ui_debug_panel_unit_tests_run"						"RUN"
+	"ui_debug_panel_reload_kv"							"RELOAD KV"
+	"ui_debug_panel_increase_lvl"						"+ LVL"
+	"ui_debug_panel_max_lvl"							"MAX LVL"
+	"ui_debug_panel_scepter"							"SCEPTER"
+	"ui_debug_panel_shard"								"SHARD"
+	"ui_debug_panel_invulnerable"						"INVULNERABLE"
+	"ui_debug_panel_grave"								"GRAVE"
+	"ui_debug_panel_reset"								"RESET"
+	"ui_debug_panel_restore"							"RESTORE"
+	"ui_debug_panel_respawn"							"RESPAWN"
+	"ui_debug_panel_kill"								"KILL"
+	"ui_debug_panel_min_gold"							"MIN GOLD"
+	"ui_debug_panel_max_gold"							"MAX GOLD"
+	"ui_debug_panel_one_million"						"1M GOLD"
+	"ui_debug_panel_one_hundred_million"				"100M GOLD"
+	"ui_debug_panel_free_spells"						"FREE SPELLS"
+	"ui_debug_panel_refresh_tooltip"					"Reset abilities and items cooldowns or charges"
+	"ui_debug_panel_host_timescale"						"Host timescale ({s:value})"
+
+	//Fix unit stats
+	"ui_unit_stats_detailed_strength_details"  			"= %HEALTH% HP, %HEALTH_REGENERATION% HP Regen and %MAGIC_RESISTANCE%%% Magic Resistance"
+	"ui_unit_stats_detailed_agility_details"  			"= %ARMOR% Armor, %ATTACK_SPEED% Attack Speed and %MOVE_SPEED% Movement Speed"
+	"ui_unit_stats_detailed_intelligence_details"		"= %MANA% Mana, %MANA_REGEN% Mana Regen and %SPELL_AMP%%% Spell Amplification"
+
+	//Fix guide category
+	"ui_guide_category_end_game"						"End Game"
+	"ui_guide_category_Middle_Game"						"Middle Game"
+	"ui_guide_category_by_situation"					"By Situation"
+	"ui_guide_category_neutral_items"					"Neutral Items"
+
+	//Qest
+	"ui_quests_action_kill_enemies"						"Kill [%UNIT_NAME%]" 
+	"ui_quests_action_collect_gold"						"Earn gold"
+	"ui_quests_action_deal_damage"						"Deal damage to enemies"
+	"ui_quests_action_talk_to_npc"						"Talk to [%NPC_NAME%]"
+	"ui_quests_action_reach_hero_level"					"Reach %HERO_LEVEL% hero level"
+	"ui_quests_window_title"							"Quest"
+	"ui_quests_window_tasks"							"Tasks"
+	"ui_quests_window_rewards"							"Rewards"
+	"ui_quests_window_accept"							"Accept"
+
+	//Players top
+	"ui_players_top_rating_button" 						"Rating"
+	"ui_players_top_min_game_time_button" 				"Min. passing time"
+	"ui_players_top_max_game_time_button" 				"Max. passing time"
+	"ui_players_top_count_bosses_killed_button" 		"Boss kills"
+	"ui_players_top_count_creps_killed_button" 			"Killing creeps"
+
+	"ui_players_top_easy_button" 						"Easy"
+	"ui_players_top_normal_button" 						"Normal"
+	"ui_players_top_hard_button" 						"Hard"
+	"ui_players_top_impossible_button" 					"Impossible"
+
+	"ui_players_top_rank" 								"Rank"
+	"ui_players_top_player" 							"Player"
+	"ui_players_top_score" 								"Score"
+}

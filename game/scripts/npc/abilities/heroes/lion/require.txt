@@ -1,2 +1,0 @@
-#base "abilities.txt"
-#base "talents.txt"

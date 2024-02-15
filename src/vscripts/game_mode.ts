@@ -2,13 +2,13 @@
 import { IsDOTA_BaseNPC_Hero, IsDOTA_BaseNPC } from "./libraries/dota_ts_adapter";
 import { HTTPRequests } from "./libraries/HTTP_requests";
 
-//import "./game_settings";
-//import "./libraries/require_addon_game_mode";
-//import "./override/require_addon_game_mode";
-//import "./ui/require";
-//import "./modifiers/require";
-//import "./tests/require";
-//import { Filters } from "./filters/require";
+import "./game_settings";
+import "./libraries/require_addon_game_mode";
+import "./override/require_addon_game_mode";
+import "./ui/require";
+import "./modifiers/require";
+import "./tests/require";
+import { Filters } from "./filters/require";
 
 declare global {
     interface CDOTAGameRules {
@@ -28,13 +28,13 @@ export class GameMode {
         PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_items.vsndevts", context);
         PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_debug_panel.vsndevts", context);
         PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/heroes/base/game_sounds_base.vsndevts", context);
+
         CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_ADDON_PRECACHE, {
             context: context
         });
     }
 
     public static Activate(this: void) {
-        print("12121");
         GameRules.Addon = new GameMode();
     }
 
@@ -43,14 +43,13 @@ export class GameMode {
     }
 
     private Initialize() {
-        //const gme = GameRules.GetGameModeEntity();
-        //GameSettings.LoadSettings(gme);
-        //Filters.Init(gme);
+        const gme = GameRules.GetGameModeEntity();
+        GameSettings.LoadSettings(gme);
+        Filters.Init(gme);
         this.ListenToGameEvents();
     }
 
     private ListenToGameEvents() {
-        print("135412431432");
         ListenToGameEvent("game_rules_state_change", () => this.OnGameRulesStateChange(), undefined);
         ListenToGameEvent("dota_player_gained_level", (event) => this.OnPlayerGainedLevel(event), undefined);
         ListenToGameEvent("dota_player_learned_ability", (event) => this.OnPlayerLearnedAbility(event), undefined);
@@ -167,7 +166,6 @@ export class GameMode {
 
     private OnGameRulesStateChange() {
         const newState = GameRules.State_Get();
-        print(newState, "Момент краша надо выяснить");
         if (newState == GameState.GAME_IN_PROGRESS) {
             this.FixDotaTowersInvulnerablity();
         }
