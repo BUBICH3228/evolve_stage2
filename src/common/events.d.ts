@@ -21,7 +21,13 @@ interface CustomGameEventDeclarations {
     quests_quest_accepted: QuestAcceptedEvent;
     quests_quest_npc_selected: QuestNpcSelectedEvent;
     selection_player_update: SelectionPlayerUpdateEvent;
+    team_selection_results: TeamSelectionResultsEvent;
     load_top_table: any;
+}
+
+interface TeamSelectionResultsEvent {
+    PlayerType: string;
+    PlayerID?: PlayerID;
 }
 
 interface MountainDotaHUDShowHudError {

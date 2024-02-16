@@ -7,6 +7,7 @@ class DotaDefaultUIElement_hide {
         this.HideDefaultDOTATopBarButtons();
         this.HideDefaultDOTAMinimap();
         this.HideDefaultDOTAGlyphScanContainer();
+        this.HideDefaultDOTATalenBranch();
     }
 
     private HideDotaDefaultUIElement() {
@@ -48,6 +49,30 @@ class DotaDefaultUIElement_hide {
             glyphScanContainer.style.visibility = "collapse";
         } else {
             $.Msg("Seems valve break HideDefaultDOTAGlyphScanContainer");
+        }
+    }
+
+    private HideDefaultDOTATalenBranch() {
+        const hud = DotaHUD.Get();
+        const statBranchDrawer = hud.FindChildTraverse("StatBranchDrawer");
+        if (statBranchDrawer) {
+            statBranchDrawer.style.visibility = "collapse";
+        } else {
+            $.Msg("Seems valve break HideDefaultDOTATalenBranch");
+        }
+
+        const statBranch = hud.FindChildTraverse("StatBranch");
+        if (statBranch) {
+            statBranch.style.visibility = "collapse";
+        } else {
+            $.Msg("Seems valve break HideDefaultDOTATalenBranch");
+        }
+
+        const levelStatsFrame = hud.FindChildTraverse("level_stats_frame");
+        if (levelStatsFrame) {
+            levelStatsFrame.style.visibility = "collapse";
+        } else {
+            $.Msg("Seems valve break HideDefaultDOTATalenBranch");
         }
     }
 }

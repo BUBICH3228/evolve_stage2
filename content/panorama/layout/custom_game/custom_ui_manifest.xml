@@ -19,6 +19,7 @@
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/quests/quests_window.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/quests/quests_tracker.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/players_top/players_top.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/team_selection/team_selection.xml" />
 	</Panel>
 </root>
 

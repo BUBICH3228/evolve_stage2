@@ -1,8 +1,8 @@
 hub
 {
 	material materials/overviews/hub.vmat
-	pos_x -4096
-	pos_y 4096
-	scale 8.000
+	pos_x -2048
+	pos_y 2048
+	scale 4.000
 }
 

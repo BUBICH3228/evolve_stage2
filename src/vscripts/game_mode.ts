@@ -55,9 +55,20 @@ export class GameMode {
         ListenToGameEvent("dota_player_learned_ability", (event) => this.OnPlayerLearnedAbility(event), undefined);
         ListenToGameEvent("dota_player_pick_hero", (event) => this.OnPlayerPickedHero(event), undefined);
         ListenToGameEvent("npc_spawned", (event) => this.OnNPCSpawned(event), undefined);
+        ListenToGameEvent(
+            "player_chat",
+            (event) => {
+                this.OnPlayerChating(event);
+            },
+            undefined
+        );
         CustomEvents.RegisterEventHandler(CustomEvent.CUSTOM_EVENT_ON_PLAYER_HERO_CHANGED, (data) => {
             this.OnPlayerHeroChanged(data as CustomEventPlayerHeroChangedEvent);
         });
+    }
+
+    private OnPlayerChating(event: PlayerChatEvent) {
+        print(event.text);
     }
 
     private OnPlayerHeroChanged(data: CustomEventPlayerHeroChangedEvent) {
@@ -168,6 +179,18 @@ export class GameMode {
         const newState = GameRules.State_Get();
         if (newState == GameState.GAME_IN_PROGRESS) {
             this.FixDotaTowersInvulnerablity();
+            DOTA_SpawnMapAtPosition(
+                "wraith_trap_map",
+                Vector(0, 0, 0),
+                false,
+                () => {
+                    return true;
+                },
+                () => {
+                    print("eyey");
+                },
+                undefined
+            );
         }
         if (newState > GameState.HERO_SELECTION && newState < GameState.PRE_GAME) {
             for (

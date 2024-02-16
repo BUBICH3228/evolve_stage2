@@ -1,0 +1,25 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/team_selection/team_selection.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/team_selection/team_selection.js"/>
+    </scripts>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="MainPanel" hittest="false" class="Hidden">
+            <Label class="LableTitleText" text="Выбрите команду" />
+		    <Button id="SelectHuntersButton" >
+                <Panel class="LableContainerClass LeftPanel">
+                    <Label class="LableText" text="Охотник" />
+                </Panel>
+            </Button>
+		    <Button id="SelectMonsterButton" >
+                <Panel class="LableContainerClass RightPanel">
+                    <Label class="LableText" text="Монстр" />
+                </Panel>
+            </Button>
+
+            <Button id="CloseButton"/>
+        </Panel>
+    </Panel>
+</root>

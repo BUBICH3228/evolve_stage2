@@ -4,5 +4,8 @@
         <Image src="file://{images}/custom_game/ui/loading_screen/load_screen.png" />
 
         <Image src="file://{images}/custom_game/ui/frames/bg_minimap.png" />
+
+        <Image src="file://{images}/custom_game/ui/team_selection/monsters_preview.png" />
+        <Image src="file://{images}/custom_game/ui/team_selection/hunters_preview.png" />
     </Panel>
 </root>
