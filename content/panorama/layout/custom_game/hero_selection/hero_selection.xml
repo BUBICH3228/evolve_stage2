@@ -1,0 +1,29 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/team_selection/team_selection.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/team_selection/team_selection.js"/>
+    </scripts>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="MainPanel" hittest="false" class="Hidden">
+            <Label class="LableTitleText" text="Выберите команду" />
+            <Panel id="panel_id" class="PanelClass">
+                <Panel id="HeroModelPanel">
+                    <Label id="HeroName" class="TitleText" text="" />
+                    <Label id="CountPoint" text="#ui_hero_stats_count_point" />
+                </Panel>
+            </Panel>
+            <Panel id="HuntersClassContainer">
+                <Label id="TrapperClassTitleText" class="ClassTitleText" text="#ui_hero_selection_trapper_class_title" />
+                <Panel id="TrapperClass" class="HuntersClassPanelClass"/>
+                <Label id="SupportClassTitleText" class="ClassTitleText" text="#ui_hero_selection_suport_class_title" />
+                <Panel id="SupportClass" class="HuntersClassPanelClass"/>
+                <Label id="MedicClassTitleText" class="ClassTitleText" text="#ui_hero_selection_medic_class_title" />
+                <Panel id="MedicClass" class="HuntersClassPanelClass"/>
+                <Label id="AssaultClassTitleText" class="ClassTitleText" text="#ui_hero_selection_assault_class_title" />
+                <Panel id="AssaultClass" class="HuntersClassPanelClass"/>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

@@ -77,3 +77,13 @@
     align: right top;
     background-color: #000000da;
 }
+
+#Timer {
+    font-size: 45px;
+    color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+    font-weight: normal;
+    text-overflow:ellipsis;
+    align:center top;
+    margin-bottom: 520px;
+}

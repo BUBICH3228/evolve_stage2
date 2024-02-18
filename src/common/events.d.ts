@@ -22,6 +22,8 @@ interface CustomGameEventDeclarations {
     quests_quest_npc_selected: QuestNpcSelectedEvent;
     selection_player_update: SelectionPlayerUpdateEvent;
     team_selection_results: TeamSelectionResultsEvent;
+    get_team_selection_results: {};
+    sdsdsd: any;
     load_top_table: any;
 }
 
