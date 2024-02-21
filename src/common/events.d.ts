@@ -22,9 +22,19 @@ interface CustomGameEventDeclarations {
     quests_quest_npc_selected: QuestNpcSelectedEvent;
     selection_player_update: SelectionPlayerUpdateEvent;
     team_selection_results: TeamSelectionResultsEvent;
-    get_team_selection_results: {};
-    sdsdsd: any;
+    get_team_selection_results: any;
+    show_hero_selection_menu: any;
+    selection_hero_event: SelectionHeroEvent;
     load_top_table: any;
+}
+
+interface SelectionHeroEvent {
+    HeroName: string;
+    PlayerID?: PlayerID;
+}
+
+interface GetHeroAbilitiesEvent {
+    heroname: string;
 }
 
 interface TeamSelectionResultsEvent {

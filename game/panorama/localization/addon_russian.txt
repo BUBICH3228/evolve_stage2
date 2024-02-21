@@ -82,4 +82,16 @@
 	"ui_players_top_rank"								"Место"
 	"ui_players_top_player"								"Игрок"
 	"ui_players_top_score"								"Счёт"
+
+
+	"ui_hero_selection_trapper_class_title"				"Охотник"
+	"ui_hero_selection_assault_class_title"				"Штурмовик"
+	"ui_hero_selection_suport_class_title"				"Поддержка"
+	"ui_hero_selection_medic_class_title"				"Медик"
+	"ui_hero_selection_monster_class_title"				"Монстр"
+	"ui_hero_selection_hero_stat_tab_title"				"Показатели"
+	"ui_hero_selection_description_tab_title"			"О герое"
+	"ui_hero_selection_button"							"Выбрать"
+
+	"ui_hero_rattletrap_personality"					"Как и ожидалось от человека с характером Гриффина, этот человек ведет себя, говорит и, прежде всего, думает как охотник на крупную дичь. Опытный в искусстве охоты, Гриффин более чем счастлив подшучивать над своими товарищами-охотниками по поводу выполняемой задачи, а также сообщать им, когда они выполняют свою работу правильно, а когда нет."
 }

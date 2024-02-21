@@ -10,6 +10,7 @@ class TeamSelectionUI {
     private ListenToGameEvents() {
         ListenToGameEvent("game_rules_state_change", () => this.OnGameRulesStateChange(), undefined);
         CustomGameEventManager.RegisterListener("team_selection_results", (_, event) => this.TeamSelectionComplete(event));
+        CustomGameEventManager.RegisterListener("selection_hero_event", (_, event) => this.SelectionHero(event));
     }
 
     private OnGameRulesStateChange() {
@@ -20,6 +21,10 @@ class TeamSelectionUI {
                 Timers.CreateTimer(1, () => {
                     this.TeamDistribution();
                 });
+            });
+
+            Timers.CreateTimer(31, () => {
+                CustomGameEventManager.Send_ServerToAllClients("show_hero_selection_menu", {});
             });
         }
         if (newState == GameState.GAME_IN_PROGRESS) {
@@ -84,19 +89,13 @@ class TeamSelectionUI {
         const hero = PlayerResource.GetSelectedHeroEntity(PlayerID);
         player?.SetTeam(DotaTeam);
         hero?.SetTeam(DotaTeam);
+    }
 
-        if (DotaTeam == 3) {
-            PlayerResource.ReplacePlayerHero(PlayerID, "npc_dota_hero_primal_beast", false);
-            CustomGameEventManager.Send_ServerToAllClients("sdsdsd", {
-                HeroID: DOTAGameManager.GetHeroIDByName("npc_dota_hero_primal_beast"),
-                ID: PlayerID
-            });
+    private SelectionHero(data: SelectionHeroEvent) {
+        if (data.PlayerID != undefined) {
+            PlayerResource.ReplacePlayerHero(data.PlayerID, data.HeroName, false);
         } else {
-            PlayerResource.ReplacePlayerHero(PlayerID, "npc_dota_hero_sniper", false);
-            CustomGameEventManager.Send_ServerToAllClients("sdsdsd", {
-                HeroID: DOTAGameManager.GetHeroIDByName("npc_dota_hero_sniper"),
-                ID: PlayerID
-            });
+            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID argument missing or invalid. Wtf?");
         }
     }
 

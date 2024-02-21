@@ -1,28 +1,72 @@
 <root>
     <styles>
-        <include src="file://{resources}/styles/custom_game/team_selection/team_selection.css"/>
+        <include src="file://{resources}/styles/custom_game/hero_selection/hero_selection.css"/>
     </styles>
     <scripts>
-        <include src="file://{resources}/scripts/custom_game/team_selection/team_selection.js"/>
+        <include src="file://{resources}/scripts/custom_game/hero_selection/hero_selection.js"/>
     </scripts>
+    <snippets>
+        <snippet name="DerivedStatSnippet">
+            <Panel id="DerivedStat" class="DerivedStats">
+                <Panel id="HeroStatIcon"/>
+                <Label id="AttributeNumbers" text=""/>
+            </Panel>
+        </snippet>
+        <snippet name="HeroSelectionButtonSnippet">
+            <Panel id="HeroSelectionButton">
+                <Label id="HeroSelectionLable" text="#ui_hero_selection_button"/>
+            </Panel>
+        </snippet>
+    </snippets>
     <Panel class="Root" hittest="false" hittestchildren="true">
-        <Panel id="MainPanel" hittest="false" class="Hidden">
-            <Label class="LableTitleText" text="Выберите команду" />
-            <Panel id="panel_id" class="PanelClass">
+        <Panel id="MainPanel" class="Hidden" hittest="false" >
+            <Panel id="HeroStatisticsContainer">
                 <Panel id="HeroModelPanel">
                     <Label id="HeroName" class="TitleText" text="" />
-                    <Label id="CountPoint" text="#ui_hero_stats_count_point" />
+                </Panel>
+                <Panel id="HeroAbilityPanel"/>
+                <Panel id="TabsButtonsContainer">
+                    <Label id="HeroStats" class="TitleText Glow" text="#ui_hero_selection_hero_stat_tab_title" />
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Label id="HeroDescription" class="TitleText" text="#ui_hero_selection_description_tab_title" />
+                </Panel>
+                <Panel id="HeroStatsPanel" class="Hedden">
+                    <Panel id="HeroHealth">
+                        <DOTAScenePanel id="HeroHealthScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
+                        <Label id="healthLable" class="Text health" text="0" />
+                    </Panel>
+                    <Panel id="HeroMana">
+                        <DOTAScenePanel id="HeroManaScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
+                        <Label id="manaLable" class="Text mana" text="0" />
+                    </Panel>
+                    <Panel id="HeroShild">
+                        <DOTAScenePanel id="HeroShildScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
+                        <Label id="shildLable" class="Text shild" text="0" />
+                    </Panel>
+                </Panel>
+                <Panel id="DerivedStatsContainer" class="Hedden"/>
+                <Panel id="HeroDescriptionPanel" class="Hedden">
+                    <Label id="HeroPersonality" class="Text" text="" />
                 </Panel>
             </Panel>
             <Panel id="HuntersClassContainer">
-                <Label id="TrapperClassTitleText" class="ClassTitleText" text="#ui_hero_selection_trapper_class_title" />
-                <Panel id="TrapperClass" class="HuntersClassPanelClass"/>
-                <Label id="SupportClassTitleText" class="ClassTitleText" text="#ui_hero_selection_suport_class_title" />
-                <Panel id="SupportClass" class="HuntersClassPanelClass"/>
-                <Label id="MedicClassTitleText" class="ClassTitleText" text="#ui_hero_selection_medic_class_title" />
-                <Panel id="MedicClass" class="HuntersClassPanelClass"/>
-                <Label id="AssaultClassTitleText" class="ClassTitleText" text="#ui_hero_selection_assault_class_title" />
-                <Panel id="AssaultClass" class="HuntersClassPanelClass"/>
+                <Panel id="TitelHuntersClassPanel">
+                    <Label id="TrapperClassTitleText" class="TitleText Glow" text="#ui_hero_selection_trapper_class_title" />
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Label id="AssaultClassTitleText" class="TitleText" text="#ui_hero_selection_assault_class_title" />
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Label id="SupportClassTitleText" class="TitleText" text="#ui_hero_selection_suport_class_title" />
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Label id="MedicClassTitleText" class="TitleText" text="#ui_hero_selection_medic_class_title" />
+                </Panel>
+                <Panel id="TitelMonsterClassPanel"  class="Hidden">
+                    <Label id="MonsterClassTitleText" class="TitleText Glow" text="#ui_hero_selection_monster_class_title" />
+                </Panel>
+                <Panel id="HeroPickerPanel"/>
+                <Panel id="MoveContainer">
+                    <Label id="MoveName" class="TitleText" text="Ну короче тут название скила" />
+                    <Panel id="MovePanel" class="MoveDriver"/>
+                </Panel>
             </Panel>
         </Panel>
     </Panel>

@@ -1763,7 +1763,7 @@ interface DollarStatic {
     FindChildInContext(selector: string): Panel;
 
     CreatePanel<K extends keyof PanoramaPanelNameMap>(type: K, root: PanelBase, id: string): PanoramaPanelNameMap[K];
-    CreatePanel(type: string, root: PanelBase, id: string): Panel;
+    CreatePanel(type: string, root: PanelBase, id: string, data: any): Panel;
 
     /**
      * @param properties An object with XML-style properties added to the created panel.
