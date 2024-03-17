@@ -156,7 +156,7 @@ export const HeroesData: HeroesDataIntefase = {
             abilities: {
                 0: {
                     abilityName: "",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 1: {
                     abilityName: "",

@@ -10,26 +10,36 @@ class TeamSelectionUI {
     private ListenToGameEvents() {
         ListenToGameEvent("game_rules_state_change", () => this.OnGameRulesStateChange(), undefined);
         CustomGameEventManager.RegisterListener("team_selection_results", (_, event) => this.TeamSelectionComplete(event));
-        CustomGameEventManager.RegisterListener("selection_hero_event", (_, event) => this.SelectionHero(event));
+        CustomGameEventManager.RegisterListener("hero_selection_event", (_, event) => this.SelectionHero(event));
     }
 
     private OnGameRulesStateChange() {
         const newState = GameRules.State_Get();
         if (newState == GameState.PRE_GAME) {
+            CustomGameEventManager.Send_ServerToAllClients("show_team_selection_menu", { visibleState: true });
             Timers.CreateTimer(30, () => {
                 CustomGameEventManager.Send_ServerToAllClients("get_team_selection_results", {});
+                CustomGameEventManager.Send_ServerToAllClients("show_team_selection_menu", { visibleState: false });
                 Timers.CreateTimer(1, () => {
                     this.TeamDistribution();
+                    CustomGameEventManager.Send_ServerToAllClients("show_hero_selection_menu", { visibleState: true });
                 });
             });
+            Timers.CreateTimer(90, () => {
+                CustomGameEventManager.Send_ServerToAllClients("show_hero_selection_menu", { visibleState: false });
+                const heroes = HeroList.GetAllHeroes();
+                heroes.forEach((hero) => {
+                    if (hero.GetUnitName() == "npc_dota_hero_wisp") {
+                        this.SelectionHero({ HeroName: "npc_dota_hero_tinker", PlayerID: hero.GetPlayerID() });
+                    }
 
-            Timers.CreateTimer(31, () => {
-                CustomGameEventManager.Send_ServerToAllClients("show_hero_selection_menu", {});
+                    CustomGameEventManager.Send_ServerToAllClients("fix_hero_minimap_icon", {
+                        HeroID: hero.GetHeroID(),
+                        PlayerID: hero.GetPlayerOwnerID()
+                    });
+                });
+                CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: true });
             });
-        }
-        if (newState == GameState.GAME_IN_PROGRESS) {
-            //const hero = PlayerResource.GetSelectedHeroEntity(0);
-            //FindClearSpaceForUnit(hero as CDOTA_BaseNPC, Vector(0, 0, 0), true);
         }
     }
 
@@ -91,11 +101,11 @@ class TeamSelectionUI {
         hero?.SetTeam(DotaTeam);
     }
 
-    private SelectionHero(data: SelectionHeroEvent) {
-        if (data.PlayerID != undefined) {
+    private SelectionHero(data: HeroSelectionEvent) {
+        if (data.PlayerID != undefined && data.HeroName != undefined) {
             PlayerResource.ReplacePlayerHero(data.PlayerID, data.HeroName, false);
         } else {
-            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID argument missing or invalid. Wtf?");
+            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID and HeroName argument missing or invalid. Wtf?");
         }
     }
 

@@ -42,8 +42,8 @@ class HeroSelection {
     ];
 
     constructor() {
-        GameEvents.Subscribe("show_hero_selection_menu", () => {
-            this.MAIN_PANEL.SetHasClass("Hidden", false);
+        GameEvents.Subscribe("show_hero_selection_menu", (data) => {
+            this.MAIN_PANEL.SetHasClass("Hidden", data.visibleState == 0);
             this.SetupHeroesClassButton();
         });
     }
@@ -89,6 +89,7 @@ class HeroSelection {
     private SetupHeroImageButton(heroName: string, abilities: AbilitiesData, stats: StatsData, aboutHero: AboutHeroData) {
         this.CreteScenePanel(heroName);
         this.CreteAbilityPanel(abilities);
+        this.CreateAbilityPreview(abilities[0].abilityPreview);
         this.HERO_INFO_TABS_BUTTON_DATA.forEach((data) => {
             data.panel.SetPanelEvent("onactivate", () => {
                 if (data.class == "stats") {
@@ -109,7 +110,7 @@ class HeroSelection {
         const panel = $.CreatePanel("Panel", $("#HeroStatisticsContainer"), "HeroSelectionButton");
         panel.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
         panel.SetPanelEvent("onactivate", () => {
-            GameEvents.SendCustomGameEventToServer("selection_hero_event", { HeroName: heroName });
+            GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName });
             this.MAIN_PANEL.SetHasClass("Hidden", true);
         });
     }
@@ -121,6 +122,9 @@ class HeroSelection {
             const button = $.CreatePanel("Panel", this.HERO_ABILITY_PANEL, "AbilityButton");
             const panel = $.CreatePanel("DOTAAbilityImage", button, "AbilityImage");
             panel.abilityname = value.abilityName;
+            button.SetPanelEvent("onactivate", () => {
+                this.CreateAbilityPreview(value.abilityPreview);
+            });
             button.SetPanelEvent("onmouseover", () => {
                 $.DispatchEvent("DOTAShowAbilityTooltip", panel, panel.abilityname);
             });

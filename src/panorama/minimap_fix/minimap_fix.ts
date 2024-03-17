@@ -1,12 +1,11 @@
 // eslint-disable-next-line no-var
-var DotaHUD = GameUI.CustomUIConfig().DotaHUD;
 
 class Minimap {
     MINIMAP_PANEL: HUDOverlayMap = $("#Map") as HUDOverlayMap;
     constructor() {
         this.ReplacingMinimap();
-        GameEvents.Subscribe("sdsdsd", (data) => {
-            this.ReplacementDOTAHeroImage(data["HeroID"], data["ID"]);
+        GameEvents.Subscribe("fix_hero_minimap_icon", (data) => {
+            this.ReplacementDOTAHeroImage(data.HeroID, data.PlayerID);
         });
     }
 

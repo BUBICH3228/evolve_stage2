@@ -23,12 +23,32 @@ interface CustomGameEventDeclarations {
     selection_player_update: SelectionPlayerUpdateEvent;
     team_selection_results: TeamSelectionResultsEvent;
     get_team_selection_results: any;
-    show_hero_selection_menu: any;
-    selection_hero_event: SelectionHeroEvent;
+    show_team_selection_menu: ShowTeamSelectionMenuEvent;
+    show_hero_selection_menu: ShowHeroSelectionMenuEvent;
+    show_map_selection_menu: ShowMapSelectionMenuEvent;
+    hero_selection_event: HeroSelectionEvent;
+    fix_hero_minimap_icon: FixHeroMinimapIconEvent;
     load_top_table: any;
 }
 
-interface SelectionHeroEvent {
+interface FixHeroMinimapIconEvent {
+    HeroID: number;
+    PlayerID: PlayerID;
+}
+
+interface ShowMapSelectionMenuEvent {
+    visibleState: boolean;
+}
+
+interface ShowTeamSelectionMenuEvent {
+    visibleState: boolean;
+}
+
+interface ShowHeroSelectionMenuEvent {
+    visibleState: boolean;
+}
+
+interface HeroSelectionEvent {
     HeroName: string;
     PlayerID?: PlayerID;
 }
