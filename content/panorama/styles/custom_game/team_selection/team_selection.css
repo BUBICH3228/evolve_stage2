@@ -3,35 +3,54 @@
     height: 100%;
 }
 
-.LableTitleText{
-    font-size: 45px;
-    color: rgb(255, 255, 255);
+.LabelTitleText{
+    font-size: 35px;
+    color: rgba(255, 255, 255, 0.616);
     letter-spacing: 1px;
     font-weight: normal;
     text-overflow:ellipsis;
-    align:center center;
-    margin-bottom: 450px;
+    align:center top;
+    margin-top: 15px;
 }
 
-.LableText{
+.LabelUndecidedText{
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.616);
+    font-weight: normal;
+    text-overflow:ellipsis;
+    align:center top;
+    margin-top: 5px;
+}
+
+.LabelText{
     font-size: 25px;
-    color: rgb(255, 255, 255);
+    color: rgb(51, 39, 39);
+    text-shadow: 0px 0px 2px rgba(255, 253, 253, 0.692);
     letter-spacing: 1px;
-    font-weight: normal;
+    font-weight: bold;
     text-overflow:ellipsis;
-    align:center center;
+    align: center center;
+    text-transform: uppercase;
 }
 
-.LableContainerClass {
+.LabelContainerClass {
     width: 300px;
     height: 50px;
-    align: center bottom;
-    margin-bottom: 35px;
-    background-color: #8b0707da;
+    align: center top;
+    margin-top: 35px;
 }
 
 #MainPanel {
+    width: 800px;
+    height: 600px;
     align:  center center;
+    background-image: url("file://{images}/custom_game/ui/frames/frame.png");
+    background-size: 100% 100%;
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #050609));
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    margin-bottom: 100px;
 }
 
 .Hidden
@@ -39,36 +58,66 @@
     opacity: 0;
 }
 
-#SelectHuntersButton {
+#SelectHunterPanel {
     width: 300px;
-    height: 350px;
+    height: 400px;
+    align: left top;
+    margin-left: 60px;
+    margin-top: 50px;
+}
+
+#SelectHunterButton {
+    width: 250px;
+    height: 250px;
     align: center center;
-    margin-right: 375px;
     background-image: url("file://{images}/custom_game/ui/team_selection/hunters_preview.png");
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-color: #000000da;
+}
+
+#HunterPlayersContainer {
+    width: fit-children;
+    max-width: 100%;
+    height: 70px;
+    align: center bottom;
+    flow-children: right-wrap;
+}
+
+#SelectMonsterPanel {
+    width: 300px;
+    height: 400px;
+    align: right top;
+    margin-right: 60px;
+    margin-top: 50px;
 }
 
 #SelectMonsterButton {
-    width: 300px;
-    height: 350px;
+    width: 250px;
+    height: 250px;
     align: center center;
-    margin-left: 375px;
     background-image: url("file://{images}/custom_game/ui/team_selection/monsters_preview.png");
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-color: #000000da;
 }
 
-#SelectHuntersButton:hover {
-    width: 303px;
-    height: 353px;
+#MonsterPlayersContainer {
+    width: fit-children;
+    max-width: 100%;
+    height: 70px;
+    align: center bottom;
+    flow-children: right-wrap;
+}
+
+#SelectHunterButton:hover {
+    width: 255px;
+    height: 255px;
+    box-shadow: 0px 0px 200px -160px rgb(71, 143, 103);
 }
 
 #SelectMonsterButton:hover {
-    width: 303px;
-    height: 353px;
+    width: 255px;
+    height: 255px;
+    box-shadow: 0px 0px 200px -170px rgb(151, 62, 62);
 }
 
 #CloseButton {
@@ -79,11 +128,32 @@
 }
 
 #Timer {
-    font-size: 45px;
-    color: rgb(255, 255, 255);
+    font-size: 35px;
     letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.616);
     font-weight: normal;
     text-overflow:ellipsis;
-    align:center top;
-    margin-bottom: 520px;
+    align:right top;
+    margin-right: 30px;
+    margin-top:  15px;
+}
+
+#UndecidedPlayersPanel {
+    width: 100%;
+    height: 135px;
+    align: center bottom;
+    margin: 8px 8px 8px 8px;
+}
+
+#UndecidedPlayersContainer {
+    width: fit-children;
+    height: 70px;
+    align: center bottom;
+    flow-children: right-wrap;
+}
+
+#Avatar{
+    align: left center;
+    width: 50px;
+    height: 50px;
 }

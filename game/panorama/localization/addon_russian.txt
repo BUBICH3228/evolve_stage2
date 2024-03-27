@@ -83,7 +83,14 @@
 	"ui_players_top_player"								"Игрок"
 	"ui_players_top_score"								"Счёт"
 
+	//Team selection
+	
+	"ui_team_selection_title"							"Выбор команды"
+	"ui_team_selection_undecided"						"Неопределившиеся игроки"
+	"ui_team_selection_team_name_hunter"				"Охотник"
+	"ui_team_selection_team_name_monster"				"Монстр"
 
+	//hero selection
 	"ui_hero_selection_trapper_class_title"				"Охотник"
 	"ui_hero_selection_assault_class_title"				"Штурмовик"
 	"ui_hero_selection_suport_class_title"				"Поддержка"

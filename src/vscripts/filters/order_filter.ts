@@ -24,6 +24,7 @@ export class OrderFilter {
                 return true;
             }
         }
+
         CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_ORDER, event);
         return true;
     }

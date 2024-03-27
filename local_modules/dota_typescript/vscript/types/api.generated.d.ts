@@ -6165,7 +6165,7 @@ declare interface CDOTABaseAbility extends CBaseEntity {
     /**
      * Gets the key values definition for this ability.
      */
-    GetAbilityKeyValues(): object;
+    GetAbilityKeyValues(): AnyTable;
     /**
      * Returns the name of this ability.
      *

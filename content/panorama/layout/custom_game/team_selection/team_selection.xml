@@ -5,21 +5,36 @@
     <scripts>
         <include src="file://{resources}/scripts/custom_game/team_selection/team_selection.js"/>
     </scripts>
+    <snippets>
+		<snippet name="PlayerInfoSnippet">
+            <Panel id="PlayerPanel">
+                <DOTAAvatarImage id="Avatar"/>
+            </Panel>
+		</snippet>
+	</snippets>
     <Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" hittest="false" class="Hidden">
-            <Label class="LableTitleText" text="Выберите команду" />
+            <Label class="LabelTitleText" text="#ui_team_selection_title" />
             <Label id="Timer" text="0:00" />
-		    <Button id="SelectHuntersButton" >
-                <Panel class="LableContainerClass LeftPanel">
-                    <Label class="LableText" text="Охотник" />
+            <Panel id="SelectHunterPanel">
+                <Panel class="LabelContainerClass LeftPanel">
+                    <Label class="LabelText" text="#ui_team_selection_team_name_hunter" />
                 </Panel>
-            </Button>
-		    <Button id="SelectMonsterButton" >
-                <Panel class="LableContainerClass RightPanel">
-                    <Label class="LableText" text="Монстр" />
+                <Button id="SelectHunterButton"/>
+                <Panel id="HunterPlayersContainer"/>
+            </Panel>
+		    
+            <Panel id="SelectMonsterPanel">
+                <Panel class="LabelContainerClass RightPanel">
+                    <Label class="LabelText" text="#ui_team_selection_team_name_monster"/>
                 </Panel>
-            </Button>
-
+                <Button id="SelectMonsterButton"/>
+                <Panel id="MonsterPlayersContainer"/>
+            </Panel>
+            <Panel id="UndecidedPlayersPanel">
+                <Label id="SelectUndecidedButton" class="LabelUndecidedText" text="#ui_team_selection_undecided"/>
+                <Panel id="UndecidedPlayersContainer"/>
+            </Panel>
             <Button id="CloseButton"/>
         </Panel>
     </Panel>

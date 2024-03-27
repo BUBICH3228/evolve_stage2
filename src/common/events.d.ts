@@ -27,13 +27,14 @@ interface CustomGameEventDeclarations {
     show_hero_selection_menu: ShowHeroSelectionMenuEvent;
     show_map_selection_menu: ShowMapSelectionMenuEvent;
     hero_selection_event: HeroSelectionEvent;
-    fix_hero_minimap_icon: FixHeroMinimapIconEvent;
+    fix_hero_minimap_icon: any;
+    team_selection_event: TeamSelectionEvent;
     load_top_table: any;
 }
 
-interface FixHeroMinimapIconEvent {
-    HeroID: number;
-    PlayerID: PlayerID;
+interface TeamSelectionEvent {
+    playerID: PlayerID;
+    palyerTeam: string;
 }
 
 interface ShowMapSelectionMenuEvent {

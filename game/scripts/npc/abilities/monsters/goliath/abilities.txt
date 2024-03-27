@@ -1,0 +1,183 @@
+"DOTAAbilities"
+{
+    "goliath_base_attack"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "primal_beast_trample"
+        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_base_attack"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "Maxlevel"                          "3"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "quick_attack_damage"           "70 90 110"
+            "slow_attack_damage"            "225"
+            "quick_attack_rate"             "1.5"
+            "slow_attack_rate"              "3"
+        }
+    }
+
+    "goliath_fire_breath"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "primal_beast_uproar"
+        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_fire_breath"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
+        "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
+        "Maxlevel"                          "3"
+        "LevelsBetweenUpgrades"             "0"
+    
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"                  "560 670 800"
+        "AbilityChannelTime"                "1.0"
+        "AbilityCastPoint"                  "0.3"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_3"
+        "AbilityChannelAnimation"           "ACT_DOTA_CHANNEL_ABILITY_3"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "8"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"                   "20"
+        
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage"                      
+	        {
+	    	    "value"						"66 66 72"
+	        }
+            "angel"                         "15 20 25"
+            "count_uses"                    "4 5 6"
+        }
+    }
+
+    "goliath_leap_smash"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "goliath_leap_smash"
+        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_leap_smash"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
+        "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
+        "Maxlevel"                          "3"
+        "LevelsBetweenUpgrades"             "0"
+    
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"                  "560 670 800"
+        "AbilityCastPoint"                  "0.5"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_5"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "8"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"                   "20"
+        
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage"                      
+	        {
+	    	    "value"						"66 66 72"
+	        }
+            "angel"                         "15 20 25"
+            "count_uses"                    "4 5 6"
+        }
+    }
+
+    "goliath_charge"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "primal_beast_onslaught"
+        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_charge"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
+        "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
+        "Maxlevel"                          "3"
+        "LevelsBetweenUpgrades"             "0"
+    
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"                  "560 670 800"
+        "AbilityCastPoint"                  "1"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "8"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"                   "20"
+        
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage"                      
+	        {
+	    	    "value"						"66 66 72"
+	        }
+            "angel"                         "15 20 25"
+            "count_uses"                    "4 5 6"
+        }
+    }
+
+    "goliath_rock_throw"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "primal_beast_rock_throw"
+        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_rock_throw"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
+        "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
+        "Maxlevel"                          "3"
+        "LevelsBetweenUpgrades"             "0"
+    
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"                  "560 670 800"
+        "AbilityCastPoint"                  "0.3"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "8"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"                   "20"
+        
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage"                      
+	        {
+	    	    "value"						"66 66 72"
+	        }
+            "angel"                         "15 20 25"
+            "count_uses"                    "4 5 6"
+        }
+    }
+}

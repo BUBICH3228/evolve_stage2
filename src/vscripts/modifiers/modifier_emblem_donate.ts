@@ -1,5 +1,9 @@
 import { registerModifier, BaseModifier } from "../libraries/dota_ts_adapter";
 
+interface EmblemData {
+    EffectName: string;
+}
+
 @registerModifier()
 export class modifier_emblem_donate extends BaseModifier {
     // Modifier properties
@@ -32,7 +36,7 @@ export class modifier_emblem_donate extends BaseModifier {
         return false;
     }
 
-    override OnCreated(kv: any): void {
+    override OnCreated(kv: EmblemData): void {
         if (!IsServer()) {
             return;
         }

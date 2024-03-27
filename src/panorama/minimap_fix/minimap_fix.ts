@@ -4,8 +4,8 @@ class Minimap {
     MINIMAP_PANEL: HUDOverlayMap = $("#Map") as HUDOverlayMap;
     constructor() {
         this.ReplacingMinimap();
-        GameEvents.Subscribe("fix_hero_minimap_icon", (data) => {
-            this.ReplacementDOTAHeroImage(data.HeroID, data.PlayerID);
+        GameEvents.Subscribe("fix_hero_minimap_icon", () => {
+            this.ReplacementDOTAHeroImage();
         });
     }
 
@@ -17,11 +17,15 @@ class Minimap {
         this.MINIMAP_PANEL.maptexture = "materials/overviews/wraith_trap_map_tga_1d8098dc.vtex";
     }
 
-    private ReplacementDOTAHeroImage(HeroID: number, PlayerID: number) {
-        const panel = this.MINIMAP_PANEL.Children()[PlayerID];
-        (panel as any)["heroid"] = HeroID;
-        panel.style.height = "16px";
-        panel.style.width = "16px";
+    private ReplacementDOTAHeroImage() {
+        const playersID = Game.GetAllPlayerIDs();
+        playersID.forEach((playerID) => {
+            const data = Game.GetPlayerInfo(playerID);
+            const panel = this.MINIMAP_PANEL.Children()[data.player_id];
+            (panel as HeroImage)["heroid"] = data.player_selected_hero_id;
+            panel.style.height = "16px";
+            panel.style.width = "16px";
+        });
     }
 }
 

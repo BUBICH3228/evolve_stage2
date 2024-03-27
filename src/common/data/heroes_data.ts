@@ -155,23 +155,23 @@ export const HeroesData: HeroesDataIntefase = {
         npc_dota_hero_primal_beast: {
             abilities: {
                 0: {
-                    abilityName: "",
+                    abilityName: "goliath_base_attack",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 1: {
-                    abilityName: "",
+                    abilityName: "goliath_fire_breath",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 2: {
-                    abilityName: "",
+                    abilityName: "goliath_leap_smash",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 3: {
-                    abilityName: "",
+                    abilityName: "goliath_charge",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 4: {
-                    abilityName: "",
+                    abilityName: "goliath_rock_throw",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 }
             },

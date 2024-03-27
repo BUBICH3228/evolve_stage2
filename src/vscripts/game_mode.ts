@@ -170,7 +170,8 @@ export class GameMode {
             }
         }
 
-        let newAbilityPoints = hero.GetLevel() - hero.GetSpendedAbilityPoints();
+        let newAbilityPoints = hero.GetLevel() * 3 - hero.GetSpendedAbilityPoints();
+
         newAbilityPoints = math.min(newAbilityPoints, maxPossibleAbilityPoints);
         hero.SetAbilityPoints(newAbilityPoints);
     }
@@ -179,18 +180,6 @@ export class GameMode {
         const newState = GameRules.State_Get();
         if (newState == GameState.GAME_IN_PROGRESS) {
             this.FixDotaTowersInvulnerablity();
-            DOTA_SpawnMapAtPosition(
-                "wraith_trap_map",
-                Vector(0, 0, 0),
-                false,
-                () => {
-                    return true;
-                },
-                () => {
-                    print("eyey");
-                },
-                undefined
-            );
         }
         if (newState > GameState.HERO_SELECTION && newState < GameState.PRE_GAME) {
             for (

@@ -16,9 +16,9 @@ export class AbilityTurningValueFilter {
 
         if (
             ability &&
-            (ability.GetAbilityKeyValues() as any).AbilityValues &&
-            type((ability.GetAbilityKeyValues() as any).AbilityValues[event.value_name_const]) == "table" &&
-            (ability.GetAbilityKeyValues() as any).AbilityValues[event.value_name_const].affected_by_aoe_increase
+            ability.GetAbilityKeyValues().AbilityValues &&
+            type(ability.GetAbilityKeyValues().AbilityValues[event.value_name_const]) == "table" &&
+            ability.GetAbilityKeyValues().AbilityValues[event.value_name_const].affected_by_aoe_increase
         ) {
             let aoe_bonus_positive = 0;
             let aoe_bonus_negative = 0;
