@@ -8,6 +8,10 @@
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
         "Maxlevel"                          "3"
 
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "9"
+
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
@@ -66,7 +70,7 @@
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "goliath_leap_smash"
         "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_leap_smash"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
@@ -76,7 +80,7 @@
     
         // Casting
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastRange"                  "560 670 800"
+        "AbilityCastRange"                  "1000 1300 1500"
         "AbilityCastPoint"                  "0.5"
         "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_5"
 
@@ -92,12 +96,13 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "damage"                      
+            "damage_per_distance"                      
 	        {
-	    	    "value"						"66 66 72"
+	    	    "value"						"25"
 	        }
-            "angel"                         "15 20 25"
-            "count_uses"                    "4 5 6"
+            "radius"                        "150"
+            "speed"                         "950"
+            "max_distance"                  "1000 1300 1500"
         }
     }
 

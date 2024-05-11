@@ -11,11 +11,15 @@ export class goliath_base_attack extends BaseAbility {
         }
 
         this.SetLevel(this.caster.GetLevel());
-        this.OnToggle();
+        this.UpdateDamageAndAttackSpeed();
     }
 
     OnHeroLevelUp(): void {
+        if (!IsServer()) {
+            return;
+        }
         this.SetLevel(this.caster.GetLevel());
+        this.UpdateDamageAndAttackSpeed();
     }
 
     OnToggle(): void {
@@ -23,6 +27,10 @@ export class goliath_base_attack extends BaseAbility {
             return;
         }
 
+        this.UpdateDamageAndAttackSpeed();
+    }
+
+    UpdateDamageAndAttackSpeed() {
         if (this.GetToggleState() == false) {
             this.caster.SetBaseDamageMax(this.GetSpecialValueFor("quick_attack_damage"));
             this.caster.SetBaseDamageMin(this.GetSpecialValueFor("quick_attack_damage"));

@@ -63,13 +63,20 @@ function DebugPanel:OnCreateDummyRequest(kv)
         UTIL_Remove(DebugPanel._dummies[playerID])
     end
     local playerHero = PlayerResource:GetSelectedHeroEntity(playerID)
+
+    local team = GameSettings:GetSettingValueAsTeamNumber("players_team");
+
+    if (print(playerHero:GetTeamNumber()) == GameSettings:GetSettingValueAsTeamNumber("players_team")) then
+        team = GameSettings:GetSettingValueAsTeamNumber("enemies_team")
+    end
+
     DebugPanel._dummies[playerID] = CreateUnitByName(
         DebugPanel:GetDummyUnitName(), 
         playerHero:GetAbsOrigin(), 
         true, 
         playerHero, 
         playerHero, 
-        GameSettings:GetSettingValueAsTeamNumber("enemies_team")
+        team
     )
     DebugPanel._dummies[playerID]:AddNewModifier(
         DebugPanel._dummies[playerID], 
