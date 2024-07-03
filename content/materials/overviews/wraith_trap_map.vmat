@@ -7,7 +7,7 @@ Layer0
 	//---- Color ----
 	g_vTexCoord2Offset "[0.000 0.000]"
 	g_vTexCoord2Scale "[1.000 1.000]"
-	TextureColor ""
+	TextureColor "materials/default/default.tga"
 	TextureColor2 "materials/overviews/wraith_trap_map.tga"
 
 

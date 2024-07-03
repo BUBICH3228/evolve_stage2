@@ -70,7 +70,7 @@ function modifier_heroes_passive_stats:GetModifierPercentageManacost(kv)
 end
 
 function modifier_heroes_passive_stats:GetModifierSpellAmplify_Percentage()
-    return self.parent:GetIntellect() * self.bonusSpellAmpPerAttribute
+    return self.parent:GetIntellect(false) * self.bonusSpellAmpPerAttribute
 end
 
 function modifier_heroes_passive_stats:GetModifierMagicalResistanceBonus()
@@ -78,7 +78,7 @@ function modifier_heroes_passive_stats:GetModifierMagicalResistanceBonus()
 end
 
 function modifier_heroes_passive_stats:GetModifierMagicalResistanceDirectModification()
-	return self.dotaNegativeMagicResistancePerInt * self.parent:GetIntellect()
+	return self.dotaNegativeMagicResistancePerInt * self.parent:GetIntellect(false)
 end
 
 function modifier_heroes_passive_stats:GetModifierMoveSpeedBonus_Constant()

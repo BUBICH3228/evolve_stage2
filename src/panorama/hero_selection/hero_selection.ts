@@ -121,7 +121,6 @@ class HeroSelection {
         for (const [_, value] of Object.entries(abilities)) {
             const button = $.CreatePanel("Panel", this.HERO_ABILITY_PANEL, "AbilityButton");
             const panel = $.CreatePanel("DOTAAbilityImage", button, "AbilityImage");
-            $.Msg(value.abilityName);
             panel.abilityname = value.abilityName;
             button.SetPanelEvent("onactivate", () => {
                 this.CreateAbilityPreview(value.abilityPreview);

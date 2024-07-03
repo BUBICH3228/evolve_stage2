@@ -163,7 +163,7 @@ function modifier_custom_properties:CalculateHeroOnlyCustomStats(precision)
 
     -- Intellect %
     local bonusIntellectPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_STATS_INTELLECT_BONUS_PERCENTAGE, eventData)
-    local heroIntellect = self.parent:GetIntellect() - self.bonusIntellectPctValue
+    local heroIntellect = self.parent:GetIntellect(false) - self.bonusIntellectPctValue
     local newBonusIntellectPctValue = self:RountToInteger(heroIntellect * (bonusIntellectPercent / 100))
     if(math.abs(newBonusIntellectPctValue - self.bonusIntellectPctValue) > precision) then
         propertiesRequireUpdate = propertiesRequireUpdate + 1

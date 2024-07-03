@@ -28,7 +28,7 @@
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "primal_beast_uproar"
         "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_fire_breath"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"

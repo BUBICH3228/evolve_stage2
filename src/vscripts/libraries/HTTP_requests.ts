@@ -9,7 +9,7 @@ if (webkey == "Invalid_NotOnDedicatedServer") {
 export class HTTPRequests {
     static PlayerTopTable = {};
     constructor() {
-        this.Initialize();
+        //this.Initialize();
     }
 
     private Initialize() {
@@ -61,6 +61,7 @@ export class HTTPRequests {
         const req = CreateHTTPRequestScriptVM("GET", "http://91.240.86.56:3000/api/Donateload");
         req.SetHTTPRequestGetOrPostParameter("key", webkey);
         req.Send((res) => {
+            return res;
             for (const [_, v] of Object.entries(json.decode(res.Body)[0])) {
                 const SqlDate = tostring(v["EndDate"]).slice(2, 10).split("-");
                 const date = GetSystemDate().split("/");

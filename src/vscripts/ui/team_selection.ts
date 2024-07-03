@@ -127,7 +127,7 @@ class TeamSelectionUI {
                 return true;
             },
             () => {
-                print("eyey");
+                print("Map spawn");
             },
             undefined
         );

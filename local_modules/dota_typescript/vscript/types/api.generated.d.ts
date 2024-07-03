@@ -3060,7 +3060,7 @@ declare interface CDOTA_BaseNPC_Hero extends CDOTA_BaseNPC {
      */
     GetIncreasedAttackSpeed(ignoreTempAttackSpeed: boolean): number;
     /** @both */
-    GetIntellect(): number;
+    GetIntellect(skipNoConsume: boolean): number;
     GetIntellectGain(): number;
     /**
      * Value is stored in PlayerResource.
