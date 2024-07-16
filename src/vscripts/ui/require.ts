@@ -1,3 +1,2 @@
 import "debug_panel";
-import "quests";
-import "team_selection";
+import "custom_ui_events_checker";

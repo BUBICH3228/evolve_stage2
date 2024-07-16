@@ -1,5 +1,4 @@
 import { BaseAbility, registerAbility } from "../../../../libraries/dota_ts_adapter";
-import { modifier_bashed } from "../../../../modifiers/modifier_bashed";
 
 @registerAbility()
 export class goliath_fire_breath extends BaseAbility {
@@ -11,7 +10,7 @@ export class goliath_fire_breath extends BaseAbility {
             ProjectileManager.CreateLinearProjectile({
                 Source: this.caster,
                 Ability: this,
-                vSpawnOrigin: this.caster.GetAbsOrigin(),
+                vSpawnOrigin: (this.caster.GetAbsOrigin() + Vector(0, 0, 125)) as Vector,
                 bDrawsOnMinimap: true,
                 bHasFrontalCone: true,
                 bIgnoreSource: true,
@@ -39,13 +38,13 @@ export class goliath_fire_breath extends BaseAbility {
         });
     }
 
-    OnChannelFinish(interrupted: boolean): void {
+    OnChannelFinish(): void {
         if (this.timer != undefined) {
             Timers.RemoveTimer(this.timer);
         }
     }
 
-    OnProjectileHit(target: CDOTA_BaseNPC | undefined, location: Vector): boolean | void {
+    OnProjectileHit(target: CDOTA_BaseNPC | undefined): boolean | void {
         if (target != undefined) {
             ApplyDamage({
                 attacker: this.caster,

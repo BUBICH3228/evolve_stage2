@@ -119,7 +119,7 @@ function DebugPanel:OnSetHeroRequest(kv)
     end
     kv.id = tonumber(kv.id)
 	if(not kv.id) then
-        Debug_PrintError("DebugPanel:OnSetHeroRequest id argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnSetHeroRequest id argument missing or invalid. Wtf?")
 		return
 	end
     local heroName = DOTAGameManager:GetHeroUnitNameByID(kv.id)
@@ -143,12 +143,12 @@ function DebugPanel:OnSpawnRuneRequest(kv)
     end
 	kv.rune = tonumber(kv.rune)
 	if(not kv.rune) then
-        Debug_PrintError("DebugPanel:OnSpawnRuneRequest rune argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnSpawnRuneRequest rune argument missing or invalid. Wtf?")
 		return
 	end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnSpawnRuneRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnSpawnRuneRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -165,7 +165,7 @@ function DebugPanel:OnSetTimescaleRequest(kv)
     end
 	kv.value = tonumber(kv.value)
 	if(not kv.value) then
-        Debug_PrintError("DebugPanel:OnSetTimescaleRequest value argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnSetTimescaleRequest value argument missing or invalid. Wtf?")
 		return
 	end
     Convars:SetFloat("host_timescale", kv.value)
@@ -208,7 +208,7 @@ function DebugPanel:OnRefreshAbilitiesAndItemsRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnRespawnHeroRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnRespawnHeroRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -225,7 +225,7 @@ function DebugPanel:OnSetGoldRequest(kv)
     end
     local gold = tonumber(kv.gold)
     if(not gold) then
-        Debug_PrintError("DebugPanel:OnSetGoldRequest gold argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnSetGoldRequest gold argument missing or invalid. Wtf?")
         return
     end
     local eventData = {
@@ -248,7 +248,7 @@ function DebugPanel:OnKillRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnRespawnHeroRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnRespawnHeroRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -265,7 +265,7 @@ function DebugPanel:OnRespawnHeroRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnRespawnHeroRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnRespawnHeroRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -286,7 +286,7 @@ function DebugPanel:OnResetHeroRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnResetHeroRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnResetHeroRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = PlayerResource:GetSelectedHeroEntity(playerID)
@@ -309,7 +309,7 @@ function DebugPanel:OnRestoreRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnRestoreRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnRestoreRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -331,7 +331,7 @@ function DebugPanel:OnInvulnerableRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnInvulnerableRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnInvulnerableRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -352,7 +352,7 @@ function DebugPanel:OnGraveRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnGraveRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnGraveRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -373,7 +373,7 @@ function DebugPanel:OnScepterRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnScepterRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnScepterRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -400,7 +400,7 @@ function DebugPanel:OnShardRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnShardRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnShardRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -426,7 +426,7 @@ function DebugPanel:OnIncreaseHeroLevelRequest(kv)
     end
     local entIndex = tonumber(kv.unit)
     if(not entIndex) then
-        Debug_PrintError("DebugPanel:OnIncreaseHeroLevelRequest unit argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnIncreaseHeroLevelRequest unit argument missing or invalid. Wtf?")
         return
     end
     local playerHero = EntIndexToHScript(entIndex)
@@ -439,7 +439,7 @@ function DebugPanel:OnIncreaseHeroLevelRequest(kv)
     end
     amount = tonumber(kv.lvl)
     if(not amount) then
-        Debug_PrintError("DebugPanel:OnIncreaseHeroLevelRequest level argument missing or invalid. Wtf?")
+        Utility.Debug_PrintError("DebugPanel:OnIncreaseHeroLevelRequest level argument missing or invalid. Wtf?")
         return
     end
     if(amount < 0) then

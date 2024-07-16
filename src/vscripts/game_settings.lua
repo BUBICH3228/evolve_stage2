@@ -106,7 +106,7 @@ function GameSettings:LoadSettings(gme)
 		if(not parsedValue or not parsedTeamNumber) then
 			print("teamNumber", tostring(teamNumber), type(teamNumber))
 			print("value", tostring(value), type(value))
-			Debug_PrintError("GameSettings:LoadSettings failed to read \"team_max_players\". Expected format: DOTATeam_t number")
+			Utility.Debug_PrintError("GameSettings:LoadSettings failed to read \"team_max_players\". Expected format: DOTATeam_t number")
 		end
 		GameRules:SetCustomGameTeamMaxPlayers(parsedTeamNumber, parsedValue)
 	end
@@ -163,7 +163,7 @@ function GameSettings:GetSettingValueAsNumber(name)
 
 	local result = tonumber(GameSettings._kv[name]) 
 	if(not result) then
-		Debug_PrintError("GameSettings:GetSettingValueAsNumber \""..tostring(name).."\" not exists or not number.")
+		Utility.Debug_PrintError("GameSettings:GetSettingValueAsNumber \""..tostring(name).."\" not exists or not number.")
 		return 0
 	end
 
@@ -175,7 +175,7 @@ function GameSettings:GetSettingValueAsString(name)
 
 	local result = tostring(GameSettings._kv[name]) 
 	if(not result) then
-		Debug_PrintError("GameSettings:GetSettingValueAsString \""..tostring(name).."\" not exists or not string.")
+		Utility.Debug_PrintError("GameSettings:GetSettingValueAsString \""..tostring(name).."\" not exists or not string.")
 		return 0
 	end
 	return result
@@ -186,7 +186,7 @@ function GameSettings:GetSettingValueAsBoolean(name)
 
 	local result = tonumber(GameSettings._kv[name]) 
 	if(not result) then
-		Debug_PrintError("GameSettings:GetSettingValueAsNumber \""..tostring(name).."\" not exists or not number.")
+		Utility.Debug_PrintError("GameSettings:GetSettingValueAsNumber \""..tostring(name).."\" not exists or not number.")
 		return false
 	end
 	return result == 1
@@ -197,7 +197,7 @@ function GameSettings:GetSettingValueAsTable(name)
 
 	local result = GameSettings._kv[name]
 	if(not result or type(result) ~= "table") then
-		Debug_PrintError("GameSettings:GetSettingValueAsTable \""..tostring(name).."\" not exists or not table.")
+		Utility.Debug_PrintError("GameSettings:GetSettingValueAsTable \""..tostring(name).."\" not exists or not table.")
 		return {}
 	end
 	return result
@@ -208,7 +208,7 @@ function GameSettings:GetSettingValueAsTeamNumber(name)
 	
 	local result = GameSettings._kv[name]
 	if(not result or type(result) ~= "string") then
-		Debug_PrintError("GameSettings:GetSettingValueAsTeamNumber \""..tostring(name).."\" not exists or not table.")
+		Utility.Debug_PrintError("GameSettings:GetSettingValueAsTeamNumber \""..tostring(name).."\" not exists or not table.")
 		return DOTA_TEAM_NOTEAM
 	end
 	if(_G[result]) then

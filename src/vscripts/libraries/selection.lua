@@ -19,7 +19,7 @@ function Selection:OnPlayerSelectedUnit(kv)
 
     local unit = EntIndexToHScript(kv.unit)
     if(not unit) then
-        Debug_PrintError("Selection:OnPlayerSelectedUnit seems valve break something. Wtf?")
+        Utility.Debug_PrintError("Selection:OnPlayerSelectedUnit seems valve break something. Wtf?")
         return
     end
     Selection:SetPlayerLastSelectedUnit(kv.PlayerID, unit)

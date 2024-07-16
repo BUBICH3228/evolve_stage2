@@ -1,0 +1,13 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/custom_ability/custom_ability.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_ability/custom_ability.js"/>
+    </scripts>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="MainPanel" hittest="false" >
+            <Panel id="AbilityContainerPanel" class="Hidden"/>
+        </Panel>
+    </Panel>
+</root>

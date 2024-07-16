@@ -1,3 +1,5 @@
+import { Utility } from "./utility";
+
 interface AbilityTargetLoadedData {
     [key: string]: string;
 }
@@ -198,7 +200,7 @@ export class AbilityTargets {
                 return this._unitTargetTeamMapping[parsedFlag];
             }
 
-            Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
+            Utility.Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
 
             return defaultValue;
         };
@@ -213,7 +215,7 @@ export class AbilityTargets {
                 return this._unitTargetTypeMapping[parsedFlag];
             }
 
-            Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
+            Utility.Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
 
             return defaultValue;
         };
@@ -228,7 +230,7 @@ export class AbilityTargets {
                 return this._unitTargetFlagsMapping[parsedFlag];
             }
 
-            Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
+            Utility.Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
 
             return defaultValue;
         };

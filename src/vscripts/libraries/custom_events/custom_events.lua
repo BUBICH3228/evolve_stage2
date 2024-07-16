@@ -11,13 +11,13 @@ local CUSTOM_EVENTS = {
     CUSTOM_EVENT_ON_MODIFIER_STACKS_COUNT_CHANGED = 6,
     CUSTOM_EVENT_ON_RELOAD_KV = 7,
     CUSTOM_EVENT_ON_ADDON_PRECACHE = 8,
-    CUSTOM_EVENT_ON_TALENT_LEARNED = 9,
-    CUSTOM_EVENT_ON_DIFFICULTY_CHANGED = 10,
-    CUSTOM_EVENT_ON_DIFFICULTY_SELECTED = 11,
-    CUSTOM_EVENT_ON_PRE_TAKE_DAMAGE = 12,
-    CUSTOM_EVENT_ON_PRE_PLAYER_GAIN_GOLD = 13,
-    CUSTOM_EVENT_ON_PLAYER_SELECTED_UNIT = 14,
-    CUSTOM_EVENT_ON_ORDER = 15
+    CUSTOM_EVENT_ON_PRE_TAKE_DAMAGE = 9,
+    CUSTOM_EVENT_ON_PRE_PLAYER_GAIN_GOLD = 10,
+    CUSTOM_EVENT_ON_PLAYER_SELECTED_UNIT = 11,
+    CUSTOM_EVENT_ON_ORDER = 12,
+    CUSTOM_EVENT_ON_PLAYER_TEAM_SELECTED = 13,
+    CUSTOM_EVENT_ON_PLAYER_HERO_SELECTED = 14,
+    CUSTOM_EVENT_ON_PLAYER_MAP_SELECTED = 15
 }
 
 for k,v in pairs(CUSTOM_EVENTS) do
@@ -44,7 +44,7 @@ end
 
 function CustomEvents:RegisterEventHandler(enumValue, func)
     if(IsValidEvent(enumValue) == false) then
-        Debug_PrintError("CustomEvents:RegisterEventHandler attempt to register event handler for unknown event. Did you forget update enum? Got "..tostring(enumValue).."("..type(enumValue)..").")
+        Utility.Debug_PrintError("CustomEvents:RegisterEventHandler attempt to register event handler for unknown event. Did you forget update enum? Got "..tostring(enumValue).."("..type(enumValue)..").")
         return
     end
     
@@ -54,7 +54,7 @@ function CustomEvents:RegisterEventHandler(enumValue, func)
 end
 
 local function ErrorHandler(err)
-    Debug_PrintError(err)
+    Utility.Debug_PrintError(err)
 end
 
 function CustomEvents:RunEventByName(enumValue, data) 

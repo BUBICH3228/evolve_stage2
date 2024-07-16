@@ -1,0 +1,24 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/monster_health_bar/monster_health_bar.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/monster_health_bar/monster_health_bar.js"/>
+	</scripts>
+	<Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="MainPanel" class="Hidden" hittest="false" >
+            <Panel id="ShildBarContainer" class="PanelBarClass">
+                <Panel id="ShildBarSeparator"> </Panel>
+                <Panel id="ShildProgress"> 
+                    <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
+                </Panel>
+            </Panel>
+            <Panel id="HealthBarContainer" class="PanelBarClass">
+                <Panel id="HealthBarSeparator"> </Panel>
+                <Panel id="HealthProgress"> 
+                    <DOTAScenePanel id="HealthScene" map="hud/healthbarburner" camera="camera_1"/>
+                </Panel>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

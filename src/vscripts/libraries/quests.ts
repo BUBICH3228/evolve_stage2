@@ -20,6 +20,7 @@ import {
 import { PlayerQuestActionType } from "../common/quests/enums/player_quest_action_type";
 import { reloadable } from "./tstl-utils";
 import { modifier_quest_npc } from "../modifiers/modifier_quest_npc";
+import { Utility } from "./utility";
 
 type QuestWorldPanels = Partial<Record<QuestID, WorldPanel[]>>;
 
@@ -69,7 +70,7 @@ export class Quests {
             try {
                 this.OnQuestsTimerTick();
             } catch (e) {
-                Debug_PrintError(e);
+                Utility.Debug_PrintError(e);
             }
             return this._questTimerTickInverval;
         });
@@ -170,7 +171,7 @@ export class Quests {
         if (selectedNpc.GetTeamNumber() != playerHero.GetTeamNumber()) {
             return;
         }
-        if (CalculateDistanceSqr(selectedNpc, playerHero) > this._questNpcInteractionRangeSqr) {
+        if (Utility.CalculateDistanceSqr(selectedNpc, playerHero) > this._questNpcInteractionRangeSqr) {
             return;
         }
 
@@ -215,7 +216,7 @@ export class Quests {
                 if (action.infoTargetName != undefined && Quests._infoTargetPositions[action.infoTargetName] == undefined) {
                     const infoTarget = Entities.FindByName(undefined, action.infoTargetName);
                     if (infoTarget == undefined) {
-                        Debug_PrintError("Can't find info target named ", action.infoTargetName, " on map!");
+                        Utility.Debug_PrintError("Can't find info target named ", action.infoTargetName, " on map!");
                     } else {
                         Quests._infoTargetPositions[action.infoTargetName] = infoTarget.GetAbsOrigin();
                     }
@@ -250,7 +251,7 @@ export class Quests {
                     });
                 }
             } else {
-                Debug_PrintError("Can't find info target named ", npcName, "!");
+                Utility.Debug_PrintError("Can't find info target named ", npcName, "!");
             }
         }
     }
@@ -292,7 +293,7 @@ export class Quests {
                         try {
                             callback(playerAction);
                         } catch (e) {
-                            Debug_PrintError(e);
+                            Utility.Debug_PrintError(e);
                         }
                     }
                 }
@@ -315,7 +316,7 @@ export class Quests {
             try {
                 callback(playerId);
             } catch (e) {
-                Debug_PrintError(e);
+                Utility.Debug_PrintError(e);
             }
         }
     }
@@ -410,7 +411,7 @@ export class Quests {
 
     public static AddQuestToPlayer(playerId: PlayerID, questId: QuestID): PlayerQuest | undefined {
         if (this.IsPlayerHaveQuest(playerId, questId)) {
-            Debug_PrintError("Attempt to add already existing quest with id = ", questId);
+            Utility.Debug_PrintError("Attempt to add already existing quest with id = ", questId);
             return;
         }
 
@@ -439,7 +440,7 @@ export class Quests {
         const position = this.GetInfoTargetPosition(action.infoTargetName);
 
         if (position == undefined) {
-            Debug_PrintError("Attempt to create world panel for invalid info target: ", action.infoTargetName);
+            Utility.Debug_PrintError("Attempt to create world panel for invalid info target: ", action.infoTargetName);
             return;
         }
 

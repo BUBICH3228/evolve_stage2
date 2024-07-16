@@ -14,7 +14,7 @@
         </snippet>
         <snippet name="HeroSelectionButtonSnippet">
             <Panel id="HeroSelectionButton">
-                <Label id="HeroSelectionLable" text="#ui_hero_selection_button"/>
+                <Label id="HeroSelectionLabel" text="#ui_hero_selection_button"/>
             </Panel>
         </snippet>
     </snippets>
@@ -33,15 +33,15 @@
                 <Panel id="HeroStatsPanel" class="Hedden">
                     <Panel id="HeroHealth">
                         <DOTAScenePanel id="HeroHealthScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
-                        <Label id="healthLable" class="Text health" text="0" />
+                        <Label id="healthLabel" class="Text health" text="0" />
                     </Panel>
                     <Panel id="HeroMana">
                         <DOTAScenePanel id="HeroManaScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
-                        <Label id="manaLable" class="Text mana" text="0" />
+                        <Label id="manaLabel" class="Text mana" text="0" />
                     </Panel>
                     <Panel id="HeroShild">
                         <DOTAScenePanel id="HeroShildScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
-                        <Label id="shildLable" class="Text shild" text="0" />
+                        <Label id="shildLabel" class="Text shild" text="0" />
                     </Panel>
                 </Panel>
                 <Panel id="DerivedStatsContainer" class="Hedden"/>

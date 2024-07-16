@@ -1,4 +1,5 @@
 import { BaseAbility, registerAbility } from "../../../../libraries/dota_ts_adapter";
+import { Utility } from "../../../../libraries/utility";
 
 @registerAbility()
 export class goliath_leap_smash extends BaseAbility {
@@ -6,7 +7,7 @@ export class goliath_leap_smash extends BaseAbility {
     private caster: CDOTA_BaseNPC = this.GetCaster();
 
     override OnSpellStart(): void {
-        let distance = CalculateDistance(this.caster.GetAbsOrigin(), this.GetCursorPosition());
+        let distance = Utility.CalculateDistance(this.caster.GetAbsOrigin(), this.GetCursorPosition());
 
         const maxDistance = this.GetSpecialValueFor("max_distance");
         const speed = this.GetSpecialValueFor("speed");

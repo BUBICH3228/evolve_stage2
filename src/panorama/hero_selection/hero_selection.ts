@@ -1,5 +1,8 @@
 import { HeroesData, StatsData, AboutHeroData, AbilitiesData } from "../common/data/heroes_data";
-
+// eslint-disable-next-line no-var
+var HudButtons = GameUI.CustomUIConfig().HudButtons;
+// eslint-disable-next-line no-var
+var Constants = GameUI.CustomUIConfig().Constants;
 class HeroSelection {
     OLD_HERO_NAME = "";
     MAIN_PANEL = $("#MainPanel");
@@ -109,9 +112,11 @@ class HeroSelection {
     private SetupHeroSelectionButton(heroName: string) {
         const panel = $.CreatePanel("Panel", $("#HeroStatisticsContainer"), "HeroSelectionButton");
         panel.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
+        HudButtons.SetButton(Constants.HUD_BUTTONS.HERO_SELECTED, panel);
         panel.SetPanelEvent("onactivate", () => {
             GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName });
             this.MAIN_PANEL.SetHasClass("Hidden", true);
+            HudButtons.FireButtonClickedEvent(Constants.HUD_BUTTONS.HERO_SELECTED);
         });
     }
 
@@ -156,7 +161,7 @@ class HeroSelection {
         $("#DerivedStatsContainer").SetHasClass("Hidden", false);
         $("#HeroDescriptionPanel").SetHasClass("Hidden", true);
         for (const [key, value] of Object.entries(stats)) {
-            const panel = this.HERO_STATS_PANEL.FindChildTraverse(key + "Lable");
+            const panel = this.HERO_STATS_PANEL.FindChildTraverse(key + "Label");
             if (panel) {
                 panel.text = String(value);
             } else {

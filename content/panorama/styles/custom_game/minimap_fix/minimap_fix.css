@@ -5,7 +5,10 @@
 }
 
 #Map {
-    align: left bottom;
-    width: 100%;
-    height: 100%;
+    align: right top;
+    width: 226px;
+    height: 226px;
+    margin-top: 10px;
+    margin-right: 10px;
+    opacity: 3;
 }

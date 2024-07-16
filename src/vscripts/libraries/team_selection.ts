@@ -1,4 +1,8 @@
-class TeamSelectionUI {
+import { reloadable } from "./tstl-utils";
+import { Utility } from "./utility";
+
+@reloadable
+export class TeamSelection {
     constructor() {
         this.Initialize();
     }
@@ -9,8 +13,12 @@ class TeamSelectionUI {
 
     private ListenToGameEvents() {
         ListenToGameEvent("game_rules_state_change", () => this.OnGameRulesStateChange(), undefined);
-        CustomGameEventManager.RegisterListener("team_selection_results", (_, event) => this.TeamSelectionComplete(event));
-        CustomGameEventManager.RegisterListener("hero_selection_event", (_, event) => this.SelectionHero(event));
+        CustomEvents.RegisterEventHandler(CustomEvent.CUSTOM_EVENT_ON_PLAYER_TEAM_SELECTED, (event) => {
+            this.TeamSelectionComplete(event as TeamSelectionResultsEvent);
+        });
+        CustomEvents.RegisterEventHandler(CustomEvent.CUSTOM_EVENT_ON_PLAYER_HERO_SELECTED, (event) => {
+            this.SelectionHero(event as HeroSelectionEvent);
+        });
     }
 
     private OnGameRulesStateChange() {
@@ -38,7 +46,7 @@ class TeamSelectionUI {
         if (kv.PlayerType != undefined) {
             hero.FavoredTeam = kv.PlayerType;
         } else {
-            Debug_PrintError("TeamSelectionUI:TeamSelectionComplete PlayerType argument missing or invalid. Wtf?");
+            Utility.Debug_PrintError("TeamSelectionUI:TeamSelectionComplete PlayerType argument missing or invalid. Wtf?");
         }
     }
 
@@ -87,8 +95,8 @@ class TeamSelectionUI {
     private SetTeam(PlayerID: PlayerID, DotaTeam: DotaTeam) {
         const player = PlayerResource.GetPlayer(PlayerID);
         const hero = PlayerResource.GetSelectedHeroEntity(PlayerID);
-        player?.SetTeam(DotaTeam);
-        hero?.SetTeam(DotaTeam);
+        player?.SetTeam(2);
+        hero?.SetTeam(2);
     }
 
     private SelectionHero(data: HeroSelectionEvent) {
@@ -102,7 +110,7 @@ class TeamSelectionUI {
                 }
             });
         } else {
-            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID and HeroName argument missing or invalid. Wtf?");
+            Utility.Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID and HeroName argument missing or invalid. Wtf?");
         }
     }
 
@@ -113,7 +121,7 @@ class TeamSelectionUI {
             try {
                 callback(playerId);
             } catch (e) {
-                Debug_PrintError(e);
+                Utility.Debug_PrintError(e);
             }
         });
     }
@@ -131,6 +139,20 @@ class TeamSelectionUI {
             },
             undefined
         );
+        const heroes = HeroList.GetAllHeroes();
+        heroes.forEach((hero) => {
+            if (hero.GetTeam() == DotaTeam.BADGUYS) {
+                FindClearSpaceForUnit(hero, Vector(0, 0, 0), true);
+                hero.AddNewModifier(hero, undefined, "modifier_phased", { duration: 0.01 });
+                hero.Interrupt();
+                CenterCameraOnUnit(hero.GetPlayerOwnerID(), hero);
+            } else {
+                FindClearSpaceForUnit(hero, Vector(0, 0, 0), true);
+                hero.AddNewModifier(hero, undefined, "modifier_phased", { duration: 0.01 });
+                hero.Interrupt();
+                CenterCameraOnUnit(hero.GetPlayerOwnerID(), hero);
+            }
+        });
     }
 }
 
@@ -138,4 +160,12 @@ interface CDOTA_BaseNPC_Hero_TeamSelectionUI extends CDOTA_BaseNPC_Hero {
     FavoredTeam: string;
 }
 
-new TeamSelectionUI();
+declare global {
+    // eslint-disable-next-line no-var
+    var _TeamSelectionInitialized: boolean;
+}
+
+if (IsServer() && !_G._TeamSelectionInitialized) {
+    new TeamSelection();
+    _G._TeamSelectionInitialized = true;
+}

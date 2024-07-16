@@ -8,6 +8,7 @@ class DotaDefaultUIElement_hide {
         this.HideDefaultDOTAMinimap();
         this.HideDefaultDOTAGlyphScanContainer();
         this.HideDefaultDOTATalenBranch();
+        this.HideDefaultDOTALowerHudElement();
     }
 
     private HideDotaDefaultUIElement() {
@@ -20,6 +21,8 @@ class DotaDefaultUIElement_hide {
         GameUI.SetDefaultUIEnabled(DefaultUiElement.QUICK_STATS, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.KILLCAM, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.CUSTOMUI_BEHIND_HUD_ELEMENTS, true);
+        GameUI.SetDefaultUIEnabled(DefaultUiElement.INVENTORY_ITEMS, false);
+        GameUI.SetDefaultUIEnabled(DefaultUiElement.INVENTORY_PANEL, false);
     }
 
     private HideDefaultDOTATopBarButtons() {
@@ -34,7 +37,7 @@ class DotaDefaultUIElement_hide {
 
     private HideDefaultDOTAMinimap() {
         const hud = DotaHUD.Get();
-        const minimap = hud.FindChildTraverse("minimap");
+        const minimap = hud.FindChildTraverse("minimap_container");
         if (minimap) {
             minimap.style.visibility = "collapse";
         } else {
@@ -73,6 +76,78 @@ class DotaDefaultUIElement_hide {
             levelStatsFrame.style.visibility = "collapse";
         } else {
             $.Msg("Seems valve break HideDefaultDOTATalenBranch");
+        }
+    }
+
+    private HideDefaultDOTALowerHudElement() {
+        const hud = DotaHUD.Get();
+        const buffContainer = hud.FindChildTraverse("BuffContainer");
+        if (buffContainer) {
+            buffContainer.style.visibility = "collapse";
+        }
+        const portraitGroup = hud.FindChildTraverse("PortraitGroup");
+        if (portraitGroup) {
+            portraitGroup.style.visibility = "collapse";
+        }
+        const statsContainer = hud.FindChildTraverse("stats_container");
+        if (statsContainer) {
+            statsContainer.style.visibility = "collapse";
+        }
+        const unitname = hud.FindChildTraverse("unitname");
+        if (unitname) {
+            unitname.style.visibility = "collapse";
+        }
+        const healthMana = hud.FindChildTraverse("health_mana");
+        if (healthMana) {
+            healthMana.style.visibility = "collapse";
+        }
+        const HUDSkinAbilityContainerBG = hud.FindChildTraverse("HUDSkinAbilityContainerBG");
+        if (HUDSkinAbilityContainerBG) {
+            HUDSkinAbilityContainerBG.style.visibility = "collapse";
+        }
+        const centerBg = hud.FindChildTraverse("center_bg");
+        if (centerBg) {
+            centerBg.style.visibility = "collapse";
+        }
+        const HUDSkinPortrait = hud.FindChildTraverse("HUDSkinPortrait");
+        if (HUDSkinPortrait) {
+            HUDSkinPortrait.style.visibility = "collapse";
+        }
+        const unitbadge = hud.FindChildTraverse("unitbadge");
+        if (unitbadge) {
+            unitbadge.style.visibility = "collapse";
+        }
+        const inventoryCompositionLayerContainer = hud.FindChildTraverse("inventory_composition_layer_container");
+        if (inventoryCompositionLayerContainer) {
+            inventoryCompositionLayerContainer.style.visibility = "collapse";
+        }
+        const leftFlare = hud.FindChildTraverse("left_flare");
+        if (leftFlare) {
+            leftFlare.style.visibility = "collapse";
+        }
+        const AbilityInsetShadowLeft = hud.FindChildrenWithClassTraverse("AbilityInsetShadowLeft")[0];
+        if (AbilityInsetShadowLeft) {
+            AbilityInsetShadowLeft.style.visibility = "collapse";
+        }
+        const AbilityInsetShadowRight = hud.FindChildrenWithClassTraverse("AbilityInsetShadowRight")[0];
+        if (AbilityInsetShadowRight) {
+            AbilityInsetShadowRight.style.visibility = "collapse";
+        }
+        const xp = hud.FindChildTraverse("xp");
+        if (xp) {
+            xp.style.visibility = "collapse";
+        }
+        const RootInnateDisplay = hud.FindChildrenWithClassTraverse("RootInnateDisplay")[0];
+        if (RootInnateDisplay) {
+            RootInnateDisplay.style.visibility = "collapse";
+        }
+        const AbilitiesAndStatBranch = hud.FindChildTraverse("AbilitiesAndStatBranch");
+        if (AbilitiesAndStatBranch) {
+            AbilitiesAndStatBranch.style.visibility = "visible";
+        }
+        const lowerHud = hud.FindChildTraverse("lower_hud");
+        if (lowerHud) {
+            lowerHud.style.visibility = "collapse";
         }
     }
 }

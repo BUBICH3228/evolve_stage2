@@ -116,7 +116,7 @@ function KeyValues:LoadGameKeyValues()
                 file[k] = v
             end
         else
-            Debug_PrintError("[KeyValues] Critical Error on "..v.custom..".txt")
+            Utility.Debug_PrintError("[KeyValues] Critical Error on "..v.custom..".txt")
             return
         end
         
@@ -153,7 +153,7 @@ function KeyValues:LoadGameKeyValues()
             KeyValues.UnitKV[key] = value
         else
             if type(KeyValues.All[key]) == "table" then
-                Debug_PrintError("[KeyValues] Warning: Duplicated unit/hero entry for "..key)
+                Utility.Debug_PrintError("[KeyValues] Warning: Duplicated unit/hero entry for "..key)
             end
         end
     end

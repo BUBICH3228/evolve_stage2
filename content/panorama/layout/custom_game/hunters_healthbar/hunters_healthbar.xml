@@ -1,0 +1,25 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/hunters_healthbar/hunters_healthbar.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/hunters_healthbar/hunters_healthbar.js"/>
+	</scripts>
+	<Panel class="Root" hittest="false" hittestchildren="true">
+        <Panel id="MainPanel" class="Hidden" hittest="false" >
+            <Panel id="HealthBarContainer">
+                <ProgressBar id="HealthProgressBar" min="0"> 
+                    <Label id="HealthProgressBarLabel" text="" />
+                </ProgressBar>
+                <Panel id="HealthFrame"/>
+            </Panel>
+             <Panel id="ShildBarContainer">
+                <ProgressBar id="ShildProgressBar" min="0"> 
+                    <Label id="ShildProgressBarLabel" text="" />
+                    <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
+                </ProgressBar>
+                <Panel id="ShildFrame"/>
+            </Panel>
+        </Panel>
+    </Panel>
+</root>

@@ -7,7 +7,7 @@
 		<include src="file://{resources}/scripts/custom_game/api/top_bar_hud_buttons.js" />
 		<include src="file://{resources}/scripts/custom_game/api/selection.js" />
 		<include src="file://{resources}/scripts/custom_game/api/quests.js" />
-		<include src="file://{resources}/scripts/custom_game/api/game_settings.js" />
+		<include src="file://{resources}/scripts/custom_game/api/hud_buttons.js" />
 	</scripts>
 
 	<Panel>
@@ -21,6 +21,8 @@
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/players_top/players_top.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/team_selection/team_selection.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hero_selection/hero_selection.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/minimap_fix/minimap_fix.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_ability/custom_ability.xml" />
 	</Panel>
 </root>
 

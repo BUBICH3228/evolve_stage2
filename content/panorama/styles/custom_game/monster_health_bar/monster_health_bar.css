@@ -1,0 +1,73 @@
+#MainPanel {
+    width: 700px;
+    height:  53px;
+}
+.PanelBarClass {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 1px;
+    border-radius: 8px;
+}
+
+.Hidden
+{
+    opacity: 0;
+}
+
+#ShildBarContainer {
+    width: 70%;
+}
+
+#HealthBarContainer {
+    width: 100%;
+    margin-top: 20px;
+    z-index: -1;
+}
+
+#HealthBarSeparator {
+    background-image: url("file://{images}/custom_game/ui/monster_health_bar/separator.png");
+    background-size: 70px 25px;
+    z-index: 1;
+    width: 100%;
+    height:  100%;
+}
+
+#HealthProgress {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5D2E25 ), color-stop( 0.2, #A54E39 ), color-stop( .5, #904030), to( #5D2C25) );
+    align: left center;
+    height: 100%;
+    transition-property: width;
+	transition-duration: 1.0s;
+	transition-timing-function: linear;
+    border-radius: 8px;
+}
+
+#HealthScene {
+    width: 100%;
+    height: 100%;
+    hue-rotation: 252deg;
+}
+
+#ShildBarSeparator {
+    background-image: url("file://{images}/custom_game/ui/monster_health_bar/separator.png");
+    background-size: 100px 25px;
+    z-index: 1;
+    width: 100%;
+    height:  100%;
+}
+
+#ShildProgress {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #25536d ), color-stop( 0.2, #49679e ), color-stop( .5, #6184c5), to( #1c3f6d ) );
+    align: left center;
+    height: 100%;
+    transition-property: width;
+	transition-duration: 1.0s;
+	transition-timing-function: linear;
+    border-radius: 8px;
+}
+
+#ShildScene {
+    width: 100%;
+    height: 100%;
+    hue-rotation: 100deg;
+}

@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { Utility } from "../libraries/utility";
+
 export class GenericAIBehavior {
     static IsCanRetreatToSpawnPosition(state: boolean): boolean {
         return true;
@@ -119,7 +121,7 @@ export class AICore {
 
         if (AICore.IsRetreating(thisEntity) == true) {
             AICore.RetreatToHome(thisEntity);
-            const distanceToSpawnPosition = CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
+            const distanceToSpawnPosition = Utility.CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
             if (distanceToSpawnPosition <= AICore.DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR) {
                 AICore.SetIsRetreating(thisEntity, false);
                 thisEntity.Stop();
@@ -132,7 +134,7 @@ export class AICore {
         }
 
         if (AICore.IsCanRetreat(thisEntity) == true) {
-            const distanceToSpawnPosition = CalculateDistance(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
+            const distanceToSpawnPosition = Utility.CalculateDistance(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
             if (distanceToSpawnPosition > AICore.MAX_DISTANCE_FROM_SPAWN_POSITION) {
                 AICore.RetreatToHome(thisEntity);
                 return AICore.GetThinkInterval(thisEntity);
@@ -167,7 +169,7 @@ export class AICore {
             }
         } else {
             if (AICore.IsCanRetreat(thisEntity) == true) {
-                const distanceToSpawnPosition = CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
+                const distanceToSpawnPosition = Utility.CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
                 if (distanceToSpawnPosition > AICore.DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR) {
                     AICore.RetreatToHome(thisEntity);
                 }
@@ -201,7 +203,7 @@ export class AICore {
         const isEnemyTargetAbility = bit.band(abilityTargetTeam, UnitTargetTeam.ENEMY) == UnitTargetTeam.ENEMY;
         const isBothTeamTargetAbility = bit.band(abilityTargetTeam, UnitTargetTeam.BOTH) == UnitTargetTeam.BOTH;
         if ((isAllyTargetAbility == true && isEnemyTargetAbility == true) || isBothTeamTargetAbility == true) {
-            Debug_PrintError(
+            Utility.Debug_PrintError(
                 "[AICore] " +
                     tostring(unit.GetUnitName()) +
                     " has ability named " +
@@ -226,7 +228,7 @@ export class AICore {
             ability.behavior = AbilityBehavior.TOGGLE;
         }
         if (!ability.behavior) {
-            Debug_PrintError(
+            Utility.Debug_PrintError(
                 "[AICore] " +
                     tostring(unit.GetUnitName()) +
                     " has ability named " +
@@ -306,7 +308,7 @@ export class AICore {
     static SetInCombat(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
         if (thisEntity.aiData != undefined) {
             if (state != true && state != false) {
-                Debug_PrintError(
+                Utility.Debug_PrintError(
                     "[AICore] Attempt to set combat state to invalid value = " + tostring(state) + ". Using default value = false."
                 );
                 state = false;
@@ -326,7 +328,7 @@ export class AICore {
     static SetIsRetreating(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
         if (thisEntity.aiData != undefined) {
             if (state != true && state != false) {
-                Debug_PrintError(
+                Utility.Debug_PrintError(
                     "[AICore] Attempt to set retreating state to invalid value = " + tostring(state) + ". Using default value = false."
                 );
                 state = false;
@@ -346,7 +348,7 @@ export class AICore {
     static SetIsCastAbility(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
         if (thisEntity.aiData != undefined) {
             if (state != true && state != false) {
-                Debug_PrintError(
+                Utility.Debug_PrintError(
                     "[AICore] Attempt to set retreating state to invalid value = " + tostring(state) + ". Using default value = false."
                 );
                 state = false;
@@ -440,18 +442,18 @@ export class AICore {
 
     static RemoveGoalEntity(thisEntity: CDOTA_BaseNPC_AICore, goalEntity: any) {
         if (thisEntity.aiData != undefined) {
-            ArrayRemove(AICore.GetAllGoalEntities(thisEntity) as any, function (t: any, i: any, j: any) {
-                const goal = t[i];
-                return goal != goalEntity;
-            });
+            //Utility.CalculateDistance(AICore.GetAllGoalEntities(thisEntity) as any, function (t: any, i: any, j: any) {
+            //    const goal = t[i];
+            //    return goal != goalEntity;
+            //});
         }
     }
 
     static RemoveAllGoalEntities(thisEntity: CDOTA_BaseNPC_AICore) {
         if (thisEntity.aiData != undefined) {
-            ArrayRemove(AICore.GetAllGoalEntities(thisEntity) as any, function (t, i, j) {
-                return false;
-            });
+            //Utility.CalculateDistance(AICore.GetAllGoalEntities(thisEntity) as any, function (t, i, j) {
+            //    return false;
+            //});
         }
     }
 
@@ -506,14 +508,14 @@ export class AICore {
             return;
         }
 
-        let distancetoLatestKnownGoal = CalculateDistanceSqr(currentGoal.GetAbsOrigin(), currentEntityPosition);
+        let distancetoLatestKnownGoal = Utility.CalculateDistanceSqr(currentGoal.GetAbsOrigin(), currentEntityPosition);
         let distanceToCurrentCheckingGoal = 0;
 
         for (let i = goalEntities.length; i < goalEntities.length; i++) {
             if (goalEntities[i] == undefined) {
                 return;
             }
-            distanceToCurrentCheckingGoal = CalculateDistanceSqr(goalEntities[i].GetAbsOrigin(), currentEntityPosition);
+            distanceToCurrentCheckingGoal = Utility.CalculateDistanceSqr(goalEntities[i].GetAbsOrigin(), currentEntityPosition);
             if (distanceToCurrentCheckingGoal < distancetoLatestKnownGoal) {
                 currentGoal = goalEntities[i];
                 distancetoLatestKnownGoal = distanceToCurrentCheckingGoal;
@@ -535,7 +537,7 @@ export class AICore {
         }
         const goalPosition = currentGoal.GetAbsOrigin();
         AICore.MoveToPosition(thisEntity, goalPosition);
-        const distanceToGoal = CalculateDistanceSqr(goalPosition, thisEntity.GetAbsOrigin());
+        const distanceToGoal = Utility.CalculateDistanceSqr(goalPosition, thisEntity.GetAbsOrigin());
         if (distanceToGoal <= AICore.DISTANCE_TO_CURRENT_GOAL_TO_BE_CONSIDERED_REACHED_SQR) {
             if (AICore.GetGoalEntitiesCount(thisEntity) > 1) {
                 AICore.RemoveGoalEntity(thisEntity, currentGoal);
@@ -620,7 +622,7 @@ export class AICore {
                 return;
             }
             const orderType = AICore.GetOrderTypeFromAbilityBehaviour(ability);
-            const distanceBetweenUnits = CalculateDistance(caster.GetAbsOrigin(), target.GetAbsOrigin());
+            const distanceBetweenUnits = Utility.CalculateDistance(caster.GetAbsOrigin(), target.GetAbsOrigin());
             if (orderType == UnitOrder.CAST_NO_TARGET && distanceBetweenUnits > AICore.MAX_DISTANCE_BETWEEN_UNITS_CAST_NO_TARGET_ABILITY) {
                 AICore.MoveToPosition(caster, target.GetAbsOrigin());
                 return AICore.AI_ACTION_CASTED_NOTHING;

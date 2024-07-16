@@ -1,8 +1,8 @@
 <root>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/dota_hud/unit_detailed_stats_tooltip.js" />
 		<include src="file://{resources}/scripts/custom_game/dota_hud/DotaDefaultUIElement_hide.js" />
 		<include src="file://{resources}/scripts/custom_game/dota_hud/DotaDefaultUIElement_fix.js" />
+		<include src="file://{resources}/scripts/custom_game/dota_hud/custom_health_bar.js" />
 	</scripts>
 	<Panel hittest="false" hittestchildren="false"/>
 </root>

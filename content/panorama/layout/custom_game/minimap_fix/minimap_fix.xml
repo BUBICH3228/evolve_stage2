@@ -5,7 +5,7 @@
     <scripts>
         <include src="file://{resources}/scripts/custom_game/minimap_fix/minimap_fix.js"/>
     </scripts>
-    <Panel class="Root">
+    <Panel class="Root" hittest="false" hittestchildren="true">
         <DOTAHUDOverlayMap id="Map" maptexture= "" mapscale= "1" fixedoffsetenabled="true" SetFixedOffset = "0,0"/>
     </Panel>
 </root>
