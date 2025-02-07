@@ -2,13 +2,10 @@
 
 Layer0
 {
-	shader "ui_twotexture.vfx"
+	shader "ui.vfx"
 
 	//---- Color ----
-	g_vTexCoord2Offset "[0.000 0.000]"
-	g_vTexCoord2Scale "[1.000 1.000]"
-	TextureColor "[0.196078 0.803922 0.196078 1.000000]"
-	TextureColor2 "materials/overviews/wraith_trap_map.tga"
+	Texture "materials/overviews/wraith_trap_map.psd"
 
 
 	VariableState

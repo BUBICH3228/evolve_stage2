@@ -1,5 +1,5 @@
+import { HeroesData } from "../common/data/heroes_data";
 import { reloadable } from "./tstl-utils";
-import { Utility } from "./utility";
 
 @reloadable
 export class TeamSelection {
@@ -32,6 +32,9 @@ export class TeamSelection {
             });
             Timers.CreateTimer(90, () => {
                 CustomGameEventManager.Send_ServerToAllClients("show_hero_selection_menu", { visibleState: false });
+                this.ForEachPlayer((playerID) => {
+                    this.SelectionHero({ PlayerID: playerID, HeroName: undefined });
+                });
                 CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: true });
             });
             Timers.CreateTimer(120, () => {
@@ -46,7 +49,7 @@ export class TeamSelection {
         if (kv.PlayerType != undefined) {
             hero.FavoredTeam = kv.PlayerType;
         } else {
-            Utility.Debug_PrintError("TeamSelectionUI:TeamSelectionComplete PlayerType argument missing or invalid. Wtf?");
+            Debug_PrintError("TeamSelectionUI:TeamSelectionComplete PlayerType argument missing or invalid. Wtf?");
         }
     }
 
@@ -95,8 +98,8 @@ export class TeamSelection {
     private SetTeam(PlayerID: PlayerID, DotaTeam: DotaTeam) {
         const player = PlayerResource.GetPlayer(PlayerID);
         const hero = PlayerResource.GetSelectedHeroEntity(PlayerID);
-        player?.SetTeam(2);
-        hero?.SetTeam(2);
+        player?.SetTeam(DotaTeam);
+        hero?.SetTeam(DotaTeam);
     }
 
     private SelectionHero(data: HeroSelectionEvent) {
@@ -104,14 +107,42 @@ export class TeamSelection {
             PlayerResource.ReplacePlayerHero(data.PlayerID, data.HeroName, false);
             Timers.CreateTimer(1, () => {
                 CustomGameEventManager.Send_ServerToAllClients("fix_hero_minimap_icon", {});
-                const hero = PlayerResource.GetSelectedHeroEntity(data.PlayerID!);
+                const hero = PlayerResource.GetSelectedHeroEntity(data.PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
+                hero.isHeroSelected = true;
                 if (hero?.GetTeam() == DotaTeam.BADGUYS) {
                     hero.SetAbilityPoints(3);
                 }
             });
+        } else if (data.PlayerID != undefined && data.HeroName == undefined) {
+            const hero = PlayerResource.GetSelectedHeroEntity(data.PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
+            if (hero.isHeroSelected == undefined) {
+                PlayerResource.ReplacePlayerHero(data.PlayerID, this.GetRandomHeroKey(hero.GetTeam() == DotaTeam.BADGUYS), false);
+            }
         } else {
-            Utility.Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID and HeroName argument missing or invalid. Wtf?");
+            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID and HeroName argument missing or invalid. Wtf?");
         }
+    }
+
+    private GetRandomHeroKey(IsMonster: boolean): string {
+        const data = Object.entries(HeroesData);
+
+        if (data.length === 0) {
+            return "npc_dota_hero_wisp";
+        }
+
+        if (IsMonster == true) {
+            const Monsterkeys = Object.keys(data[4]);
+            return Monsterkeys[RandomInt(0, Monsterkeys.length)] || "npc_dota_hero_wisp";
+        }
+
+        const Hunterkeys = [];
+        for (let index = 0; index < 4; index++) {
+            Hunterkeys.push(Object.keys(data[index]));
+        }
+
+        const randomClass = RandomInt(0, Hunterkeys.length);
+
+        return Hunterkeys[randomClass][RandomInt(0, Hunterkeys[randomClass].length)] || "npc_dota_hero_wisp";
     }
 
     private ForEachPlayer(callback: (playerId: PlayerID) => void): void {
@@ -121,7 +152,7 @@ export class TeamSelection {
             try {
                 callback(playerId);
             } catch (e) {
-                Utility.Debug_PrintError(e);
+                Debug_PrintError(e);
             }
         });
     }
@@ -168,4 +199,8 @@ declare global {
 if (IsServer() && !_G._TeamSelectionInitialized) {
     new TeamSelection();
     _G._TeamSelectionInitialized = true;
+}
+
+interface CDOTA_BaseNPC_Hero_Selection extends CDOTA_BaseNPC_Hero {
+    isHeroSelected: boolean;
 }

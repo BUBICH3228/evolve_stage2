@@ -1,37 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-import { Utility } from "../libraries/utility";
-
-export class GenericAIBehavior {
-    static IsCanRetreatToSpawnPosition(state: boolean): boolean {
-        return true;
-    }
-
-    static IsCanRespondToHelpCall(): boolean {
-        return true;
-    }
-
-    static IsCanTargetNeutralCreeps(): boolean {
-        return true;
-    }
-
-    static IsCanAdjustPathToGoal(): boolean {
-        return false;
-    }
-
-    static IsCompletelyForgetAboutInvisibleEnemies(): boolean {
-        return false;
-    }
-}
-
+import { registerModifier, BaseModifier } from "../libraries/dota_ts_adapter";
+import { GenericAIBehavior } from "./generic_ai_behavior";
 export class AICore {
     static TEMPORARY_AGGRO_DURATION = 5;
 
-    static SEARCH_RANGE_FOR_BOYS_FOR_HELP = 300;
+    static SEARCH_RANGE_FOR_BOYS_FOR_HELP = 100;
 
     static DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR = 625;
-    static MAX_DISTANCE_FROM_SPAWN_POSITION = 850;
+    static MAX_DISTANCE_FROM_SPAWN_POSITION = 550;
     static DISTANCE_TO_CURRENT_GOAL_TO_BE_CONSIDERED_REACHED_SQR = 250000;
     static MAX_DISTANCE_BETWEEN_UNITS_CAST_NO_TARGET_ABILITY = 450;
 
@@ -46,7 +23,7 @@ export class AICore {
     static AI_GOAL_STATE_NOT_ADJUSTED = 0;
     static AI_GOAL_STATE_ADJUSTED = 1;
 
-    static Init(thisEntity: CDOTA_BaseNPC_AICore, behavior: any): void {
+    static Init(thisEntity: CDOTA_BaseNPC_AICore, behavior: GenericAIBehavior): void {
         thisEntity.SetContextThink(
             "AICoreThink",
             function name() {
@@ -63,7 +40,7 @@ export class AICore {
                         currentGoals: [],
                         spawnPosition: thisEntity.GetAbsOrigin(),
                         aggroRange: thisEntity.GetAcquisitionRange(),
-                        thinkInterval: 1,
+                        thinkInterval: 0.2,
                         isCanRetreat: behavior.IsCanRetreatToSpawnPosition(),
                         isCanRespondToHelpCall: behavior.IsCanRespondToHelpCall(),
                         isCanTargetNeutralCreeps: behavior.IsCanTargetNeutralCreeps(),
@@ -74,8 +51,15 @@ export class AICore {
                         abilitiesWithAllyTarget: [],
                         abilitiesWithEnemyTarget: []
                     };
+                    if (behavior.OnInit != undefined) {
+                        behavior.OnInit(thisEntity);
+                    }
+
                     thisEntity.SetAcquisitionRange(0);
                     AICore.InitAbilitiesList(thisEntity);
+                    if (AICore.IsCanRetreat(thisEntity)) {
+                        thisEntity.AddNewModifier(thisEntity, undefined, modifier_sleep.name, { duration: -1 });
+                    }
                     return 0.1;
                 }
                 const thinkResult = AICore.Think(thisEntity);
@@ -100,7 +84,13 @@ export class AICore {
     }
 
     static Think(thisEntity: CDOTA_BaseNPC_AICore): number {
-        if (thisEntity.IsNull() || !thisEntity.IsAlive() || thisEntity.IsControllableByAnyPlayer() || thisEntity.GetPlayerOwnerID() > -1) {
+        if (thisEntity.IsNull() || !thisEntity.IsAlive()) {
+            return AICore.AI_THINK_END;
+        }
+
+        if (thisEntity.IsControllableByAnyPlayer() || thisEntity.GetPlayerOwnerID() > -1) {
+            thisEntity.AddNewModifier(thisEntity, undefined, modifier_sleep.name, { duration: -1 });
+            thisEntity.RemoveModifierByName(modifier_sleep.name);
             return AICore.AI_THINK_END;
         }
 
@@ -116,25 +106,26 @@ export class AICore {
             return AICore.GetThinkInterval(thisEntity);
         }
 
+        if (thisEntity.FindModifierByName(modifier_sleep.name)) {
+            return AICore.GetThinkInterval(thisEntity);
+        }
+
         const currentEntityPosition = thisEntity.GetAbsOrigin();
-        let searchRadius = AICore.GetAggroRange(thisEntity);
+        const searchRadius = AICore.GetAggroRange(thisEntity);
 
         if (AICore.IsRetreating(thisEntity) == true) {
             AICore.RetreatToHome(thisEntity);
-            const distanceToSpawnPosition = Utility.CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
+            const distanceToSpawnPosition = CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
             if (distanceToSpawnPosition <= AICore.DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR) {
                 AICore.SetIsRetreating(thisEntity, false);
+                thisEntity.AddNewModifier(thisEntity, undefined, modifier_sleep.name, { duration: -1 });
                 thisEntity.Stop();
             }
             return AICore.GetThinkInterval(thisEntity);
         }
 
-        if (AICore.IsInCombat(thisEntity)) {
-            searchRadius *= 10;
-        }
-
         if (AICore.IsCanRetreat(thisEntity) == true) {
-            const distanceToSpawnPosition = Utility.CalculateDistance(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
+            const distanceToSpawnPosition = CalculateDistance(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
             if (distanceToSpawnPosition > AICore.MAX_DISTANCE_FROM_SPAWN_POSITION) {
                 AICore.RetreatToHome(thisEntity);
                 return AICore.GetThinkInterval(thisEntity);
@@ -143,38 +134,39 @@ export class AICore {
 
         const currentEntityTeam = thisEntity.GetTeamNumber();
         const enemies = AICore.FindEnemiesAround(currentEntityTeam, currentEntityPosition, searchRadius);
-
-        if (enemies.length > 0) {
-            AICore.SetInCombat(thisEntity, true);
-            AICore.SetIsNextGoalAdjusted(thisEntity, AICore.AI_GOAL_STATE_NOT_ADJUSTED);
-            const actionResult = AICore.TryAttackEnemies(thisEntity, enemies);
-            if (actionResult != AICore.AI_ACTION_CASTED_NOTHING) {
-                return AICore.GetThinkInterval(thisEntity);
+        if (AICore.IsCanAdjustPathToGoal(thisEntity) == true) {
+            if (enemies.length > 0) {
+                AICore.SetInCombat(thisEntity, true);
+                AICore.SetIsNextGoalAdjusted(thisEntity, AICore.AI_GOAL_STATE_NOT_ADJUSTED);
+                const actionResult = AICore.TryAttackEnemies(thisEntity, enemies);
+                if (actionResult != 0) {
+                    return AICore.GetThinkInterval(thisEntity);
+                }
+            } else {
+                AICore.AdjustNextGoal(thisEntity);
+                AICore.SetInCombat(thisEntity, false);
+                AICore.MoveToNextGoal(thisEntity);
             }
-        } else {
-            AICore.AdjustNextGoal(thisEntity);
-            AICore.SetInCombat(thisEntity, false);
         }
 
         if (AICore.IsInCombat(thisEntity) == true) {
+            if (enemies.length > 0) {
+                const actionResult = AICore.TryAttackEnemies(thisEntity, enemies);
+                if (actionResult != 0) {
+                    return AICore.GetThinkInterval(thisEntity);
+                }
+            } else {
+                AICore.SetInCombat(thisEntity, false);
+            }
             const allies = AICore.FindAlliesAround(currentEntityTeam, currentEntityPosition, AICore.SEARCH_RANGE_FOR_BOYS_FOR_HELP);
             if (allies.length > 0) {
                 const actionResult = AICore.TryHelpAllies(thisEntity, allies);
-                for (const thisEntity of allies as CDOTA_BaseNPC_AICore[]) {
-                    AICore.SetInCombat(thisEntity, true);
+                for (const ally of allies as CDOTA_BaseNPC_AICore[]) {
+                    AICore.SetInCombat(ally, true);
                 }
-                if (actionResult != AICore.AI_ACTION_CASTED_NOTHING) {
+                if (actionResult != 0) {
                     return AICore.GetThinkInterval(thisEntity);
                 }
-            }
-        } else {
-            if (AICore.IsCanRetreat(thisEntity) == true) {
-                const distanceToSpawnPosition = Utility.CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
-                if (distanceToSpawnPosition > AICore.DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR) {
-                    AICore.RetreatToHome(thisEntity);
-                }
-            } else {
-                AICore.MoveToNextGoal(thisEntity);
             }
         }
         return AICore.GetThinkInterval(thisEntity);
@@ -203,7 +195,7 @@ export class AICore {
         const isEnemyTargetAbility = bit.band(abilityTargetTeam, UnitTargetTeam.ENEMY) == UnitTargetTeam.ENEMY;
         const isBothTeamTargetAbility = bit.band(abilityTargetTeam, UnitTargetTeam.BOTH) == UnitTargetTeam.BOTH;
         if ((isAllyTargetAbility == true && isEnemyTargetAbility == true) || isBothTeamTargetAbility == true) {
-            Utility.Debug_PrintError(
+            Debug_PrintError(
                 "[AICore] " +
                     tostring(unit.GetUnitName()) +
                     " has ability named " +
@@ -228,7 +220,7 @@ export class AICore {
             ability.behavior = AbilityBehavior.TOGGLE;
         }
         if (!ability.behavior) {
-            Utility.Debug_PrintError(
+            Debug_PrintError(
                 "[AICore] " +
                     tostring(unit.GetUnitName()) +
                     " has ability named " +
@@ -308,11 +300,16 @@ export class AICore {
     static SetInCombat(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
         if (thisEntity.aiData != undefined) {
             if (state != true && state != false) {
-                Utility.Debug_PrintError(
+                Debug_PrintError(
                     "[AICore] Attempt to set combat state to invalid value = " + tostring(state) + ". Using default value = false."
                 );
                 state = false;
             }
+
+            if (state == true) {
+                thisEntity.RemoveModifierByName(modifier_sleep.name);
+            }
+
             thisEntity.aiData.isInCombat = state;
         }
     }
@@ -328,7 +325,7 @@ export class AICore {
     static SetIsRetreating(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
         if (thisEntity.aiData != undefined) {
             if (state != true && state != false) {
-                Utility.Debug_PrintError(
+                Debug_PrintError(
                     "[AICore] Attempt to set retreating state to invalid value = " + tostring(state) + ". Using default value = false."
                 );
                 state = false;
@@ -348,7 +345,7 @@ export class AICore {
     static SetIsCastAbility(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
         if (thisEntity.aiData != undefined) {
             if (state != true && state != false) {
-                Utility.Debug_PrintError(
+                Debug_PrintError(
                     "[AICore] Attempt to set retreating state to invalid value = " + tostring(state) + ". Using default value = false."
                 );
                 state = false;
@@ -442,18 +439,18 @@ export class AICore {
 
     static RemoveGoalEntity(thisEntity: CDOTA_BaseNPC_AICore, goalEntity: any) {
         if (thisEntity.aiData != undefined) {
-            //Utility.CalculateDistance(AICore.GetAllGoalEntities(thisEntity) as any, function (t: any, i: any, j: any) {
-            //    const goal = t[i];
-            //    return goal != goalEntity;
-            //});
+            ArrayRemove(AICore.GetAllGoalEntities(thisEntity) as any, function (t: any, i: any, j: any) {
+                const goal = t[i];
+                return goal != goalEntity;
+            });
         }
     }
 
     static RemoveAllGoalEntities(thisEntity: CDOTA_BaseNPC_AICore) {
         if (thisEntity.aiData != undefined) {
-            //Utility.CalculateDistance(AICore.GetAllGoalEntities(thisEntity) as any, function (t, i, j) {
-            //    return false;
-            //});
+            ArrayRemove(AICore.GetAllGoalEntities(thisEntity) as any, function (t, i, j) {
+                return false;
+            });
         }
     }
 
@@ -508,14 +505,14 @@ export class AICore {
             return;
         }
 
-        let distancetoLatestKnownGoal = Utility.CalculateDistanceSqr(currentGoal.GetAbsOrigin(), currentEntityPosition);
+        let distancetoLatestKnownGoal = CalculateDistanceSqr(currentGoal.GetAbsOrigin(), currentEntityPosition);
         let distanceToCurrentCheckingGoal = 0;
 
         for (let i = goalEntities.length; i < goalEntities.length; i++) {
             if (goalEntities[i] == undefined) {
                 return;
             }
-            distanceToCurrentCheckingGoal = Utility.CalculateDistanceSqr(goalEntities[i].GetAbsOrigin(), currentEntityPosition);
+            distanceToCurrentCheckingGoal = CalculateDistanceSqr(goalEntities[i].GetAbsOrigin(), currentEntityPosition);
             if (distanceToCurrentCheckingGoal < distancetoLatestKnownGoal) {
                 currentGoal = goalEntities[i];
                 distancetoLatestKnownGoal = distanceToCurrentCheckingGoal;
@@ -531,13 +528,15 @@ export class AICore {
         if (!thisEntity.aiData) {
             return;
         }
+
         const currentGoal = AICore.GetCurrentGoalEntity(thisEntity);
         if (!currentGoal) {
             return;
         }
+
         const goalPosition = currentGoal.GetAbsOrigin();
         AICore.MoveToPosition(thisEntity, goalPosition);
-        const distanceToGoal = Utility.CalculateDistanceSqr(goalPosition, thisEntity.GetAbsOrigin());
+        const distanceToGoal = CalculateDistanceSqr(goalPosition, thisEntity.GetAbsOrigin());
         if (distanceToGoal <= AICore.DISTANCE_TO_CURRENT_GOAL_TO_BE_CONSIDERED_REACHED_SQR) {
             if (AICore.GetGoalEntitiesCount(thisEntity) > 1) {
                 AICore.RemoveGoalEntity(thisEntity, currentGoal);
@@ -622,7 +621,7 @@ export class AICore {
                 return;
             }
             const orderType = AICore.GetOrderTypeFromAbilityBehaviour(ability);
-            const distanceBetweenUnits = Utility.CalculateDistance(caster.GetAbsOrigin(), target.GetAbsOrigin());
+            const distanceBetweenUnits = CalculateDistance(caster.GetAbsOrigin(), target.GetAbsOrigin());
             if (orderType == UnitOrder.CAST_NO_TARGET && distanceBetweenUnits > AICore.MAX_DISTANCE_BETWEEN_UNITS_CAST_NO_TARGET_ABILITY) {
                 AICore.MoveToPosition(caster, target.GetAbsOrigin());
                 return AICore.AI_ACTION_CASTED_NOTHING;
@@ -656,6 +655,36 @@ export class AICore {
             return -1;
         }
         return -1;
+    }
+}
+
+@registerModifier()
+export class modifier_sleep extends BaseModifier {
+    // Modifier properties
+    private caster: CDOTA_BaseNPC = this.GetCaster()!;
+    private ability: CDOTABaseAbility = this.GetAbility()!;
+    private parent: CDOTA_BaseNPC = this.GetParent();
+
+    // Modifier specials
+
+    override IsHidden() {
+        return false;
+    }
+    override IsDebuff() {
+        return false;
+    }
+    override IsPurgable() {
+        return false;
+    }
+    override IsPurgeException() {
+        return false;
+    }
+    override RemoveOnDeath() {
+        return true;
+    }
+
+    CheckState(): Partial<Record<modifierstate, boolean>> {
+        return { [ModifierState.STUNNED]: true };
     }
 }
 

@@ -1,4 +1,5 @@
 import { AICore } from "../ai/ai_core";
+import { Settings } from "../data/game_settings";
 
 export class DamageFilter {
     static Init(gme: CDOTABaseGameMode) {
@@ -63,7 +64,7 @@ export class DamageFilter {
             ParticleManager.DestroyAndReleaseParticle(numParticle, 2);
         }
 
-        if (unit.GetTeamNumber() == GameSettings.GetSettingValueAsTeamNumber("players_team")) {
+        if (unit.GetTeamNumber() == Settings.client.team_max_players[2]) {
             CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_PRE_TAKE_DAMAGE, eventData);
             return true;
         }

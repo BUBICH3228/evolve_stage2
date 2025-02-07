@@ -6,11 +6,12 @@ export class goliath_fire_breath extends BaseAbility {
     private caster: CDOTA_BaseNPC = this.GetCaster();
     private timer?: string;
     OnSpellStart(): void {
+        const forwardVector = this.caster.GetForwardVector();
         this.timer = Timers.CreateTimer(0, () => {
             ProjectileManager.CreateLinearProjectile({
                 Source: this.caster,
                 Ability: this,
-                vSpawnOrigin: (this.caster.GetAbsOrigin() + Vector(0, 0, 125)) as Vector,
+                vSpawnOrigin: (this.caster.GetAbsOrigin() + Vector(180 * forwardVector.x, 180 * forwardVector.y, 180)) as Vector,
                 bDrawsOnMinimap: true,
                 bHasFrontalCone: true,
                 bIgnoreSource: true,
@@ -23,7 +24,7 @@ export class goliath_fire_breath extends BaseAbility {
                 iUnitTargetFlags: this.GetAbilityTargetFlags(),
                 EffectName: "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf",
                 fDistance: this.GetEffectiveCastRange(this.caster.GetAbsOrigin(), this.caster),
-                fStartRadius: 0,
+                fStartRadius: 250,
                 fEndRadius: math.abs(
                     ((math.pi * this.GetEffectiveCastRange(this.caster.GetAbsOrigin(), this.caster)) / 180) *
                         this.GetSpecialValueFor("angel")

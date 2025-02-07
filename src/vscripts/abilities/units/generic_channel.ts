@@ -20,8 +20,8 @@ export class generic_channel_custom extends BaseAbility {
         icon: string,
         castRange: number,
         callbackStart?: () => void,
-        callbackThink?: (interval: number) => void,
-        callbackFinish?: (interrupted: boolean) => void
+        callbackThink?: (this: void, interval: number) => void,
+        callbackFinish?: (this: void, interrupted: boolean) => void
     ) {
         const mod = this.GetIntrinsicModifier() as modifier_generic_channel_custom;
 
@@ -208,7 +208,13 @@ export class modifier_generic_channel_custom extends BaseModifier {
             return;
         }
 
-        if (event.order_type != UnitOrder.CAST_TARGET && event.order_type != UnitOrder.CAST_POSITION) {
+        if (
+            event.order_type != UnitOrder.CAST_TARGET &&
+            event.order_type != UnitOrder.CAST_POSITION &&
+            event.order_type != UnitOrder.PURCHASE_ITEM &&
+            event.order_type != UnitOrder.SELL_ITEM &&
+            event.order_type != UnitOrder.MOVE_ITEM
+        ) {
             if (event.ability != this.ability) {
                 this.ability.OnChannelFinish(true);
             }

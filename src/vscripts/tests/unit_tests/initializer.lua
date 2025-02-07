@@ -41,7 +41,7 @@ function UnitTests:ExecuteTestsForPlayer()
             text = "Test ["..tostring(v.name).."] started.",
             level = UNIT_TEST_LOG_LEVEL_INFO
         })
-        status, result = xpcall(v.content.OnExecute, Utility.Debug_PrintError)
+        status, result = xpcall(v.content.OnExecute, Debug_PrintError)
         if(status == true) then
             for _, errorText in pairs(result) do
                 table.insert(resultData, {

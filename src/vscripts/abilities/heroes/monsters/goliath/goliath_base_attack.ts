@@ -1,6 +1,5 @@
 import { BaseAbility, registerAbility } from "../../../../libraries/dota_ts_adapter";
 import { registerModifier, BaseModifier } from "../../../../libraries/dota_ts_adapter";
-import { Utility } from "../../../../libraries/utility";
 
 @registerAbility()
 export class goliath_base_attack extends BaseAbility {
@@ -19,19 +18,19 @@ export class goliath_base_attack extends BaseAbility {
         this.SetLevel(this.caster.GetLevel());
         this.UpdateDamageAndAttackSpeed();
 
-        //Timers.CreateTimer(0, () => {
-        //    this.v = this.caster.GetAbsOrigin();
-        //    CreateModifierThinker(
-        //        this.caster,
-        //        this,
-        //        modifierThinker_test.name,
-        //        { duration: 50 },
-        //        this.v,
-        //        this.caster.GetTeamNumber(),
-        //        false
-        //    );
-        //    return 50;
-        //});
+        Timers.CreateTimer(0, () => {
+            this.v = this.caster.GetAbsOrigin();
+            CreateModifierThinker(
+                this.caster,
+                this,
+                modifierThinker_test.name,
+                { duration: 50 },
+                this.v,
+                this.caster.GetTeamNumber(),
+                false
+            );
+            return 50;
+        });
     }
 
     Sp(): Vector {
@@ -206,7 +205,7 @@ export class modifier_test extends BaseModifier {
         if (!IsServer()) {
             return;
         }
-        if (Utility.CalculateDistance(this.ability.Sp(), this.parent.GetAbsOrigin()) > 1700) {
+        if (CalculateDistance(this.ability.Sp(), this.parent.GetAbsOrigin()) > 1700) {
             this.inside = false;
         }
         this.StartIntervalThink(FrameTime());

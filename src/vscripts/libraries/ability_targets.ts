@@ -1,5 +1,3 @@
-import { Utility } from "./utility";
-
 interface AbilityTargetLoadedData {
     [key: string]: string;
 }
@@ -150,6 +148,7 @@ export class AbilityTargets {
     }
 
     private ParseKeyValues() {
+        print(GetAbilitiesAndItemsKV());
         const kv = GetAbilitiesAndItemsKV();
         for (const [abilityName, data] of kv) {
             if (data != undefined && type(data) == "table") {
@@ -200,7 +199,7 @@ export class AbilityTargets {
                 return this._unitTargetTeamMapping[parsedFlag];
             }
 
-            Utility.Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
+            Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
 
             return defaultValue;
         };
@@ -215,7 +214,7 @@ export class AbilityTargets {
                 return this._unitTargetTypeMapping[parsedFlag];
             }
 
-            Utility.Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
+            Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
 
             return defaultValue;
         };
@@ -230,7 +229,7 @@ export class AbilityTargets {
                 return this._unitTargetFlagsMapping[parsedFlag];
             }
 
-            Utility.Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
+            Debug_PrintError("[" + AbilityTargets.name + "] ", "Flag named '", parsedFlag, "' is invalid (" + abilityName + ").");
 
             return defaultValue;
         };

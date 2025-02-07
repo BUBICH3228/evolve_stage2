@@ -1,0 +1,43 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_rattletrap"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"	"npc_dota_hero_rattletrap"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"	"griffin_harpoon_gun"
+		"Ability2"	"griffin_sound_spikes"
+		"Ability3"	"griffin_harpoon_gun"
+		"Ability4"	"griffin_harpoon_gun"
+		"Ability5"	""
+		"Ability6"	""
+		"Ability10"	""
+		"Ability11"	""
+		"Ability12"	""
+		"Ability13"	""
+		"Ability14"	""
+		"Ability15"	""
+		"Ability16"	""
+		"Ability17"	""
+
+        "AttackCapabilities"	    "DOTA_UNIT_CAP_MELEE_ATTACK"
+        "AttackDamageMin"	        "225"
+		"AttackDamageMax"	        "225"
+		"AttackRate"	            "3"
+		"AttackAnimationPoint"	    "0.35"
+		"AttackAcquisitionRange"	"600"
+		"AttackRange"	            "150"
+        "ArmorPhysical"	            "0"
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"	        "DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"	    "10"
+		"AttributeStrengthGain"	    "0"
+		"AttributeBaseIntelligence"	"100"
+		"AttributeIntelligenceGain"	"0"
+		"AttributeBaseAgility"	    "0"
+		"AttributeAgilityGain"	    "0"
+	}
+}

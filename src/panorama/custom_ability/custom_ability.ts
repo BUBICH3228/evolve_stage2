@@ -33,7 +33,7 @@ class CustomAbility {
         this.ABILITY_CONTAINER.RemoveAndDeleteChildren();
         this.ABILITY_CONTAINER_DATA.abilityCooldownPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityLevelPanel = [];
-        for (let index = 1; index < 5; index++) {
+        for (let index = 0; index < 4; index++) {
             const AbilityEntityIndex = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
             const abilityName = Abilities.GetAbilityName(AbilityEntityIndex);
             const panel = $.CreatePanel("Panel", this.ABILITY_CONTAINER, "AbilityPanel");

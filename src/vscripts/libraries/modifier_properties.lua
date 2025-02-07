@@ -48,7 +48,7 @@ function ModifierProperties:OnModifierRemoved(modifier)
 
         local isThereIsAtLeastOneModifierLeft = false
 
-        Utility.CalculateDistance(ModifierProperties._modifierProperties[modifierProperty][parent], function(t, i, j)
+        ArrayRemove(ModifierProperties._modifierProperties[modifierProperty][parent], function(t, i, j)
             local modifierInTable = t[i]
             if(modifierInTable ~= modifier) then
                 isThereIsAtLeastOneModifierLeft = true
@@ -76,7 +76,7 @@ function ModifierProperties:CalculateSpellCriticalStrikeMultiplier(attacker, abi
     local getterName = ModifierProperties:GetModifierPropertyGetter(modifierFunction)
 
     if(getterName == nil) then
-        Utility.Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
+        Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
         return nil
     end
 
@@ -95,7 +95,7 @@ function ModifierProperties:CalculateSpellCriticalStrikeMultiplier(attacker, abi
     local status, result = false, 0
 
     for _, modifier in ipairs(modifiers) do
-        status, result = xpcall(modifier[getterName], Utility.Debug_PrintError, modifier, eventData)
+        status, result = xpcall(modifier[getterName], Debug_PrintError, modifier, eventData)
         if(status == true) then
             local spellCriticalStrikeMultiplier = tonumber(result)
             if(spellCriticalStrikeMultiplier and spellCriticalStrikeMultiplier > 0) then
@@ -115,7 +115,7 @@ function ModifierProperties:GetModifiersPropertyHighestPriority(npc, modifierFun
     local propertyValue = 0
 
     if(getterName == nil) then
-        Utility.Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
+        Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
         return propertyValue
     end
 
@@ -138,7 +138,7 @@ function ModifierProperties:GetModifiersPropertyHighestPriority(npc, modifierFun
     local status, result = false, 0
 
     for _, modifier in ipairs(modifiers) do
-        status, result = xpcall(modifier[getterName], Utility.Debug_PrintError, modifier, eventData)
+        status, result = xpcall(modifier[getterName], Debug_PrintError, modifier, eventData)
         result = tonumber(result)
         if(status == true and result ~= nil) then
             return result
@@ -155,7 +155,7 @@ function ModifierProperties:GetModifiersPropertyPercentageMultiplicative(npc, mo
     local getterName = ModifierProperties:GetModifierPropertyGetter(modifierFunction)
 
     if(getterName == nil) then
-        Utility.Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
+        Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
         return 0
     end
 
@@ -170,7 +170,7 @@ function ModifierProperties:GetModifiersPropertyPercentageMultiplicative(npc, mo
     local status, result = false, 0
 
     for _, modifier in pairs(modifiers) do
-        status, result = xpcall(modifier[getterName], Utility.Debug_PrintError, modifier)
+        status, result = xpcall(modifier[getterName], Debug_PrintError, modifier)
         result = tonumber(result)
         if(status == true and result ~= nil) then
             currentValue = currentValue * (1 - (result / 100))
@@ -192,7 +192,7 @@ function ModifierProperties:GetModifiersPropertyHighestValue(npc, modifierFuncti
     local getterName = ModifierProperties:GetModifierPropertyGetter(modifierFunction)
 
     if(getterName == nil) then
-        Utility.Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
+        Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
         return nil
     end
 
@@ -207,7 +207,7 @@ function ModifierProperties:GetModifiersPropertyHighestValue(npc, modifierFuncti
     local status, result = false, 0
 
     for _, modifier in pairs(modifiers) do
-        status, result = xpcall(modifier[getterName], Utility.Debug_PrintError, modifier)
+        status, result = xpcall(modifier[getterName], Debug_PrintError, modifier)
         result = tonumber(result)
         if(status == true and result ~= nil) then
             isAtLeastOnePropertyCalled = true
@@ -231,7 +231,7 @@ function ModifierProperties:GetModifiersPropertyLowestValue(npc, modifierFunctio
     local getterName = ModifierProperties:GetModifierPropertyGetter(modifierFunction)
 
     if(getterName == nil) then
-        Utility.Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
+        Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
         return nil
     end
 
@@ -246,7 +246,7 @@ function ModifierProperties:GetModifiersPropertyLowestValue(npc, modifierFunctio
     local status, result = false, 0
 
     for _, modifier in pairs(modifiers) do
-        status, result = xpcall(modifier[getterName], Utility.Debug_PrintError, modifier)
+        status, result = xpcall(modifier[getterName], Debug_PrintError, modifier)
         result = tonumber(result)
         if(status == true and result ~= nil) then
             isAtLeastOnePropertyCalled = true
@@ -271,7 +271,7 @@ function ModifierProperties:GetModifiersPropertyAdditive(npc, modifierFunction, 
     local propertyValue = 0
 
     if(getterName == nil) then
-        Utility.Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
+        Debug_PrintError("Modifier property '"..tostring(modifierFunction).."' not exists.")
         return propertyValue
     end
     
@@ -284,7 +284,7 @@ function ModifierProperties:GetModifiersPropertyAdditive(npc, modifierFunction, 
     local status, result = false, 0
 
     for _, modifier in ipairs(modifiers) do
-        status, result = xpcall(modifier[getterName], Utility.Debug_PrintError, modifier, eventData)
+        status, result = xpcall(modifier[getterName], Debug_PrintError, modifier, eventData)
         result = tonumber(result)
         if(status == true and result ~= nil) then
             propertyValue = propertyValue + result

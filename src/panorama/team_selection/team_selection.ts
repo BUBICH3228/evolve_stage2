@@ -100,7 +100,8 @@ class TeamSelection {
     private TeamSelectionResults() {
         this.ShowWindow(false);
         GameEvents.SendCustomGameEventToServer("team_selection_results", {
-            PlayerType: (Players as CScriptBindingPR_Players_TeamSelection).PlayerData[Game.GetLocalPlayerID()]
+            PlayerType: (Players as CScriptBindingPR_Players_TeamSelection).PlayerData[Game.GetLocalPlayerID()],
+            PlayerID: Game.GetLocalPlayerID()
         });
     }
 }

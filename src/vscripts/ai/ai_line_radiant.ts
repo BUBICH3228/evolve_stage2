@@ -1,4 +1,5 @@
-import { AICore, CDOTA_BaseNPC_AICore, GenericAIBehavior } from "./ai_core";
+import { AICore, CDOTA_BaseNPC_AICore } from "./ai_core";
+import { GenericAIBehavior } from "./generic_ai_behavior";
 
 declare let thisEntity: CDOTA_BaseNPC;
 
@@ -11,7 +12,7 @@ function Spawn() {
         return;
     }
 
-    AICore.Init(thisEntity as CDOTA_BaseNPC_AICore, AILineRadiantBehavior);
+    AICore.Init(thisEntity as CDOTA_BaseNPC_AICore, new AILineRadiantBehavior());
 }
 
 getfenv(1).Spawn = Spawn;
@@ -34,7 +35,13 @@ export class AILineRadiantBehavior extends GenericAIBehavior {
     }
 
     OnInit(thisEntity: CDOTA_BaseNPC) {
-        const waypoint = Entities.FindByName(undefined, "wavePathGoodGuys1");
-        AICore.SetInitialGoalEntity(thisEntity as CDOTA_BaseNPC_AICore, waypoint);
+        const entities = Entities.FindAllByClassname("path_corner");
+        for (let key = 0; key < Object.entries(entities).length; key++) {
+            const entity = entities[key];
+            const entityName = entity.GetName();
+            if (entityName != undefined && entityName.includes("wavePathGoodGuys1")) {
+                AICore.SetInitialGoalEntity(thisEntity as CDOTA_BaseNPC_AICore, entity);
+            }
+        }
     }
 }

@@ -1,5 +1,4 @@
 import { BaseAbility, registerAbility } from "../../../../libraries/dota_ts_adapter";
-import { Utility } from "../../../../libraries/utility";
 
 @registerAbility()
 export class goliath_leap_smash extends BaseAbility {
@@ -7,7 +6,7 @@ export class goliath_leap_smash extends BaseAbility {
     private caster: CDOTA_BaseNPC = this.GetCaster();
 
     override OnSpellStart(): void {
-        let distance = Utility.CalculateDistance(this.caster.GetAbsOrigin(), this.GetCursorPosition());
+        let distance = CalculateDistance(this.caster.GetAbsOrigin(), this.GetCursorPosition());
 
         const maxDistance = this.GetSpecialValueFor("max_distance");
         const speed = this.GetSpecialValueFor("speed");
@@ -21,13 +20,18 @@ export class goliath_leap_smash extends BaseAbility {
 
         this.caster.AddNewModifier(this.caster, this, "modifier_generic_arc", {
             distance: distance,
-            speed: speed,
-            height: distance / 1.33,
+            speed: distance * 2,
+            height: 200,
             fix_end: false,
             isForward: true
         });
 
-        Timers.CreateTimer(distance / speed, () => {
+        this.caster.StartGesture(GameActivity.DOTA_FLAIL);
+        Timers.CreateTimer(distance / (distance * 2) - 0.2, () => {
+            this.caster.RemoveGesture(GameActivity.DOTA_FLAIL);
+            this.caster.StartGesture(GameActivity.DOTA_FORCESTAFF_END);
+        });
+        Timers.CreateTimer(distance / (distance * 2), () => {
             let pfx = ParticleManager.CreateParticle(
                 "particles/units/heroes/hero_primal_beast/primal_beast_trample.vpcf",
                 ParticleAttachment.WORLDORIGIN,
@@ -69,6 +73,7 @@ export class goliath_leap_smash extends BaseAbility {
                 });
             });
             //EmitSoundOn("Hero_Primal_Beast.Trample.Cast", this.caster);
+            this.caster.RemoveGesture(GameActivity.DOTA_FORCESTAFF_END);
         });
     }
 }

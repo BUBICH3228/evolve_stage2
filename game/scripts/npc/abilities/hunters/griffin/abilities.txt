@@ -1,0 +1,54 @@
+"DOTAAbilities"
+{
+    "griffin_harpoon_gun"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "rattletrap_hookshot"
+        "ScriptFile"                   	    "abilities/heroes/hunters/griffin/griffin_harpoon_gun"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "20"
+        "AbilityCastRange"                  "500"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage"                        "57"
+            "duration"                      "4"
+            "slow_movespeed"                "50"
+            "speed"                         "1000"
+        }
+    }
+
+    "griffin_sound_spikes"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "rattletrap_hookshot"
+        "ScriptFile"                   	    "abilities/heroes/hunters/griffin/griffin_sound_spikes"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "20"
+        "AbilityCastRange"                  "500"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "damage"                        "57"
+            "duration"                      "4"
+            "slow_movespeed"                "50"
+            "speed"                         "1000"
+        }
+    }
+}

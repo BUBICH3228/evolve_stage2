@@ -1,3 +1,4 @@
+import { Settings } from "../data/game_settings";
 import { registerModifier, BaseModifier } from "../libraries/dota_ts_adapter";
 
 @registerModifier()
@@ -34,11 +35,7 @@ export class modifier_passive_gold extends BaseModifier {
 
     OnIntervalThink(): void {
         if (GameRules.State_Get() == GameState.GAME_IN_PROGRESS) {
-            this.parent.ModifyGold(
-                this.tinkInterval * GameSettings.GetSettingValueAsNumber("passive_gold_tick"),
-                true,
-                ModifyGoldReason.GAME_TICK
-            );
+            this.parent.ModifyGold(this.tinkInterval * Settings.server.passive_gold_tick, true, ModifyGoldReason.GAME_TICK);
         }
     }
 }

@@ -4,6 +4,10 @@ var DotaHUD = GameUI.CustomUIConfig().DotaHUD;
 class DotaDefaultUIElement_fix {
     constructor() {
         this.FindAndFixLevelLabel();
+
+        $.RegisterForUnhandledEvent("TooltipVisible", (object) => {
+            this.OnTooltipVisible(object);
+        });
     }
 
     private FindAndFixLevelLabel() {
@@ -14,6 +18,13 @@ class DotaDefaultUIElement_fix {
         } else {
             $.Msg("Seems valve break FindAndFixLevelLabel");
         }
+    }
+    private OnTooltipVisible(object: Panel) {
+        if (object.paneltype != "DOTATooltipAbility") {
+            return;
+        }
+
+        object.style.zIndex = 20;
     }
 }
 

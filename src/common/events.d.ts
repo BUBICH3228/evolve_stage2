@@ -50,7 +50,7 @@ interface ShowHeroSelectionMenuEvent {
 }
 
 interface HeroSelectionEvent {
-    HeroName: string;
+    HeroName: string | undefined;
     PlayerID?: PlayerID;
 }
 

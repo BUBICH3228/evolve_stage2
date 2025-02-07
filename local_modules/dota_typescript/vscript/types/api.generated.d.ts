@@ -4995,7 +4995,7 @@ declare interface CDOTA_Modifier_Lua extends CDOTA_Buff {
      * @abstract
      * @both
      */
-    GetModifierPercentageManacostStacking?(): number;
+    GetModifierPercentageManacostStacking?(event: ModifierAbilityEvent): number;
     /**
      * @abstract
      * @both

@@ -44,7 +44,7 @@ end
 
 function CustomEvents:RegisterEventHandler(enumValue, func)
     if(IsValidEvent(enumValue) == false) then
-        Utility.Debug_PrintError("CustomEvents:RegisterEventHandler attempt to register event handler for unknown event. Did you forget update enum? Got "..tostring(enumValue).."("..type(enumValue)..").")
+        Debug_PrintError("CustomEvents:RegisterEventHandler attempt to register event handler for unknown event. Did you forget update enum? Got "..tostring(enumValue).."("..type(enumValue)..").")
         return
     end
     
@@ -54,7 +54,7 @@ function CustomEvents:RegisterEventHandler(enumValue, func)
 end
 
 local function ErrorHandler(err)
-    Utility.Debug_PrintError(err)
+    Debug_PrintError(err)
 end
 
 function CustomEvents:RunEventByName(enumValue, data) 

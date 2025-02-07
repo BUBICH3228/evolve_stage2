@@ -1,5 +1,3 @@
-import { Utility } from "../libraries/utility";
-
 export {};
 
 declare global {
@@ -69,12 +67,12 @@ function _ReplacePlayerHero(playerID: PlayerID, heroName: string, restoreExp: bo
             const player = PlayerResource.GetPlayer(playerID);
 
             if (playerHero == undefined || playerHero.IsNull()) {
-                Utility.Debug_PrintError("Attempt to replace hero for player without hero. Player ID = ", playerID);
+                Debug_PrintError("Attempt to replace hero for player without hero. Player ID = ", playerID);
                 return;
             }
 
             if (player == undefined) {
-                Utility.Debug_PrintError("Attempt to replace hero for invalid player. Player ID = ", playerID);
+                Debug_PrintError("Attempt to replace hero for invalid player. Player ID = ", playerID);
                 return;
             }
 

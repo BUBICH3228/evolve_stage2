@@ -191,8 +191,8 @@ export const HeroesData: HeroesDataIntefase = {
     }
 };
 
-declare interface HeroesDataIntefase {
-    [calss: string]: { [key: string]: { abilities: AbilitiesData; stats: StatsData; aboutHero: AboutHeroData } };
+export declare interface HeroesDataIntefase {
+    [classes: string]: { [key: string]: { abilities: AbilitiesData; stats: StatsData; aboutHero: AboutHeroData } };
 }
 
 export declare interface AboutHeroData {

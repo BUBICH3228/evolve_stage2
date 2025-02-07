@@ -91,7 +91,7 @@ function modifier_custom_properties:CalculateCustomStats(precision)
     local eventData = {}
 
     -- Armor %
-    local bonusArmorPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_PHYSICAL_ARMOR_TOTAL_PERCENTAGE, eventData)
+    local bonusArmorPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_PHYSICAL_ARMOR_TOTAL_PERCENTAGE, eventData)
     local armorWithoutBonus = self.parent:GetPhysicalArmorValue(false) - self.bonusArmorPctValue
     local newBonusArmorPctValue = self:RountToInteger(armorWithoutBonus * (bonusArmorPercent / 100))
     if(math.abs(newBonusArmorPctValue - self.bonusArmorPctValue) > precision) then
@@ -106,9 +106,9 @@ function modifier_custom_properties:CalculateCustomStats(precision)
     self._ignoreThisBATBonus = true
     local batValue = self.parent:GetBaseAttackTime()
     self._ignoreThisBATBonus = nil
-    local batBonusConstant = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_BASE_ATTACK_TIME_BONUS_CONSTANT, eventData)
-    local batBonusPercent = 1 + ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_BASE_ATTACK_TIME_BONUS_PERCENTAGE, eventData)
-    local batBonusValue = ModifierProperties:GetModifiersPropertyLowestValue(self.parent, MODIFIER_PROPERTY_MOUNTAIN_BASE_ATTACK_TIME_CONSTANT, eventData)
+    local batBonusConstant = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_BASE_ATTACK_TIME_BONUS_CONSTANT, eventData)
+    local batBonusPercent = 1 + ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_BASE_ATTACK_TIME_BONUS_PERCENTAGE, eventData)
+    local batBonusValue = ModifierProperties:GetModifiersPropertyLowestValue(self.parent, MODIFIER_PROPERTY_EVOLVE_BASE_ATTACK_TIME_CONSTANT, eventData)
     
     if(batBonusValue ~= nil and batBonusValue < batValue) then
         batValue = batBonusValue
@@ -138,7 +138,7 @@ function modifier_custom_properties:CalculateHeroOnlyCustomStats(precision)
     local eventData = {}
 
     -- Strength %
-    local bonusStrengthPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_STATS_STRENGTH_BONUS_PERCENTAGE, eventData)
+    local bonusStrengthPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_STATS_STRENGTH_BONUS_PERCENTAGE, eventData)
     local heroStrength = self.parent:GetStrength() - self.bonusStrengthPctValue
     local newBonusStrengthPctValue = self:RountToInteger(heroStrength * (bonusStrengthPercent / 100))
     if(math.abs(newBonusStrengthPctValue - self.bonusStrengthPctValue) > precision) then
@@ -150,7 +150,7 @@ function modifier_custom_properties:CalculateHeroOnlyCustomStats(precision)
     self.bonusStrengthPctValue = newBonusStrengthPctValue
 
     -- Agility %
-    local bonusAgilityPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_STATS_AGILITY_BONUS_PERCENTAGE, eventData)
+    local bonusAgilityPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_STATS_AGILITY_BONUS_PERCENTAGE, eventData)
     local heroAgiltiy = self.parent:GetAgility() - self.bonusAgilityPctValue
     local newBonusAgilityPctValue = self:RountToInteger(heroAgiltiy * (bonusAgilityPercent / 100))
     if(math.abs(newBonusAgilityPctValue - self.bonusAgilityPctValue) > precision) then
@@ -162,7 +162,7 @@ function modifier_custom_properties:CalculateHeroOnlyCustomStats(precision)
     self.bonusAgilityPctValue = newBonusAgilityPctValue
 
     -- Intellect %
-    local bonusIntellectPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_STATS_INTELLECT_BONUS_PERCENTAGE, eventData)
+    local bonusIntellectPercent = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_STATS_INTELLECT_BONUS_PERCENTAGE, eventData)
     local heroIntellect = self.parent:GetIntellect(false) - self.bonusIntellectPctValue
     local newBonusIntellectPctValue = self:RountToInteger(heroIntellect * (bonusIntellectPercent / 100))
     if(math.abs(newBonusIntellectPctValue - self.bonusIntellectPctValue) > precision) then
@@ -236,7 +236,7 @@ function modifier_custom_properties:OnAttackLanded(kv)
         return
     end
 
-    local totalLifestealPct = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_LIFESTEAL, kv) / 100
+    local totalLifestealPct = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_LIFESTEAL, kv) / 100
 
     if(totalLifestealPct > 0) then
         local totalLifesteal = kv.damage * totalLifestealPct
@@ -273,7 +273,7 @@ function modifier_custom_properties:OnTakeDamage(kv)
         return
     end
 
-    local totalLifestealPct = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_MOUNTAIN_SPELL_LIFESTEAL, kv) / 100
+    local totalLifestealPct = ModifierProperties:GetModifiersPropertyAdditive(self.parent, MODIFIER_PROPERTY_EVOLVE_SPELL_LIFESTEAL, kv) / 100
 
     if(totalLifestealPct > 0) then
         local totalLifesteal = kv.damage * totalLifestealPct
@@ -285,9 +285,9 @@ LinkLuaModifier("modifier_custom_properties", "modifiers/modifier_custom_propert
 
 function _GetCustomHeroOnlyPropertiesThatCustomStatsImplement()
     _G._modifierHeroOnlyCustomStatsImplementedProperties = _G._modifierHeroOnlyCustomStatsImplementedProperties or {
-        ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_STATS_STRENGTH_BONUS_PERCENTAGE),
-        ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_STATS_AGILITY_BONUS_PERCENTAGE),
-        ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_STATS_INTELLECT_BONUS_PERCENTAGE)
+        ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_STATS_STRENGTH_BONUS_PERCENTAGE),
+        ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_STATS_AGILITY_BONUS_PERCENTAGE),
+        ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_STATS_INTELLECT_BONUS_PERCENTAGE)
     }
     return _G._modifierHeroOnlyCustomStatsImplementedProperties
 end
@@ -307,12 +307,12 @@ end
 function _GetCustomPropertiesThatCustomStatsImplement()
     if(_G._modifierCustomStatsImplementedProperties == nil) then
         _G._modifierCustomStatsImplementedProperties = {
-            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_PHYSICAL_ARMOR_TOTAL_PERCENTAGE),
-            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_BASE_ATTACK_TIME_CONSTANT),
-            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_BASE_ATTACK_TIME_BONUS_CONSTANT),
-            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_BASE_ATTACK_TIME_BONUS_PERCENTAGE),
-            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_LIFESTEAL),
-            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_MOUNTAIN_SPELL_LIFESTEAL)
+            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_PHYSICAL_ARMOR_TOTAL_PERCENTAGE),
+            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_BASE_ATTACK_TIME_CONSTANT),
+            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_BASE_ATTACK_TIME_BONUS_CONSTANT),
+            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_BASE_ATTACK_TIME_BONUS_PERCENTAGE),
+            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_LIFESTEAL),
+            ModifierProperties:GetModifierPropertyGetter(MODIFIER_PROPERTY_EVOLVE_SPELL_LIFESTEAL)
         }
         for _, v in pairs(_GetCustomHeroOnlyPropertiesThatCustomStatsImplement()) do
             table.insert(_G._modifierCustomStatsImplementedProperties, v)

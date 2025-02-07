@@ -114,7 +114,7 @@ class HeroSelection {
         panel.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
         HudButtons.SetButton(Constants.HUD_BUTTONS.HERO_SELECTED, panel);
         panel.SetPanelEvent("onactivate", () => {
-            GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName });
+            GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName, PlayerID: Game.GetLocalPlayerID() });
             this.MAIN_PANEL.SetHasClass("Hidden", true);
             HudButtons.FireButtonClickedEvent(Constants.HUD_BUTTONS.HERO_SELECTED);
         });
