@@ -296,7 +296,6 @@ end
 
 function ModifierProperties:GetModifiersWithProperty(npc, modifierFunction)
     CheckType(npc, "npc", "unit")
-    CheckType(modifierFunction, "modifierFunction", "number")
 
     if(ModifierProperties._modifierProperties[modifierFunction] and ModifierProperties._modifierProperties[modifierFunction][npc]) then
         return ModifierProperties._modifierProperties[modifierFunction][npc]

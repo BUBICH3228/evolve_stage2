@@ -33,7 +33,7 @@ class CustomAbility {
         this.ABILITY_CONTAINER.RemoveAndDeleteChildren();
         this.ABILITY_CONTAINER_DATA.abilityCooldownPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityLevelPanel = [];
-        for (let index = 0; index < 4; index++) {
+        for (let index = 1; index < 5; index++) {
             const AbilityEntityIndex = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
             const abilityName = Abilities.GetAbilityName(AbilityEntityIndex);
             const panel = $.CreatePanel("Panel", this.ABILITY_CONTAINER, "AbilityPanel");
@@ -69,7 +69,7 @@ class CustomAbility {
             for (let index = 1; index < 5; index++) {
                 const ability = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
                 const abilityLevelPanel = this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index - 1];
-                abilityLevelPanel.max = 3;
+                abilityLevelPanel.max = Abilities.GetMaxLevel(ability);
                 abilityLevelPanel.min = 0;
                 abilityLevelPanel.value = Abilities.GetLevel(ability);
                 const abilityCooldownPanel = this.ABILITY_CONTAINER_DATA.abilityCooldownPanel[index - 1];

@@ -1,2 +1,4 @@
 #base "monsters/goliath/require.txt"
 #base "hunters/griffin/require.txt"
+#base "hunters/hank/require.txt"
+#base "hunters/ability.txt"

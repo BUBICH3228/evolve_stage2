@@ -11,7 +11,7 @@
 			<Button id="SettingsButton" onactivate="OnSettingsButtonPressed()" onmouseover="UIShowTextTooltip( #DOTA_HUD_Settings )" onmouseout="UIHideTextTooltip()" />
 			<Button id="ToggleScoreboardButton" onactivate="OnScoreboardButtonPressed()" onmouseover="UIShowTextTooltip( #DOTA_HUD_Scoreboard )" onmouseout="UIHideTextTooltip()" />
             <Button id="DiscordButton" onactivate="OnDiscordButtonPressed()" onmouseover="UIShowTextTooltip( #ui_top_hud_buttons_discord )" onmouseout="UIHideTextTooltip()" />
-            <Button id="DebugButton" class="Hidden" onactivate="OnDebugButtonPressed()" onmouseover="UIShowTextTooltip( #ui_top_hud_buttons_debug_panel )" onmouseout="UIHideTextTooltip()" />
+            <Button id="DebugButton" onactivate="OnDebugButtonPressed()" onmouseover="UIShowTextTooltip( #ui_top_hud_buttons_debug_panel )" onmouseout="UIHideTextTooltip()" />
             <Button id="PlayersTopButton" onactivate="OnPlayersTopButtonPressed()" onmouseover="UIShowTextTooltip( #ui_top_hud_buttons_players_top_panel )" onmouseout="UIHideTextTooltip()" />
             <Button id="DonationPanelButton" onactivate="OnDonationPanelButtonPressed()" onmouseover="UIShowTextTooltip( #ui_top_hud_buttons_donation_panel )" onmouseout="UIHideTextTooltip()" />
         </Panel>

@@ -7,6 +7,7 @@ import "./override/require_addon_game_mode";
 import "./ui/require";
 import "./modifiers/require";
 import "./tests/require";
+import "./precache_resource";
 import { Filters } from "./filters/require";
 import { GameSettings } from "./game_settings";
 import { Settings } from "./data/game_settings";
@@ -26,16 +27,7 @@ export class GameMode {
     modifiers: string[] = [];
     timerconnect: string[] = [];
     public static Precache(this: void, context: CScriptPrecacheContext) {
-        PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_bosses.vsndevts", context);
-        PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_items.vsndevts", context);
-        PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_debug_panel.vsndevts", context);
-        PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_abilities.vsndevts", context);
-        PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/heroes/base/game_sounds_base.vsndevts", context);
-        PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/aoe_cast.vpcf", context);
-
-        CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_ADDON_PRECACHE, {
-            context: context
-        });
+        PrecacheAllResource(context);
     }
 
     public static Activate(this: void) {

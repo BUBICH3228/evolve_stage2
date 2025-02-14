@@ -1,16 +1,16 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_rattletrap"
+	"npc_dota_hero_tinker"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"override_hero"	"npc_dota_hero_rattletrap"
+		"override_hero"	"npc_dota_hero_tinker"
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"Ability1"	"generic_hidden"
-		"Ability2"	"griffin_harpoon_gun"
-		"Ability3"	"griffin_sound_spikes"
-		"Ability4"	"griffin_scaner"
+		"Ability2"	"hank_shield_projector"
+		"Ability3"	"hank_orbital_barrage"
+		"Ability4"	"hank_shield_burst"
 		"Ability5"	"planetary_shield"
 		"Ability6"	"generic_hidden"
 		"Ability7"	"generic_hidden"

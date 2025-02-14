@@ -3,29 +3,24 @@ export const HeroesData: HeroesDataIntefase = {
         npc_dota_hero_rattletrap: {
             abilities: {
                 0: {
-                    abilityName: "",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityName: "griffin_harpoon_gun",
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 1: {
-                    abilityName: "",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityName: "griffin_sound_spikes",
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
-                    abilityName: "",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityName: "griffin_scaner",
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 3: {
-                    abilityName: "",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
-                },
-                4: {
-                    abilityName: "",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityName: "planetary_shield",
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 }
             },
             stats: {
                 health: 1654,
-                mana: 254,
                 shild: 250,
                 armor: 10,
                 damage: 40,
@@ -63,7 +58,6 @@ export const HeroesData: HeroesDataIntefase = {
             },
             stats: {
                 health: 1054,
-                mana: 254,
                 shild: 150,
                 armor: 3,
                 damage: 70,
@@ -79,19 +73,19 @@ export const HeroesData: HeroesDataIntefase = {
         npc_dota_hero_tinker: {
             abilities: {
                 0: {
-                    abilityName: "",
+                    abilityName: "hank_shield_projector",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 1: {
-                    abilityName: "",
+                    abilityName: "hank_orbital_barrage",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 2: {
-                    abilityName: "",
+                    abilityName: "hank_shield_burst",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 3: {
-                    abilityName: "",
+                    abilityName: "planetary_shield",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 4: {
@@ -101,7 +95,6 @@ export const HeroesData: HeroesDataIntefase = {
             },
             stats: {
                 health: 1254,
-                mana: 454,
                 shild: 450,
                 armor: 1,
                 damage: 10,
@@ -139,7 +132,6 @@ export const HeroesData: HeroesDataIntefase = {
             },
             stats: {
                 health: 1754,
-                mana: 554,
                 shild: 550,
                 armor: 3,
                 damage: 20,
@@ -160,24 +152,23 @@ export const HeroesData: HeroesDataIntefase = {
                 },
                 1: {
                     abilityName: "goliath_fire_breath",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
                     abilityName: "goliath_leap_smash",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 3: {
                     abilityName: "goliath_charge",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 4: {
                     abilityName: "goliath_rock_throw",
-                    abilityPreview: "file://{resources}/videos/heroes/.webm"
+                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 }
             },
             stats: {
                 health: 2254,
-                mana: 554,
                 shild: 550,
                 armor: 3,
                 damage: 20,
@@ -206,7 +197,6 @@ export declare interface AbilitiesData {
 
 export declare interface StatsData {
     health: number;
-    mana: number;
     shild: number;
     armor: number;
     damage: number;

@@ -1,4 +1,4 @@
-import { BaseAbility, registerAbility } from "../../../../libraries/dota_ts_adapter";
+import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
 
 @registerAbility()
 export class goliath_leap_smash extends BaseAbility {

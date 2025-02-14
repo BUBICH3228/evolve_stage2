@@ -1,5 +1,6 @@
 #base "heroes/monsters/goliath/require.txt"
 #base "heroes/hunters/griffin/require.txt"
+#base "heroes/hunters/hank/require.txt"
 "DOTAHeroes"
 {
 

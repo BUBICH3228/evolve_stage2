@@ -98,8 +98,8 @@ export class TeamSelection {
     private SetTeam(PlayerID: PlayerID, DotaTeam: DotaTeam) {
         const player = PlayerResource.GetPlayer(PlayerID);
         const hero = PlayerResource.GetSelectedHeroEntity(PlayerID);
-        player?.SetTeam(DotaTeam);
-        hero?.SetTeam(DotaTeam);
+        player?.SetTeam(2);
+        hero?.SetTeam(2);
     }
 
     private SelectionHero(data: HeroSelectionEvent) {

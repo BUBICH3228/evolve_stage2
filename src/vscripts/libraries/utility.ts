@@ -54,13 +54,9 @@ function CalculateDistance(ent1: CDOTA_BaseNPC | Vector, ent2: CDOTA_BaseNPC | V
     let pos2 = ent2;
     if (typeof ent1 === "object") {
         pos1 = ent1.GetAbsOrigin();
-    } else {
-        CheckType(pos1, "pos1", "vector");
     }
     if (typeof ent1 === "object") {
         pos2 = ent1.GetAbsOrigin();
-    } else {
-        CheckType(pos2, "pos2", "vector");
     }
     return (((pos1 as Vector) - (pos2 as Vector)) as Vector).Length2D();
 }

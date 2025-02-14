@@ -1,3 +1,4 @@
+#base "units/farm_creeps.txt"
 // Units File
 "DOTAUnits"
 {
@@ -45,8 +46,8 @@
 		"AttackAnimationPoint"		"0.1"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
 		"AttackRange"				"500"		// Range within a target can be attacked.
-		"ProjectileModel"		"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
-		"ProjectileSpeed"		"1125"
+		"ProjectileModel"			"particles/units/heroes/hero_furion/furion_base_attack.vpcf"
+		"ProjectileSpeed"			"1125"
 
 
 		// Bounty

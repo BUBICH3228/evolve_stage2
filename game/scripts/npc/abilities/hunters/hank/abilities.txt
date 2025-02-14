@@ -1,89 +1,85 @@
 "DOTAAbilities"
 {
-    "griffin_harpoon_gun"
+    "hank_shield_projector"
     {
         "BaseClass"		                    "ability_lua"
-        "AbilityTextureName"		        "rattletrap_hookshot"
-        "ScriptFile"                   	    "abilities/hunters/griffin/griffin_harpoon_gun"
+        "AbilityTextureName"		        "tinker_defense_matrix"
+        "ScriptFile"                   	    "abilities/hunters/hank/hank_shield_projector"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
-        "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
         "Maxlevel"                          "1"
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "20"
-        "AbilityCastRange"                  "500"
+        "AbilityCooldown"                   "25"
+        "AbilityCastRange"                  "200"
         "AbilityCastPoint"                  "0.1"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "damage"                        "57"
-            "duration"                      "4"
-            "slow_movespeed_enemy"          "50"
-            "speed"                         "1000"
-            "slow_movespeed_ally"           "125"
-            "max_radius_chain"              "500"
+            "shield_capacity"               "570"
         }
     }
 
-    "griffin_sound_spikes"
+    "hank_orbital_barrage"
     {
         "BaseClass"		                    "ability_lua"
-        "AbilityTextureName"		        "rattletrap_power_cogs"
-        "ScriptFile"                   	    "abilities/hunters/griffin/griffin_sound_spikes"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"		        "hank_orbital_barrage"
+        "ScriptFile"                   	    "abilities/hunters/hank/hank_orbital_barrage"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
         "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
         "Maxlevel"                          "1"
-        "AbilityChannelAnimation"           "ACT_DOTA_GENERIC_CHANNEL_1"
-
-        // Time   
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "20"
-        "AbilityCastRange"                  "500"
-        "AbilityCastPoint"                  "0"
-        "AbilityChannelTime"                "1.5"
-
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "damage"                        "100"
-            "time_activation"               "0.9"
-            "radius"                        "350"
-            "max_spikes"                    "3"
-        }
-    }
-
-    "griffin_scaner"
-    {
-        "BaseClass"		                    "ability_lua"
-        "AbilityTextureName"		        "rattletrap_rocket_flare"
-        "ScriptFile"                   	    "abilities/hunters/griffin/griffin_scaner"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
-        "Maxlevel"                          "1"
-        "AbilityChannelAnimation"           "ACT_DOTA_GENERIC_CHANNEL_1"
+        "AbilityChannelAnimation"           "ACT_DOTA_TINKER_REARM3"
+        //"AbilityCastAnimation"            "ACT_DOTA_CAST_ABILITY_3"
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
         "AbilityCooldown"                   "60"
+        "AbilityCastRange"                  "500"
+        "AbilityCastPoint"                  "0"
+        "AbilityChannelTime"                "2.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "min_damage"                    "275"
+            "max_damage"                    "400"
+            "count_explosions"              "11"
+            "radius_explosions"             "200"
+            "radius"                        "600"
+        }
+    }
+
+    "hank_shield_burst"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "hank_shield_burst"
+        "ScriptFile"                   	    "abilities/hunters/hank/hank_shield_burst"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
+        "Maxlevel"                          "1"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "40"
         "AbilityCastPoint"                  "0.1"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "duration"                      "5"
-            "bonus_movement_speed"          "50"
+            "other_shield_capacity"         "500"
+            "self_shield_capacity"          "450"
+            "decay_rate"                    "35"
         }
     }
 }

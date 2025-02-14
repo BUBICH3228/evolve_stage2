@@ -4,7 +4,7 @@
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "primal_beast_trample"
-        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_base_attack"
+        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_base_attack"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
         "Maxlevel"                          "3"
 
@@ -27,7 +27,7 @@
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "primal_beast_uproar"
-        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_fire_breath"
+        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_fire_breath"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -69,7 +69,7 @@
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "goliath_leap_smash"
-        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_leap_smash"
+        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_leap_smash"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -110,7 +110,7 @@
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "primal_beast_onslaught"
-        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_charge"
+        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_charge"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -150,7 +150,7 @@
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "primal_beast_rock_throw"
-        "ScriptFile"                   	    "abilities/heroes/monsters/goliath/goliath_rock_throw"
+        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_rock_throw"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
