@@ -99,8 +99,12 @@ function _ReplacePlayerHero(playerID: PlayerID, heroName: string, restoreExp: bo
             for (const modifier of playerHero.FindAllModifiers()) {
                 modifier.Destroy();
             }
-
-            const newHero = PlayerResource.ReplaceHeroWithNoTransfer(playerID, heroName, 0, 0);
+            print(playerID, heroName);
+            const newHero = PlayerResource.ReplaceHeroWith(playerID, heroName, 0, 0);
+            print(newHero);
+            if (newHero == undefined) {
+                return;
+            }
 
             if (restoreExp == true) {
                 newHero.AddExperience(playerHeroExp, ModifyXpReason.UNSPECIFIED, false, true);

@@ -1,6 +1,6 @@
 "addon"
 {	
-	"addon_game_name"									"Evolve Stage 2"
+	"addon_game_name"									"PROJECT 'EVOLVE'"
 
 	//Top Hud
 	"ui_top_hud_buttons_discord"						"Дискорд"

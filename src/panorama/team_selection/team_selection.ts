@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-var
-var Utils = GameUI.CustomUIConfig().Utils;
+var DotaHUD = GameUI.CustomUIConfig().DotaHUD;
 
 class TeamSelection {
     MAIN_PANEL = $("#MainPanel");
@@ -10,27 +10,13 @@ class TeamSelection {
     UNDECIDED_PLAYERS_CONTAINER = $("#UndecidedPlayersContainer");
     MONSTER_PLAYERS_CONTAINER = $("#MonsterPlayersContainer");
     HUNTER_PLAYERS_CONTAINER = $("#HunterPlayersContainer");
-    TIMER_LABEL = $("#Timer");
 
     constructor() {
-        $.Schedule(2, () => {
-            this.ShowWindow(true);
-        });
-        GameEvents.Subscribe("show_team_selection_menu", (data) => {
-            this.MAIN_PANEL.SetHasClass("Hidden", data.visibleState == 0);
-            if (data.visibleState == 0) {
-                this.TeamSelectionResults();
-            }
-        });
-
         GameEvents.Subscribe("team_selection_event", (data) => {
             (Players as CScriptBindingPR_Players_TeamSelection).PlayerData[data.playerID] = data.palyerTeam;
             this.UpdateUndecidedPlayers();
         });
-        this.SetupCloseWindowButton();
         this.SetupSelectHunterOrMonsterButton();
-
-        this.UpdateTimer();
 
         const playersID = Game.GetAllPlayerIDs();
         (Players as CScriptBindingPR_Players_TeamSelection).PlayerData = [];
@@ -38,6 +24,50 @@ class TeamSelection {
             (Players as CScriptBindingPR_Players_TeamSelection).PlayerData.push("Undecided");
         });
         this.UpdateUndecidedPlayers();
+        this.FixUIDOTAInterface();
+        $.Schedule(5, () => {
+            this.TeamSelectionResults();
+        });
+    }
+
+    private FixUIDOTAInterface() {
+        const hud = DotaHUD.Get();
+        const TeamsList = hud.FindChildTraverse("TeamsList");
+        if (TeamsList) {
+            TeamsList.style.visibility = "collapse";
+        }
+        const GameAndPlayersRoot = hud.FindChildTraverse("GameAndPlayersRoot");
+        if (GameAndPlayersRoot) {
+            GameAndPlayersRoot.style.backgroundColor = "#ffffff00";
+            GameAndPlayersRoot.style.boxShadow = "#ffffff00 0px 0px 0px";
+            GameAndPlayersRoot.style.width = "100%";
+            GameAndPlayersRoot.style.height = "100%";
+            GameAndPlayersRoot.FindChildTraverse("MapInfo")!.style.visibility = "collapse";
+            GameAndPlayersRoot.FindChildTraverse("TimerBg")!.style.visibility = "collapse";
+            GameAndPlayersRoot.FindChildTraverse("TimerRing")!.style.visibility = "collapse";
+            GameAndPlayersRoot.FindChildTraverse("StartGameCountdownTimer")!.style.marginTop = "5px";
+            GameAndPlayersRoot.FindChildTraverse("StartGameCountdownTimer")!.style.marginLeft = "55px";
+            const GameInfoPanel = GameAndPlayersRoot.FindChildTraverse("GameInfoPanel");
+            if (GameInfoPanel) {
+                GameInfoPanel.style.height = "90%";
+                GameInfoPanel.style.marginLeft = "44.5%";
+                GameInfoPanel.FindChildTraverse("GameModeNameLabel")!.style.color = "Black";
+                GameInfoPanel.FindChildTraverse("TeamSelectTimer")!.style.color = "Black";
+                GameInfoPanel.FindChildTraverse("TimerLabelAutoStart")!.style.color = "Black";
+            }
+        }
+        const CancelAndUnlockButton = hud.FindChildTraverse("CancelAndUnlockButton");
+        if (CancelAndUnlockButton) {
+            CancelAndUnlockButton.style.visibility = "collapse";
+        }
+        const UnassignedPlayerPanel = hud.FindChildTraverse("UnassignedPlayerPanel");
+        if (UnassignedPlayerPanel) {
+            UnassignedPlayerPanel.style.visibility = "collapse";
+        }
+        const LockAndStartButton = hud.FindChildTraverse("LockAndStartButton");
+        if (LockAndStartButton) {
+            LockAndStartButton.style.visibility = "collapse";
+        }
     }
 
     private UpdateUndecidedPlayers() {
@@ -63,23 +93,6 @@ class TeamSelection {
         (panel.FindChildTraverse("Avatar") as AvatarImage).steamid = playerSteamID;
     }
 
-    private UpdateTimer() {
-        this.TIMER_LABEL.text = Utils.FormatTime(Math.abs(Game.GetDOTATime(false, true)) - 29);
-        $.Schedule(0.25, () => {
-            this.UpdateTimer();
-        });
-    }
-
-    private SetupCloseWindowButton() {
-        this.CLOSE_BUTTON.SetPanelEvent("onactivate", () => {
-            this.ShowWindow(false);
-        });
-    }
-
-    private ShowWindow(state: boolean) {
-        this.MAIN_PANEL.SetHasClass("Hidden", !state);
-    }
-
     private SetupSelectHunterOrMonsterButton() {
         this.HUNTER_BUTTON.SetPanelEvent("onactivate", () => {
             GameEvents.SendCustomGameEventToAllClients("team_selection_event", { playerID: Game.GetLocalPlayerID(), palyerTeam: "Hunter" });
@@ -98,7 +111,6 @@ class TeamSelection {
         });
     }
     private TeamSelectionResults() {
-        this.ShowWindow(false);
         GameEvents.SendCustomGameEventToServer("team_selection_results", {
             PlayerType: (Players as CScriptBindingPR_Players_TeamSelection).PlayerData[Game.GetLocalPlayerID()],
             PlayerID: Game.GetLocalPlayerID()

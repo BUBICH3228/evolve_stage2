@@ -13,7 +13,7 @@ export const Settings = {
         hero_showcase_time: 0,
 
         gamesetup_lock: true,
-        gamesetup_time: 0,
+        gamesetup_time: 5,
         pre_game_time: 120,
         post_game_time: 20,
         tree_regrow_time: 300,
@@ -58,21 +58,14 @@ export const Settings = {
             42003545, // =)
             191255670, // Bubich
             475668609, // tychka
-            191255670, // tychka(2 акк)
             1097831053 // mazZok_Kalla
         ],
 
         // Манакосты абилок героев на основе макс маны
-        percentage_manacustom_increase_from_spell_amplify_delimiter: 175, // влияет на то как сильно доп. урон от заклинаний увеличивает мана косты героев
+        percentage_manacustom_increase_from_spell_amplify_delimiter: 0, // влияет на то как сильно доп. урон от заклинаний увеличивает мана косты героев
 
         // скиллы на которые не должно влиять увеличение манакоста героев на основе доп. урона от заклинаний
-        percentage_manacustom_exceptions: {
-            obsidian_destroyer_arcane_orb: true,
-            storm_spirit_ball_lightning: true,
-            lina_flame_cloak_custom: true,
-            ancient_apparition_chilling_touch_custom: true,
-            silencer_glaives_of_wisdom_custom: true
-        } as exceptionsList,
+        percentage_manacustom_exceptions: {} as exceptionsList,
 
         // Абилки, которые надо добавить героям при первом респауне
         heroes_first_spawn_abilities_to_add: [""],
@@ -80,9 +73,7 @@ export const Settings = {
         // Модифаеры, которые надо добавить героям при первом респауне
         heroes_first_spawn_modifiers_to_add: [
             "modifier_custom_properties", // кастомные проперти модифаеров
-            "modifier_heroes_passive_stats", // пассивные бонусы каждого героя
-            "modifier_hero_stats",
-            "modifier_passive_gold"
+            "modifier_heroes_passive_stats" // пассивные бонусы каждого героя
         ],
 
         heroes_difficulty_debuff: {},
@@ -90,104 +81,7 @@ export const Settings = {
         custom_exp_table: [
             0, // 1
             150, // 2
-            300, // 3
-            450, // 4
-            600, // 5
-            750, // 6
-            900, // 7
-            1050, // 8
-            1200, // 9
-            1350, // 10
-            1500, // 11
-            1650, // 12
-            1800, // 13
-            1950, // 14
-            2100, // 15
-            2250, // 16
-            2400, // 17
-            2550, // 18
-            2700, // 19
-            2850, // 20
-            3000, // 21
-            3150, // 22
-            3300, // 23
-            3450, // 24
-            3600, // 25
-            3750, // 26
-            3900, // 27
-            4050, // 28
-            4200, // 29
-            4350, // 30
-            4500, // 31
-            4650, // 32
-            4800, // 33
-            4950, // 34
-            5100, // 35
-            5250, // 36
-            5400, // 37
-            5550, // 38
-            5700, // 39
-            5850, // 40
-            6000, // 41
-            6150, // 42
-            6300, // 43
-            6450, // 44
-            6600, // 45
-            6750, // 46
-            6900, // 47
-            7050, // 48
-            7200, // 48
-            7350, // 49
-            7500, // 50
-            7650, // 51
-            7800, // 52
-            7950, // 53
-            8100, // 54
-            8250, // 55
-            8400, // 56
-            8550, // 57
-            8700, // 58
-            8850, // 59
-            9000, // 60
-            9150, // 61
-            9300, // 62
-            9450, // 63
-            9600, // 64
-            9750, // 65
-            9900, // 66
-            10050, // 67
-            10200, // 68
-            10350, // 69
-            10500, // 70
-            10650, // 71
-            10800, // 72
-            10950, // 73
-            11100, // 74
-            11250, // 75
-            11400, // 76
-            11550, // 77
-            11700, // 78
-            11850, // 79
-            12000, // 80
-            12150, // 81
-            12300, // 82
-            12450, // 83
-            12600, // 84
-            12750, // 85
-            12900, // 86
-            13050, // 87
-            13200, // 88
-            13350, // 89
-            13500, // 90
-            13650, // 91
-            13800, // 92
-            13950, // 93
-            14100, // 94
-            14250, // 95
-            14400, // 96
-            14550, // 97
-            14700, // 98
-            14850 // 99
+            300 // 3
         ]
     },
     client: {
@@ -212,14 +106,9 @@ export const Settings = {
 
         team_max_players: {
             2: 4,
-            3: 1
-        },
-
-        hero_talents_row_1: 25,
-        hero_talents_row_2: 25,
-        hero_talents_row_3: 75,
-        hero_talents_row_4: 75,
-        hero_bonus_attributalent: "talent_bonus_attributes_custom"
+            3: 1,
+            5: 5
+        }
     }
 };
 

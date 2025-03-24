@@ -19,7 +19,8 @@
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/quests/quests_window.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/quests/quests_tracker.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/players_top/players_top.xml" />
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/team_selection/team_selection.xml" />
+		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/team_selection/team_selection.xml" />
+		<CustomUIElement type="GameSetup" layoutfile="s2r://panorama/layout/custom_game/team_select.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hero_selection/hero_selection.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/minimap_fix/minimap_fix.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_ability/custom_ability.xml" />

@@ -49,6 +49,9 @@ class HeroSelection {
             this.MAIN_PANEL.SetHasClass("Hidden", data.visibleState == 0);
             this.SetupHeroesClassButton();
         });
+
+        this.MAIN_PANEL.SetHasClass("Hidden", false);
+        this.SetupHeroesClassButton();
     }
 
     private SetupHeroesClassButton() {
@@ -124,7 +127,6 @@ class HeroSelection {
         this.HERO_ABILITY_PANEL.RemoveAndDeleteChildren();
 
         for (const [_, value] of Object.entries(abilities)) {
-            $.Msg(value);
             const button = $.CreatePanel("Panel", this.HERO_ABILITY_PANEL, "AbilityButton");
             const panel = $.CreatePanel("DOTAAbilityImage", button, "AbilityImage");
             panel.abilityname = value.abilityName;

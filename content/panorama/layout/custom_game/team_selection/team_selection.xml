@@ -13,9 +13,8 @@
 		</snippet>
 	</snippets>
     <Panel class="Root" hittest="false" hittestchildren="true">
-        <Panel id="MainPanel" hittest="false" class="Hidden">
+        <Panel id="MainPanel" hittest="false">
             <Label class="LabelTitleText" text="#ui_team_selection_title" />
-            <Label id="Timer" text="0:00" />
             <Panel id="SelectHunterPanel">
                 <Panel class="LabelContainerClass LeftPanel">
                     <Label class="LabelText" text="#ui_team_selection_team_name_hunter" />
@@ -35,7 +34,6 @@
                 <Label id="SelectUndecidedButton" class="LabelUndecidedText" text="#ui_team_selection_undecided"/>
                 <Panel id="UndecidedPlayersContainer"/>
             </Panel>
-            <Button id="CloseButton"/>
         </Panel>
     </Panel>
 </root>
