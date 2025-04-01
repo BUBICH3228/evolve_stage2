@@ -3,6 +3,8 @@ import { HeroesData, StatsData, AboutHeroData, AbilitiesData } from "../common/d
 var HudButtons = GameUI.CustomUIConfig().HudButtons;
 // eslint-disable-next-line no-var
 var Constants = GameUI.CustomUIConfig().Constants;
+// eslint-disable-next-line no-var
+var DotaHUD = GameUI.CustomUIConfig().DotaHUD;
 class HeroSelection {
     OLD_HERO_NAME = "";
     MAIN_PANEL = $("#MainPanel");
@@ -11,6 +13,7 @@ class HeroSelection {
     HERO_ABILITY_PANEL = $("#HeroAbilityPanel");
     HERO_PICKER_PANEL = $("#HeroPickerPanel");
     HERO_STATS_PANEL = $("#HeroStatsPanel");
+    HERO_SELECTION_BUTTON = $("#HeroSelectionButton");
     HERO_PIKER_PANEL_DATA = [
         {
             class: "trapper",
@@ -45,13 +48,41 @@ class HeroSelection {
     ];
 
     constructor() {
-        GameEvents.Subscribe("show_hero_selection_menu", (data) => {
-            this.MAIN_PANEL.SetHasClass("Hidden", data.visibleState == 0);
-            this.SetupHeroesClassButton();
-        });
-
-        this.MAIN_PANEL.SetHasClass("Hidden", false);
         this.SetupHeroesClassButton();
+        this.FixUIDOTAInterface();
+    }
+
+    private FixUIDOTAInterface() {
+        const hud = DotaHUD.Get();
+        const ScreenContainer = hud.FindChildTraverse("ScreenContainer");
+        if (ScreenContainer) {
+            ScreenContainer.style.visibility = "collapse";
+        }
+        const PreMinimapContainer = hud.FindChildTraverse("PreMinimapContainer");
+        if (PreMinimapContainer) {
+            PreMinimapContainer.style.visibility = "collapse";
+        }
+        const BottomPanels = hud.FindChildTraverse("BottomPanels");
+        if (BottomPanels) {
+            BottomPanels.style.align = "center bottom";
+            BottomPanels.style.marginRight = "0px";
+        }
+        const Footer = hud.FindChildTraverse("Footer");
+        if (Footer) {
+            Footer.style.visibility = "collapse";
+        }
+        const FriendsAndFoes = hud.FindChildTraverse("FriendsAndFoes");
+        if (FriendsAndFoes) {
+            FriendsAndFoes.style.visibility = "collapse";
+        }
+        const DireTeamPlayers = hud.FindChildTraverse("DireTeamPlayers");
+        if (DireTeamPlayers) {
+            DireTeamPlayers.style.visibility = "collapse";
+        }
+        const RadiantTeamPlayers = hud.FindChildTraverse("RadiantTeamPlayers");
+        if (RadiantTeamPlayers) {
+            RadiantTeamPlayers.style.visibility = "collapse";
+        }
     }
 
     private SetupHeroesClassButton() {
@@ -78,8 +109,8 @@ class HeroSelection {
 
         if (Players.GetTeam(Game.GetLocalPlayerID()) == DotaTeam.BADGUYS) {
             index = 4;
-            $("#TitelHuntersClassPanel").SetHasClass("Hidden", true);
-            $("#TitelMonsterClassPanel").SetHasClass("Hidden", false);
+            $("#TitelHuntersClassPanel").SetHasClass("Collapse", true);
+            $("#TitelMonsterClassPanel").SetHasClass("Collapse", false);
         }
 
         for (const [heroName, value] of Object.entries(HeroesData[this.HERO_PIKER_PANEL_DATA[index].class])) {
@@ -113,13 +144,10 @@ class HeroSelection {
     }
 
     private SetupHeroSelectionButton(heroName: string) {
-        const panel = $.CreatePanel("Panel", $("#HeroStatisticsContainer"), "HeroSelectionButton");
-        panel.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
-        HudButtons.SetButton(Constants.HUD_BUTTONS.HERO_SELECTED, panel);
-        panel.SetPanelEvent("onactivate", () => {
+        this.HERO_SELECTION_BUTTON.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
+        this.HERO_SELECTION_BUTTON.SetPanelEvent("onactivate", () => {
             GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName, PlayerID: Game.GetLocalPlayerID() });
             this.MAIN_PANEL.SetHasClass("Hidden", true);
-            HudButtons.FireButtonClickedEvent(Constants.HUD_BUTTONS.HERO_SELECTED);
         });
     }
 
@@ -153,16 +181,15 @@ class HeroSelection {
             autoplay: "onload"
         });
 
-        panel.style.width = "412px";
-        panel.style.height = "294px";
+        panel.style.width = "1000px";
+        panel.style.height = "600px";
         panel.style.align = "center center";
     }
 
     private CreateStatsPanel(stats: StatsData) {
         $("#DerivedStatsContainer").RemoveAndDeleteChildren();
-        $("#HeroStatsPanel").SetHasClass("Hidden", false);
-        $("#DerivedStatsContainer").SetHasClass("Hidden", false);
-        $("#HeroDescriptionPanel").SetHasClass("Hidden", true);
+        this.HERO_STATS_PANEL.SetHasClass("Collapse", false);
+        $("#HeroDescriptionPanel").SetHasClass("Collapse", true);
         for (const [key, value] of Object.entries(stats)) {
             const panel = this.HERO_STATS_PANEL.FindChildTraverse(key + "Label");
             if (panel) {
@@ -180,9 +207,8 @@ class HeroSelection {
     }
 
     private CreateHeroeAboutPanel(aboutHero: AboutHeroData) {
-        $("#HeroStatsPanel").SetHasClass("Hidden", true);
-        $("#DerivedStatsContainer").SetHasClass("Hidden", true);
-        $("#HeroDescriptionPanel").SetHasClass("Hidden", false);
+        this.HERO_STATS_PANEL.SetHasClass("Collapse", true);
+        $("#HeroDescriptionPanel").SetHasClass("Collapse", false);
 
         $("#HeroPersonality").text = $.Localize(aboutHero.personality);
     }
@@ -200,11 +226,11 @@ class HeroSelection {
     private CreteScenePanel(HeroName: string) {
         if (this.OLD_HERO_NAME != HeroName) {
             this.OLD_HERO_NAME = HeroName;
-            if (this.HERO_MODEL_PANEL.FindChildTraverse("HeroModel") != undefined) {
-                (this.HERO_MODEL_PANEL.FindChildTraverse("HeroModel") as Panel).DeleteAsync(0);
+            if ($("#HeroModelContainer").FindChildTraverse("HeroModel") != undefined) {
+                ($("#HeroModelContainer").FindChildTraverse("HeroModel") as Panel).DeleteAsync(0);
             }
             (this.HERO_MODEL_PANEL.FindChildTraverse("HeroName") as Panel).text = $.Localize("#" + HeroName);
-            $.CreatePanel("DOTAScenePanel", this.HERO_MODEL_PANEL, "HeroModel", {
+            $.CreatePanel("DOTAScenePanel", $("#HeroModelContainer"), "HeroModel", {
                 unit: HeroName,
                 particleonly: "false",
                 yawmin: "-90",

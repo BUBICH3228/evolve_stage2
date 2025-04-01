@@ -29,16 +29,16 @@ export class TeamSelection {
             });
         }
         if (newState == GameState.PRE_GAME) {
-            Timers.CreateTimer(60, () => {
-                CustomGameEventManager.Send_ServerToAllClients("show_hero_selection_menu", { visibleState: false });
+            Timers.CreateTimer(5, () => {
                 this.ForEachPlayer((playerID) => {
                     this.SelectionHero({ PlayerID: playerID, HeroName: undefined });
+                    this.GiveOutHeroPlayer(playerID);
                 });
                 CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: true });
             });
             Timers.CreateTimer(120, () => {
                 CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: false });
-                this.SpawnMap("wraith_trap_map");
+                this.SpawnMap("prefabs/wraith_trap_map/section_1");
             });
         }
     }
@@ -99,51 +99,73 @@ export class TeamSelection {
     private SetTeam(PlayerID: PlayerID, DotaTeam: DotaTeam) {
         const player = PlayerResource.GetPlayer(PlayerID);
         const hero = PlayerResource.GetSelectedHeroEntity(PlayerID);
-        player?.SetTeam(DotaTeam);
-        hero?.SetTeam(DotaTeam);
+        player?.SetTeam(2);
+        hero?.SetTeam(2);
     }
 
     private SelectionHero(data: HeroSelectionEvent) {
-        if (data.PlayerID != undefined && data.HeroName != undefined) {
-            PlayerResource.ReplacePlayerHero(data.PlayerID, data.HeroName, false);
+        if (data.PlayerID) {
+            const player = PlayerResource.GetPlayer(data.PlayerID) as CDOTAPlayerController_TeamSelectionUI;
+            if (player) {
+                if (player.SelectedHero != undefined) {
+                    return;
+                }
+                if (data.HeroName == undefined) {
+                    const hero = PlayerResource.GetSelectedHeroEntity(data.PlayerID);
+                    if (hero) {
+                        player.SelectedHero = this.GetRandomHeroKey(hero.GetTeam() == DotaTeam.BADGUYS);
+                    }
+                } else {
+                    player.SelectedHero = data.HeroName;
+                }
+            } else {
+                Debug_PrintError("TeamSelectionUI:SelectionHero Player argument missing or invalid. Wtf?");
+            }
+        } else {
+            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID argument missing or invalid. Wtf?");
+        }
+    }
+
+    private GiveOutHeroPlayer(PlayerID: PlayerID) {
+        const player = PlayerResource.GetPlayer(PlayerID) as CDOTAPlayerController_TeamSelectionUI;
+        let HeroName = "npc_dota_hero_wisp";
+
+        if (player) {
+            HeroName = player.SelectedHero;
+        }
+
+        if (PlayerID != undefined) {
+            PlayerResource.ReplacePlayerHero(PlayerID, HeroName, false);
             Timers.CreateTimer(1, () => {
                 CustomGameEventManager.Send_ServerToAllClients("fix_hero_minimap_icon", {});
-                const hero = PlayerResource.GetSelectedHeroEntity(data.PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
+                const hero = PlayerResource.GetSelectedHeroEntity(PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
                 hero.isHeroSelected = true;
                 if (hero?.GetTeam() == DotaTeam.BADGUYS) {
                     hero.SetAbilityPoints(3);
                 }
             });
-        } else if (data.PlayerID != undefined && data.HeroName == undefined) {
-            const hero = PlayerResource.GetSelectedHeroEntity(data.PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
-            if (hero.isHeroSelected == undefined) {
-                PlayerResource.ReplacePlayerHero(data.PlayerID, this.GetRandomHeroKey(hero.GetTeam() == DotaTeam.BADGUYS), false);
-            }
         } else {
-            Debug_PrintError("TeamSelectionUI:SelectionHero PlayerID and HeroName argument missing or invalid. Wtf?");
+            Debug_PrintError("TeamSelectionUI:GiveOutHeroPlayer PlayerID argument missing or invalid. Wtf?");
         }
     }
 
     private GetRandomHeroKey(IsMonster: boolean): string {
         const data = Object.entries(HeroesData);
-
         if (data.length === 0) {
             return "npc_dota_hero_wisp";
         }
-
+        const keyClass: string[] = ["trapper", "assault", "support", "medic", "monster"];
+        print(IsMonster);
         if (IsMonster == true) {
-            const Monsterkeys = Object.keys(data[4]);
-            return Monsterkeys[RandomInt(0, Monsterkeys.length)] || "npc_dota_hero_wisp";
+            const Monsterkeys = Object.keys(HeroesData[keyClass[4]]);
+            const heroName = Monsterkeys[RandomInt(0, Monsterkeys.length)];
+            print(heroName);
+            return heroName || "npc_dota_hero_wisp";
         }
 
-        const Hunterkeys = [];
-        for (let index = 0; index < 4; index++) {
-            Hunterkeys.push(Object.keys(data[index]));
-        }
-
-        const randomClass = RandomInt(0, Hunterkeys.length);
-
-        return Hunterkeys[randomClass][RandomInt(0, Hunterkeys[randomClass].length)] || "npc_dota_hero_wisp";
+        const Hunterkeys = Object.keys(HeroesData[keyClass[RandomInt(0, 3)]]);
+        const heroName = Hunterkeys[RandomInt(0, Hunterkeys.length)];
+        return heroName || "npc_dota_hero_wisp";
     }
 
     private ForEachPlayer(callback: (playerId: PlayerID) => void): void {
@@ -192,6 +214,7 @@ export class TeamSelection {
 
 interface CDOTAPlayerController_TeamSelectionUI extends CDOTAPlayerController {
     FavoredTeam: string;
+    SelectedHero: string;
 }
 
 declare global {

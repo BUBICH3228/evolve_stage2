@@ -12,15 +12,15 @@ export class HuntersHealthbar {
     playerID = Game.GetLocalPlayerID();
     constructor() {
         this.CreateOrUpdateHealthPanel();
-        1;
-        HudButtons.ListenToButtonClickedEvent(Constants.HUD_BUTTONS.HERO_SELECTED, () => {
-            if (Players.GetTeam(this.playerID) == DotaTeam.GOODGUYS) {
-                this.MAIN_PANEL.SetHasClass("Hidden", false);
-            }
-        });
     }
 
     private CreateOrUpdateHealthPanel() {
+        if (Players.GetTeam(this.playerID) != DotaTeam.GOODGUYS) {
+            return;
+        }
+        if (this.MAIN_PANEL.BHasClass("Hidden")) {
+            this.MAIN_PANEL.SetHasClass("Hidden", false);
+        }
         const entityIndex = Players.GetPlayerHeroEntityIndex(this.playerID);
         if (entityIndex) {
             const maxHealth = Entities.GetMaxHealth(entityIndex);

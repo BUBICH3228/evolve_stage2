@@ -99,9 +99,11 @@ function _ReplacePlayerHero(playerID: PlayerID, heroName: string, restoreExp: bo
             for (const modifier of playerHero.FindAllModifiers()) {
                 modifier.Destroy();
             }
-            print(playerID, heroName);
+
             const newHero = PlayerResource.ReplaceHeroWith(playerID, heroName, 0, 0);
-            print(newHero);
+
+            CustomGameEventManager.Send_ServerToPlayer(player, "change_hero", {} as never);
+
             if (newHero == undefined) {
                 return;
             }

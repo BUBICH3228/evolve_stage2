@@ -24,10 +24,10 @@
 .HunterClass{
     width: fit-children;
     height: fit-children;
-    flow-children: down-wrap;
-    align: right bottom;
-    margin-bottom: 10px;
-    margin-right: 10px;
+    flow-children: right-wrap;
+    align: left bottom;
+    margin-bottom: 65px;
+    margin-left: 140px;
 }
 
 #AbilityPanel  {
@@ -54,7 +54,7 @@
     width: 54px;
     height: 54px;
     z-index: 20;
-    border: 2.0px solid #E7D291;
+    border: 2.0px solid #4f67b8;
     border-radius: 50%;
     transition-property: clip;
     transition-duration: 2s;

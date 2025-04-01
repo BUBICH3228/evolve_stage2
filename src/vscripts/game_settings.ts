@@ -103,6 +103,7 @@ export class GameSettings {
         GameRules.SetSameHeroSelectionEnabled(Settings.server.allow_same_hero_selection);
         GameRules.SetHeroSelectionTime(Settings.server.hero_selection_time);
         GameRules.SetStrategyTime(Settings.server.hero_strategy_time);
+        GameRules.SetHeroSelectPenaltyTime(Settings.server.hero_penalty_time);
         GameRules.SetShowcaseTime(Settings.server.hero_showcase_time);
         GameRules.SetPreGameTime(Settings.server.pre_game_time);
         GameRules.SetPostGameTime(Settings.server.post_game_time);

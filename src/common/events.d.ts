@@ -24,7 +24,6 @@ interface CustomGameEventDeclarations {
     team_selection_results: TeamSelectionResultsEvent;
     get_team_selection_results: any;
     show_team_selection_menu: ShowTeamSelectionMenuEvent;
-    show_hero_selection_menu: ShowHeroSelectionMenuEvent;
     show_map_selection_menu: ShowMapSelectionMenuEvent;
     hero_selection_event: HeroSelectionEvent;
     fix_hero_minimap_icon: any;
@@ -42,10 +41,6 @@ interface ShowMapSelectionMenuEvent {
 }
 
 interface ShowTeamSelectionMenuEvent {
-    visibleState: boolean;
-}
-
-interface ShowHeroSelectionMenuEvent {
     visibleState: boolean;
 }
 

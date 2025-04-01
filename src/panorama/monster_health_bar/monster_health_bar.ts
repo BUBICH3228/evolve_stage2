@@ -10,11 +10,8 @@ export class MonsterHealthBar {
     playerID = Game.GetLocalPlayerID();
     entityIndex = Players.GetPlayerHeroEntityIndex(this.playerID);
     constructor() {
-        this.CreateOrUpdateHealthPanel();
-        HudButtons.ListenToButtonClickedEvent(Constants.HUD_BUTTONS.HERO_SELECTED, () => {
-            if (Players.GetTeam(this.playerID) == DotaTeam.BADGUYS) {
-                this.MAIN_PANEL.SetHasClass("Hidden", false);
-            }
+        $.Schedule(2, () => {
+            this.CreateOrUpdateHealthPanel();
         });
     }
 
@@ -30,7 +27,7 @@ export class MonsterHealthBar {
 
         const playerID = Game.GetPlayerIDsOnTeam(DotaTeam.BADGUYS)[0];
         if (playerID == null || playerID == undefined) {
-            $.Schedule(0.1, () => {
+            $.Schedule(1, () => {
                 this.CreateOrUpdateHealthPanel();
             });
             return;
@@ -51,7 +48,7 @@ export class MonsterHealthBar {
 
         $.Schedule(0.1, () => {
             this.CreateOrUpdateHealthPanel();
-        }); //GetPlayerIDsOnTeam
+        });
         return;
     }
 }

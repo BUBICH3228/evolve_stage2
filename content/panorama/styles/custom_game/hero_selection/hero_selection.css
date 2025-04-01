@@ -2,10 +2,18 @@
     width: 100%;
     height: 100%;
 }
-
+#Root{
+    width: 100%;
+    height: 100%;
+}
 .Hidden
 {
     opacity: 0;
+}
+
+.Collapse
+{
+    visibility: collapse;
 }
 
 .TitleText {
@@ -40,22 +48,21 @@
 }
 
 #MainPanel {
-    width: 1150px;
-    height: 700px;
+    width: 100%;
+    height: 100%;
     align:  center center;
-    background-image: url("file://{images}/custom_game/ui/frames/frame.png");
-    background-size: 100% 100%;
-    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #050609));
+    background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #21232767 ), to( #05060946));
     transition-duration: 0.4s;
     transition-property: opacity;
-    margin-bottom: 100px;
 }
 
 #HeroStatisticsContainer {
     width: 558px;
-    height: 780px;
+    height: 900px;
     align:  left center;
     margin-left: 15px;
+    margin-top: 250px;
+    flow-children: down-wrap;
 }
 
 #HeroModelPanel {
@@ -63,15 +70,16 @@
     height: fit-children;
     align:  center top;
     margin-top: 20px;
+    flow-children: down-wrap;
 }
 
 #HeroModel {
-    width: 350px;
+    width: 400px;
     height: 350px;
 }
 
 #HeroName {
-    align:  center top;
+    horizontal-align:  center;
     font-size: 18px;
     color: rgb(167, 127, 41);
 }
@@ -80,7 +88,7 @@
     width: fit-children;
     height: fit-children;
     align:  center center;
-    margin-top: 70px;
+    margin-top: 10px;
     flow-children: right-wrap;
     background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #1e1f22));
 }
@@ -105,16 +113,22 @@
     width: fit-children;
     height: fit-children;
     align:  center top;
-    margin-top: 490px;
+    margin-top: 10px;
     flow-children: right-wrap;
 }
 
 #HeroStatsPanel {
+    width: 100%;
+    height: fit-children;
+    flow-children: right-wrap;
+    align:  left top;
+    margin-top: 10px;
+}
+
+#HeroStats {
     width: fit-children;
     height: fit-children;
-    flow-children: down;
-    align:  left top;
-    margin-top: 550px;
+    flow-children: down-wrap;
 }
 
 #HeroShild {
@@ -148,27 +162,10 @@
     height: 25px;
 }
 
-#HeroMana {
-    align:  left top;
-    width: 250px;
-    height: 25px;
-    margin-left: 50px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #2b4287 ), color-stop( 0.2, #4165ce ), color-stop( .5, #4a73ea), to( #2b4287 ) );
-    border-radius: 3px;
-    margin-bottom: 10px;
-}
-
-#HeroManaScene {
-    width: 250px;
-    height: 25px;
-    hue-rotation: 50deg;
-} 
-
 #DerivedStatsContainer {
     width: 250px;
     height: fit-children;
     align: right top;
-    margin-top: 545px;
     flow-children:right-wrap;
 }
 
@@ -194,8 +191,7 @@
 }
 
 #HeroDescriptionPanel {
-    align:  center bottom;
-    margin-bottom: 20px;
+    margin-top: 10px;
     width: 500px;
     height: 150px;
 }
@@ -209,8 +205,9 @@
 #HuntersClassContainer {
     width: 558px;
     height: 780px;
-    align:  right center;
+    align:  left top;
     margin-right: 15px;
+    margin-top: 50px;
 }
 
 #TitelHuntersClassPanel {
@@ -249,23 +246,23 @@
 }
 
 #MoveContainer {
-    width: 420px;
-    height: 350px;
-    align:  center bottom;
-    margin-bottom: 10px;
+    width: fit-children;
+    height: fit-children;
+    align:  right center;
+    margin-bottom: 200px;
+    margin-right: 205px;
 }
 
-.MoveDriver {
-    width: 420px;
-    height: 300px;
-    align:  center center;
-    background-image: url("file://{images}/custom_game/ui/frames/frame.png");
+#MoveBorder {
+    width: 100%;
+    height: 100%;
+    background-image: url("file://{images}/custom_game/ui/frames/gold_frame_4.png");
     background-size: 100% 100%;
 }
-
-#MoveName {
-    align:  center top;
-    color: rgba(255, 255, 255, 0.616);
+.MoveDriver {
+    width: 1000px;
+    height: 600px;
+    align:  center center;
 }
 
 #HeroSelectionButton {
@@ -273,7 +270,8 @@
     height: 30px;
     border-radius: 15px;
     align: center top;
-    margin-top: 440px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #4b4c52 ), color-stop( 0.2, #353538 ), color-stop( .5, #424347), to( #808185 ) );
 }
 

@@ -178,10 +178,7 @@ export class GameMode {
                         if (player == undefined) {
                             return;
                         }
-                        player.MakeRandomHeroSelection();
-                        PlayerResource.SetHasRandomed(PlayerID);
-                        PlayerResource.SetCanRepick(PlayerID, false);
-                        PlayerResource.ReplacePlayerHero(player.GetPlayerID(), "npc_dota_hero_wisp", false);
+                        player.SetSelectedHero("npc_dota_hero_wisp");
                     }
                 }
             }

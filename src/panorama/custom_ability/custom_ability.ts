@@ -20,10 +20,8 @@ class CustomAbility {
     };
     KEY_BIND_DATA: string[] = ["q", "w", "e", "d"];
     constructor() {
-        HudButtons.ListenToButtonClickedEvent(Constants.HUD_BUTTONS.HERO_SELECTED, () => {
-            $.Schedule(0.5, () => {
-                this.CreateAbilities();
-            });
+        GameEvents.Subscribe("change_hero", () => {
+            this.CreateAbilities();
         });
         this.UpdateAbilitylevel();
     }
@@ -82,7 +80,7 @@ class CustomAbility {
                 } else {
                     abilityCooldownLabel.SetHasClass("Hidden", false);
                 }
-                abilityCooldownLabel.text = String(Utils.Round(Abilities.GetCooldownTimeRemaining(ability)));
+                abilityCooldownLabel.text = "" + Math.ceil(Abilities.GetCooldownTimeRemaining(ability));
                 const panel = this.ABILITY_CONTAINER.GetChild(index - 1);
                 if (panel) {
                     const NotLevelPanel = panel.FindChildTraverse("NotLevel");
