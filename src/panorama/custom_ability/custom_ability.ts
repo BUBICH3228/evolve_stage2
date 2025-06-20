@@ -21,16 +21,19 @@ class CustomAbility {
     KEY_BIND_DATA: string[] = ["q", "w", "e", "d"];
     constructor() {
         GameEvents.Subscribe("change_hero", () => {
-            this.CreateAbilities();
+            $.Schedule(2, () => {
+                this.CreateAbilities();
+            });
         });
         this.UpdateAbilitylevel();
     }
 
     private CreateAbilities() {
-        this.ABILITY_CONTAINER.SetHasClass("Hidden", false);
+        if (this.ABILITY_CONTAINER.BHasClass("Hidden")) this.ABILITY_CONTAINER.SetHasClass("Hidden", false);
         this.ABILITY_CONTAINER.RemoveAndDeleteChildren();
         this.ABILITY_CONTAINER_DATA.abilityCooldownPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityLevelPanel = [];
+        this.ABILITY_CONTAINER_DATA.abilityCooldownLabel = [];
         for (let index = 1; index < 5; index++) {
             const AbilityEntityIndex = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
             const abilityName = Abilities.GetAbilityName(AbilityEntityIndex);
@@ -57,24 +60,38 @@ class CustomAbility {
             this.ABILITY_CONTAINER.SetHasClass("MonsterClass", true);
             this.ABILITY_CONTAINER.SetHasClass("HunterClass", false);
         } else if (Players.GetTeam(this.playerID) == DotaTeam.GOODGUYS) {
-            this.ABILITY_CONTAINER.SetHasClass("MonsterClass", false);
-            this.ABILITY_CONTAINER.SetHasClass("HunterClass", true);
+            this.ABILITY_CONTAINER.SetHasClass("MonsterClass", true);
+            this.ABILITY_CONTAINER.SetHasClass("HunterClass", false);
         }
     }
 
     private UpdateAbilitylevel() {
-        if (this.ABILITY_CONTAINER_DATA.abilityLevelPanel.length >= 4) {
+        if (
+            this.ABILITY_CONTAINER_DATA.abilityLevelPanel.length +
+                this.ABILITY_CONTAINER_DATA.abilityCooldownPanel.length +
+                this.ABILITY_CONTAINER_DATA.abilityCooldownLabel.length >=
+            12
+        ) {
             for (let index = 1; index < 5; index++) {
                 const ability = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
                 const abilityLevelPanel = this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index - 1];
+                if (abilityLevelPanel == null) {
+                    break;
+                }
                 abilityLevelPanel.max = Abilities.GetMaxLevel(ability);
                 abilityLevelPanel.min = 0;
                 abilityLevelPanel.value = Abilities.GetLevel(ability);
                 const abilityCooldownPanel = this.ABILITY_CONTAINER_DATA.abilityCooldownPanel[index - 1];
+                if (abilityCooldownPanel == null) {
+                    break;
+                }
                 abilityCooldownPanel.min = 0;
                 abilityCooldownPanel.max = Abilities.GetCooldown(ability);
                 abilityCooldownPanel.value = Abilities.GetCooldownTimeRemaining(ability);
                 const abilityCooldownLabel = this.ABILITY_CONTAINER_DATA.abilityCooldownLabel[index - 1];
+                if (abilityCooldownLabel == null) {
+                    break;
+                }
                 if (abilityCooldownPanel.value == 0) {
                     abilityCooldownLabel.SetHasClass("Hidden", true);
                 } else {

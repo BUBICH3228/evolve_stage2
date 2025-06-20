@@ -4,13 +4,22 @@ var HudButtons = GameUI.CustomUIConfig().HudButtons;
 var Constants = GameUI.CustomUIConfig().Constants;
 // eslint-disable-next-line no-var
 export class HuntersHealthbar {
-    SHILD_PROGRESS_BAR = $("#ShildProgressBar") as unknown as ProgressBar;
-    SHILD_PROGRESS_BAR_LABEL = $("#ShildProgressBarLabel") as LabelPanel;
-    HEALTH__PROGRESS_BAR = $("#HealthProgressBar") as unknown as ProgressBar;
-    HEALTH__PROGRESS_BAR_LABEL = $("#HealthProgressBarLabel") as LabelPanel;
+    SHILD_PROGRESS_BAR = $("#ShildBarFG");
+    SHILD_PROGRESS_MID = $("#ShildBarMID");
+    HERO_MOVIE_CONTAINER = $("#HeroMovieConatiner");
+    SHILD_PROGRESS_BAR_LABEL = $("#ShildBarCount") as LabelPanel;
+    HEALTH_PROGRESS_BAR = $("#HPBarFG");
+    HEALTH_PROGRESS_MID = $("#HPBarMID");
+    HEALTH_PROGRESS_BAR_LABEL = $("#HPBarCount") as LabelPanel;
     MAIN_PANEL = $("#MainPanel");
     playerID = Game.GetLocalPlayerID();
+    HERO_MOVIE: HeroMovie;
     constructor() {
+        const p = this.HERO_MOVIE_CONTAINER.FindChildTraverse("HeroMovie");
+        if (p != null) {
+            p.DeleteAsync(0);
+        }
+        this.HERO_MOVIE = $.CreatePanel("DOTAHeroMovie", this.HERO_MOVIE_CONTAINER, "HeroMovie");
         this.CreateOrUpdateHealthPanel();
     }
 
@@ -27,12 +36,21 @@ export class HuntersHealthbar {
             const currentHealth = Entities.GetHealth(entityIndex);
             const maxMana = Entities.GetMaxMana(entityIndex);
             const currentMana = Entities.GetMana(entityIndex);
-            this.HEALTH__PROGRESS_BAR.max = maxHealth;
-            this.HEALTH__PROGRESS_BAR.value = currentHealth;
-            this.HEALTH__PROGRESS_BAR_LABEL.text = String(currentHealth);
-            this.SHILD_PROGRESS_BAR.max = maxMana;
-            this.SHILD_PROGRESS_BAR.value = currentMana;
-            this.SHILD_PROGRESS_BAR_LABEL.text = String(currentMana);
+            this.HEALTH_PROGRESS_BAR.style.width = (currentHealth / maxHealth) * 100 + "%";
+            $.Schedule(0.215, () => {
+                this.HEALTH_PROGRESS_MID.style.width = (currentHealth / maxHealth) * 100 + "%";
+            });
+            this.HEALTH_PROGRESS_BAR_LABEL.text = currentHealth + " / " + maxHealth;
+            this.SHILD_PROGRESS_BAR.style.width = (currentMana / maxMana) * 100 + "%";
+            $.Schedule(0.215, () => {
+                this.SHILD_PROGRESS_MID.style.width = (currentMana / maxMana) * 100 + "%";
+            });
+            this.SHILD_PROGRESS_BAR_LABEL.text = currentMana + " / " + maxMana;
+            if (this.HERO_MOVIE != null) {
+                const PlayerInfo = Game.GetLocalPlayerInfo();
+                if (this.HERO_MOVIE.heroid != PlayerInfo.player_selected_hero_id)
+                    this.HERO_MOVIE.heroid = PlayerInfo.player_selected_hero_id;
+            }
         }
 
         $.Schedule(0.1, () => {

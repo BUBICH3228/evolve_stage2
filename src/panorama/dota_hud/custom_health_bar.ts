@@ -22,7 +22,6 @@ export class CustomHealthBar {
         panel.style.align = "center top";
         panel.style.width = "fit-children";
         panel.style.height = "fit-children";
-        panel.style.marginTop = "5%";
 
         if (Players.GetTeam(this.playerID) == DotaTeam.GOODGUYS) {
             const panel = $.CreatePanel("Panel", hud, "HuntersHealthbar");

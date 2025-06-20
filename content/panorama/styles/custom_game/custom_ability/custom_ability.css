@@ -18,7 +18,8 @@
     height: fit-children;
     flow-children: right-wrap;
     align: center top;
-    margin-top: 105px;
+    margin-top: 12%;
+    margin-left: 7px;
 }
 
 .HunterClass{
@@ -42,6 +43,9 @@
     border-radius: 50%;
     z-index: 30;
     align: center center;
+    saturation: 0;
+	wash-color: #d7b56b;
+    brightness: 1.4;
 }
 
 #AbilityLevel {
@@ -54,7 +58,7 @@
     width: 54px;
     height: 54px;
     z-index: 20;
-    border: 2.0px solid #4f67b8;
+    border: 2.0px solid #c5a255f1 ;
     border-radius: 50%;
     transition-property: clip;
     transition-duration: 2s;

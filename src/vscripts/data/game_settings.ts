@@ -5,16 +5,16 @@ export const Settings = {
         enable_hero_respawn: true,
         hero_respawn_time: 10,
         starting_gold: 900,
-        hero_start_level: 3,
+        hero_start_level: 1,
         allow_same_hero_selection: false,
         free_couriers_enabled: true,
-        hero_selection_time: 20,
+        hero_selection_time: 1,
         hero_strategy_time: 0,
         hero_penalty_time: 0,
         hero_showcase_time: 0,
 
         gamesetup_lock: true,
-        gamesetup_time: 5,
+        gamesetup_time: 0,
         pre_game_time: 120,
         post_game_time: 20,
         tree_regrow_time: 300,
@@ -81,8 +81,8 @@ export const Settings = {
 
         custom_exp_table: [
             0, // 1
-            150, // 2
-            300 // 3
+            250, // 2
+            400 // 3
         ]
     },
     client: {

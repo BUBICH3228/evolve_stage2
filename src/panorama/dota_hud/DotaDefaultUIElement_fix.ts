@@ -8,6 +8,8 @@ class DotaDefaultUIElement_fix {
         $.RegisterForUnhandledEvent("TooltipVisible", (object) => {
             this.OnTooltipVisible(object);
         });
+
+        this.FindAndFixTopBar();
     }
 
     private FindAndFixLevelLabel() {
@@ -25,6 +27,17 @@ class DotaDefaultUIElement_fix {
         }
 
         object.style.zIndex = 20;
+    }
+    private FindAndFixTopBar() {
+        const hud = DotaHUD.Get();
+        const topbar = hud.FindChildTraverse("topbar");
+        if (topbar) {
+            topbar.style.width = "300px";
+            topbar.style.marginRight = "120px";
+            topbar.style.align = "right top";
+        } else {
+            $.Msg("Seems valve break FindAndFixTopBar");
+        }
     }
 }
 

@@ -1,0 +1,144 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc39:version{1ceecb0d-4093-4729-ab18-b76886c64cde} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "body1"
+						filename = "models/monsters/behemoth/body1_model0.smd"
+						import_scale = 1.0
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "body2"
+						filename = "models/monsters/behemoth/rocky3.smd"
+						import_scale = 1.0
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "behemoth_eyeballs.vmat"
+								to = "materials/models/evolve/monsters/behemoth/behemoth_eyeballs.vmat"
+							},
+							{
+								from = "behemoth_lower.vmat"
+								to = "materials/models/evolve/monsters/behemoth/behemoth_lower.vmat"
+							},
+							{
+								from = "behemoth_slime.vmat"
+								to = "materials/models/evolve/monsters/behemoth/behemoth_slime.vmat"
+							},
+							{
+								from = "behemoth_stages.vmat"
+								to = "materials/models/evolve/monsters/behemoth/behemoth_stages.vmat"
+							},
+							{
+								from = "behemoth_upper.vmat"
+								to = "materials/models/evolve/monsters/behemoth/behemoth_upper.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "BindPose"
+						children = 
+						[
+							{
+								_class = "AnimForceBoneScaleLerp"
+								curve = 
+								{
+									m_spline = 
+									[
+										{
+											x = -1113527808.0
+											y = 0.729444
+											m_flSlopeIncoming = 0.0
+											m_flSlopeOutgoing = 0.0
+										},
+										{
+											x = 0.0
+											y = 1.0
+											m_flSlopeIncoming = 0.0
+											m_flSlopeOutgoing = 0.0
+										},
+									]
+									m_tangents = 
+									[
+										{
+											m_nIncomingTangent = "CURVE_TANGENT_LINEAR"
+											m_nOutgoingTangent = "CURVE_TANGENT_LINEAR"
+										},
+										{
+											m_nIncomingTangent = "CURVE_TANGENT_LINEAR"
+											m_nOutgoingTangent = "CURVE_TANGENT_LINEAR"
+										},
+									]
+									m_vDomainMins = [ -2147483648.0, 0.0 ]
+									m_vDomainMaxs = [ 0.0, 1.0 ]
+								}
+								bone = "bone_foreheadplate"
+							},
+						]
+						is_default_idle_anim = false
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						animgraph_additive = false
+						source_filename = "models/monsters/behemoth/BindPose.smd"
+						import_bone_scales = false
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		document_sub_type = "ModelDocSubType_None"
+	}
+}

@@ -32,6 +32,10 @@ export class DamageFilter {
             event.damage = event.damage * damageMult;
         }
 
+        const mana = eventData.victim.GetMana();
+        eventData.victim.SetMana(mana - event.damage);
+        event.damage = math.max(0, event.damage - mana);
+
         const ability = event.entindex_inflictor_const && (EntIndexToHScript(event.entindex_inflictor_const) as CDOTABaseAbility);
         if (!ability) {
             CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_PRE_TAKE_DAMAGE, eventData);

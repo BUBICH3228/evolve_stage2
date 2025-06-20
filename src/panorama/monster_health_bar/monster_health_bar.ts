@@ -1,14 +1,13 @@
 // eslint-disable-next-line no-var
-var HudButtons = GameUI.CustomUIConfig().HudButtons;
-// eslint-disable-next-line no-var
-var Constants = GameUI.CustomUIConfig().Constants;
-// eslint-disable-next-line no-var
 export class MonsterHealthBar {
-    SHILD_BAR_PANEL = $("#ShildBar");
-    HEALTH_BAR_PANEL = $("#HealthBar");
-    MAIN_PANEL = $("#MainPanel");
-    playerID = Game.GetLocalPlayerID();
-    entityIndex = Players.GetPlayerHeroEntityIndex(this.playerID);
+    SHILD_PROGRESS_BAR = $("#ShildBarFG");
+    SHILD_PROGRESS_MID = $("#ShildBarMID");
+    HERO_MOVIE_CONTAINER = $("#HeroMovieConatiner");
+    SHILD_PROGRESS_BAR_LABEL = $("#ShildBarCount") as LabelPanel;
+    HEALTH_PROGRESS_BAR = $("#HPBarFG");
+    HEALTH_PROGRESS_MID = $("#HPBarMID");
+    HEALTH_PROGRESS_BAR_LABEL = $("#HPBarCount") as LabelPanel;
+    EVOLUTION_PANEL = $("#EvolutionPanel");
     constructor() {
         $.Schedule(2, () => {
             this.CreateOrUpdateHealthPanel();
@@ -16,15 +15,6 @@ export class MonsterHealthBar {
     }
 
     CreateOrUpdateHealthPanel() {
-        //const playerInfo = Game.GetPlayerInfo(this.playerID);
-        //const Player = Players.GetLocalPlayerPortraitUnit();
-        //const PlayerID = Entities.GetPlayerOwnerID(Player);
-        //$.Msg(PlayerID);
-        //$.Msg(Entities.NotOnMinimapForEnemies(Player));
-        //if (playerInfo.player_team_id != DotaTeam.BADGUYS) {
-        //    $.Msg("sss");
-        //}
-
         const playerID = Game.GetPlayerIDsOnTeam(DotaTeam.BADGUYS)[0];
         if (playerID == null || playerID == undefined) {
             $.Schedule(1, () => {
@@ -35,15 +25,26 @@ export class MonsterHealthBar {
         const entityIndex = Players.GetPlayerHeroEntityIndex(playerID);
         if (entityIndex) {
             const maxHealth = Entities.GetMaxHealth(entityIndex);
-            const currentHealthPercent = Entities.GetHealthPercent(entityIndex);
+            const currentHealth = Entities.GetHealth(entityIndex);
             const maxMana = Entities.GetMaxMana(entityIndex);
             const currentMana = Entities.GetMana(entityIndex);
-            const currentManaPercent = (currentMana / maxMana) * 100;
-            $("#HealthBarSeparator").style.backgroundSize = 700 / (maxHealth / 25) + "px" + " 25px";
-            $("#HealthProgress").style.width = currentHealthPercent + "%";
-
-            $("#ShildBarSeparator").style.backgroundSize = (700 * 0.7) / (maxMana / 100) + "px" + " 25px";
-            $("#ShildProgress").style.width = currentManaPercent + "%";
+            this.HEALTH_PROGRESS_BAR.style.width = (currentHealth / maxHealth) * 100 + "%";
+            $.Schedule(0.215, () => {
+                this.HEALTH_PROGRESS_MID.style.width = (currentHealth / maxHealth) * 100 + "%";
+            });
+            this.HEALTH_PROGRESS_BAR_LABEL.text = currentHealth + " / " + maxHealth;
+            this.SHILD_PROGRESS_BAR.style.width = (currentMana / maxMana) * 100 + "%";
+            $.Schedule(0.215, () => {
+                this.SHILD_PROGRESS_MID.style.width = (currentMana / maxMana) * 100 + "%";
+            });
+            this.SHILD_PROGRESS_BAR_LABEL.text = currentMana + " / " + maxMana;
+            const currentXP = Entities.GetCurrentXP(entityIndex);
+            const neededXP = Math.max(Entities.GetNeededXPToLevel(entityIndex), 1);
+            const percent = Math.min((currentXP / neededXP) * 100, 100);
+            const normalized = Math.pow(percent / 100, 7);
+            const r = Math.floor(255 * (1 - normalized)) || 0;
+            const g = Math.floor(255 * normalized) || 0;
+            this.EVOLUTION_PANEL.style.washColor = `rgb(${r}, ${g}, 0)`;
         }
 
         $.Schedule(0.1, () => {

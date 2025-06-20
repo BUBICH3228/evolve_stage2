@@ -1,12 +1,13 @@
-#MainPanel {
-    width: 700px;
-    height:  53px;
-}
-.PanelBarClass {
+.Root {
     width: 100%;
-    height: 50%;
-    margin-bottom: 1px;
-    border-radius: 8px;
+    height: 100%;
+}
+
+#MainPanel {
+    width: fit-children;
+    height: fit-children;
+    align: center top;
+    margin-top: 1%;
 }
 
 .Hidden
@@ -14,60 +15,137 @@
     opacity: 0;
 }
 
+#HeroBarsContainer {
+    width: fit-children;
+    height:  fit-children;
+    flow-children: right;
+    align: center bottom;
+}
+
+#EvolutionPaneContainer {
+    width: 105px;
+    height:  105px;
+    background-image: url("file://{images}/custom_game/ui/monster_health_bar/evolutioan_progress_bg.png");
+    background-size: 100% 100%;
+}
+
+#EvolutionPanel {
+    width: 94px;
+    height:  94px;
+    background-image: url("file://{images}/custom_game/ui/monster_health_bar/evolution_progress.png");
+    background-size: 100% 100%;
+    align:center center;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    saturation: 0;
+	wash-color: #d0d76b;
+}
+
+#EvolutionScene {
+    width: 100%;
+    height: 100%;
+    saturation: 0.7;
+    brightness:6;
+    opacity: 0.2;
+    overflow: noclip;
+    blur: gaussian( 1px );
+    align: center center;
+}
+
+#HPBarContainer {
+    transform: skew( -45deg );
+    width: 300px;
+    padding-right: 10px;
+    vertical-align: bottom;
+}
+
 #ShildBarContainer {
-    width: 70%;
+    transform: skew( 45deg );
+    width: 300px;
+    padding-left: 10px;
+    vertical-align: bottom;
 }
 
-#HealthBarContainer {
+.BarBG {
     width: 100%;
-    margin-top: 20px;
-    z-index: -1;
+    height: 24px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #010307 ), to( #152131 ));
+    border: 1px solid rgba(68, 68, 68, 0.24);
+    border-brush: gradient( linear, 0% 0%, 0% 100%, from( #2e2e2e ), to( #6d777b53 ));
+    horizontal-align: right;
 }
 
-#HealthBarSeparator {
-    background-image: url("file://{images}/custom_game/ui/monster_health_bar/separator.png");
-    background-size: 70px 25px;
-    z-index: 1;
+.BarMID {
     width: 100%;
-    height:  100%;
-}
-
-#HealthProgress {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #5D2E25 ), color-stop( 0.2, #A54E39 ), color-stop( .5, #904030), to( #5D2C25) );
-    align: left center;
-    height: 100%;
+    height: 24px;
     transition-property: width;
-	transition-duration: 1.0s;
-	transition-timing-function: linear;
-    border-radius: 8px;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-out;
 }
 
-#HealthScene {
+.BarFG {
     width: 100%;
-    height: 100%;
-    hue-rotation: 252deg;
-}
-
-#ShildBarSeparator {
-    background-image: url("file://{images}/custom_game/ui/monster_health_bar/separator.png");
-    background-size: 100px 25px;
-    z-index: 1;
-    width: 100%;
-    height:  100%;
-}
-
-#ShildProgress {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #25536d ), color-stop( 0.2, #49679e ), color-stop( .5, #6184c5), to( #1c3f6d ) );
-    align: left center;
-    height: 100%;
+    height: 24px;
+    box-shadow: inset 0px 0px 0px 1px rgba(255, 255, 255, 0.04);
     transition-property: width;
-	transition-duration: 1.0s;
-	transition-timing-function: linear;
-    border-radius: 8px;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-out;
+}
+
+#HPScene {
+    width: 100%;
+    height: 100%;
+    hue-rotation: 255deg;
+    saturation: 0.7;
+    brightness:6;
+    opacity: 0.2;
+    overflow: noclip;
+    blur: gaussian( 1px );
+    transform: skew(45deg);
 }
 
 #ShildScene {
     width: 100%;
     height: 100%;
-    hue-rotation: 100deg;
+    hue-rotation: -80deg;
+    saturation: 0.7;
+    brightness:6;
+    opacity: 0.2;
+    overflow: noclip;
+    blur: gaussian( 1px );
+    transform: skew(-45deg);
+}
+
+#HPBarMID {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #8f2f1e ), color-stop( 0.48, #df6565 ), color-stop( 0.52, #b54d52 ), to( #dd9a95 ));
+}
+
+#HPBarFG {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffe4df ), color-stop( 0.48, #d76b6b ), color-stop( 0.52, #b54d52 ), to( #64241f ));
+}
+
+#ShildBarMID {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #FFF2DF ), color-stop( 0.48, #806c43 ), color-stop( 0.52, #7c5e2f ), to( #64481f ));
+    horizontal-align: right;
+}
+
+#ShildBarFG {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #FFF2DF ), color-stop( 0.48, #d7b56b ), color-stop( 0.52, #b58d4d ), to( #64481f ));
+    horizontal-align: right;
+}
+
+.BGText {
+    color: rgb(218, 213, 213);
+    align:  center center;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: -2px -1px 3px 3 #000000;
+}
+
+#ShildBarCount {
+    transform: skew(-45deg);
+}
+
+#HPBarCount {
+    transform: skew(45deg);
 }

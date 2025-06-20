@@ -7,16 +7,28 @@
 	</scripts>
 	<Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" hittest="false" >
-            <Panel id="ShildBarContainer" class="PanelBarClass">
-                <Panel id="ShildBarSeparator"> </Panel>
-                <Panel id="ShildProgress"> 
-                    <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
+            <Panel id="HeroBarsContainer">
+                <Panel id="ShildBarContainer">
+                    <Panel id="ShildBarBG" class="BarBG"/>
+                    <Panel id="ShildBarMID" class="BarMID"/>
+                    <Panel id="ShildBarFG" class="BarFG">
+                        <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_2"/>
+                    </Panel>
+                    <Label id="ShildBarCount" class="BGText" text="" />
                 </Panel>
-            </Panel>
-            <Panel id="HealthBarContainer" class="PanelBarClass">
-                <Panel id="HealthBarSeparator"> </Panel>
-                <Panel id="HealthProgress"> 
-                    <DOTAScenePanel id="HealthScene" map="hud/healthbarburner" camera="camera_1"/>
+                <Panel id="EvolutionPaneContainer">
+                    <Panel id="EvolutionPanel">
+                    <DOTAScenePanel id="EvolutionScene" map="hud/shildbarburner" camera="camera_3"/>
+                    </Panel>
+                    
+                </Panel>
+                <Panel id="HPBarContainer">
+                    <Panel id="HPBarBG" class="BarBG"/>
+                    <Panel id="HPBarMID" class="BarMID"/>
+                    <Panel id="HPBarFG" class="BarFG">
+                        <DOTAScenePanel id="HPScene" map="hud/healthbarburner" camera="camera_1"/>
+                    </Panel>
+                    <Label id="HPBarCount" class="BGText" text="" />
                 </Panel>
             </Panel>
         </Panel>

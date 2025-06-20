@@ -10,12 +10,15 @@
     height: 226px;
     margin-top: 10px;
     margin-right: 10px;
-    background-color: rgb(0, 0, 0);
-    border-radius: 50%;
+    background-image: url("file://{images}/custom_game/ui/hunters_healthbar/background_hero_movie.png");
+    background-size: 100% 100%;
 }
 
 #Map {
-    width: 226px;
-    height: 226px;
-    opacity: 2;
+    width: 190px;
+    height: 190px;
+    opacity: 20;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100%;
+    align: center center;
 }

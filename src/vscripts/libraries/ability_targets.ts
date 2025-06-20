@@ -148,7 +148,6 @@ export class AbilityTargets {
     }
 
     private ParseKeyValues() {
-        print(GetAbilitiesAndItemsKV());
         const kv = GetAbilitiesAndItemsKV();
         for (const [abilityName, data] of kv) {
             if (data != undefined && type(data) == "table") {

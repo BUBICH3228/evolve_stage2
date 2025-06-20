@@ -29,7 +29,7 @@ export class TeamSelection {
             });
         }
         if (newState == GameState.PRE_GAME) {
-            Timers.CreateTimer(5, () => {
+            Timers.CreateTimer(1, () => {
                 this.ForEachPlayer((playerID) => {
                     this.SelectionHero({ PlayerID: playerID, HeroName: undefined });
                     this.GiveOutHeroPlayer(playerID);
@@ -38,7 +38,7 @@ export class TeamSelection {
             });
             Timers.CreateTimer(120, () => {
                 CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: false });
-                this.SpawnMap("prefabs/wraith_trap_map/section_1");
+                //this.SpawnMap("prefabs/wraith_trap_map/section_1");
             });
         }
     }
@@ -135,14 +135,17 @@ export class TeamSelection {
         }
 
         if (PlayerID != undefined) {
-            PlayerResource.ReplacePlayerHero(PlayerID, HeroName, false);
             Timers.CreateTimer(1, () => {
-                CustomGameEventManager.Send_ServerToAllClients("fix_hero_minimap_icon", {});
-                const hero = PlayerResource.GetSelectedHeroEntity(PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
-                hero.isHeroSelected = true;
-                if (hero?.GetTeam() == DotaTeam.BADGUYS) {
-                    hero.SetAbilityPoints(3);
-                }
+                PlayerResource.ReplacePlayerHero(PlayerID, HeroName, false);
+
+                Timers.CreateTimer(1, () => {
+                    CustomGameEventManager.Send_ServerToAllClients("fix_hero_minimap_icon", {});
+                    const hero = PlayerResource.GetSelectedHeroEntity(PlayerID!) as CDOTA_BaseNPC_Hero_Selection;
+                    hero.isHeroSelected = true;
+                    if (hero?.GetTeam() == DotaTeam.BADGUYS) {
+                        hero.SetAbilityPoints(3);
+                    }
+                });
             });
         } else {
             Debug_PrintError("TeamSelectionUI:GiveOutHeroPlayer PlayerID argument missing or invalid. Wtf?");
@@ -155,11 +158,9 @@ export class TeamSelection {
             return "npc_dota_hero_wisp";
         }
         const keyClass: string[] = ["trapper", "assault", "support", "medic", "monster"];
-        print(IsMonster);
         if (IsMonster == true) {
             const Monsterkeys = Object.keys(HeroesData[keyClass[4]]);
             const heroName = Monsterkeys[RandomInt(0, Monsterkeys.length)];
-            print(heroName);
             return heroName || "npc_dota_hero_wisp";
         }
 
@@ -189,7 +190,7 @@ export class TeamSelection {
                 return true;
             },
             () => {
-                print("Map spawn");
+                return;
             },
             undefined
         );

@@ -7,18 +7,24 @@
 	</scripts>
 	<Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" class="Hidden" hittest="false" >
-            <Panel id="HealthBarContainer">
-                <ProgressBar id="HealthProgressBar" min="0"> 
-                    <Label id="HealthProgressBarLabel" text="" />
-                </ProgressBar>
-                <Panel id="HealthFrame"/>
-            </Panel>
-             <Panel id="ShildBarContainer">
-                <ProgressBar id="ShildProgressBar" min="0"> 
-                    <Label id="ShildProgressBarLabel" text="" />
-                    <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
-                </ProgressBar>
-                <Panel id="ShildFrame"/>
+            <Panel id="HeroMovieConatiner"/>
+            <Panel id="HeroBarsContainer">
+                <Panel id="ShildBarContainer">
+                    <Panel id="ShildBarBG" class="BarBG"/>
+                    <Panel id="ShildBarMID" class="BarMID"/>
+                    <Panel id="ShildBarFG" class="BarFG">
+                        <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
+                    </Panel>
+                    <Label id="ShildBarCount" class="BGText" text="" />
+                </Panel>
+                <Panel id="HPBarContainer">
+                    <Panel id="HPBarBG" class="BarBG"/>
+                    <Panel id="HPBarMID" class="BarMID"/>
+                    <Panel id="HPBarFG" class="BarFG">
+                        <DOTAScenePanel id="HPScene" map="hud/healthbarburner" camera="camera_1"/>
+                    </Panel>
+                    <Label id="HPBarCount" class="BGText" text="" />
+                </Panel>
             </Panel>
         </Panel>
     </Panel>
