@@ -1,6 +1,6 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_primal_beast_custom"
+	"npc_dota_hero_primal_beast"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
