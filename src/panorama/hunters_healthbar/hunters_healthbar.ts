@@ -50,6 +50,10 @@ export class HuntersHealthbar {
                 const PlayerInfo = Game.GetLocalPlayerInfo();
                 if (this.HERO_MOVIE.heroid != PlayerInfo.player_selected_hero_id)
                     this.HERO_MOVIE.heroid = PlayerInfo.player_selected_hero_id;
+                this.HERO_MOVIE.SetPanelEvent("onactivate", function () {
+                    GameUI.SetCameraTargetPosition(Entities.GetAbsOrigin(PlayerInfo.player_selected_hero_entity_index), 0.1);
+                    Players.PlayerPortraitClicked(PlayerInfo.player_id, false, false);
+                });
             }
         }
 

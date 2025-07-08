@@ -5,6 +5,11 @@ export class goliath_leap_smash extends BaseAbility {
     // Ability properties
     private caster: CDOTA_BaseNPC = this.GetCaster();
 
+    Precache(context: CScriptPrecacheContext): void {
+        PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_primal_beast/primal_beast_trample.vpcf", context);
+        PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_brewmaster/brewmaster_pulverize.vpcf", context);
+    }
+
     override OnSpellStart(): void {
         let distance = CalculateDistance(this.caster.GetAbsOrigin(), this.GetCursorPosition());
 

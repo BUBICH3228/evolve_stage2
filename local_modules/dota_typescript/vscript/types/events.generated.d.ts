@@ -188,7 +188,7 @@ interface GameEventDeclarations {
     dota_tower_kill: DotaTowerKillEvent;
     dota_tower_deny: DotaTowerDenyEvent;
     dota_effigy_kill: DotaEffigyKillEvent;
-    dota_roshan_kill: DotaRoshanKillEvent;
+    dota_roshan_kill: DotaRostinkerillEvent;
     dota_miniboss_kill: DotaMinibossKillEvent;
     dota_banner_planted: DotaBannerPlantedEvent;
     dota_courier_lost: DotaCourierLostEvent;
@@ -1547,7 +1547,7 @@ interface DotaEffigyKillEvent {
     owner_userid: EntityIndex;
 }
 
-interface DotaRoshanKillEvent {
+interface DotaRostinkerillEvent {
     teamnumber: number;
     gold: number;
 }

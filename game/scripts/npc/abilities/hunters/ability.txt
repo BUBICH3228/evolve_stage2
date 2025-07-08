@@ -24,4 +24,48 @@
             "duration"                      "15"
         }
     }
+
+    "rattletrap_jetpack"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+        "SpellDispellableType"          "SPELL_DISPELLABLE_YES"
+        "MaxLevel"                      "1"
+        "FightRecapLevel"               "1"
+        "IsGrantedByShard"              "0"
+        "HasShardUpgrade"               "0"
+        "AbilitySound"                  "Hero_Rattletrap.Battery_Assault_Impact"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
+        
+        // Time     
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"               "16"
+        
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"               "0"
+        "AbilityValues"
+        {
+            "bonus_speed"
+            {
+                "value" "20"
+            }
+            "turn_rate"
+            {
+                "value" "550"
+            }
+            "height"
+            {
+                "value" "550"
+            }
+            "duration"
+            {
+                "value" "6"
+            }
+        }
+    }
 }

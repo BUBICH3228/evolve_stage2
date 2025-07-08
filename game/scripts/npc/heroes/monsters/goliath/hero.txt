@@ -1,17 +1,17 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_primal_beast"
+	"npc_dota_hero_primal_beast_custom"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"override_hero"	"npc_dota_hero_hoodwink"
+		"override_hero"	"npc_dota_hero_primal_beast"
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"Ability1"	"goliath_base_attack"
-		"Ability2"	"goliath_fire_breath"
-		"Ability3"	"goliath_leap_smash"
-		"Ability4"	"goliath_charge"
-		"Ability5"	"goliath_rock_throw"
+		"Ability1"	"goliath_fire_breath"
+		"Ability2"	"goliath_leap_smash"
+		"Ability3"	"primal_beast_onslaught"
+		"Ability4"	"primal_beast_rock_throw"
+		"Ability5"	"goliath_base_attack"
 		"Ability6"	"generic_hidden"
 		"Ability7"  "generic_hidden"
 		"Ability8"	"generic_hidden"
@@ -29,6 +29,10 @@
 		"Ability20"	"generic_hidden"
 		"Ability21"	"generic_hidden"
 
+		"Facets"
+        {
+        }
+
         "AttackCapabilities"	    "DOTA_UNIT_CAP_MELEE_ATTACK"
         "AttackDamageMin"	        "225"
 		"AttackDamageMax"	        "225"
@@ -39,7 +43,7 @@
         "ArmorPhysical"	            "0"
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"	        "DOTA_ATTRIBUTE_STRENGTH"
+		"AttributePrimary"	        "DOTA_ATTRIBUTE_ALL"
 		"AttributeBaseStrength"	    "10"
 		"AttributeStrengthGain"	    "0"
 		"AttributeBaseIntelligence"	"100"

@@ -5900,7 +5900,7 @@ declare interface CDOTA_PlayerResource extends CBaseEntity {
     GetRawPlayerDamage(playerId: PlayerID): number;
     GetReliableGold(playerId: PlayerID): number;
     GetRespawnSeconds(playerId: PlayerID): number;
-    GetRoshanKills(playerId: PlayerID): number;
+    GetRostinkerills(playerId: PlayerID): number;
     GetRunePickups(playerId: PlayerID): number;
     GetSelectedHeroEntity(playerId: PlayerID): CDOTA_BaseNPC_Hero | undefined;
     GetSelectedHeroID(playerId: PlayerID): number;

@@ -8,13 +8,13 @@
 	<Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" hittest="false" >
             <Panel id="HeroBarsContainer">
-                <Panel id="ShildBarContainer">
-                    <Panel id="ShildBarBG" class="BarBG"/>
-                    <Panel id="ShildBarMID" class="BarMID"/>
-                    <Panel id="ShildBarFG" class="BarFG">
-                        <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_2"/>
+                <Panel id="HPBarContainer">
+                    <Panel id="HPBarBG" class="BarBG"/>
+                    <Panel id="HPBarMID" class="BarMID"/>
+                    <Panel id="HPBarFG" class="BarFG">
+                        <DOTAScenePanel id="HPScene" map="hud/healthbarburner" camera="camera_2"/>
                     </Panel>
-                    <Label id="ShildBarCount" class="BGText" text="" />
+                    <Label id="HPBarCount" class="BGText" text="" />
                 </Panel>
                 <Panel id="EvolutionPaneContainer">
                     <Panel id="EvolutionPanel">
@@ -22,13 +22,13 @@
                     </Panel>
                     
                 </Panel>
-                <Panel id="HPBarContainer">
-                    <Panel id="HPBarBG" class="BarBG"/>
-                    <Panel id="HPBarMID" class="BarMID"/>
-                    <Panel id="HPBarFG" class="BarFG">
-                        <DOTAScenePanel id="HPScene" map="hud/healthbarburner" camera="camera_1"/>
+                <Panel id="ShildBarContainer">
+                    <Panel id="ShildBarBG" class="BarBG"/>
+                    <Panel id="ShildBarMID" class="BarMID"/>
+                    <Panel id="ShildBarFG" class="BarFG">
+                        <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
                     </Panel>
-                    <Label id="HPBarCount" class="BGText" text="" />
+                    <Label id="ShildBarCount" class="BGText" text="" />
                 </Panel>
             </Panel>
         </Panel>

@@ -1,6 +1,7 @@
 .Root {
     width: 100%;
     height: 100%;
+    z-index: -100;
 }
 
 #MainPanel {
@@ -52,14 +53,14 @@
     align: center center;
 }
 
-#HPBarContainer {
+#ShildBarContainer {
     transform: skew( -45deg );
     width: 300px;
     padding-right: 10px;
     vertical-align: bottom;
 }
 
-#ShildBarContainer {
+#HPBarContainer {
     transform: skew( 45deg );
     width: 300px;
     padding-left: 10px;
@@ -101,37 +102,37 @@
     opacity: 0.2;
     overflow: noclip;
     blur: gaussian( 1px );
-    transform: skew(45deg);
+    transform: skew(-45deg);
 }
 
 #ShildScene {
     width: 100%;
     height: 100%;
-    hue-rotation: -80deg;
+    hue-rotation: -250deg;
     saturation: 0.7;
     brightness:6;
     opacity: 0.2;
     overflow: noclip;
     blur: gaussian( 1px );
-    transform: skew(-45deg);
+    transform: skew(45deg);
 }
 
 #HPBarMID {
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #8f2f1e ), color-stop( 0.48, #df6565 ), color-stop( 0.52, #b54d52 ), to( #dd9a95 ));
+    horizontal-align: right;
 }
 
 #HPBarFG {
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffe4df ), color-stop( 0.48, #d76b6b ), color-stop( 0.52, #b54d52 ), to( #64241f ));
+    horizontal-align: right;
 }
 
 #ShildBarMID {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #FFF2DF ), color-stop( 0.48, #806c43 ), color-stop( 0.52, #7c5e2f ), to( #64481f ));
-    horizontal-align: right;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #319caf ), color-stop( 0.48, #436280 ), color-stop( 0.52, #2f667c ), to( #1f5c64 ));
 }
 
 #ShildBarFG {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #FFF2DF ), color-stop( 0.48, #d7b56b ), color-stop( 0.52, #b58d4d ), to( #64481f ));
-    horizontal-align: right;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #dffffd ), color-stop( 0.48, #6bd7d7 ), color-stop( 0.52, #4d9db5 ), to( #1f5c64 ));
 }
 
 .BGText {
@@ -143,9 +144,9 @@
 }
 
 #ShildBarCount {
-    transform: skew(-45deg);
+    transform: skew(45deg);
 }
 
 #HPBarCount {
-    transform: skew(45deg);
+    transform: skew(-45deg);
 }

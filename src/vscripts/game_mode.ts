@@ -11,6 +11,7 @@ import "./precache_resource";
 import { Filters } from "./filters/require";
 import { GameSettings } from "./game_settings";
 import { Settings } from "./data/game_settings";
+import { CDOTAPlayerController_TeamSelectionUI } from "./libraries/team_selection";
 
 declare global {
     interface CDOTAGameRules {
@@ -72,11 +73,11 @@ export class GameMode {
         for (let i = 1; i < heroStartingLevel; i++) {
             hero.HeroLevelUp(false);
         }
-        for (const [_, abilityName] of Settings.server.heroes_first_spawn_abilities_to_add) {
+        for (const abilityName of Settings.server.heroes_first_spawn_abilities_to_add) {
             hero.AddAbility(abilityName);
         }
 
-        for (const [_, modifierName] of Settings.server.heroes_first_spawn_modifiers_to_add) {
+        for (const modifierName of Settings.server.heroes_first_spawn_modifiers_to_add) {
             hero.AddNewModifier(hero, undefined, modifierName, {
                 duration: -1
             });
@@ -164,24 +165,6 @@ export class GameMode {
         const newState = GameRules.State_Get();
         if (newState == GameState.GAME_IN_PROGRESS) {
             this.FixDotaTowersInvulnerablity();
-        }
-
-        if (newState > GameState.HERO_SELECTION && newState < GameState.PRE_GAME) {
-            for (
-                let PlayerID = 0 as PlayerID;
-                PlayerID < PlayerResource.GetPlayerCountForTeam(DotaTeam.GOODGUYS) + PlayerResource.GetPlayerCountForTeam(DotaTeam.BADGUYS);
-                PlayerID++
-            ) {
-                if (!PlayerResource.HasSelectedHero(PlayerID)) {
-                    if (!PlayerResource.IsBroadcaster(PlayerID)) {
-                        const player = PlayerResource.GetPlayer(PlayerID);
-                        if (player == undefined) {
-                            return;
-                        }
-                        player.SetSelectedHero("npc_dota_hero_wisp");
-                    }
-                }
-            }
         }
     }
 

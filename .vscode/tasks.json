@@ -25,13 +25,14 @@
                 "kind": "build",
                 "isDefault": true
             },
-			"runOptions": 
-			{ 
-				"runOn": "folderOpen"
-			},
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
             "presentation": {
                 "clear": true
-            }
+            },
+            "problemMatcher": [],
+            "detail": "run-s dev:clear dev:pipeline"
         }
     ]
 }

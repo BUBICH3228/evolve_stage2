@@ -114,6 +114,14 @@ function _ReplacePlayerHero(playerID: PlayerID, heroName: string, restoreExp: bo
 
             newHero.SetGold(playerGold, true);
 
+            if (player.GetTeam() == DotaTeam.GOODGUYS) {
+                for (let index = 0; index < newHero.GetAbilityCount(); index++) {
+                    const ability = newHero.GetAbilityByIndex(index);
+                    if (ability != undefined) {
+                        ability.SetLevel(1);
+                    }
+                }
+            }
             for (const [_, playerItem] of playerItems) {
                 const item = CreateItem(playerItem.name, player, player) as CDOTA_Item;
                 const itemInPlayerInventory = newHero.AddItem(item);

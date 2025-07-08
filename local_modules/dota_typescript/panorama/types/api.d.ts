@@ -1082,6 +1082,10 @@ interface CScriptBindingPR_Entities {
 }
 
 interface CScriptBindingPR_Abilities {
+    GetCurrentAbilityCharges(nEntityIndex: AbilityEntityIndex): number;
+
+    GetAbilityChargeRestoreTimeRemaining(nEntityIndex: AbilityEntityIndex): number;
+
     GetAbilityName(nEntityIndex: AbilityEntityIndex): string;
 
     GetAbilityTextureName(nEntityIndex: AbilityEntityIndex): string;

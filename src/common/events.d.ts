@@ -26,7 +26,6 @@ interface CustomGameEventDeclarations {
     show_team_selection_menu: ShowTeamSelectionMenuEvent;
     show_map_selection_menu: ShowMapSelectionMenuEvent;
     hero_selection_event: HeroSelectionEvent;
-    fix_hero_minimap_icon: any;
     team_selection_event: TeamSelectionEvent;
     load_top_table: any;
 }

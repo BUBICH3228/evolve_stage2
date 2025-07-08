@@ -1,7 +1,8 @@
-#base "heroes/monsters/goliath/require.txt"
-#base "heroes/hunters/griffin/require.txt"
-#base "heroes/hunters/hank/require.txt"
+#base "heroes/monsters/require.txt"
+#base "heroes/hunters/assault/require.txt"
+#base "heroes/hunters/medic/require.txt"
+#base "heroes/hunters/support/require.txt"
+#base "heroes/hunters/trapper/require.txt"
 "DOTAHeroes"
 {
-
 }

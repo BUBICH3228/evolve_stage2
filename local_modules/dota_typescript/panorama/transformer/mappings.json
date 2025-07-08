@@ -367,7 +367,7 @@
         "HERO_KILL": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_HeroKill",
         "CREEP_KILL": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_CreepKill",
         "NEUTRAL_KILL": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_NeutralKill",
-        "ROSHAN_KILL": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_RoshanKill",
+        "ROSHAN_KILL": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_Rostinkerill",
         "COURIER_KILL": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_CourierKill",
         "BOUNTY_RUNE": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_BountyRune",
         "SHARED_GOLD": "EDOTA_ModifyGold_Reason.DOTA_ModifyGold_SharedGold",
@@ -490,7 +490,7 @@
         "UNSPECIFIED": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_Unspecified",
         "HERO_KILL": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_HeroKill",
         "CREEP_KILL": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_CreepKill",
-        "ROSHAN_KILL": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_RoshanKill",
+        "ROSHAN_KILL": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_Rostinkerill",
         "TOME_OF_KNOWLEDGE": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_TomeOfKnowledge",
         "OUTPOST": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_Outpost",
         "MAX": "EDOTA_ModifyXP_Reason.DOTA_ModifyXP_MAX"

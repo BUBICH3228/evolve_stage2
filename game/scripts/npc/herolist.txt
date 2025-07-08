@@ -82,7 +82,7 @@
     "npc_dota_hero_gyrocopter"          "0"
     "npc_dota_hero_rubick"              "0"
     "npc_dota_hero_luna"                "0"
-    "npc_dota_hero_wisp"                "1" //Сделана типами еще проверим
+    "npc_dota_hero_wisp"                "0" //Сделана типами еще проверим
     "npc_dota_hero_disruptor"           "0"
     "npc_dota_hero_undying"             "0"
     "npc_dota_hero_templar_assassin"    "0"
@@ -90,7 +90,7 @@
     "npc_dota_hero_nyx_assassin"        "0"
     "npc_dota_hero_keeper_of_the_light" "0"
     "npc_dota_hero_visage"              "0"
-    "npc_dota_hero_meepo"               "1"
+    "npc_dota_hero_meepo"               "0"
     "npc_dota_hero_magnataur"           "0"
     "npc_dota_hero_centaur"             "0"
     "npc_dota_hero_slark"               "0"
@@ -119,7 +119,7 @@
     "npc_dota_hero_mars"                "0"
     "npc_dota_hero_snapfire"            "0"
     "npc_dota_hero_void_spirit"         "0"
-    "npc_dota_hero_hoodwink"            "1"
+    "npc_dota_hero_hoodwink"            "0"
     "npc_dota_hero_dawnbreaker"         "1"
     "npc_dota_hero_marci"               "0"
     "npc_dota_hero_primal_beast"        "1"

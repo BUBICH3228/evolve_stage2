@@ -1,0 +1,85 @@
+"DOTAAbilities"
+{
+    "tinker_shield_projector"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "tinker_defense_matrix"
+        "ScriptFile"                   	    "abilities/hunters/tinker/tinker_shield_projector"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "25"
+        "AbilityCastRange"                  "200"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "shield_capacity"               "570"
+        }
+    }
+
+    "tinker_orbital_barrage"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "tinker_orbital_barrage"
+        "ScriptFile"                   	    "abilities/hunters/tinker/tinker_orbital_barrage"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
+        "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
+        "Maxlevel"                          "1"
+        "AbilityChannelAnimation"           "ACT_DOTA_TINKER_REARM3"
+        //"AbilityCastAnimation"            "ACT_DOTA_CAST_ABILITY_3"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "60"
+        "AbilityCastRange"                  "500"
+        "AbilityCastPoint"                  "0"
+        "AbilityChannelTime"                "2.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "min_damage"                    "275"
+            "max_damage"                    "400"
+            "count_explosions"              "11"
+            "radius_explosions"             "200"
+            "radius"                        "600"
+        }
+    }
+
+    "tinker_shield_burst"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "tinker_shield_burst"
+        "ScriptFile"                   	    "abilities/hunters/tinker/tinker_shield_burst"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
+        "Maxlevel"                          "1"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "40"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "other_shield_capacity"         "500"
+            "self_shield_capacity"          "450"
+            "decay_rate"                    "35"
+        }
+    }
+}

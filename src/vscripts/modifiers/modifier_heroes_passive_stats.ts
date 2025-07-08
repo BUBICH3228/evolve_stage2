@@ -48,6 +48,14 @@ export class modifier_heroes_passive_stats extends BaseModifier {
         return 1;
     }
 
+    CheckState(): Partial<Record<modifierstate, boolean>> {
+        return {
+            [ModifierState.NO_HEALTH_BAR]: true,
+            [ModifierState.NO_HEALTH_BAR_FOR_ENEMIES]: true,
+            [ModifierState.NO_HEALTH_BAR_FOR_OTHER_PLAYERS]: true
+        };
+    }
+
     override OnCreated(): void {
         if (!IsServer()) {
             return;

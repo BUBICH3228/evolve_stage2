@@ -3,15 +3,15 @@ export const HeroesData: HeroesDataIntefase = {
         npc_dota_hero_rattletrap: {
             abilities: {
                 0: {
-                    abilityName: "griffin_harpoon_gun",
+                    abilityName: "rattletrap_harpoon_gun",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 1: {
-                    abilityName: "griffin_sound_spikes",
+                    abilityName: "rattletrap_sound_spikes",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
-                    abilityName: "griffin_scaner",
+                    abilityName: "rattletrap_scaner",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 3: {
@@ -73,15 +73,15 @@ export const HeroesData: HeroesDataIntefase = {
         npc_dota_hero_tinker: {
             abilities: {
                 0: {
-                    abilityName: "hank_shield_projector",
+                    abilityName: "tinker_shield_projector",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 1: {
-                    abilityName: "hank_orbital_barrage",
+                    abilityName: "tinker_orbital_barrage",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 2: {
-                    abilityName: "hank_shield_burst",
+                    abilityName: "tinker_shield_burst",
                     abilityPreview: "file://{resources}/videos/heroes/.webm"
                 },
                 3: {

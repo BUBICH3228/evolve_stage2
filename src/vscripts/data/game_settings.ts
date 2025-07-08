@@ -86,24 +86,24 @@ export const Settings = {
         ]
     },
     client: {
-        dota_attribute_health_per_strength: 20, // 20
-        dota_attribute_health_regeneneration_per_strength: 0.1,
-        dota_attribute_magic_resistance_per_strength: 0.075, //0.025
-        dota_attribute_magic_resistance_per_strength_max: 35,
-        dota_attribute_attack_damage_per_strength: 1,
+        dota_attribute_health_per_strength: 0, // 20
+        dota_attribute_health_regeneneration_per_strength: 0,
+        dota_attribute_magic_resistance_per_strength: 0, //0.025
+        dota_attribute_magic_resistance_per_strength_max: 0,
+        dota_attribute_attack_damage_per_strength: 0,
 
-        dota_attribute_armor_per_agility: 0.45, //0.167
-        dota_attribute_attack_speed_per_agility: 0.75, // 1
+        dota_attribute_armor_per_agility: 0, //0.167
+        dota_attribute_attack_speed_per_agility: 0, // 1
         dota_attribute_move_speed_per_agility: 0,
         dota_attribute_move_speed_max: 1000,
-        dota_attribute_attack_damage_per_agility: 1,
+        dota_attribute_attack_damage_per_agility: 0,
 
-        dota_attribute_mana_per_intelligence: 12,
-        dota_attribute_mana_regeneration_per_intelligence: 0.05,
-        dota_attribute_spell_ampification_per_intelligence: 0.2,
-        dota_attribute_attack_damage_per_intelligence: 1,
+        dota_attribute_mana_per_intelligence: 0,
+        dota_attribute_mana_regeneration_per_intelligence: 0,
+        dota_attribute_spell_ampification_per_intelligence: 0,
+        dota_attribute_attack_damage_per_intelligence: 0,
 
-        dota_attribute_attack_damage_per_all: 0.7, // УРОН ЗА АТРИБУТ У УНИВЕРСАЛОВ
+        dota_attribute_attack_damage_per_all: 0, // УРОН ЗА АТРИБУТ У УНИВЕРСАЛОВ
 
         team_max_players: {
             2: 4,

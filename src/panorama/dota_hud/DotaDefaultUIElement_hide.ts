@@ -17,7 +17,6 @@ class DotaDefaultUIElement_hide {
         GameUI.SetDefaultUIEnabled(DefaultUiElement.TOP_BAR_BACKGROUND, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.INVENTORY_SHOP, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.AGHANIMS_STATUS, false);
-        GameUI.SetDefaultUIEnabled(DefaultUiElement.AGHANIMS_STATUS, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.QUICK_STATS, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.KILLCAM, false);
         GameUI.SetDefaultUIEnabled(DefaultUiElement.CUSTOMUI_BEHIND_HUD_ELEMENTS, true);

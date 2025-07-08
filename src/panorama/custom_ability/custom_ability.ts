@@ -13,12 +13,16 @@ class CustomAbility {
         abilityLevelPanel: CircularProgressBar[];
         abilityCooldownPanel: CircularProgressBar[];
         abilityCooldownLabel: LabelPanel[];
+        abilityChargesPanel: CircularProgressBar[];
+        abilityChargesLabel: LabelPanel[];
     } = {
         abilityLevelPanel: [],
         abilityCooldownPanel: [],
-        abilityCooldownLabel: []
+        abilityCooldownLabel: [],
+        abilityChargesPanel: [],
+        abilityChargesLabel: []
     };
-    KEY_BIND_DATA: string[] = ["q", "w", "e", "d"];
+    COUNT_ABILITY = Players.GetTeam(this.playerID) == DotaTeam.BADGUYS ? 5 : 5;
     constructor() {
         GameEvents.Subscribe("change_hero", () => {
             $.Schedule(2, () => {
@@ -32,17 +36,23 @@ class CustomAbility {
         if (this.ABILITY_CONTAINER.BHasClass("Hidden")) this.ABILITY_CONTAINER.SetHasClass("Hidden", false);
         this.ABILITY_CONTAINER.RemoveAndDeleteChildren();
         this.ABILITY_CONTAINER_DATA.abilityCooldownPanel = [];
+        this.ABILITY_CONTAINER_DATA.abilityChargesPanel = [];
+        this.ABILITY_CONTAINER_DATA.abilityChargesLabel = [];
         this.ABILITY_CONTAINER_DATA.abilityLevelPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityCooldownLabel = [];
-        for (let index = 1; index < 5; index++) {
+        for (let index = 0; index < this.COUNT_ABILITY; index++) {
             const AbilityEntityIndex = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
             const abilityName = Abilities.GetAbilityName(AbilityEntityIndex);
             const panel = $.CreatePanel("Panel", this.ABILITY_CONTAINER, "AbilityPanel");
             $.CreatePanel("Panel", panel, "NotLevel");
             const ability = $.CreatePanel("DOTAAbilityImage", panel, "Ability");
             ability.abilityname = abilityName;
+            panel.SetPanelEvent("onactivate", () => {
+                Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, false);
+            });
+
             panel.SetPanelEvent("onmouseover", () => {
-                $.DispatchEvent("DOTAShowAbilityTooltip", panel, ability.abilityname);
+                $.DispatchEvent("DOTAShowAbilityTooltipForLevel", panel, ability.abilityname, Abilities.GetLevel(AbilityEntityIndex));
             });
             panel.SetPanelEvent("onmouseout", () => {
                 $.DispatchEvent("DOTAHideAbilityTooltip");
@@ -51,6 +61,8 @@ class CustomAbility {
             this.ABILITY_CONTAINER_DATA.abilityLevelPanel.push($.CreatePanel("CircularProgressBar", panel, "AbilityLevel"));
             this.ABILITY_CONTAINER_DATA.abilityCooldownPanel.push($.CreatePanel("CircularProgressBar", panel, "AbilityCooldown"));
             this.ABILITY_CONTAINER_DATA.abilityCooldownLabel.push($.CreatePanel("Label", panel, "AbilityCooldownLabel"));
+            this.ABILITY_CONTAINER_DATA.abilityChargesPanel.push($.CreatePanel("CircularProgressBar", panel, "AbilityCharges"));
+            this.ABILITY_CONTAINER_DATA.abilityChargesLabel.push($.CreatePanel("Label", panel, "AbilityChargesLabel"));
             const keyBind = $.CreatePanel("Panel", panel, "KeyBindPanel");
             const keyBindText = $.CreatePanel("Label", keyBind, "KeyBindPanelLabel");
             keyBindText.text = Abilities.GetKeybind(AbilityEntityIndex);
@@ -60,8 +72,8 @@ class CustomAbility {
             this.ABILITY_CONTAINER.SetHasClass("MonsterClass", true);
             this.ABILITY_CONTAINER.SetHasClass("HunterClass", false);
         } else if (Players.GetTeam(this.playerID) == DotaTeam.GOODGUYS) {
-            this.ABILITY_CONTAINER.SetHasClass("MonsterClass", true);
-            this.ABILITY_CONTAINER.SetHasClass("HunterClass", false);
+            this.ABILITY_CONTAINER.SetHasClass("MonsterClass", false);
+            this.ABILITY_CONTAINER.SetHasClass("HunterClass", true);
         }
     }
 
@@ -72,33 +84,69 @@ class CustomAbility {
                 this.ABILITY_CONTAINER_DATA.abilityCooldownLabel.length >=
             12
         ) {
-            for (let index = 1; index < 5; index++) {
+            for (let index = 0; index < this.COUNT_ABILITY; index++) {
                 const ability = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
-                const abilityLevelPanel = this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index - 1];
+                const abilityLevelPanel = this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index];
                 if (abilityLevelPanel == null) {
                     break;
                 }
                 abilityLevelPanel.max = Abilities.GetMaxLevel(ability);
                 abilityLevelPanel.min = 0;
                 abilityLevelPanel.value = Abilities.GetLevel(ability);
-                const abilityCooldownPanel = this.ABILITY_CONTAINER_DATA.abilityCooldownPanel[index - 1];
+                const abilityCooldownPanel = this.ABILITY_CONTAINER_DATA.abilityCooldownPanel[index];
+                const abilityChargesPanel = this.ABILITY_CONTAINER_DATA.abilityChargesPanel[index];
+                const abilityChargesLabel = this.ABILITY_CONTAINER_DATA.abilityChargesLabel[index];
+
                 if (abilityCooldownPanel == null) {
                     break;
                 }
+                const isChargeAbility = Abilities.GetSpecialValueFor(ability, "AbilityCharges") > 0;
+
+                abilityChargesPanel.min = 0;
                 abilityCooldownPanel.min = 0;
-                abilityCooldownPanel.max = Abilities.GetCooldown(ability);
-                abilityCooldownPanel.value = Abilities.GetCooldownTimeRemaining(ability);
-                const abilityCooldownLabel = this.ABILITY_CONTAINER_DATA.abilityCooldownLabel[index - 1];
+
+                if (isChargeAbility == true) {
+                    abilityChargesLabel.text = String(Abilities.GetCurrentAbilityCharges(ability));
+
+                    abilityChargesPanel.max = Abilities.GetSpecialValueFor(ability, "AbilityChargeRestoreTime");
+                    abilityChargesPanel.value = Math.min(
+                        abilityChargesPanel.max - Abilities.GetAbilityChargeRestoreTimeRemaining(ability),
+                        abilityChargesPanel.max
+                    );
+
+                    abilityCooldownPanel.max = Abilities.GetSpecialValueFor(ability, "AbilityChargeRestoreTime");
+                    abilityCooldownPanel.value = Abilities.GetAbilityChargeRestoreTimeRemaining(ability);
+                } else {
+                    abilityCooldownPanel.max = Abilities.GetCooldown(ability);
+                    abilityCooldownPanel.value = Abilities.GetCooldownTimeRemaining(ability);
+                }
+
+                const abilityCooldownLabel = this.ABILITY_CONTAINER_DATA.abilityCooldownLabel[index];
                 if (abilityCooldownLabel == null) {
                     break;
                 }
-                if (abilityCooldownPanel.value == 0) {
-                    abilityCooldownLabel.SetHasClass("Hidden", true);
+
+                if (isChargeAbility == true) {
+                    (abilityCooldownPanel as never as Panel).SetHasClass(
+                        "Hidden",
+                        Abilities.GetCurrentAbilityCharges(ability) > 0 ? true : false
+                    );
+                    abilityCooldownLabel.SetHasClass("Hidden", Abilities.GetCurrentAbilityCharges(ability) > 0 ? true : false);
                 } else {
-                    abilityCooldownLabel.SetHasClass("Hidden", false);
+                    abilityChargesLabel.SetHasClass("Hidden", true);
+                    (abilityChargesPanel as never as Panel).SetHasClass("Hidden", true);
+                    abilityCooldownLabel.SetHasClass("Hidden", abilityCooldownPanel.value == 0 ? true : false);
                 }
-                abilityCooldownLabel.text = "" + Math.ceil(Abilities.GetCooldownTimeRemaining(ability));
-                const panel = this.ABILITY_CONTAINER.GetChild(index - 1);
+
+                abilityCooldownLabel.text =
+                    "" +
+                    Math.ceil(
+                        isChargeAbility == true
+                            ? Abilities.GetAbilityChargeRestoreTimeRemaining(ability)
+                            : Abilities.GetCooldownTimeRemaining(ability)
+                    );
+
+                const panel = this.ABILITY_CONTAINER.GetChild(index);
                 if (panel) {
                     const NotLevelPanel = panel.FindChildTraverse("NotLevel");
                     if (NotLevelPanel) {
