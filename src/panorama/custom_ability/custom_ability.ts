@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line no-var
 var HudButtons = GameUI.CustomUIConfig().HudButtons;
 // eslint-disable-next-line no-var
@@ -25,7 +26,7 @@ class CustomAbility {
     COUNT_ABILITY = Players.GetTeam(this.playerID) == DotaTeam.BADGUYS ? 5 : 5;
     constructor() {
         GameEvents.Subscribe("change_hero", () => {
-            $.Schedule(2, () => {
+            $.Schedule(1, () => {
                 this.CreateAbilities();
             });
         });

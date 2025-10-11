@@ -12,7 +12,7 @@
 		"Ability3"	"tinker_shield_burst"
 		"Ability4"	"rattletrap_jetpack"	
 		"Ability5"	"planetary_shield"
-		"Ability6"	"generic_hidden"
+		"Ability6"	"resurrection_custom"
 		"Ability7"	"generic_hidden"
 		"Ability8"	"generic_hidden"
 		"Ability9"	"generic_hidden"
@@ -34,9 +34,9 @@
         }
 
         "AttackCapabilities"	    "DOTA_UNIT_CAP_RANGED_ATTACK"
-        "AttackDamageMin"	        "225"
-		"AttackDamageMax"	        "225"
-		"AttackRate"	            "3"
+        "AttackDamageMin"	        "28"
+		"AttackDamageMax"	        "28"
+		"AttackRate"	            "0.60"
 		"AttackAnimationPoint"	    "0.35"
 		"AttackAcquisitionRange"	"600"
 		"AttackRange"	            "650"

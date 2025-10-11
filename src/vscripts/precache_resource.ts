@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 function PrecacheAllResource(context: CScriptPrecacheContext) {
     //Sound
     PrecacheResource(PrecacheType.SOUNDFILE, "soundevents/custom/game_sounds_bosses.vsndevts", context);
@@ -8,8 +9,26 @@ function PrecacheAllResource(context: CScriptPrecacheContext) {
 
     //Particle
     PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/aoe_cast.vpcf", context);
+    PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/electrical_bundle.vpcf", context);
     //Model
     PrecacheResource(PrecacheType.MODEL, "models/props_gameplay/dummy/dummy.vmdl", context);
+    PrecacheResource(PrecacheType.MODEL, "models/heroes/oracle/crystal_ball.vmdl", context);
+    PrecacheResource(PrecacheType.MODEL, "models/creeps/ancient_giant_skeleton/ancient_giant_skeleton.vmdl", context);
+
+    const heroesList = LoadKeyValues("scripts/npc/npc_heroes_custom.txt");
+    const unitsList = LoadKeyValues("scripts/npc/npc_units_custom.txt");
+
+    for (const k in heroesList) {
+        if (k != "Version") {
+            PrecacheUnitByNameSync(k, context, undefined);
+        }
+    }
+
+    for (const k in unitsList) {
+        if (k != "Version") {
+            PrecacheUnitByNameSync(k, context, undefined);
+        }
+    }
     CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_ADDON_PRECACHE, {
         context: context
     });

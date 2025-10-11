@@ -90,7 +90,7 @@ export class DebugPanel {
             true,
             playerHero,
             playerHero,
-            DotaTeam.BADGUYS
+            DotaTeam.CUSTOM_2
         );
 
         DebugPanel._dummies[playerID].AddNewModifier(DebugPanel._dummies[playerID], null, modifier_debug_panel_dummy.name, {

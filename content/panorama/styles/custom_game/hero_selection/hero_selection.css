@@ -11,6 +11,10 @@
     opacity: 0;
 }
 
+.Block {
+    saturation: 0;
+}
+
 .Collapse
 {
     visibility: collapse;
@@ -21,6 +25,7 @@
     color: rgba(134, 132, 132, 0.945);
     text-transform: uppercase;
     margin-top: 2px;
+    horizontal-align: center;
 }
 
 .Text {
@@ -40,7 +45,7 @@
     margin-left: 8px;
     margin-right: 8px;
 
-    align:center top;
+    vertical-align:top;
 }
 
 .Glow {
@@ -54,28 +59,77 @@
     background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #21232767 ), to( #05060946));
     transition-duration: 0.4s;
     transition-property: opacity;
+    flow-children: right-wrap;
+}
+
+.LeftContainer {
+    width: 32%;
+    height: 100%;
+    padding: 5px;
+}
+
+#HuntersClassPanel {
+    horizontal-align:  center;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    padding: 10px;
+    flow-children: right-wrap;
+}
+
+.HuntersContainer {
+    width: 125px;
+    height: 100%;
+    flow-children: down;
+    horizontal-align:  center;
+}
+
+.HeroPickerPanel {
+    width: fit-children;
+    height: 100%;
+    margin-top: 10px;
+    horizontal-align: center;
+    flow-children: down;
+}
+
+#MonsterClassPanel {
+    horizontal-align:  center;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    padding: 10px;
+}
+
+#HeroImage {
+    width: 64px;
+    height: 78px;
+    margin: 2px 2px 2px 2px;
+}
+
+.CenterContainer {
+    width: 36%;
+    height: 100%;
+    padding: 5px;
 }
 
 #HeroStatisticsContainer {
-    width: 558px;
-    height: 900px;
-    align:  left center;
-    margin-left: 15px;
-    margin-top: 250px;
+    width: 100%;
+    height: 100%;
     flow-children: down-wrap;
 }
 
 #HeroModelPanel {
     width: fit-children;
     height: fit-children;
-    align:  center top;
-    margin-top: 20px;
+    margin-top: 200px;
     flow-children: down-wrap;
+    horizontal-align:  center;
 }
 
 #HeroModel {
-    width: 400px;
-    height: 350px;
+    width: 600px;
+    height: 500px;
+    align:  center center;
 }
 
 #HeroName {
@@ -84,12 +138,33 @@
     color: rgb(167, 127, 41);
 }
 
+#HeroSelectionButton {
+    width: 120px;
+    height: 30px;
+    border-radius: 15px;
+    align: center top;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #4b4c52 ), color-stop( 0.2, #353538 ), color-stop( .5, #424347), to( #808185 ) );
+}
+
+#HeroSelectionButton:hover {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ac7f2d ), color-stop( 0.2, #a89630 ), color-stop( .5, #b9a325), to( #b38125 ) );
+}
+
+#HeroSelectionLabel{
+    align:  center center;
+    color: rgba(255, 255, 255, 0.616);
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
 #HeroAbilityPanel {
     width: fit-children;
     height: fit-children;
-    align:  center center;
     margin-top: 10px;
     flow-children: right-wrap;
+    horizontal-align:  center;
     background-color: gradient( radial, 0% 0%, 0% 0%, 100% 100%, from( #181d25 ), to( #1e1f22));
 }
 
@@ -118,10 +193,10 @@
 }
 
 #HeroStatsPanel {
-    width: 100%;
+    width: fit-children;
     height: fit-children;
-    flow-children: right-wrap;
-    align:  left top;
+    flow-children: down-wrap;
+    horizontal-align: center;
     margin-top: 10px;
 }
 
@@ -132,40 +207,38 @@
 }
 
 #HeroShild {
-    align:  left top;
-    width: 250px;
+    horizontal-align: center;
+    width: 450px;
     height: 25px;
-    margin-left: 50px;
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #b38811 ), color-stop( 0.2, #a59719 ), color-stop( .5, #a5a334), to( #9b8319 ) );
     border-radius: 3px;
     margin-bottom: 10px;
 }
 
 #HeroShildScene {
-    width: 250px;
+    width: 450px;
     height: 25px;
     hue-rotation: 290deg;
 }
 
 #HeroHealth {
-    align:  left top;
-    width: 250px;
+    horizontal-align: center;
+    width: 450px;
     height: 25px;
-    margin-left: 50px;
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #425d25 ), color-stop( 0.2, #5BA539 ), color-stop( .5, #4D9030), to( #425d25) );
     border-radius: 3px;
     margin-bottom: 10px;
 }
 
 #HeroHealthScene {
-    width: 250px;
+    width: 450px;
     height: 25px;
 }
 
 #DerivedStatsContainer {
-    width: 250px;
+    width: fit-children;
     height: fit-children;
-    align: right top;
+    horizontal-align: center;
     flow-children:right-wrap;
 }
 
@@ -190,67 +263,17 @@
     margin: 5px 5px 5px 5px;
 }
 
-#HeroDescriptionPanel {
-    margin-top: 10px;
-    width: 500px;
-    height: 150px;
-}
-
-#HeroPersonality {
-    width: 100%;
+.RightContainer {
+    width: 32%;
     height: 100%;
-    color: rgba(136, 136, 136, 0.726);
-}
-
-#HuntersClassContainer {
-    width: 558px;
-    height: 780px;
-    align:  left top;
-    margin-right: 15px;
-    margin-top: 50px;
-}
-
-#TitelHuntersClassPanel {
-    align:  center top;
-    width: fit-children;
-    height: fit-children;
-    margin-top: 10px;
-    flow-children: right-wrap;
-}
-
-#TitelMonsterClassPanel {
-    align:  center top;
-    width: fit-children;
-    height: fit-children;
-    margin-top: 10px;
-    flow-children: right-wrap;
-}
-
-.TitleText:hover {
-    color: rgba(185, 185, 185, 0.945);
-}
-
-#HeroPickerPanel {
-    width: fit-children;
-    height: fit-children;
-    margin-top: 50px;
-    align:  center top;
-    flow-children: right-wrap;
-    max-height: 410px;
-}
-
-#HeroImage {
-    width: 64px;
-    height: 78px;
-    margin: 2px 2px 2px 2px;
+    padding: 10px;
+    flow-children: down-wrap;
 }
 
 #MoveContainer {
-    width: fit-children;
+    width: 100%;
     height: fit-children;
-    align:  right center;
-    margin-bottom: 200px;
-    margin-right: 205px;
+    margin-top: 100px;
 }
 
 #MoveBorder {
@@ -260,28 +283,29 @@
     background-size: 100% 100%;
 }
 .MoveDriver {
-    width: 1000px;
-    height: 600px;
+    width: 100%;
+    height: 400px;
     align:  center center;
 }
 
-#HeroSelectionButton {
-    width: 120px;
-    height: 30px;
-    border-radius: 15px;
-    align: center top;
+.HeroDescriptionContainer {
+    width: 100%;
+    height: 330px;
     margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #4b4c52 ), color-stop( 0.2, #353538 ), color-stop( .5, #424347), to( #808185 ) );
 }
 
-#HeroSelectionButton:hover {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ac7f2d ), color-stop( 0.2, #a89630 ), color-stop( .5, #b9a325), to( #b38125 ) );
+#HeroDescription {
+    horizontal-align: center;
 }
 
-#HeroSelectionLabel{
-    align:  center center;
-    color: rgba(255, 255, 255, 0.616);
-    font-size: 18px;
-    text-transform: uppercase;
+#HeroDescriptionPanel {
+    margin-top: 25px;
+    width: 100%;
+    height: 330px;
+}
+
+#HeroPersonality {
+    width: 100%;
+    height: 100%;
+    color: rgba(136, 136, 136, 0.726);
 }

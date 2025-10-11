@@ -1,21 +1,21 @@
 export const Settings = {
     server: {
-        universal_shop_mode: true,
+        universal_shop_mode: false,
 
-        enable_hero_respawn: true,
+        enable_hero_respawn: false,
         hero_respawn_time: 10,
         starting_gold: 900,
         hero_start_level: 1,
         allow_same_hero_selection: false,
         free_couriers_enabled: true,
-        hero_selection_time: 1,
+        hero_selection_time: 999999,
         hero_strategy_time: 0,
         hero_penalty_time: 0,
         hero_showcase_time: 0,
 
         gamesetup_lock: true,
-        gamesetup_time: 0,
-        pre_game_time: 120,
+        gamesetup_time: 10,
+        pre_game_time: 15,
         post_game_time: 20,
         tree_regrow_time: 300,
         passive_gold_tick: 1,
@@ -74,15 +74,16 @@ export const Settings = {
         // Модифаеры, которые надо добавить героям при первом респауне
         heroes_first_spawn_modifiers_to_add: [
             "modifier_custom_properties", // кастомные проперти модифаеров
-            "modifier_heroes_passive_stats" // пассивные бонусы каждого героя
+            "modifier_heroes_passive_stats", // пассивные бонусы каждого героя
+            "modifier_animal_instinct"
         ],
 
         heroes_difficulty_debuff: {},
 
         custom_exp_table: [
             0, // 1
-            250, // 2
-            400 // 3
+            30, // 2
+            50 // 3
         ]
     },
     client: {

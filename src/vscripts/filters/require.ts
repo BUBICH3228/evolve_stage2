@@ -3,6 +3,7 @@ import { AbilityTurningValueFilter } from "./ability_tuning_value_filter";
 import { ModifierGainedFilter } from "./modifier_gained_filter";
 import { GoldFilter } from "./gold_filter";
 import { OrderFilter } from "./order_filter";
+import { XPFilter } from "./xp_filter";
 export class Filters {
     static Init(gme: CDOTABaseGameMode) {
         AbilityTurningValueFilter.Init(gme);
@@ -10,5 +11,6 @@ export class Filters {
         GoldFilter.Init(gme);
         ModifierGainedFilter.Init(gme);
         OrderFilter.Init(gme);
+        XPFilter.Init(gme);
     }
 }

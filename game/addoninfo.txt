@@ -1,0 +1,9 @@
+"AddonInfo"
+{
+    "EnablePickRules"        "0"
+    "maps"                   "main"
+    "main"
+    {
+        "MaxPlayers"         "5"
+    }
+}

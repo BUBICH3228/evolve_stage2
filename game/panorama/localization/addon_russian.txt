@@ -93,7 +93,7 @@
 	//hero selection
 	"ui_hero_selection_trapper_class_title"				"Охотник"
 	"ui_hero_selection_assault_class_title"				"Штурмовик"
-	"ui_hero_selection_suport_class_title"				"Поддержка"
+	"ui_hero_selection_support_class_title"				"Поддержка"
 	"ui_hero_selection_medic_class_title"				"Медик"
 	"ui_hero_selection_monster_class_title"				"Монстр"
 	"ui_hero_selection_hero_stat_tab_title"				"Показатели"

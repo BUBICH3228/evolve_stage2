@@ -45,5 +45,94 @@
 		"DOTA_ability_variable_spell_amp"				"к урону от заклинаний"			// $spell_amp
 		"DOTA_ability_variable_spell_lifesteal_amp"		"к усилению вампиризма от заклинаний"			// $spell_lifesteal_amp
 		"DOTA_ability_variable_mana_regen_amp"			"к усилению восстановления маны"			// $mana_regen_amp
+
+		"DOTA_Tooltip_ability_goliath_smash_attack"										"Smash Attack"
+		"DOTA_Tooltip_ability_goliath_smash_attack_Description"							"Наносит сокрушительный удар по врагу."
+		"DOTA_Tooltip_ability_goliath_smash_attack_attack_damage"						"УРОН:"
+
+		"DOTA_Tooltip_ability_goliath_fire_breath"										"Fire Breath"
+		"DOTA_Tooltip_ability_goliath_fire_breath_Description"							"Монстр выпускает несколько струй пламени, которые наносят урон и накладывают на цели эффект горения. Горение наносит дополнительный урон с течением времени."
+		"DOTA_Tooltip_ability_goliath_fire_breath_damage"								"УРОН ОТ ПОПАДАНИЯ:"
+		"DOTA_Tooltip_ability_goliath_fire_breath_damage_per_second"					"УРОН ОТ ГОРЕНИЯ:"
+		"DOTA_Tooltip_ability_goliath_fire_breath_count_uses"							"КОЛЛИЧЕСТВО СТРУЙ ПЛАМЕНИ:"
+
+		"DOTA_Tooltip_ability_goliath_leap_smash"										"Leap Smash"
+		"DOTA_Tooltip_ability_goliath_leap_smash_Description"							"Монстр совершает мощный прыжок в указанное место, при приземлении создавая ударную волну, которая наносит урон всем врагам в радиусе."
+		"DOTA_Tooltip_ability_goliath_leap_smash_damage"								"УРОН:"
+
+		"DOTA_Tooltip_ability_primal_beast_onslaught"                               	"Charge"
+        "DOTA_Tooltip_ability_primal_beast_onslaught_Description"                   	"Монстр разгоняется и бежит в выбранном направлении, отталкивая врагов. При столкновении с противниками наносит им урон и оглушает их. Чем дольше подготавливался разгон, тем дальше пробежит монстр."
+        "DOTA_Tooltip_ability_primal_beast_onslaught_Lore"                  			""
+        "DOTA_Tooltip_ability_primal_beast_onslaught_charge_speed"                  	"СКОРОСТЬ БЕГА:"
+        "DOTA_Tooltip_ability_primal_beast_onslaught_max_charge_time"               	"ВРЕМЯ ДО МАКС. РАЗГОНА:"
+        "DOTA_Tooltip_ability_primal_beast_onslaught_max_distance"                  	"МАКС. ДАЛЬНОСТЬ:"
+        "DOTA_Tooltip_ability_primal_beast_onslaught_knockback_damage"              	"УРОН:"
+        "DOTA_Tooltip_ability_primal_beast_onslaught_stun_duration"                 	"ДЛИТЕЛЬНОСТЬ ОГЛУШЕНИЯ:"
+
+		"DOTA_Tooltip_ability_primal_beast_rock_throw"                              	"Rock Throw"
+        "DOTA_Tooltip_ability_primal_beast_rock_throw_Description"                  	"Монстр бросает в указанную точку камень, который оглушает врагов и наносит им урон. После приземления камень разбивается на 3 осколка, которые падают за указанную точку. У броска есть минимальная дальность."
+        
+		"DOTA_Tooltip_ability_tinker_shield_projector"									"Shield Projector"
+		"DOTA_Tooltip_ability_tinker_shield_projector_Description"						"Герой выбирает одного из товарищей по команде и накладывает щит."
+		"DOTA_Tooltip_ability_tinker_shield_projector_shield_capacity"					"ПРОЧНОСТЬ ЩИТА:"
+
+		"DOTA_Tooltip_ability_tinker_orbital_barrage"									"Orbital Barrage"
+		"DOTA_Tooltip_ability_tinker_orbital_barrage_Description"						"Герой вызывает дождь из взрывных снарядов, падающих на указанную область."
+		"DOTA_Tooltip_ability_tinker_orbital_barrage_min_damage"						"МИН. УРОН:"
+		"DOTA_Tooltip_ability_tinker_orbital_barrage_max_damage"						"МАКС. УРОН:"
+		"DOTA_Tooltip_ability_tinker_orbital_barrage_count_explosions"					"КОЛЛИЧЕСТВО ВЗРЫВОВ:"
+		"DOTA_Tooltip_ability_tinker_orbital_barrage_radius_explosions"					"РАДИУС ВЗРЫВОВ:"
+
+		"DOTA_Tooltip_ability_tinker_shield_burst"										"Shield Burst"
+		"DOTA_Tooltip_ability_tinker_shield_burst_Description"							"Герой накладывает щит на всех союзников в зоне действия."
+		"DOTA_Tooltip_ability_tinker_shield_burst_other_shield_capacity"				"ПРОЧНОСТЬ ЩИТА СОЮЗНИКОВ:"
+		"DOTA_Tooltip_ability_tinker_shield_burst_self_shield_capacity"					"ПРОЧНОСТЬ ЩИТА СЕБЕ:"
+		"DOTA_Tooltip_ability_tinker_shield_burst_decay_rate"							"ПОТЕРЯ ПРОЧНОСТИ В СЕКУНДУ:"
+
+		"DOTA_Tooltip_ability_planetary_shield"											"Planetary Shield"
+		"DOTA_Tooltip_ability_planetary_shield_Description"								"Герой развертывает купол, который запрещает выходить и входить в него всем существам, а так же дает безпрепятсвенный обзор в нутри него."
+		"DOTA_Tooltip_ability_planetary_shield_duration"								"ДЛИТЕЛЬНОСТЬ:"
+
+		"DOTA_Tooltip_ability_rattletrap_harpoon_gun"									"Harpoon Gun"
+		"DOTA_Tooltip_ability_rattletrap_harpoon_gun_Description"						"Герой связывает себя и цель цепью нанося ей урон не давая далеко уйти притягивая к себе. <br> Монстр тянет героя с большей силой."
+		"DOTA_Tooltip_ability_rattletrap_harpoon_gun_damage"							"УРОН ОТ ПОПАДАНИЯ:"
+		"DOTA_Tooltip_ability_rattletrap_harpoon_gun_duration"							"ДЛИТЕЛЬНОСТЬ:"
+		"DOTA_Tooltip_ability_rattletrap_harpoon_gun_max_radius_chain"					"МАКС. ДЛИНА ЦЕПИ:"
+
+		"DOTA_Tooltip_ability_rattletrap_sound_spikes"									"Sound Spikes"
+		"DOTA_Tooltip_ability_rattletrap_sound_spikes_Description"						"Герой размещает звуковую ловушку, при приближении монстра ловушка активируется, нанесет урон и оповестит героев маяком на карте. <br> Ловушка может быть деактевированна."
+		"DOTA_Tooltip_ability_rattletrap_sound_spikes_damage"							"УРОН:"
+		"DOTA_Tooltip_ability_rattletrap_sound_spikes_time_activation"					"ВРЕМЯ АКТИВАЦИИ:"
+		"DOTA_Tooltip_ability_rattletrap_sound_spikes_max_spikes"						"МАКС. ЛОВУШЕК:"
+
+		"DOTA_Tooltip_ability_rattletrap_scaner"										"Scaner"
+		"DOTA_Tooltip_ability_rattletrap_scaner_Description"							"Герой указывает на карте где находится монстр. Так же увеличивает скорость передвижения."
+		"DOTA_Tooltip_ability_rattletrap_scaner_duration"								"ДЛИТЕЛЬНОСТЬ:"
+		"DOTA_Tooltip_ability_rattletrap_scaner_bonus_movement_speed"					"%ДОП. СКОРОСТЬ ПЕРЕДВИЖЕНИЯ:"
+		
+		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field"							"Acceleration Field"
+		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_Description"				"Герой повышает скорость передвижения и атаки союзников в выбранной области."
+		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_bonus_movement_speed"		"%ДОП. СКОРОСТЬ ПЕРЕДВИЖЕНИЯ:"
+		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_bonus_attack_speed"		"ДОП. СКОРОСТЬ АТТАКИ:"
+		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_duration"					"ДЛИТЕЛЬНОСТЬ:"
+		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_radius"					"РАДИУС:"
+
+		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade"								"Healing Grenade"
+		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_Description"					"Герой бросает в указанную облать гранату которая восстанавливает здоровье себе и союзникам."
+		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_heal"							"ВОССТАНОВЛЕНИЕ СОЮЗНИКАМ:"
+		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_heal_self"					"ВОССТАНОВЛЕНИЕ СЕБЕ:"
+		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_heal_incapped"				"ВОССТАНОВЛЕНИЕ УПАВШИМ:"
+		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_radius"						"РАДИУС:"
+
+		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade"								"Napalm Grenade"
+		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_Description"					"Герой бросает в указанную облать гранату которая наносит урон и поджигает всех в радиусе."
+		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_damage"						"УРОН ПРИ ПОПАДАНИИ:"
+		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_damage_per_second"				"УРОН В СЕКУНДУ:"
+		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_flame_duration"				"ДЛИТЕЛЬНОСТЬ:"
+		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_radius"						"РАДИУС:"
+
+		"DOTA_Tooltip_ability_sniper_shrapnel_Description"                              "Использует заряд шрапнели, покрывая указанную область дождём из разрывной дроби. Противники под ней получают урон и замедляются. Раскрывает туман войны в области действия."
+		"DOTA_Tooltip_ability_sniper_assassinate_Description"                           "Герой с огромного расстояния целится во вражеское существо и после небольшой задержки совершает сокрушительный выстрел, ненадолго оглушающий цель и наносящий как базовый урон, так и урон от атаки героя."
+		"DOTA_Tooltip_ability_rattletrap_jetpack_Description"   						"Герой взмывает в небо, получая перемещение и обзор в полёте. Скорость передвижения увеличивается, но герой не может атаковать и имеет уменьшенную скорость поворота."
 	}
 }

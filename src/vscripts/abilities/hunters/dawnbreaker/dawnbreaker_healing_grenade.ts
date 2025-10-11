@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
+import { modifier_incapacitated_state } from "../../../modifiers/modifier_incapacitated_state";
 import { modifier_invulnerable_custom } from "../../../modifiers/modifier_invulnerable_custom";
 
 @registerAbility()
@@ -128,6 +131,9 @@ export class dawnbreaker_healing_grenade extends BaseAbility {
             const healSelf = this.GetSpecialValueFor("heal_self");
             const healIncapped = this.GetSpecialValueFor("heal_incapped");
             if (target != this.caster) {
+                if (target.FindModifierByName(modifier_incapacitated_state.name) != undefined) {
+                    target.Heal(healIncapped, this);
+                }
                 target.Heal(heal, this);
             } else {
                 target.Heal(healSelf, this);

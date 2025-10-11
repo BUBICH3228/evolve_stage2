@@ -25,7 +25,7 @@ class TeamSelection {
         });
         this.UpdateUndecidedPlayers();
         this.FixUIDOTAInterface();
-        $.Schedule(5, () => {
+        $.Schedule(9.5, () => {
             this.TeamSelectionResults();
         });
     }

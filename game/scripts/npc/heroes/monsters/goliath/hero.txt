@@ -11,7 +11,7 @@
 		"Ability2"	"goliath_leap_smash"
 		"Ability3"	"primal_beast_onslaught"
 		"Ability4"	"primal_beast_rock_throw"
-		"Ability5"	"goliath_base_attack"
+		"Ability5"	"goliath_smash_attack"
 		"Ability6"	"generic_hidden"
 		"Ability7"  "generic_hidden"
 		"Ability8"	"generic_hidden"
@@ -34,9 +34,9 @@
         }
 
         "AttackCapabilities"	    "DOTA_UNIT_CAP_MELEE_ATTACK"
-        "AttackDamageMin"	        "225"
-		"AttackDamageMax"	        "225"
-		"AttackRate"	            "3"
+        "AttackDamageMin"	        "70"
+		"AttackDamageMax"	        "70"
+		"AttackRate"	            "1"
 		"AttackAnimationPoint"	    "0.35"
 		"AttackAcquisitionRange"	"600"
 		"AttackRange"	            "150"
@@ -44,11 +44,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"	        "DOTA_ATTRIBUTE_ALL"
-		"AttributeBaseStrength"	    "10"
+		"AttributeBaseStrength"	    "0"
 		"AttributeStrengthGain"	    "0"
-		"AttributeBaseIntelligence"	"100"
+		"AttributeBaseIntelligence"	"0"
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	    "0"
 		"AttributeAgilityGain"	    "0"
+
+		"HasInventory"				"1"
+
+		"Creature"
+        {
+            "AttachWearables"
+            {
+                "1" { "ItemDef" "33466" }
+                "2" { "ItemDef" "33467" }
+                "3" { "ItemDef" "33468" }
+                "4" { "ItemDef" "33469" }
+            }
+        }
 	}
 }

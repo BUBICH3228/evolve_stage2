@@ -3,25 +3,24 @@
 import { registerModifier, BaseModifier } from "../libraries/dota_ts_adapter";
 import { GenericAIBehavior } from "./generic_ai_behavior";
 export class AICore {
-    static TEMPORARY_AGGRO_DURATION = 5;
-
-    static SEARCH_RANGE_FOR_BOYS_FOR_HELP = 100;
-
     static DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR = 625;
     static MAX_DISTANCE_FROM_SPAWN_POSITION = 550;
-    static DISTANCE_TO_CURRENT_GOAL_TO_BE_CONSIDERED_REACHED_SQR = 250000;
     static MAX_DISTANCE_BETWEEN_UNITS_CAST_NO_TARGET_ABILITY = 450;
-
     static AI_ACTION_CASTED_AT_LEAST_ONE_ABILITY = 1;
     static AI_ACTION_CASTED_NOTHING = -1;
-
     static AI_THINK_END = -1;
-
     static AI_UNIT_FILTER_INVALID = 0;
     static AI_UNIT_FILTER_VALID = 1;
-
-    static AI_GOAL_STATE_NOT_ADJUSTED = 0;
-    static AI_GOAL_STATE_ADJUSTED = 1;
+    static PATROL_POINT_WAIT_TIME = 8;
+    static PATROL_POINT_REACH_DISTANCE_SQR = 5625;
+    static PATROL_HISTORY_SIZE = 10;
+    static PATROL_SEARCH_RADIUS_INITIAL = 500;
+    static PATROL_SEARCH_RADIUS_MAX = 2000;
+    static PATROL_SEARCH_RADIUS_INCREMENT = 200;
+    static PATROL_IDLE_MOVEMENT_RANGE = 120;
+    static IDLE_MOVEMENT_CHANCE = 0.2;
+    static IDLE_MOVEMENT_MIN_TIME = 2;
+    static IDLE_MOVEMENT_MAX_TIME = 4;
 
     static Init(thisEntity: CDOTA_BaseNPC_AICore, behavior: GenericAIBehavior): void {
         thisEntity.SetContextThink(
@@ -42,24 +41,29 @@ export class AICore {
                         aggroRange: thisEntity.GetAcquisitionRange(),
                         thinkInterval: 0.2,
                         isCanRetreat: behavior.IsCanRetreatToSpawnPosition(),
-                        isCanRespondToHelpCall: behavior.IsCanRespondToHelpCall(),
-                        isCanTargetNeutralCreeps: behavior.IsCanTargetNeutralCreeps(),
-                        isCanAdjustPathToGoal: behavior.IsCanAdjustPathToGoal(),
-                        isCompletelyForgetAboutInvisibleEnemies: behavior.IsCompletelyForgetAboutInvisibleEnemies(),
-                        isNextGoalAdjusted: AICore.AI_GOAL_STATE_ADJUSTED,
-                        temporaryAggroList: {},
+                        IsCanAttackFirst: behavior.IsCanAttackFirst(),
+                        IsAggressiveForm: behavior.IsAggressiveForm(),
                         abilitiesWithAllyTarget: [],
-                        abilitiesWithEnemyTarget: []
+                        abilitiesWithEnemyTarget: [],
+                        patrolPoints: [],
+                        currentPatrolPoint: undefined,
+                        patrolPointHistory: [],
+                        isWaitingAtPoint: false,
+                        waitEndTime: 0,
+                        idleMovementPosition: undefined,
+                        patrolSearchRadius: AICore.PATROL_SEARCH_RADIUS_INITIAL
                     };
+
                     if (behavior.OnInit != undefined) {
                         behavior.OnInit(thisEntity);
                     }
 
                     thisEntity.SetAcquisitionRange(0);
+
                     AICore.InitAbilitiesList(thisEntity);
-                    if (AICore.IsCanRetreat(thisEntity)) {
-                        thisEntity.AddNewModifier(thisEntity, undefined, modifier_sleep.name, { duration: -1 });
-                    }
+
+                    AICore.InitPatrolPoints(thisEntity);
+
                     return 0.1;
                 }
                 const thinkResult = AICore.Think(thisEntity);
@@ -69,28 +73,12 @@ export class AICore {
         );
     }
 
-    static OnTakeDamage(thisEntity: CDOTA_BaseNPC, attacker: CDOTA_BaseNPC) {
-        if (!(thisEntity as CDOTA_BaseNPC_AICore).aiData) {
-            return;
-        }
-        if (AICore.IsRetreating(thisEntity as CDOTA_BaseNPC_AICore) == false) {
-            const enemies: CDOTA_BaseNPC[] = [attacker];
-            AICore.SetInCombat(thisEntity as CDOTA_BaseNPC_AICore, true);
-            const actionResult = AICore.TryAttackEnemies(thisEntity as CDOTA_BaseNPC_AICore, enemies);
-            if (actionResult != AICore.AI_ACTION_CASTED_NOTHING) {
-                return AICore.GetThinkInterval(thisEntity as CDOTA_BaseNPC_AICore);
-            }
-        }
-    }
-
     static Think(thisEntity: CDOTA_BaseNPC_AICore): number {
         if (thisEntity.IsNull() || !thisEntity.IsAlive()) {
             return AICore.AI_THINK_END;
         }
 
         if (thisEntity.IsControllableByAnyPlayer() || thisEntity.GetPlayerOwnerID() > -1) {
-            thisEntity.AddNewModifier(thisEntity, undefined, modifier_sleep.name, { duration: -1 });
-            thisEntity.RemoveModifierByName(modifier_sleep.name);
             return AICore.AI_THINK_END;
         }
 
@@ -106,19 +94,22 @@ export class AICore {
             return AICore.GetThinkInterval(thisEntity);
         }
 
-        if (thisEntity.FindModifierByName(modifier_sleep.name)) {
-            return AICore.GetThinkInterval(thisEntity);
-        }
-
         const currentEntityPosition = thisEntity.GetAbsOrigin();
         const searchRadius = AICore.GetAggroRange(thisEntity);
+
+        if (AICore.IsWaitingAtPoint(thisEntity)) {
+            AICore.UpdateIdleMovement(thisEntity);
+        }
+
+        if (!AICore.IsInCombat(thisEntity) && !AICore.IsRetreating(thisEntity) && !AICore.IsCanRetreat(thisEntity)) {
+            AICore.UpdatePatrol(thisEntity);
+        }
 
         if (AICore.IsRetreating(thisEntity) == true) {
             AICore.RetreatToHome(thisEntity);
             const distanceToSpawnPosition = CalculateDistanceSqr(currentEntityPosition, AICore.GetSpawnPosition(thisEntity));
             if (distanceToSpawnPosition <= AICore.DISTANCE_TO_SPAWN_POSITION_TO_BE_CONSIDERED_REACHED_SQR) {
                 AICore.SetIsRetreating(thisEntity, false);
-                thisEntity.AddNewModifier(thisEntity, undefined, modifier_sleep.name, { duration: -1 });
                 thisEntity.Stop();
             }
             return AICore.GetThinkInterval(thisEntity);
@@ -132,44 +123,214 @@ export class AICore {
             }
         }
 
+        if (AICore.IsAggressiveForm(thisEntity) == false) {
+            return AICore.GetThinkInterval(thisEntity);
+        }
+
         const currentEntityTeam = thisEntity.GetTeamNumber();
         const enemies = AICore.FindEnemiesAround(currentEntityTeam, currentEntityPosition, searchRadius);
-        if (AICore.IsCanAdjustPathToGoal(thisEntity) == true) {
-            if (enemies.length > 0) {
-                AICore.SetInCombat(thisEntity, true);
-                AICore.SetIsNextGoalAdjusted(thisEntity, AICore.AI_GOAL_STATE_NOT_ADJUSTED);
-                const actionResult = AICore.TryAttackEnemies(thisEntity, enemies);
-                if (actionResult != 0) {
-                    return AICore.GetThinkInterval(thisEntity);
-                }
-            } else {
-                AICore.AdjustNextGoal(thisEntity);
-                AICore.SetInCombat(thisEntity, false);
-                AICore.MoveToNextGoal(thisEntity);
+
+        const validEnemies = enemies.filter(
+            (enemy) => enemy && !enemy.IsNull() && enemy.IsAlive() && thisEntity.CanEntityBeSeenByMyTeam(enemy) && !enemy.IsWard()
+        );
+
+        if (validEnemies.length > 0 && (AICore.IsInCombat(thisEntity) || AICore.IsCanAttackFirst(thisEntity))) {
+            AICore.SetInCombat(thisEntity, true);
+            AICore.TryAttackEnemies(thisEntity, validEnemies);
+        } else if (AICore.IsInCombat(thisEntity) && validEnemies.length === 0) {
+            AICore.SetInCombat(thisEntity, false);
+
+            if (AICore.GetCurrentPatrolPoint(thisEntity) && !AICore.IsRetreating(thisEntity)) {
+                AICore.SetIsWaitingAtPoint(thisEntity, false);
+                AICore.SetIdleMovementPosition(thisEntity, undefined);
+                AICore.MoveToPosition(thisEntity, AICore.GetCurrentPatrolPoint(thisEntity)!.GetAbsOrigin());
             }
         }
 
-        if (AICore.IsInCombat(thisEntity) == true) {
-            if (enemies.length > 0) {
-                const actionResult = AICore.TryAttackEnemies(thisEntity, enemies);
-                if (actionResult != 0) {
-                    return AICore.GetThinkInterval(thisEntity);
-                }
-            } else {
-                AICore.SetInCombat(thisEntity, false);
-            }
-            const allies = AICore.FindAlliesAround(currentEntityTeam, currentEntityPosition, AICore.SEARCH_RANGE_FOR_BOYS_FOR_HELP);
-            if (allies.length > 0) {
-                const actionResult = AICore.TryHelpAllies(thisEntity, allies);
-                for (const ally of allies as CDOTA_BaseNPC_AICore[]) {
-                    AICore.SetInCombat(ally, true);
-                }
-                if (actionResult != 0) {
-                    return AICore.GetThinkInterval(thisEntity);
-                }
+        return AICore.GetThinkInterval(thisEntity);
+    }
+
+    static OnTakeDamage(thisEntity: CDOTA_BaseNPC, attacker: CDOTA_BaseNPC) {
+        if (!(thisEntity as CDOTA_BaseNPC_AICore).aiData) {
+            return;
+        }
+
+        if (AICore.IsAggressiveForm(thisEntity as CDOTA_BaseNPC_AICore) == false) {
+            return;
+        }
+        if (AICore.IsRetreating(thisEntity as CDOTA_BaseNPC_AICore) == false) {
+            const enemies: CDOTA_BaseNPC[] = [attacker];
+            AICore.SetInCombat(thisEntity as CDOTA_BaseNPC_AICore, true);
+            const actionResult = AICore.TryAttackEnemies(thisEntity as CDOTA_BaseNPC_AICore, enemies);
+            if (actionResult != AICore.AI_ACTION_CASTED_NOTHING) {
+                return AICore.GetThinkInterval(thisEntity as CDOTA_BaseNPC_AICore);
             }
         }
-        return AICore.GetThinkInterval(thisEntity);
+    }
+
+    static InitPatrolPoints(thisEntity: CDOTA_BaseNPC_AICore): void {
+        const allMovementPoints = Entities.FindAllByName("Point_movement");
+        thisEntity.aiData.patrolPoints = allMovementPoints;
+
+        if (allMovementPoints.length > 0) {
+            const nearestPoint = AICore.FindNearestPatrolPoint(thisEntity, allMovementPoints);
+            AICore.SetCurrentPatrolPoint(thisEntity, nearestPoint);
+            AICore.GetPatrolPointHistory(thisEntity).push(nearestPoint);
+
+            AICore.MoveToPosition(thisEntity, nearestPoint.GetAbsOrigin());
+        }
+    }
+
+    static UpdatePatrol(thisEntity: CDOTA_BaseNPC_AICore): void {
+        const aiData = thisEntity.aiData;
+
+        if (aiData.isWaitingAtPoint) {
+            if (GameRules.GetGameTime() >= aiData.waitEndTime) {
+                aiData.isWaitingAtPoint = false;
+                AICore.SetIdleMovementPosition(thisEntity, undefined);
+
+                const nextPoint = AICore.GetNextPatrolPoint(thisEntity);
+                if (nextPoint) {
+                    aiData.currentPatrolPoint = nextPoint;
+                    aiData.patrolPointHistory.push(nextPoint);
+
+                    if (aiData.patrolPointHistory.length > AICore.PATROL_HISTORY_SIZE) {
+                        aiData.patrolPointHistory.shift();
+                    }
+
+                    AICore.MoveToPosition(thisEntity, nextPoint.GetAbsOrigin());
+                }
+            } else {
+                if (RandomFloat(0, 1) < 0.15 && !AICore.GetIdleMovementPosition(thisEntity)) {
+                    AICore.DoIdleMovement(thisEntity);
+                }
+            }
+            return;
+        }
+
+        const currentPoint = aiData.currentPatrolPoint;
+        if (currentPoint) {
+            const distanceSqr = CalculateDistanceSqr(thisEntity.GetAbsOrigin(), currentPoint.GetAbsOrigin());
+
+            if (distanceSqr <= AICore.PATROL_POINT_REACH_DISTANCE_SQR) {
+                aiData.isWaitingAtPoint = true;
+                aiData.waitEndTime = GameRules.GetGameTime() + AICore.PATROL_POINT_WAIT_TIME;
+
+                if (AICore.IsMoving(thisEntity)) {
+                    thisEntity.Stop();
+                }
+            } else {
+                AICore.MoveToPosition(thisEntity, currentPoint.GetAbsOrigin());
+            }
+        }
+    }
+
+    static FindNearestPatrolPoint(thisEntity: CDOTA_BaseNPC_AICore, points: CBaseEntity[]): CBaseEntity {
+        let nearestPoint = points[0];
+        let nearestDistance = CalculateDistanceSqr(thisEntity.GetAbsOrigin(), nearestPoint.GetAbsOrigin());
+
+        for (let i = 1; i < points.length; i++) {
+            const distance = CalculateDistanceSqr(thisEntity.GetAbsOrigin(), points[i].GetAbsOrigin());
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                nearestPoint = points[i];
+            }
+        }
+
+        return nearestPoint;
+    }
+
+    static GetNextPatrolPoint(thisEntity: CDOTA_BaseNPC_AICore): CBaseEntity | null {
+        const patrolPoints = AICore.GetPatrolPoints(thisEntity);
+        const history = AICore.GetPatrolPointHistory(thisEntity);
+        const currentPosition = thisEntity.GetAbsOrigin();
+
+        if (patrolPoints.length === 0) return null;
+
+        let searchRadius = AICore.GetPatrolSearchRadius(thisEntity);
+        let availablePoints: CBaseEntity[] = [];
+
+        while (availablePoints.length === 0 && searchRadius <= AICore.PATROL_SEARCH_RADIUS_MAX) {
+            availablePoints = patrolPoints.filter((point) => {
+                const distance = CalculateDistanceSqr(currentPosition, point.GetAbsOrigin());
+                const isInRadius = distance <= searchRadius * searchRadius;
+                const isNotInHistory = !history.includes(point);
+                return isInRadius && isNotInHistory;
+            });
+
+            if (availablePoints.length === 0) {
+                searchRadius += AICore.PATROL_SEARCH_RADIUS_INCREMENT;
+                AICore.SetPatrolSearchRadius(thisEntity, searchRadius);
+            }
+        }
+
+        if (availablePoints.length > 0) {
+            AICore.SetPatrolSearchRadius(thisEntity, AICore.PATROL_SEARCH_RADIUS_INITIAL);
+            return AICore.FindNearestPatrolPoint(thisEntity, availablePoints);
+        }
+
+        AICore.SetPatrolSearchRadius(thisEntity, AICore.PATROL_SEARCH_RADIUS_INITIAL);
+
+        if (history.length > 0) {
+            AICore.SetPatrolPointHistory(thisEntity, [history[history.length - 1]]);
+
+            const availableAfterReset = patrolPoints.filter((point) => point !== history[history.length - 1]);
+
+            if (availableAfterReset.length > 0) {
+                return AICore.FindNearestPatrolPoint(thisEntity, availableAfterReset);
+            }
+        }
+
+        return patrolPoints[RandomInt(0, patrolPoints.length - 1)];
+    }
+
+    static DoIdleMovement(thisEntity: CDOTA_BaseNPC_AICore): void {
+        if (!AICore.GetCurrentPatrolPoint(thisEntity)) return;
+
+        const currentPos = thisEntity.GetAbsOrigin();
+        const currentPoint = AICore.GetCurrentPatrolPoint(thisEntity)!.GetAbsOrigin();
+
+        const distanceToMainPoint = CalculateDistanceSqr(currentPos, currentPoint);
+        if (distanceToMainPoint <= AICore.PATROL_POINT_REACH_DISTANCE_SQR) {
+            const randomAngle = RandomFloat(0, 2 * Math.PI);
+            const randomDistance = RandomFloat(AICore.PATROL_IDLE_MOVEMENT_RANGE * 0.7, AICore.PATROL_IDLE_MOVEMENT_RANGE);
+
+            const newX = currentPoint.x + Math.cos(randomAngle) * randomDistance;
+            const newY = currentPoint.y + Math.sin(randomAngle) * randomDistance;
+            const idlePosition = Vector(newX, newY, currentPoint.z);
+
+            if (AICore.IsCanRetreat(thisEntity)) {
+                const spawnPos = AICore.GetSpawnPosition(thisEntity);
+                const distanceToSpawn = CalculateDistanceSqr(idlePosition, spawnPos);
+                if (distanceToSpawn > AICore.MAX_DISTANCE_FROM_SPAWN_POSITION * AICore.MAX_DISTANCE_FROM_SPAWN_POSITION) {
+                    return;
+                }
+            }
+
+            AICore.SetIdleMovementPosition(thisEntity, idlePosition);
+            AICore.MoveToPosition(thisEntity, idlePosition);
+
+            const movementTime = RandomFloat(AICore.IDLE_MOVEMENT_MIN_TIME, AICore.IDLE_MOVEMENT_MAX_TIME);
+
+            Timers.CreateTimer(movementTime, () => {
+                if (AICore.IsWaitingAtPoint(thisEntity) && AICore.GetCurrentPatrolPoint(thisEntity)) {
+                    AICore.SetIdleMovementPosition(thisEntity, undefined);
+                }
+                return undefined;
+            });
+        }
+    }
+
+    static UpdateIdleMovement(thisEntity: CDOTA_BaseNPC_AICore): void {
+        const idlePosition = AICore.GetIdleMovementPosition(thisEntity);
+        if (idlePosition && AICore.IsWaitingAtPoint(thisEntity)) {
+            const distanceSqr = CalculateDistanceSqr(thisEntity.GetAbsOrigin(), idlePosition);
+
+            if (distanceSqr <= AICore.PATROL_POINT_REACH_DISTANCE_SQR) {
+                thisEntity.Stop();
+                AICore.SetIdleMovementPosition(thisEntity, undefined);
+            }
+        }
     }
 
     static InitAbilitiesList(thisEntity: CDOTA_BaseNPC_AICore) {
@@ -232,21 +393,6 @@ export class AICore {
         return ability;
     }
 
-    static FindAlliesAround(thisEntityTeam: DotaTeam, thisEntityPosition: Vector, searchRadius: number) {
-        const enemies = FindUnitsInRadius(
-            thisEntityTeam,
-            thisEntityPosition,
-            undefined,
-            searchRadius,
-            UnitTargetTeam.FRIENDLY,
-            UnitTargetType.HERO + UnitTargetType.BASIC,
-            UnitTargetFlags.FOW_VISIBLE,
-            FindOrder.CLOSEST,
-            false
-        );
-        return enemies;
-    }
-
     static FindEnemiesAround(thisEntityTeam: DotaTeam, thisEntityPosition: Vector, searchRadius: number) {
         const enemies = FindUnitsInRadius(
             thisEntityTeam,
@@ -254,7 +400,7 @@ export class AICore {
             undefined,
             searchRadius,
             UnitTargetTeam.ENEMY,
-            UnitTargetType.HERO + UnitTargetType.BASIC + UnitTargetType.OTHER + UnitTargetType.BUILDING,
+            UnitTargetType.HERO + UnitTargetType.BASIC + UnitTargetType.BUILDING,
             UnitTargetFlags.MAGIC_IMMUNE_ENEMIES + UnitTargetFlags.FOW_VISIBLE,
             FindOrder.CLOSEST,
             false
@@ -280,21 +426,121 @@ export class AICore {
         if (!target || target.IsNull() == true || target.IsAlive() == false) {
             return AICore.AI_UNIT_FILTER_INVALID;
         }
-        if (AICore.IsCompletelyForgetAboutInvisibleEnemies(thisEntity) == true && thisEntity.CanEntityBeSeenByMyTeam(target) == false) {
-            return AICore.AI_UNIT_FILTER_INVALID;
-        }
         if (target.IsPhantom() == true || target.IsPhantomBlocker() == true) {
             return AICore.AI_UNIT_FILTER_INVALID;
         }
         if (target.IsControllableByAnyPlayer() == true) {
             return AICore.AI_UNIT_FILTER_VALID;
         }
-        if (AICore.IsCanTargetNeutralCreeps(thisEntity) == false) {
-            if (target.IsNeutralUnitType() == true) {
-                return AICore.AI_UNIT_FILTER_INVALID;
-            }
+        if (target.IsWard() == true) {
+            return AICore.AI_UNIT_FILTER_VALID;
+        }
+        if (target.IsAttackImmune() == true) {
+            return AICore.AI_UNIT_FILTER_VALID;
+        }
+        if (target.IsCourier() == true) {
+            return AICore.AI_UNIT_FILTER_VALID;
         }
         return AICore.AI_UNIT_FILTER_VALID;
+    }
+
+    static GetPatrolSearchRadius(thisEntity: CDOTA_BaseNPC_AICore): number {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.patrolSearchRadius || AICore.PATROL_SEARCH_RADIUS_INITIAL;
+        }
+        return AICore.PATROL_SEARCH_RADIUS_INITIAL;
+    }
+
+    static SetPatrolSearchRadius(thisEntity: CDOTA_BaseNPC_AICore, radius: number): void {
+        if (thisEntity.aiData != undefined) {
+            thisEntity.aiData.patrolSearchRadius = radius;
+        }
+    }
+
+    static GetIdleMovementPosition(thisEntity: CDOTA_BaseNPC_AICore): Vector | undefined {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.idleMovementPosition;
+        }
+        return undefined;
+    }
+
+    static SetIdleMovementPosition(thisEntity: CDOTA_BaseNPC_AICore, position: Vector | undefined): void {
+        if (thisEntity.aiData != undefined) {
+            thisEntity.aiData.idleMovementPosition = position;
+        }
+    }
+
+    static SetPatrolPointHistory(thisEntity: CDOTA_BaseNPC_AICore, history: CBaseEntity[]): void {
+        if (thisEntity.aiData != undefined) {
+            thisEntity.aiData.patrolPointHistory = history;
+        }
+    }
+
+    static IsAggressiveForm(thisEntity: CDOTA_BaseNPC_AICore): boolean {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.IsAggressiveForm;
+        }
+        return false;
+    }
+
+    static IsCanAttackFirst(thisEntity: CDOTA_BaseNPC_AICore): boolean {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.IsCanAttackFirst;
+        }
+        return false;
+    }
+
+    static GetCurrentPatrolPoint(thisEntity: CDOTA_BaseNPC_AICore): CBaseEntity | undefined {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.currentPatrolPoint;
+        }
+        return undefined;
+    }
+
+    static SetCurrentPatrolPoint(thisEntity: CDOTA_BaseNPC_AICore, point: CBaseEntity): void {
+        if (thisEntity.aiData != undefined) {
+            thisEntity.aiData.currentPatrolPoint = point;
+        }
+    }
+
+    static IsWaitingAtPoint(thisEntity: CDOTA_BaseNPC_AICore): boolean {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.isWaitingAtPoint;
+        }
+        return false;
+    }
+
+    static SetIsWaitingAtPoint(thisEntity: CDOTA_BaseNPC_AICore, state: boolean): void {
+        if (thisEntity.aiData != undefined) {
+            thisEntity.aiData.isWaitingAtPoint = state;
+        }
+    }
+
+    static GetWaitEndTime(thisEntity: CDOTA_BaseNPC_AICore): number {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.waitEndTime;
+        }
+        return 0;
+    }
+
+    static SetWaitEndTime(thisEntity: CDOTA_BaseNPC_AICore, time: number): void {
+        if (thisEntity.aiData != undefined) {
+            thisEntity.aiData.waitEndTime = time;
+        }
+    }
+
+    static GetPatrolPointHistory(thisEntity: CDOTA_BaseNPC_AICore): CBaseEntity[] {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.patrolPointHistory;
+        }
+        return [];
+    }
+
+    static GetPatrolPoints(thisEntity: CDOTA_BaseNPC_AICore): CBaseEntity[] {
+        if (thisEntity.aiData != undefined) {
+            return thisEntity.aiData.patrolPoints;
+        }
+        return [];
     }
 
     static SetInCombat(thisEntity: CDOTA_BaseNPC_AICore, state: boolean) {
@@ -306,9 +552,9 @@ export class AICore {
                 state = false;
             }
 
-            if (state == true) {
-                thisEntity.RemoveModifierByName(modifier_sleep.name);
-            }
+            //if (state == true) {
+            //    thisEntity.RemoveModifierByName(modifier_sleep.name);
+            //}
 
             thisEntity.aiData.isInCombat = state;
         }
@@ -362,22 +608,6 @@ export class AICore {
         return false;
     }
 
-    static IsCompletelyForgetAboutInvisibleEnemies(thisEntity: CDOTA_BaseNPC_AICore) {
-        if (thisEntity.aiData != undefined) {
-            return thisEntity.aiData.isCompletelyForgetAboutInvisibleEnemies;
-        }
-
-        return false;
-    }
-
-    static IsCanTargetNeutralCreeps(thisEntity: CDOTA_BaseNPC_AICore): boolean {
-        if (thisEntity.aiData != undefined) {
-            return thisEntity.aiData.isCanTargetNeutralCreeps;
-        }
-
-        return false;
-    }
-
     static IsCanRetreat(thisEntity: CDOTA_BaseNPC_AICore) {
         if (thisEntity.aiData != undefined) {
             return thisEntity.aiData.isCanRetreat;
@@ -410,145 +640,32 @@ export class AICore {
         return -1;
     }
 
-    static GetCurrentGoalEntity(thisEntity: CDOTA_BaseNPC_AICore): any {
-        if (thisEntity.aiData && thisEntity.aiData.currentGoals.length != undefined) {
-            return thisEntity.aiData.currentGoals[0];
-        }
-        return undefined;
-    }
+    static IsMoving(thisEntity: CDOTA_BaseNPC): boolean {
+        const velocity = thisEntity.GetVelocity();
+        const speed = Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
 
-    static GetAllGoalEntities(thisEntity: CDOTA_BaseNPC_AICore): any[] {
-        if (thisEntity.aiData && thisEntity.aiData.currentGoals != undefined) {
-            return thisEntity.aiData.currentGoals;
-        }
-        return [];
-    }
-
-    static GetGoalEntitiesCount(thisEntity: CDOTA_BaseNPC_AICore) {
-        if (thisEntity.aiData && thisEntity.aiData.currentGoals != undefined) {
-            return thisEntity.aiData.currentGoals.length;
-        }
-        return 0;
-    }
-
-    static AddGoalEntity(thisEntity: CDOTA_BaseNPC_AICore, goalEntity: any) {
-        if (thisEntity.aiData != undefined) {
-            table.insert(thisEntity.aiData.currentGoals, goalEntity);
-        }
-    }
-
-    static RemoveGoalEntity(thisEntity: CDOTA_BaseNPC_AICore, goalEntity: any) {
-        if (thisEntity.aiData != undefined) {
-            ArrayRemove(AICore.GetAllGoalEntities(thisEntity) as any, function (t: any, i: any, j: any) {
-                const goal = t[i];
-                return goal != goalEntity;
-            });
-        }
-    }
-
-    static RemoveAllGoalEntities(thisEntity: CDOTA_BaseNPC_AICore) {
-        if (thisEntity.aiData != undefined) {
-            ArrayRemove(AICore.GetAllGoalEntities(thisEntity) as any, function (t, i, j) {
-                return false;
-            });
-        }
-    }
-
-    static SetInitialGoalEntity(thisEntity: CDOTA_BaseNPC_AICore, goalEntity: any) {
-        if (thisEntity.aiData && goalEntity) {
-            AICore.AddGoalEntity(thisEntity, goalEntity);
-            if (goalEntity.next_corner && goalEntity.next_corner != goalEntity) {
-                AICore.SetInitialGoalEntity(thisEntity, goalEntity.next_corner);
-            }
-        }
-    }
-
-    static IsCanAdjustPathToGoal(thisEntity: CDOTA_BaseNPC_AICore) {
-        if (thisEntity.aiData && thisEntity.aiData.isCanAdjustPathToGoal != undefined) {
-            return thisEntity.aiData.isCanAdjustPathToGoal;
-        }
-        return false;
-    }
-
-    static SetIsNextGoalAdjusted(thisEntity: CDOTA_BaseNPC_AICore, value: number) {
-        if (thisEntity.aiData && thisEntity.aiData.isNextGoalAdjusted != undefined) {
-            thisEntity.aiData.isNextGoalAdjusted = value;
-        }
-    }
-
-    static IsNextGoalAdjusted(thisEntity: CDOTA_BaseNPC_AICore): number | boolean {
-        if (thisEntity.aiData != undefined) {
-            return thisEntity.aiData.isNextGoalAdjusted || true;
-        }
-        return true;
-    }
-
-    static AdjustNextGoal(thisEntity: CDOTA_BaseNPC_AICore): void {
-        if (!thisEntity.aiData) {
-            return;
-        }
-        if (AICore.IsCanAdjustPathToGoal(thisEntity) == false) {
-            return;
-        }
-        if (AICore.IsNextGoalAdjusted(thisEntity) == AICore.AI_GOAL_STATE_ADJUSTED) {
-            return;
-        }
-
-        if (AICore.GetGoalEntitiesCount(thisEntity) < 2) {
-            return;
-        }
-
-        const goalEntities = AICore.GetAllGoalEntities(thisEntity);
-        let currentGoal = AICore.GetCurrentGoalEntity(thisEntity);
-        const currentEntityPosition = thisEntity.GetAbsOrigin();
-        if (currentGoal == undefined) {
-            return;
-        }
-
-        let distancetoLatestKnownGoal = CalculateDistanceSqr(currentGoal.GetAbsOrigin(), currentEntityPosition);
-        let distanceToCurrentCheckingGoal = 0;
-
-        for (let i = goalEntities.length; i < goalEntities.length; i++) {
-            if (goalEntities[i] == undefined) {
-                return;
-            }
-            distanceToCurrentCheckingGoal = CalculateDistanceSqr(goalEntities[i].GetAbsOrigin(), currentEntityPosition);
-            if (distanceToCurrentCheckingGoal < distancetoLatestKnownGoal) {
-                currentGoal = goalEntities[i];
-                distancetoLatestKnownGoal = distanceToCurrentCheckingGoal;
-            }
-        }
-
-        AICore.RemoveAllGoalEntities(thisEntity);
-        AICore.SetInitialGoalEntity(thisEntity, currentGoal);
-        AICore.SetIsNextGoalAdjusted(thisEntity, AICore.AI_GOAL_STATE_ADJUSTED);
-    }
-
-    static MoveToNextGoal(thisEntity: CDOTA_BaseNPC_AICore) {
-        if (!thisEntity.aiData) {
-            return;
-        }
-
-        const currentGoal = AICore.GetCurrentGoalEntity(thisEntity);
-        if (!currentGoal) {
-            return;
-        }
-
-        const goalPosition = currentGoal.GetAbsOrigin();
-        AICore.MoveToPosition(thisEntity, goalPosition);
-        const distanceToGoal = CalculateDistanceSqr(goalPosition, thisEntity.GetAbsOrigin());
-        if (distanceToGoal <= AICore.DISTANCE_TO_CURRENT_GOAL_TO_BE_CONSIDERED_REACHED_SQR) {
-            if (AICore.GetGoalEntitiesCount(thisEntity) > 1) {
-                AICore.RemoveGoalEntity(thisEntity, currentGoal);
-                AICore.MoveToNextGoal(thisEntity);
-            }
-        }
+        return speed > 10;
     }
 
     static MoveToPosition(thisEntity: CDOTA_BaseNPC_AICore, position: Vector) {
         if (position == undefined || thisEntity.HasMovementCapability() == false) {
             return;
         }
+
+        const currentPos = thisEntity.GetAbsOrigin();
+        const distanceSqr = CalculateDistanceSqr(currentPos, position);
+
+        if (distanceSqr <= AICore.PATROL_POINT_REACH_DISTANCE_SQR) {
+            if (AICore.IsMoving(thisEntity)) {
+                thisEntity.Stop();
+            }
+            return;
+        }
+
+        if (AICore.IsMoving(thisEntity)) {
+            return;
+        }
+
         ExecuteOrderFromTable({
             UnitIndex: thisEntity.entindex(),
             OrderType: UnitOrder.MOVE_TO_POSITION,
@@ -558,16 +675,24 @@ export class AICore {
     }
 
     static TryAttackEnemies(thisEntity: CDOTA_BaseNPC_AICore, enemies: CDOTA_BaseNPC[]): number {
-        thisEntity.aiData.abilitiesWithEnemyTarget.forEach((ability) => {
-            const actionResult = AICore.TryCastAbility(ability as CDOTABaseAbility_AICore, thisEntity, enemies);
-            if (actionResult != AICore.AI_ACTION_CASTED_NOTHING) {
+        const validEnemies = enemies.filter((enemy) => AICore.EnemyUnitFilter(thisEntity, enemy) === AICore.AI_UNIT_FILTER_VALID);
+        if (validEnemies.length === 0) {
+            AICore.SetInCombat(thisEntity, false);
+            return AICore.AI_ACTION_CASTED_NOTHING;
+        }
+
+        for (const ability of thisEntity.aiData.abilitiesWithEnemyTarget) {
+            const actionResult = AICore.TryCastAbility(ability as CDOTABaseAbility_AICore, thisEntity, validEnemies);
+            if (actionResult === AICore.AI_ACTION_CASTED_AT_LEAST_ONE_ABILITY) {
+                AICore.SetInCombat(thisEntity, true);
                 return actionResult;
             }
-        });
+        }
 
         if (AICore.IsCastAbility(thisEntity) == false) {
-            AICore.AttackTarget(thisEntity, enemies[0]);
+            AICore.AttackTarget(thisEntity, validEnemies[0]);
         }
+
         AICore.SetInCombat(thisEntity, true);
         return AICore.AI_ACTION_CASTED_NOTHING;
     }
@@ -584,6 +709,7 @@ export class AICore {
             AICore.MoveToPosition(thisEntity, enemy.GetAbsOrigin());
             return;
         }
+
         ExecuteOrderFromTable({
             UnitIndex: thisEntity.entindex(),
             OrderType: UnitOrder.ATTACK_TARGET,
@@ -592,55 +718,47 @@ export class AICore {
         });
     }
 
-    static TryHelpAllies(thisEntity: CDOTA_BaseNPC_AICore, allies: CDOTA_BaseNPC[]) {
-        thisEntity.aiData.abilitiesWithAllyTarget.forEach((ability) => {
-            const actionResult = AICore.TryCastAbility(ability as CDOTABaseAbility_AICore, thisEntity, allies);
-            if (actionResult != AICore.AI_ACTION_CASTED_NOTHING) {
-                AICore.SetInCombat(thisEntity, true);
-                return actionResult;
-            }
-        });
-
-        return AICore.AI_ACTION_CASTED_NOTHING;
-    }
-
     static TryCastAbility(ability: CDOTABaseAbility_AICore, caster: CDOTA_BaseNPC_AICore, allTargets: CDOTA_BaseNPC[]) {
         if (ability.IsFullyCastable() == false || ability.behavior == AbilityBehavior.PASSIVE) {
             return AICore.AI_ACTION_CASTED_NOTHING;
         }
-        if (ability.GetMaxAbilityCharges(ability.GetLevel()) > 0 && ability.GetCurrentAbilityCharges() == 0) {
+
+        const validTargets = allTargets.filter(
+            (target) => target && !target.IsNull() && target.IsAlive() && caster.CanEntityBeSeenByMyTeam(target)
+        );
+
+        if (validTargets.length === 0) {
             return AICore.AI_ACTION_CASTED_NOTHING;
         }
-        if (ability.IsCooldownReady() == false) {
+
+        const target = validTargets[RandomInt(0, validTargets.length - 1)];
+
+        const distanceBetweenUnits = CalculateDistance(caster.GetAbsOrigin(), target.GetAbsOrigin());
+        if (
+            ability.behavior == AbilityBehavior.NO_TARGET &&
+            distanceBetweenUnits > AICore.MAX_DISTANCE_BETWEEN_UNITS_CAST_NO_TARGET_ABILITY
+        ) {
+            AICore.MoveToPosition(caster, target.GetAbsOrigin());
             return AICore.AI_ACTION_CASTED_NOTHING;
         }
-        const target = allTargets[RandomInt(0, allTargets.length - 1)];
-        if (target != undefined) {
-            if (caster.CanEntityBeSeenByMyTeam(target) == false) {
-                AICore.MoveToPosition(caster, target.GetAbsOrigin());
-                return;
-            }
-            const orderType = AICore.GetOrderTypeFromAbilityBehaviour(ability);
-            const distanceBetweenUnits = CalculateDistance(caster.GetAbsOrigin(), target.GetAbsOrigin());
-            if (orderType == UnitOrder.CAST_NO_TARGET && distanceBetweenUnits > AICore.MAX_DISTANCE_BETWEEN_UNITS_CAST_NO_TARGET_ABILITY) {
-                AICore.MoveToPosition(caster, target.GetAbsOrigin());
-                return AICore.AI_ACTION_CASTED_NOTHING;
-            }
-            ExecuteOrderFromTable({
-                UnitIndex: caster.entindex(),
-                OrderType: orderType,
-                AbilityIndex: ability.entindex(),
-                TargetIndex: target.entindex(),
-                Position: target.GetAbsOrigin(),
-                Queue: false
-            });
-            AICore.SetIsCastAbility(caster, true);
-            Timers.CreateTimer(2, () => {
-                AICore.SetIsCastAbility(caster, false);
-            });
-            return AICore.AI_ACTION_CASTED_AT_LEAST_ONE_ABILITY;
-        }
-        return AICore.AI_ACTION_CASTED_NOTHING;
+
+        // Кастуем способность
+        const orderType = AICore.GetOrderTypeFromAbilityBehaviour(ability);
+        ExecuteOrderFromTable({
+            UnitIndex: caster.entindex(),
+            OrderType: orderType,
+            AbilityIndex: ability.entindex(),
+            TargetIndex: target.entindex(),
+            Position: target.GetAbsOrigin(),
+            Queue: false
+        });
+
+        AICore.SetIsCastAbility(caster, true);
+        Timers.CreateTimer(2, () => {
+            AICore.SetIsCastAbility(caster, false);
+        });
+
+        return AICore.AI_ACTION_CASTED_AT_LEAST_ONE_ABILITY;
     }
     static GetOrderTypeFromAbilityBehaviour(ability: CDOTABaseAbility_AICore): number {
         if (ability.behavior == AbilityBehavior.UNIT_TARGET) {
@@ -698,15 +816,18 @@ export interface CDOTA_BaseNPC_AICore extends CDOTA_BaseNPC {
         aggroRange: number;
         thinkInterval: number;
         isCanRetreat: boolean;
-        isCanRespondToHelpCall: boolean;
-        isCanTargetNeutralCreeps: boolean;
-        isCanAdjustPathToGoal: boolean;
-        isCompletelyForgetAboutInvisibleEnemies: boolean;
-        isNextGoalAdjusted: number;
-        temporaryAggroList: { [key: string]: number };
         abilitiesWithAllyTarget: CDOTABaseAbility[];
         abilitiesWithEnemyTarget: CDOTABaseAbility[];
         isCastAbility: boolean;
+        patrolPoints: CBaseEntity[];
+        currentPatrolPoint?: CBaseEntity;
+        patrolPointHistory: CBaseEntity[];
+        isWaitingAtPoint: boolean;
+        waitEndTime: number;
+        IsCanAttackFirst: boolean;
+        IsAggressiveForm: boolean;
+        idleMovementPosition?: Vector;
+        patrolSearchRadius: number;
     };
 }
 

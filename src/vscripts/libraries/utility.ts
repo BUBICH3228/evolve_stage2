@@ -66,13 +66,9 @@ function CalculateDistanceSqr(ent1: CDOTA_BaseNPC | Vector, ent2: CDOTA_BaseNPC 
     let pos2 = ent2;
     if (typeof ent1 === "object") {
         pos1 = ent1.GetAbsOrigin();
-    } else {
-        CheckType(pos1, "pos1", "vector");
     }
     if (typeof ent1 === "object") {
         pos2 = ent1.GetAbsOrigin();
-    } else {
-        CheckType(pos2, "pos2", "vector");
     }
     const vector = ((pos1 as Vector) - (pos2 as Vector)) as Vector;
     return vector.x * vector.x + vector.y * vector.y;
@@ -83,8 +79,6 @@ function CalculateDirection(ent1: CDOTA_BaseNPC, ent2: CDOTA_BaseNPC): Vector {
     let pos2: CDOTA_BaseNPC | Vector = ent2;
     if (typeof ent1 === "object") {
         pos1 = ent1.GetAbsOrigin();
-    } else {
-        CheckType(pos1, "pos1", "vector");
     }
     if (typeof ent1 === "object") {
         pos2 = ent1.GetAbsOrigin();
@@ -124,18 +118,12 @@ function Debug_PrintError(...value: any) {
 function RotateVector2D(ent1: CDOTA_BaseNPC, ent2: CDOTA_BaseNPC, angel: number): Vector {
     const pos1 = ent1.GetAbsOrigin();
     const pos2 = ent2.GetAbsOrigin();
-    CheckType(pos1, "pos1", "vector");
-    CheckType(pos2, "pos2", "vector");
-    CheckType(angel, "angel", "number");
     const x = pos1.x + (pos2.x - pos1.x) * math.cos(angel) - (pos2.y - pos1.y) * math.sin(angel);
     const y = pos1.y + (pos2.x - pos1.x) * math.sin(angel) + (pos2.y - pos1.y) * math.cos(angel);
     return Vector(x, y, 0);
 }
 /** @noSelf */
 function CastAoeParticle(unit: CDOTA_BaseNPC, castTime: number, castRange: number): ParticleID {
-    CheckType(unit, "unit", "unit");
-    CheckType(castTime, "castTime", "number");
-    CheckType(castRange, "castRange", "number");
     const pfx = ParticleManager.CreateParticle("particles/custom/units/aoe_cast.vpcf", ParticleAttachment.ABSORIGIN, unit);
     Timers.CreateTimer(0.001, () => {
         ParticleManager.SetParticleControl(pfx, 0, unit.GetAbsOrigin());
@@ -147,10 +135,6 @@ function CastAoeParticle(unit: CDOTA_BaseNPC, castTime: number, castRange: numbe
 }
 /** @noSelf */
 function CastAoeStaticParticle(unit: CDOTA_BaseNPC, point: Vector, castTime: number, castRange: number): ParticleID {
-    CheckType(unit, "unit", "unit");
-    CheckType(point, "point", "vector");
-    CheckType(castTime, "castTime", "number");
-    CheckType(castRange, "castRange", "number");
     const pfx = ParticleManager.CreateParticle("particles/custom/units/aoe_cast.vpcf", ParticleAttachment.ABSORIGIN, unit);
     ParticleManager.SetParticleControl(pfx, 0, point);
     ParticleManager.SetParticleControl(pfx, 1, Vector(castRange, 0, 0));

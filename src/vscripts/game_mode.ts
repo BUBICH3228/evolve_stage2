@@ -11,7 +11,8 @@ import "./precache_resource";
 import { Filters } from "./filters/require";
 import { GameSettings } from "./game_settings";
 import { Settings } from "./data/game_settings";
-import { CDOTAPlayerController_TeamSelectionUI } from "./libraries/team_selection";
+import "./creep_spawner";
+import { modifier_invulnerable_custom } from "./modifiers/modifier_invulnerable_custom";
 
 declare global {
     interface CDOTAGameRules {
@@ -47,6 +48,7 @@ export class GameMode {
     }
 
     private ListenToGameEvents() {
+        ListenToGameEvent("entity_killed", (event) => this.OnEntityKilled(event), undefined);
         ListenToGameEvent("game_rules_state_change", () => this.OnGameRulesStateChange(), undefined);
         ListenToGameEvent("dota_player_gained_level", (event) => this.OnPlayerGainedLevel(event), undefined);
         ListenToGameEvent("dota_player_learned_ability", (event) => this.OnPlayerLearnedAbility(event), undefined);
@@ -83,10 +85,58 @@ export class GameMode {
             });
         }
 
+        if (hero.GetTeam() == DotaTeam.GOODGUYS) {
+            for (let index = 1; index < 3; index++) {
+                hero.HeroLevelUp(false);
+            }
+
+            for (let i = 0; i < hero.GetAbilityCount(); i++) {
+                const ability = hero.GetAbilityByIndex(i);
+
+                if (ability != undefined) {
+                    ability.SetLevel(1);
+                }
+            }
+        } else {
+            hero.AddNewModifier(hero, undefined, "modifier_animal_instinct", { duration: -1 });
+        }
+
+        hero.AddNewModifier(hero, undefined, modifier_invulnerable_custom.name, { duration: 18 });
+
         const SteamID = tostring(PlayerResource.GetSteamID(hero.GetPlayerOwnerID()));
         HTTPRequests.CheckThePlayerDonate(SteamID, hero);
-
+        hero.SetAbilityPoints(3);
         (hero as GameModePlayer)._onPlayerHeroChangedFirstTime = true;
+    }
+
+    private OnEntityKilled(kv: EntityKilledEvent): void {
+        const target = EntIndexToHScript(kv.entindex_killed) as CDOTA_BaseNPC;
+
+        if (target == undefined) {
+            return;
+        }
+
+        if (target.GetUnitName() == "npc_dota_hero_primal_beast") {
+            GameRules.SetGameWinner(DotaTeam.GOODGUYS);
+        }
+
+        if (target.GetUnitName() == "npc_dota_telecommunication_crystal_custom") {
+            GameRules.SetGameWinner(DotaTeam.BADGUYS);
+        }
+
+        if (target.IsRealHero()) {
+            let heroAlive = 0;
+            for (let index = 0; index < 4; index++) {
+                const hero = PlayerResource.GetSelectedHeroEntity(PlayerResource.GetNthPlayerIDOnTeam(DotaTeam.GOODGUYS, index));
+                if (hero?.IsAlive()) {
+                    heroAlive++;
+                }
+            }
+
+            if (heroAlive == 0) {
+                GameRules.SetGameWinner(DotaTeam.BADGUYS);
+            }
+        }
     }
 
     private OnNPCSpawned(kv: NpcSpawnedEvent) {
@@ -146,19 +196,7 @@ export class GameMode {
             return;
         }
 
-        let maxPossibleAbilityPoints = 0;
-
-        for (let i = 0; i < hero.GetAbilityCount(); i++) {
-            const ability = hero.GetAbilityByIndex(i);
-
-            if (ability != undefined) {
-                maxPossibleAbilityPoints += ability.GetMaxLevel() - ability.GetLevel();
-            }
-        }
-
-        let newAbilityPoints = hero.GetLevel() - hero.GetSpendedAbilityPoints();
-        newAbilityPoints = math.min(newAbilityPoints, maxPossibleAbilityPoints);
-        hero.SetAbilityPoints(newAbilityPoints);
+        hero.SetAbilityPoints(hero.GetAbilityPoints() + 3);
     }
 
     private OnGameRulesStateChange() {

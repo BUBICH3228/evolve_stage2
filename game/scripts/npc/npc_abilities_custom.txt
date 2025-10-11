@@ -3,4 +3,51 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
+
+    "generic_channel_custom"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities/units/generic_channel"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+		"MaxLevel"						"1"
+
+		// Time
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+		"AbilityCastPoint"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+	}
+
+	"telecommunication_crystal"
+    {
+        "BaseClass"		                    "ability_lua"
+        "ScriptFile"                   	    "abilities/units/telecommunication_crystal"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "Maxlevel"                          "1"
+    }
+
+    "creep_health_bar_pips"
+    {
+        "BaseClass"		                    "ability_lua"
+        "ScriptFile"                   	    "abilities/units/creep_health_bar_pips"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "Maxlevel"                          "1"
+    }
+
+    "evolution_point"
+    {
+        "BaseClass"		                    "ability_lua"
+        "ScriptFile"                   	    "abilities/units/evolution_point"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "Maxlevel"                          "1"
+    }
 }

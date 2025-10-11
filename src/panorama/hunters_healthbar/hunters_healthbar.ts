@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line no-var
 var HudButtons = GameUI.CustomUIConfig().HudButtons;
 // eslint-disable-next-line no-var

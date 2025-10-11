@@ -12,16 +12,16 @@
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "300"
+        "AbilityCooldown"                   "200"
         "AbilityCastPoint"                  "0.1"
-        "AbilityChannelTime"                "2.5"
+        "AbilityChannelTime"                "4.5"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "radius"                        "1000"
-            "duration"                      "15"
+            "radius"                        "1500"
+            "duration"                      "20"
         }
     }
 
@@ -43,7 +43,7 @@
         
         // Time     
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "16"
+        "AbilityCooldown"               "15"
         
         // Cost
         //-------------------------------------------------------------------------------------------------------------
@@ -64,8 +64,33 @@
             }
             "duration"
             {
-                "value" "6"
+                "value" "5"
             }
+        }
+    }
+
+    "resurrection_custom"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "faceless_void_chronosphere"
+        "ScriptFile"                   	    "abilities/hunters/resurrection_custom"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_BOTH"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "0"
+        "AbilityCastRange"                  "50"
+        "AbilityCastPoint"                  "0.1"
+        "AbilityChannelTime"                "2.5"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "heal_per_second"               "140"
         }
     }
 }

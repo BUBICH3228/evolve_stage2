@@ -1,0 +1,97 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc40:version{da0ab1f8-9722-4910-94b8-10b6a08c0934} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "BoneMarkupList"
+				bone_cull_type = "None"
+				primary_root_bone = ""
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						name = "ancient_giant_skeleton"
+						filename = "models/creeps/ancient_giant_skeleton/ancient_giant_skeleton_ancient_giant_skeleton.dmx"
+						import_scale = 0.2
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "root"
+						children = 
+						[
+							{
+								_class = "Bone"
+								name = "main"
+								origin = [ 0.0, 0.0, 0.0 ]
+								angles = [ 0.0, 0.0, 0.0 ]
+								do_not_discard = false
+							},
+						]
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						do_not_discard = false
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeSphere"
+						parent_bone = "root"
+						surface_prop = "default"
+						collision_prop = "default"
+						tool_material = ""
+						radius = 50.0
+						center = [ 0.0, 0.0, 0.0 ]
+					},
+				]
+				leave_body_collision_unmodified = false
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "hitbox"
+						children = 
+						[
+							{
+								_class = "HitboxSphere"
+								parent_bone = "main"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								center = [ 0.0, 0.0, 0.0 ]
+								radius = 50.0
+							},
+						]
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		document_sub_type = "ModelDocSubType_None"
+	}
+}

@@ -19,6 +19,17 @@
     height: 190px;
     opacity: 2;
     background-color: rgb(0, 0, 0);
-    border-radius: 100%;
+    border-radius: 50%;
     align: center center;
+}
+
+.MinimapImage {
+    width: 8px;
+    height: 8px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 100%;
+}
+
+.Enemy {
+    wash-color: rgb(185, 0, 0);
 }

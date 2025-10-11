@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-var
-
+/* eslint-disable @typescript-eslint/no-unused-vars */
 class Minimap {
     MINIMAP_PANEL: HUDOverlayMap = $("#Map") as HUDOverlayMap;
     constructor() {
@@ -10,21 +9,25 @@ class Minimap {
     }
 
     private ReplacingMinimap() {
-        this.MINIMAP_PANEL.fixedoffsetenabled = true;
         this.MINIMAP_PANEL.SetFixedOffset(0, 0);
-        this.MINIMAP_PANEL.mapscale = 1;
+        this.MINIMAP_PANEL.fixedoffsetenabled = true;
+        this.MINIMAP_PANEL.mapscale = 1.7;
         this.MINIMAP_PANEL.SetFixedBackgroundTexturePosition(32768, 0, 0);
-        this.MINIMAP_PANEL.maptexture = "materials/overviews/wraith_trap_map_psd_29b7388b.vtex";
+        this.MINIMAP_PANEL.maptexture = "materials/overviews/wraith_trap_map_tga_1d8098dc.vtex";
     }
 
     private ReplacementDOTAHeroImage() {
         const playersID = Game.GetAllPlayerIDs();
-        playersID.forEach((playerID) => {
-            const data = Game.GetPlayerInfo(playerID);
-            const panel = this.MINIMAP_PANEL.Children()[data.player_id];
-            (panel as HeroImage)["heroid"] = data.player_selected_hero_id;
-            panel.style.height = "16px";
-            panel.style.width = "16px";
+        const panel = this.MINIMAP_PANEL.Children();
+        let counter = 0;
+        panel.forEach((panel) => {
+            if (panel.paneltype == "DOTAHeroImage") {
+                const data = Game.GetPlayerInfo(counter as PlayerID);
+                (panel as HeroImage)["heroid"] = data.player_selected_hero_id;
+                panel.style.height = "16px";
+                panel.style.width = "16px";
+                counter++;
+            }
         });
     }
 }

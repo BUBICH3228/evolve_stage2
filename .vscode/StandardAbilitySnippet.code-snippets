@@ -2,7 +2,7 @@
 	"Creates a new standard ability file": {
 		"prefix": ["StandardAbility", "BaseAbility"],
 		"body": [
-		  "import { BaseAbility , registerAbility } from \"../../../libraries/dota_ts_adapter\";",		  
+		  "import { BaseAbility , registerAbility } from \"../../libraries/dota_ts_adapter\";",		  
 		  "",
 		  "@registerAbility()",
 		  "export class ability_name_custom extends BaseAbility",

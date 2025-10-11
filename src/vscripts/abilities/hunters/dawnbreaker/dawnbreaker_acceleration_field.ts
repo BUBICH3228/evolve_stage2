@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
 import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapter";
-import { modifier_invulnerable_custom } from "../../../modifiers/modifier_invulnerable_custom";
 
 @registerAbility()
 export class dawnbreaker_acceleration_field extends BaseAbility {

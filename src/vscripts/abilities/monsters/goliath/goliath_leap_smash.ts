@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
 
 @registerAbility()
@@ -21,7 +22,7 @@ export class goliath_leap_smash extends BaseAbility {
             distance = maxDistance;
         }
 
-        const damage = (this.GetSpecialValueFor("damage_per_distance") * distance) / 100;
+        const damage = this.GetSpecialValueFor("damage");
 
         this.caster.AddNewModifier(this.caster, this, "modifier_generic_arc", {
             distance: distance,

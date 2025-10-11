@@ -15,55 +15,74 @@
     </snippets>
     <Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" hittest="false" >
-        <Panel id="HuntersClassContainer">
-                <Panel id="TitelHuntersClassPanel">
-                    <Label id="TrapperClassTitleText" class="TitleText Glow" text="#ui_hero_selection_trapper_class_title" />
-                    <Label class="VerticalSeparator" text="/"/>
-                    <Label id="AssaultClassTitleText" class="TitleText" text="#ui_hero_selection_assault_class_title" />
-                    <Label class="VerticalSeparator" text="/"/>
-                    <Label id="SupportClassTitleText" class="TitleText" text="#ui_hero_selection_suport_class_title" />
-                    <Label class="VerticalSeparator" text="/"/>
-                    <Label id="MedicClassTitleText" class="TitleText" text="#ui_hero_selection_medic_class_title" />
-                </Panel>
-                <Panel id="TitelMonsterClassPanel"  class="Hidden">
-                    <Label id="MonsterClassTitleText" class="TitleText Glow" text="#ui_hero_selection_monster_class_title" />
-                </Panel>
-                <Panel id="HeroPickerPanel"/>
-            </Panel>
-            <Panel id="HeroStatisticsContainer">
-                <Panel id="HeroModelPanel">
-                    <Panel id="HeroModelContainer"/>
-                    <Label id="HeroName" class="TitleText" text="" />
-                </Panel>
-                <Panel id="HeroSelectionButton">
-                    <Label id="HeroSelectionLabel" text="#ui_hero_selection_button"/>
-                </Panel>
-                <Panel id="HeroAbilityPanel"/>
-                <Panel id="TabsButtonsContainer">
-                    <Label id="HeroStats" class="TitleText Glow" text="#ui_hero_selection_hero_stat_tab_title" />
-                    <Label class="VerticalSeparator" text="/"/>
-                    <Label id="HeroDescription" class="TitleText" text="#ui_hero_selection_description_tab_title" />
-                </Panel>
-                <Panel id="HeroStatsPanel">
-                    <Panel id="HeroStats">
-                        <Panel id="HeroHealth">
-                            <DOTAScenePanel id="HeroHealthScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
-                            <Label id="healthLabel" class="Text health" text="0" />
-                        </Panel>
-                        <Panel id="HeroShild">
-                            <DOTAScenePanel id="HeroShildScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
-                            <Label id="shildLabel" class="Text shild" text="0" />
-                        </Panel>
+            <Panel class="LeftContainer">
+                <Panel id="HuntersClassPanel">
+                    <Panel id="TrapperClassContainer" class="HuntersContainer">
+                        <Label id="TrapperClassTitleText" class="TitleText" text="#ui_hero_selection_trapper_class_title" />
+                        <Panel id="TrapperHeroPickerPanel" class="HeroPickerPanel"/>
                     </Panel>
-                    <Panel id="DerivedStatsContainer"/>
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Panel id="AssaultClassContainer" class="HuntersContainer">
+                        <Label id="AssaultClassTitleText" class="TitleText" text="#ui_hero_selection_assault_class_title" />
+                        <Panel id="AssaultHeroPickerPanel" class="HeroPickerPanel"/>
+                    </Panel>
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Panel id="SupportClassContainer" class="HuntersContainer">
+                        <Label id="SupportClassTitleText" class="TitleText" text="#ui_hero_selection_Support_class_title" />
+                        <Panel id="SupportHeroPickerPanel" class="HeroPickerPanel"/>
+                    </Panel>
+                    <Label class="VerticalSeparator" text="/"/>
+                    <Panel id="MedicClassContainer" class="HuntersContainer">
+                        <Label id="MedicClassTitleText" class="TitleText" text="#ui_hero_selection_medic_class_title" />
+                        <Panel id="MedicHeroPickerPanel" class="HeroPickerPanel"/>
+                    </Panel>
                 </Panel>
-                <Panel id="HeroDescriptionPanel" class="Collapse">
-                    <Label id="HeroPersonality" class="Text" text="" />
+                <Panel id="MonsterClassPanel"  class="Collapse">
+                    <Panel id="MonsterClassContainer" class="HuntersContainer">
+                        <Label id="MonsterClassTitleText" class="TitleText Glow" text="#ui_hero_selection_monster_class_title" />
+                        <Panel id="MonsterHeroPickerPanel" class="HeroPickerPanel"/>
+                    </Panel>
                 </Panel>
             </Panel>
-            <Panel id="MoveContainer">
-                <Panel id="MovePanel" class="MoveDriver"/>
-                <Panel id="MoveBorder"/>
+            <Panel class="CenterContainer">
+                <Panel id="HeroStatisticsContainer">
+                    <Panel id="HeroModelPanel">
+                        <Panel id="HeroModelContainer"/>
+                        <Label id="HeroName" class="TitleText" text="" />
+                    </Panel>
+                    <Panel id="HeroSelectionButton">
+                        <Label id="HeroSelectionLabel" text="#ui_hero_selection_button"/>
+                    </Panel>
+                    <Panel id="HeroAbilityPanel"/>
+                    <Panel id="TabsButtonsContainer">
+                        <Label id="HeroStats" class="TitleText Glow" text="#ui_hero_selection_hero_stat_tab_title" />
+                    </Panel>
+                    <Panel id="HeroStatsPanel">
+                        <Panel id="HeroStats">
+                            <Panel id="HeroHealth">
+                                <DOTAScenePanel id="HeroHealthScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
+                                <Label id="healthLabel" class="Text health" text="0" />
+                            </Panel>
+                            <Panel id="HeroShild">
+                                <DOTAScenePanel id="HeroShildScene" map="scenes/hud/healthbarburner" camera="camera_1"/>
+                                <Label id="shildLabel" class="Text shild" text="0" />
+                            </Panel>
+                        </Panel>
+                        <Panel id="DerivedStatsContainer"/>
+                    </Panel>
+                </Panel>
+            </Panel>
+            <Panel class="RightContainer">
+                <Panel id="MoveContainer">
+                    <Panel id="MovePanel" class="MoveDriver"/>
+                    <Panel id="MoveBorder"/>
+                </Panel>
+                <Panel class="HeroDescriptionContainer">
+                    <Label id="HeroDescription" class="TitleText" text="#ui_hero_selection_description_tab_title" />
+                    <Panel id="HeroDescriptionPanel">
+                            <Label id="HeroPersonality" class="Text" text="" />
+                    </Panel>
+                </Panel>
             </Panel>
         </Panel>
     </Panel>

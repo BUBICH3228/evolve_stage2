@@ -44,30 +44,6 @@ export class DamageFilter {
 
         const unit = ability.GetOwnerEntity() as CDOTA_BaseNPC;
 
-        let spellCritModifier = undefined;
-
-        if (!unit) {
-            CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_PRE_TAKE_DAMAGE, eventData);
-            return true;
-        } else {
-            spellCritModifier = ModifierProperties.CalculateSpellCriticalStrikeMultiplier(unit, ability, event);
-        }
-
-        if (spellCritModifier != undefined) {
-            event.damage = event.damage * spellCritModifier;
-            const roundedDamage = math.floor(event.damage);
-            const digits = string.len(tostring(roundedDamage)) + 1;
-            const numParticle = ParticleManager.CreateParticle(
-                "particles/msg_fx/msg_crit.vpcf",
-                ParticleAttachment.ABSORIGIN_FOLLOW,
-                EntIndexToHScript(event.entindex_victim_const)
-            );
-            ParticleManager.SetParticleControl(numParticle, 1, Vector(0, roundedDamage, 4));
-            ParticleManager.SetParticleControl(numParticle, 2, Vector(2, digits, 0));
-            ParticleManager.SetParticleControl(numParticle, 3, Vector(204, 0, 255));
-            ParticleManager.DestroyAndReleaseParticle(numParticle, 2);
-        }
-
         if (unit.GetTeamNumber() == Settings.client.team_max_players[2]) {
             CustomEvents.RunEventByName(CustomEvent.CUSTOM_EVENT_ON_PRE_TAKE_DAMAGE, eventData);
             return true;

@@ -1,25 +1,32 @@
 "DOTAAbilities"
 {
-    "goliath_base_attack"
+    "goliath_smash_attack"
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "primal_beast_trample"
-        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_base_attack"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        "Maxlevel"                          "3"
+        "ScriptFile"                   	    "abilities/monsters/goliath/goliath_smash_attack"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_PHYSICAL"
+        "Maxlevel"                          "1"
+        
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastRange"                  "150"
+        "AbilityCastPoint"                  "0.3"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "9"
+        "AbilityCooldown"                   "3"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "quick_attack_damage"           "70 90 110"
-            "slow_attack_damage"            "225"
-            "quick_attack_rate"             "1.5"
-            "slow_attack_rate"              "3"
+            "radius"                        "150"
+            "attack_damage"                 "225"
         }
     }
 
@@ -60,6 +67,10 @@
 	        {
 	    	    "value"						"66 66 72"
 	        }
+            "damage_per_second"
+            {
+                "value"						"10 10 15"
+            }
             "angel"                         "15 20 25"
             "count_uses"                    "4 5 6"
         }
@@ -96,9 +107,9 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "damage_per_distance"                      
+            "damage"                      
 	        {
-	    	    "value"						"25"
+	    	    "value"						"437 437 485"
 	        }
             "radius"                        "150"
             "speed"                         "950"
@@ -194,8 +205,9 @@
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE  | DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
         "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
         "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-        "FightRecapLevel"               "1"
-        "MaxLevel"                      "1"
+        "FightRecapLevel"               "0"
+        "LevelsBetweenUpgrades"             "0"
+        "MaxLevel"                      "3"
         "IsGrantedByShard"          "0"
         "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
         "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -204,7 +216,7 @@
 
         // Time     
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "20"
+        "AbilityCooldown"               "16"
         "AbilityManaCost"               "0"
         "AbilityCastPoint"              "0.25"
         "AbilityCastRange"              "1800"
@@ -226,7 +238,7 @@
         {
             "base_damage"
             {
-                "value"                 "325"
+                "value"                 "378 378 321"
                 "CalculateSpellDamageTooltip"   "1"
             }
             "impact_radius"             
@@ -234,7 +246,7 @@
                 "value" "225"    
                 "affected_by_aoe_increase"  "1" 
             }
-            "min_range"               "550"
+            "min_range"               "250"
             "min_travel_time"                 "0.65"
             "max_travel_time"                  "1.75"
             "bounce_travel_time"                  "0.5"
@@ -245,6 +257,63 @@
                 "value"                     "185"
                 "affected_by_aoe_increase"  "1" 
             }
+        }
+    }
+
+    "primal_beast_onslaught"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+        "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
+        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+        "SpellDispellableType"          "SPELL_DISPELLABLE_YES"
+        "FightRecapLevel"               "0"
+        "LevelsBetweenUpgrades"             "0"
+        "MaxLevel"                      "3"
+
+        // Casting
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCastPoint"              "0"
+        "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_2"
+        "AbilityCastGestureSlot"        "DEFAULT"
+        //"AbilityCastRange"            "2000"
+
+        // Time     
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"               "16"
+
+        // Cost
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityManaCost"               "0"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "charge_speed"              "1200"
+            "chargeup_time"             "2.2"
+            "knockback_radius"          
+            {
+                "value" "190"
+            }
+            "max_distance"              "2000"
+            "knockback_distance"        
+            {
+                "value"         "200"
+            }
+            "knockback_damage"
+            {
+                "value"                 "303 344 380"
+            }
+            "knockback_duration"        "0.2"
+            "max_charge_time"           "1.7"
+            "turn_rate"                 "70"
+            "base_power"                "0.05"
+            "movement_turn_rate"        "50"
+            "stun_duration"             "1 1.3 1.7"
         }
     }
 }

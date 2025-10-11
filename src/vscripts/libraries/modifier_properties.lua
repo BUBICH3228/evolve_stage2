@@ -47,18 +47,16 @@ function ModifierProperties:OnModifierRemoved(modifier)
         ModifierProperties._modifierProperties[modifierProperty] = ModifierProperties._modifierProperties[modifierProperty] or {}
         ModifierProperties._modifierProperties[modifierProperty][parent] = ModifierProperties._modifierProperties[modifierProperty][parent] or {}
 
-        local isThereIsAtLeastOneModifierLeft = false
-
-        ArrayRemove(ModifierProperties._modifierProperties[modifierProperty][parent], function(t, i, j)
-            local modifierInTable = t[i]
-            if(modifierInTable ~= modifier) then
-                isThereIsAtLeastOneModifierLeft = true
-                return true
+        local modifiersTable = ModifierProperties._modifierProperties[modifierProperty][parent]
+        
+        for i = #modifiersTable, 1, -1 do
+            if modifiersTable[i] == modifier then
+                table.remove(modifiersTable, i)
+                break
             end
-            return false
-        end)
+        end
 
-        if(isThereIsAtLeastOneModifierLeft == false) then
+        if #modifiersTable == 0 then
             ModifierProperties._modifierProperties[modifierProperty][parent] = nil
         end
     end

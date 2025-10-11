@@ -24,7 +24,7 @@ export class goliath_fire_breath extends BaseAbility {
                 iUnitTargetFlags: this.GetAbilityTargetFlags(),
                 EffectName: "particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf",
                 fDistance: this.GetEffectiveCastRange(this.caster.GetAbsOrigin(), this.caster),
-                fStartRadius: 250,
+                fStartRadius: 50,
                 fEndRadius: math.abs(
                     ((math.pi * this.GetEffectiveCastRange(this.caster.GetAbsOrigin(), this.caster)) / 180) *
                         this.GetSpecialValueFor("angel")

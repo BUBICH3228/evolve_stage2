@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
 import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapter";
 import { modifier_invulnerable_custom } from "../../../modifiers/modifier_invulnerable_custom";

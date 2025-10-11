@@ -7,7 +7,7 @@
     </scripts>
     <Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel">
-            <DOTAHUDOverlayMap id="Map" maptexture= "" mapscale= "1" fixedoffsetenabled="true" SetFixedOffset = "0,0"/>
+            <DOTAHUDOverlayMap id="Map" maptexture= "" mapscale= "1" SetFixedOffset = "0,0"/>
         </Panel>    
     </Panel>
 </root>

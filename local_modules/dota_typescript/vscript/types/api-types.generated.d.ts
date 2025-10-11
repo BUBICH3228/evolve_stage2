@@ -291,6 +291,7 @@ declare interface ModifierGainedFilterEvent {
 
 declare interface ModifyExperienceFilterEvent {
     hero_entindex_const: EntityIndex;
+    source_entindex_const: EntityIndex;
     player_id_const: PlayerID;
     reason_const: EDOTA_ModifyXP_Reason;
     experience: number;

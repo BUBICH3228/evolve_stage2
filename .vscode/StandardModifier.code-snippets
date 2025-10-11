@@ -2,7 +2,7 @@
 	"Creates a new standard modifier file": {
 		"prefix": ["StandardModifier", "BaseModifier"],
 		"body": [
-		  "import { registerModifier , BaseModifier } from \"../../../libraries/dota_ts_adapter\";",
+		  "import { registerModifier , BaseModifier } from \"../../libraries/dota_ts_adapter\";",
 		  "",
 		  "@registerModifier()",
 		  "export class modifier_name extends BaseModifier",

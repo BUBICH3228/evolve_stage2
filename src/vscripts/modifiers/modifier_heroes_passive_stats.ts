@@ -1,20 +1,17 @@
-import { Settings } from "../data/game_settings";
+import { HeroesData } from "../common/data/heroes_data";
 import { registerModifier, BaseModifier } from "../libraries/dota_ts_adapter";
+import { modifier_incapacitated_state } from "./modifier_incapacitated_state";
 
 @registerModifier()
 export class modifier_heroes_passive_stats extends BaseModifier {
     // Modifier properties
     private caster: CDOTA_BaseNPC = this.GetCaster()!;
     private ability: CDOTABaseAbility = this.GetAbility()!;
-    private parent: CDOTA_BaseNPC = this.GetParent();
-    bonusSpellAmpPerAttribute = 0;
-    bonusMagicalResistancePerAttribute = 0;
-    bonusMoveSpeedPerAttribute = 0;
-    bonusMoveSpeedMax = 0;
-    maxManaDelimiter = 0;
-    spellAmplification = 0;
+    private parent: CDOTA_BaseNPC_Hero = this.GetParent() as CDOTA_BaseNPC_Hero;
     dotaNegativeMagicResistancePerInt = 0;
     bonusMagicalResistanceMax = 0;
+    bonusMana = 0;
+    bonusHealth = 0;
 
     // Modifier specials
 
@@ -36,12 +33,42 @@ export class modifier_heroes_passive_stats extends BaseModifier {
 
     DeclareFunctions(): modifierfunction[] {
         return [
-            ModifierFunction.MANACOST_PERCENTAGE_STACKING,
-            ModifierFunction.SPELL_AMPLIFY_PERCENTAGE,
-            ModifierFunction.MAGICAL_RESISTANCE_BONUS,
             ModifierFunction.MOVESPEED_BONUS_CONSTANT,
-            ModifierFunction.MAGICAL_RESISTANCE_DIRECT_MODIFICATION
+            ModifierFunction.MAGICAL_RESISTANCE_DIRECT_MODIFICATION,
+            ModifierFunction.MANA_BONUS,
+            ModifierFunction.HEALTH_BONUS,
+            ModifierFunction.ON_TAKEDAMAGE,
+            ModifierFunction.ON_DEATH,
+            ModifierFunction.INCOMING_DAMAGE_CONSTANT
         ];
+    }
+
+    GetModifierIncomingDamageConstant(event: ModifierAttackEvent): number {
+        if (IsClient()) {
+            return 0;
+        }
+
+        if (event.target != this.parent || event.target.GetTeam() != DotaTeam.GOODGUYS) {
+            return 0;
+        }
+
+        if (
+            event.damage >= event.target.GetHealth() + event.target.GetMana() &&
+            !event.target.FindModifierByName(modifier_incapacitated_state.name)
+        ) {
+            event.target.Heal(1200, undefined);
+            event.target.AddNewModifier(event.attacker, undefined, modifier_incapacitated_state.name, { duration: -1 });
+            return event.damage;
+        }
+        return 0;
+    }
+
+    GetModifierManaBonus(): number {
+        return this.bonusMana;
+    }
+
+    GetModifierHealthBonus(): number {
+        return this.bonusHealth;
     }
 
     GetModifierIgnoreMovespeedLimit(): 0 | 1 {
@@ -50,84 +77,178 @@ export class modifier_heroes_passive_stats extends BaseModifier {
 
     CheckState(): Partial<Record<modifierstate, boolean>> {
         return {
-            [ModifierState.NO_HEALTH_BAR]: true,
-            [ModifierState.NO_HEALTH_BAR_FOR_ENEMIES]: true,
-            [ModifierState.NO_HEALTH_BAR_FOR_OTHER_PLAYERS]: true
+            [ModifierState.NO_HEALTH_BAR]: this.parent.GetTeam() == DotaTeam.GOODGUYS ? false : true,
+            [ModifierState.NO_HEALTH_BAR_FOR_ENEMIES]: this.parent.GetTeam() == DotaTeam.GOODGUYS ? false : true,
+            [ModifierState.NO_HEALTH_BAR_FOR_OTHER_PLAYERS]: this.parent.GetTeam() == DotaTeam.GOODGUYS ? false : true
         };
     }
 
     override OnCreated(): void {
+        this.OnRefresh();
         if (!IsServer()) {
             return;
         }
+        ListenToGameEvent("dota_player_gained_level", (event) => this.OnPlayerGainedLevel(event), undefined);
         this.dotaNegativeMagicResistancePerInt =
             GameRules.GetGameModeEntity().GetCustomAttributeDerivedStatValue(AttributeDerivedStats.INTELLIGENCE_MAGIC_RESIST) * -1;
-        this.bonusSpellAmpPerAttribute = Settings.client.dota_attribute_spell_ampification_per_intelligence;
-        this.bonusMagicalResistancePerAttribute = Settings.client.dota_attribute_magic_resistance_per_strength;
-        this.bonusMoveSpeedPerAttribute = Settings.client.dota_attribute_move_speed_per_agility;
-        this.bonusMoveSpeedMax = Settings.client.dota_attribute_move_speed_max;
-        this.maxManaDelimiter = Settings.server.percentage_manacustom_increase_from_spell_amplify_delimiter * -1;
-        this.bonusMagicalResistanceMax = Settings.client.dota_attribute_magic_resistance_per_strength_max;
-        this.spellAmplification = this.parent.GetSpellAmplification(false);
+        this.parent.SetBaseHealthRegen(0);
+        this.parent.GetTeamNumber() != DotaTeam.GOODGUYS ? this.parent.SetBaseManaRegen(0) : this.parent.SetBaseManaRegen(40);
 
         this.SetHasCustomTransmitterData(true);
         this.StartIntervalThink(0.05);
     }
 
-    OnIntervalThink(): void {
-        this.spellAmplification = this.parent.GetSpellAmplification(false);
+    override OnRefresh(): void {
+        if (!IsServer()) {
+            return;
+        }
+        this.bonusMana =
+            (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS
+                ? 250
+                : (HeroesData["monster"]["npc_dota_hero_primal_beast"].stats.shild as number[])[this.parent.GetLevel() - 1]) - 75;
+        this.bonusHealth =
+            (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS
+                ? 1600
+                : (HeroesData["monster"]["npc_dota_hero_primal_beast"].stats.health as number[])[this.parent.GetLevel() - 1]) - 120;
+        this.parent.CalculateGenericBonuses();
         this.SendBuffRefreshToClients();
-        this.StartIntervalThink(1);
     }
 
-    GetModifierPercentageManacostStacking(kv: ModifierAbilityEvent): number {
-        if (!kv.ability || Settings.server.percentage_manacustom_exceptions[kv.ability.GetAbilityName()]) {
-            return 0;
+    private OnPlayerGainedLevel(kv: DotaPlayerGainedLevelEvent) {
+        const hero = PlayerResource.GetSelectedHeroEntity(kv.player_id);
+
+        if (hero == undefined) {
+            return;
         }
 
-        return this.maxManaDelimiter * this.spellAmplification;
+        if (hero == this.parent) this.OnRefresh();
     }
 
-    GetModifierSpellAmplify_Percentage(): number {
-        return (this.parent as CDOTA_BaseNPC_Hero).GetIntellect(false) * this.bonusSpellAmpPerAttribute;
+    OnTakeDamage(kv: ModifierInstanceEvent): void {
+        if (kv.unit != this.parent) {
+            return;
+        }
+
+        if (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS) {
+            this.parent.AddNewModifier(this.parent, this.ability, modifier_in_fight.name, { duration: 8 });
+        }
     }
 
-    GetModifierMagicalResistanceBonus(): number {
-        return math.min(
-            (this.parent as CDOTA_BaseNPC_Hero).GetStrength() * this.bonusMagicalResistancePerAttribute,
-            this.bonusMagicalResistanceMax
-        );
+    OnDeath(kv: ModifierInstanceEvent): void {
+        if (kv.unit.GetUnitName() == "npc_dota_evolution_points") {
+            return;
+        }
+
+        if (kv.unit == this.parent || kv.attacker != this.parent || kv.unit.IsRealHero() || kv.unit.IsWard()) {
+            return;
+        }
+
+        if (kv.attacker.GetTeam() != DotaTeam.BADGUYS) {
+            return;
+        }
+
+        const unit = CreateUnitByName("npc_dota_evolution_points", kv.unit.GetAbsOrigin(), true, undefined, undefined, DotaTeam.NOTEAM);
+
+        let restoreHealth = this.parent.GetMaxHealth() * 0.015;
+        let restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.035;
+
+        switch (kv.unit.GetLevel()) {
+            case 1:
+                unit.SetBaseMaxHealth(1);
+                unit.SetMaxHealth(1);
+                unit.SetHealth(1);
+                unit.SetDeathXP(1);
+                break;
+            case 2:
+                unit.SetBaseMaxHealth(2);
+                unit.SetMaxHealth(2);
+                unit.SetHealth(2);
+                unit.SetDeathXP(2);
+                restoreHealth = this.parent.GetMaxHealth() * 0.025;
+                restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.06;
+                break;
+            case 3:
+                unit.SetBaseMaxHealth(3);
+                unit.SetMaxHealth(3);
+                unit.SetHealth(3);
+                unit.SetDeathXP(3);
+                restoreHealth = this.parent.GetMaxHealth() * 0.055;
+                restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.11;
+                break;
+            case 4:
+                unit.SetBaseMaxHealth(4);
+                unit.SetMaxHealth(4);
+                unit.SetHealth(4);
+                unit.SetDeathXP(4);
+                restoreHealth = this.parent.GetMaxHealth() * 0.1;
+                restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.2;
+                break;
+        }
+
+        this.parent.Heal(restoreHealth, this.ability);
+        this.parent.SetMana(restoreMana);
+    }
+
+    OnIntervalThink(): void {
+        this.SendBuffRefreshToClients();
+        this.StartIntervalThink(1);
     }
 
     GetModifierMagicalResistanceDirectModification(): number {
         return this.dotaNegativeMagicResistancePerInt * (this.parent as CDOTA_BaseNPC_Hero).GetIntellect(false);
     }
 
-    GetModifierMoveSpeedBonus_Constant(): number {
-        return (this.parent as CDOTA_BaseNPC_Hero).GetAgility() * this.bonusMoveSpeedPerAttribute;
-    }
-
     AddCustomTransmitterData() {
         return {
-            bonusSpellAmpPerAttribute: this.bonusSpellAmpPerAttribute,
-            bonusMagicalResistancePerAttribute: this.bonusMagicalResistancePerAttribute,
-            bonusMagicalResistanceMax: this.bonusMagicalResistanceMax,
-            bonusMoveSpeedPerAttribute: this.bonusMoveSpeedPerAttribute,
-            bonusMoveSpeedMax: this.bonusMoveSpeedMax,
-            maxManaDelimiter: this.maxManaDelimiter,
-            spellAmplification: this.spellAmplification,
+            bonusMana: this.bonusMana,
+            bonusHealth: this.bonusHealth,
             dotaNegativeMagicResistancePerInt: this.dotaNegativeMagicResistancePerInt
         };
     }
 
     HandleCustomTransmitterData(data: ReturnType<this["AddCustomTransmitterData"]>): void {
-        (this.bonusSpellAmpPerAttribute = data.bonusSpellAmpPerAttribute),
-            (this.bonusMagicalResistancePerAttribute = data.bonusMagicalResistancePerAttribute),
-            (this.bonusMagicalResistanceMax = data.bonusMagicalResistanceMax),
-            (this.bonusMoveSpeedPerAttribute = data.bonusMoveSpeedPerAttribute),
-            (this.bonusMoveSpeedMax = data.bonusMoveSpeedMax),
-            (this.maxManaDelimiter = data.maxManaDelimiter),
-            (this.spellAmplification = data.spellAmplification),
-            (this.dotaNegativeMagicResistancePerInt = data.dotaNegativeMagicResistancePerInt);
+        this.bonusMana = data.bonusMana;
+        this.bonusHealth = data.bonusHealth;
+        this.dotaNegativeMagicResistancePerInt = data.dotaNegativeMagicResistancePerInt;
+    }
+}
+
+@registerModifier()
+export class modifier_in_fight extends BaseModifier {
+    // Modifier properties
+    private caster: CDOTA_BaseNPC = this.GetCaster()!;
+    private ability: CDOTABaseAbility = this.GetAbility()!;
+    private parent: CDOTA_BaseNPC = this.GetParent();
+
+    // Modifier specials
+
+    override IsHidden() {
+        return true;
+    }
+    override IsDebuff() {
+        return false;
+    }
+    override IsPurgable() {
+        return false;
+    }
+    override IsPurgeException() {
+        return false;
+    }
+    override RemoveOnDeath() {
+        return true;
+    }
+
+    override OnCreated(): void {
+        if (!IsServer()) {
+            return;
+        }
+        this.parent.SetBaseManaRegen(0);
+    }
+
+    OnDestroy(): void {
+        if (!IsServer()) {
+            return;
+        }
+        this.parent.SetBaseManaRegen(40);
     }
 }

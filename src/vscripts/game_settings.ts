@@ -96,6 +96,7 @@ export class GameSettings {
             Settings.client.dota_attribute_mana_regeneration_per_intelligence
         );
         gme.SetCustomAttributeDerivedStatValue(AttributeDerivedStats.ALL_DAMAGE, Settings.client.dota_attribute_attack_damage_per_all);
+        gme.SetInnateMeleeDamageBlockAmount(0);
         GameRules.LockCustomGameSetupTeamAssignment(Settings.server.gamesetup_lock);
         GameRules.SetCustomGameSetupAutoLaunchDelay(Settings.server.gamesetup_time);
         GameRules.SetHeroRespawnEnabled(Settings.server.enable_hero_respawn);
@@ -117,6 +118,11 @@ export class GameSettings {
         GameRules.SetStartingGold(Settings.server.starting_gold);
         GameRules.GetGameModeEntity().SetFreeCourierModeEnabled(false);
         GameRules.SetFilterMoreGold(true);
+        GameRules.SetUseCustomHeroXPValues(true);
+
+        SetTeamCustomHealthbarColor(DotaTeam.NOTEAM, 66, 170, 255);
+        SetTeamCustomHealthbarColor(DotaTeam.NEUTRALS, 114, 125, 42);
+
         SendToServerConsole("tv_delay " + Settings.server.game_tv_delay);
         for (const [teamNumber, value] of Object.entries(Settings.client.team_max_players)) {
             GameRules.SetCustomGameTeamMaxPlayers(teamNumber, Number(value));

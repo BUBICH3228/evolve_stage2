@@ -12,7 +12,7 @@
 		"Ability3"	"rattletrap_scaner"
 		"Ability4"	"rattletrap_jetpack"
 		"Ability5"	"planetary_shield"
-		"Ability6"	"generic_hidden"
+		"Ability6"	"resurrection_custom"
 		"Ability7"	"generic_hidden"
 		"Ability8"	"generic_hidden"
 		"Ability9"	"generic_hidden"

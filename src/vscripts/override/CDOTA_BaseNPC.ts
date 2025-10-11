@@ -11,8 +11,8 @@ declare global {
             icon: string,
             castRange: number,
             callbackStart?: () => void,
-            callbackThink?: (interval: number) => void,
-            callbackFinish?: (interrupted: boolean) => void
+            callbackThink?: (this: void, interval: number) => void,
+            callbackFinish?: (this: void, interrupted: boolean) => void
         ): void;
         IsBoss(): boolean;
         GetCountRelics(): number;
