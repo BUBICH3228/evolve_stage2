@@ -51,6 +51,8 @@
 		"AttributeBaseAgility"	    "0"
 		"AttributeAgilityGain"	    "0"
 
+		"MovementSpeed"				"400"
+
 		"HasInventory"				"1"
 
 		"Creature"

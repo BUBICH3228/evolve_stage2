@@ -1,0 +1,157 @@
+.Root {
+    width: 100%;
+    height: 100%;
+}
+
+#MainPanel {
+    width: 100%;
+    height: 100%;
+    align: right center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.89);
+    z-index: 200;
+}
+
+#Time {
+    color: rgb(133, 133, 133);
+    align:  center center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-right: 950px;
+}
+
+#CountPointsLable {
+    color: rgb(133, 133, 133);
+    align:  right top;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 200px;
+    margin-right: 250px;
+}
+
+.Learned {
+    background-image: url("file://{images}/custom_game/ui/monster_upgrade_abilities/level1.png");
+    background-size: cover;
+}
+
+.UnLearned {
+    background-image: url("file://{images}/custom_game/ui/monster_upgrade_abilities/levelCounter.png");
+    background-size: cover;
+    wash-color: rgba(102, 102, 102, 0.781);
+}
+
+.Collapse
+{
+    visibility: collapse;
+}
+
+#MoveContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.MoveDriver {
+    width: 100%;
+    height: 100%;
+    align:  center center;
+    z-index: 1;
+}
+
+#HeroAbilityPanel {
+    width: fit-children;
+    max-width: 910px;
+    height: fit-children;
+    flow-children: right-wrap;
+    horizontal-align:  right;
+    vertical-align: center;
+}
+
+#AbilityContainer {
+    width: 450px;
+    height: 256px;
+    margin: 2px;
+    border: 1px solid rgb(87, 87, 87);
+}
+#AbilityContainer:hover {
+    border: 3px solid #b1d76b;
+    box-shadow: 0 0 5px #b1d76b,  /* внутреннее свечение */
+                0 0 20px #b1d76b,  /* среднее свечение */
+                0 0 30px #b1d76b;  /* внешнее свечение */
+    
+    transition-property: box-shadow;
+    transition-duration: 0.3s;
+}
+
+#AbilityButton {
+    width: 96px;
+    height: 96px;
+    background-image: url("s2r://panorama/images/hud/reborn/active_ability_border_psd.vtex");
+    background-size: cover;
+    z-index: 2;
+}
+
+#AbilityImage {
+    width: 128px;
+    height: 128px;
+    margin: 3px;
+    saturation: 0;
+	wash-color: #b1d76b;
+    brightness: 1.4;
+}
+
+#AbilityPointsContainer {
+    width: 140px;
+    height: fit-children;
+    vertical-align: center;
+    horizontal-align: center;
+    margin-right: 20px;
+}
+
+#AbilityContainer:hover #AbilityPointsContainer {
+    horizontal-align: right;
+}
+
+#AbilityPointsPanel {
+    width: 47px;
+    height: 39px;
+    z-index: 2;
+}
+.Level1 {
+     saturation: 0;
+	wash-color: #9a0b05;
+    brightness: 1.6;
+}
+
+.Level2 {
+     saturation: 0;
+	wash-color: #bc3a11;
+    brightness: 1.8;
+}
+
+.Level3 {
+     saturation: 0;
+	wash-color: #cf751e;
+    brightness: 2;
+}
+
+#LearnButton {
+    width:100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.815);
+    z-index: 2;
+    vertical-align: bottom;
+
+}
+
+#LabelLearnButton {
+    color: rgba(141, 141, 141, 0.781);
+    align:  left center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+    visibility: collapse;
+}
+
+#AbilityContainer:hover #LabelLearnButton {
+    visibility: visible;
+}

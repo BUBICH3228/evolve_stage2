@@ -16,23 +16,29 @@ export class planetary_shield extends BaseAbility {
         this.SetLevel(1);
     }
 
-    OnChannelFinish(interrupted: boolean): void {
-        if (!this.IsCooldownReady()) {
-            return;
-        }
-        if (interrupted == true) {
-            this.EndCooldown();
-            return;
-        }
-        this.shildSpawnPosition = this.caster.GetAbsOrigin();
+    OnSpellStart(): void {
         const heroes = HeroList.GetAllHeroes();
-
         heroes.forEach((hero) => {
             const ability = hero.FindAbilityByName(planetary_shield.name);
             if (ability != undefined) {
                 ability.UseResources(false, false, false, true);
             }
         });
+    }
+
+    OnChannelFinish(interrupted: boolean): void {
+        if (interrupted == true) {
+            const heroes = HeroList.GetAllHeroes();
+
+            heroes.forEach((hero) => {
+                const ability = hero.FindAbilityByName(planetary_shield.name);
+                if (ability != undefined) {
+                    ability.EndCooldown();
+                }
+            });
+            return;
+        }
+        this.shildSpawnPosition = this.caster.GetAbsOrigin();
         CreateModifierThinker(
             this.caster,
             this,

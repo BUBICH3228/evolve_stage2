@@ -81,7 +81,7 @@
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "goliath_leap_smash"
         "ScriptFile"                   	    "abilities/monsters/goliath/goliath_leap_smash"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_OVERSHOOT"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_OVERSHOOT | | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_AOE"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
@@ -97,7 +97,7 @@
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "8"
+        "AbilityCooldown"                   "12 10 8"
 
         // Cost
         //-------------------------------------------------------------------------------------------------------------
@@ -109,9 +109,9 @@
         {
             "damage"                      
 	        {
-	    	    "value"						"437 437 485"
+	    	    "value"						"237 237 285"
 	        }
-            "radius"                        "150"
+            "radius"                        "300"
             "speed"                         "950"
             "max_distance"                  "1000 1300 1500"
         }
@@ -238,7 +238,7 @@
         {
             "base_damage"
             {
-                "value"                 "378 378 321"
+                "value"                 "378 378 421"
                 "CalculateSpellDamageTooltip"   "1"
             }
             "impact_radius"             
@@ -294,7 +294,7 @@
         "AbilityValues"
         {
             "charge_speed"              "1200"
-            "chargeup_time"             "2.2"
+            "chargeup_time"             "1.7"
             "knockback_radius"          
             {
                 "value" "190"

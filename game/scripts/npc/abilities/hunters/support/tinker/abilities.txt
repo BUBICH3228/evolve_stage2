@@ -13,14 +13,14 @@
         // Time   
         //-------------------------------------------------------------------------------------------------------------
         "AbilityCooldown"                   "25"
-        "AbilityCastRange"                  "200"
+        "AbilityCastRange"                  "500"
         "AbilityCastPoint"                  "0.1"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "shield_capacity"               "570"
+            "shield_capacity"               "370"
         }
     }
 
@@ -49,11 +49,11 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "min_damage"                    "275"
-            "max_damage"                    "400"
-            "count_explosions"              "11"
+            "min_damage"                    "225"
+            "max_damage"                    "350"
+            "count_explosions"              "13"
             "radius_explosions"             "200"
-            "radius"                        "600"
+            "radius"                        "400"
         }
     }
 
@@ -77,8 +77,8 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "other_shield_capacity"         "500"
-            "self_shield_capacity"          "450"
+            "other_shield_capacity"         "400"
+            "self_shield_capacity"          "350"
             "decay_rate"                    "35"
         }
     }

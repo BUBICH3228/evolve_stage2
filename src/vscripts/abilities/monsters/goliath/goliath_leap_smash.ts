@@ -11,6 +11,10 @@ export class goliath_leap_smash extends BaseAbility {
         PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_brewmaster/brewmaster_pulverize.vpcf", context);
     }
 
+    GetAOERadius(): number {
+        return this.GetSpecialValueFor("radius");
+    }
+
     override OnSpellStart(): void {
         let distance = CalculateDistance(this.caster.GetAbsOrigin(), this.GetCursorPosition());
 
@@ -45,6 +49,7 @@ export class goliath_leap_smash extends BaseAbility {
             );
 
             ParticleManager.SetParticleControl(pfx, 0, this.caster.GetAbsOrigin());
+            ParticleManager.SetParticleControl(pfx, 1, Vector(radius, 0, 0));
             ParticleManager.DestroyAndReleaseParticle(pfx);
 
             pfx = ParticleManager.CreateParticle(

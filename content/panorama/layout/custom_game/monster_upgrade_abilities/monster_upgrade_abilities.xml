@@ -1,0 +1,16 @@
+<root>
+    <styles>
+        <include src="file://{resources}/styles/custom_game/monster_upgrade_abilities/monster_upgrade_abilities.css"/>
+    </styles>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/monster_upgrade_abilities/monster_upgrade_abilities.js"/>
+    </scripts>
+    <Panel class="Root" hittest="false" hittestchildren="true">
+        
+        <Panel id="MainPanel" class="Collapse" hittest="false">
+        <Label id="Time" text="" />
+            <Label id="CountPointsLable" text="#monster_upgrade_abilities_count_points" />
+            <Panel id="HeroAbilityPanel"/>
+        </Panel>
+    </Panel>
+</root>

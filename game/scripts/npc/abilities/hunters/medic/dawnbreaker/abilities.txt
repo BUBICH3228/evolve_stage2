@@ -67,15 +67,15 @@
             }
             "heal"
             {
-                "value"                     "125"
+                "value"                     "300"
             }
             "heal_self"
             {
-                "value"                     "60"
+                "value"                     "250"
             }
             "heal_incapped"
             {
-                "value"                     "190"
+                "value"                     "150"
             }
             "speed"
             {

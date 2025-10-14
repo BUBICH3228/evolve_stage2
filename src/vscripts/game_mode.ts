@@ -98,6 +98,12 @@ export class GameMode {
                 }
             }
         } else {
+            for (let i = 0; i < hero.GetAbilityCount(); i++) {
+                const ability = hero.GetAbilityByIndex(i);
+                if (ability != undefined) {
+                    ability.UpgradeAbility(false);
+                }
+            }
             hero.AddNewModifier(hero, undefined, "modifier_animal_instinct", { duration: -1 });
         }
 
@@ -105,7 +111,7 @@ export class GameMode {
 
         const SteamID = tostring(PlayerResource.GetSteamID(hero.GetPlayerOwnerID()));
         HTTPRequests.CheckThePlayerDonate(SteamID, hero);
-        hero.SetAbilityPoints(3);
+        //hero.SetAbilityPoints(4);
         (hero as GameModePlayer)._onPlayerHeroChangedFirstTime = true;
     }
 
@@ -196,7 +202,14 @@ export class GameMode {
             return;
         }
 
-        hero.SetAbilityPoints(hero.GetAbilityPoints() + 3);
+        for (let i = 0; i < hero.GetAbilityCount(); i++) {
+            const ability = hero.GetAbilityByIndex(i);
+            if (ability != undefined) {
+                ability.UpgradeAbility(false);
+            }
+        }
+
+        hero.SetAbilityPoints(0);
     }
 
     private OnGameRulesStateChange() {

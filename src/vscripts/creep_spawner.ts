@@ -50,9 +50,9 @@ export class CreepSpawner {
         if (creepLevel >= 1 && creepLevel <= 4) {
             this.currentCreepCounts[creepLevel - 1]--;
 
-            Timers.CreateTimer(0.5, () => {
-                this.CheckAndSpawnCreeps();
-            });
+            //Timers.CreateTimer(0.5, () => {
+            //    this.CheckAndSpawnCreeps();
+            //});
         }
     }
 

@@ -196,7 +196,6 @@ export class modifier_power_telecommunication_crystal extends BaseModifier {
         if (kv.damage_category != DamageCategory.ATTACK) {
             return;
         }
-        print(this.parent.GetHealth() - (kv.attacker.GetLevel() - 1));
 
         this.parent.SetHealth(this.parent.GetHealth() - (kv.attacker.GetLevel() - 1));
         if (this.parent.GetHealth() <= 0) {

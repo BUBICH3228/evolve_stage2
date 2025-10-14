@@ -35,6 +35,14 @@ export class TeamSelection {
 
         if (newState == GameState.PRE_GAME) {
             this.SpawnMap("wraith_trap_map");
+            PauseGame(true);
+            Timers.CreateTimer("Uni1", {
+                useGameTime: false,
+                endTime: 5,
+                callback: () => {
+                    PauseGame(false);
+                }
+            });
             //Timers.CreateTimer(120, () => {
             //    CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: false });
             //});
@@ -45,6 +53,19 @@ export class TeamSelection {
         }
 
         if (newState == GameState.GAME_IN_PROGRESS) {
+            const heroes = HeroList.GetAllHeroes();
+            heroes.forEach((hero) => {
+                if (hero.GetTeam() == DotaTeam.GOODGUYS) {
+                    const entities = Entities.FindAllByName("spawn_hunters");
+                    FindClearSpaceForUnit(hero, entities[0].GetAbsOrigin(), true);
+                } else {
+                    const entities = Entities.FindAllByName("spawn_monster");
+                    FindClearSpaceForUnit(hero, entities[RandomInt(0, entities.length)].GetAbsOrigin(), true);
+                }
+                hero.AddNewModifier(hero, undefined, "modifier_phased", { duration: 0.01 });
+                hero.Interrupt();
+                CenterCameraOnUnit(hero.GetPlayerOwnerID(), hero);
+            });
             CustomGameEventManager.Send_ServerToAllClients("change_hero", {} as never);
             Timers.CreateTimer(1500, () => {
                 GameRules.SetGameWinner(DotaTeam.GOODGUYS);
@@ -108,8 +129,8 @@ export class TeamSelection {
     private SetTeam(PlayerID: PlayerID, DotaTeam: DotaTeam) {
         const player = PlayerResource.GetPlayer(PlayerID);
         const hero = PlayerResource.GetSelectedHeroEntity(PlayerID);
-        player?.SetTeam(DotaTeam);
-        hero?.SetTeam(DotaTeam);
+        player?.SetTeam(2);
+        hero?.SetTeam(2);
     }
 
     private SelectionHero(data: HeroSelectionEvent) {
@@ -169,21 +190,7 @@ export class TeamSelection {
                 return true;
             },
             () => {
-                Timers.CreateTimer(15, () => {
-                    const heroes = HeroList.GetAllHeroes();
-                    heroes.forEach((hero) => {
-                        if (hero.GetTeam() == DotaTeam.GOODGUYS) {
-                            const entities = Entities.FindAllByName("spawn_hunters");
-                            FindClearSpaceForUnit(hero, entities[0].GetAbsOrigin(), true);
-                        } else {
-                            const entities = Entities.FindAllByName("spawn_monster");
-                            FindClearSpaceForUnit(hero, entities[RandomInt(0, entities.length)].GetAbsOrigin(), true);
-                        }
-                        hero.AddNewModifier(hero, undefined, "modifier_phased", { duration: 0.01 });
-                        hero.Interrupt();
-                        CenterCameraOnUnit(hero.GetPlayerOwnerID(), hero);
-                    });
-                });
+                return;
             },
             undefined
         );

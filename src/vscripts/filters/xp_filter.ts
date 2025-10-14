@@ -12,7 +12,8 @@ export class XPFilter {
         };
 
         if (eventData.victim.IsRealHero()) {
-            return false;
+            event.experience = 4;
+            return true;
         }
 
         if (eventData.attacker.GetTeam() == DotaTeam.GOODGUYS) {

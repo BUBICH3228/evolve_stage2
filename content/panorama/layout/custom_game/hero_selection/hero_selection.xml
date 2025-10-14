@@ -12,6 +12,11 @@
                 <Label id="AttributeNumbers" text=""/>
             </Panel>
         </snippet>
+		<snippet name="PlayerInfoSnippet">
+            <Panel id="PlayerPanel">
+                <DOTAAvatarImage id="Avatar"/>
+            </Panel>
+		</snippet>
     </snippets>
     <Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" hittest="false" >

@@ -229,7 +229,7 @@
 
         // Bounds
         //----------------------------------------------------------------
-        "BoundsHullName"                "DOTA_HULL_SIZE_HUGE"           // Hull type used for navigation/locomotion.
+        "BoundsHullName"                "DOTA_HULL_SIZE_SMALL"           // Hull type used for navigation/locomotion.
         "HealthBarOffset"               "120"
 
         // Bounty

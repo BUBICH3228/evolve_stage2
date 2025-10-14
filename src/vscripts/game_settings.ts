@@ -120,7 +120,7 @@ export class GameSettings {
         GameRules.SetFilterMoreGold(true);
         GameRules.SetUseCustomHeroXPValues(true);
 
-        SetTeamCustomHealthbarColor(DotaTeam.NOTEAM, 66, 170, 255);
+        SetTeamCustomHealthbarColor(DotaTeam.CUSTOM_5, 66, 170, 255);
         SetTeamCustomHealthbarColor(DotaTeam.NEUTRALS, 114, 125, 42);
 
         SendToServerConsole("tv_delay " + Settings.server.game_tv_delay);

@@ -39,7 +39,8 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             ModifierFunction.HEALTH_BONUS,
             ModifierFunction.ON_TAKEDAMAGE,
             ModifierFunction.ON_DEATH,
-            ModifierFunction.INCOMING_DAMAGE_CONSTANT
+            ModifierFunction.INCOMING_DAMAGE_CONSTANT,
+            ModifierFunction.MIN_HEALTH
         ];
     }
 
@@ -61,6 +62,14 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             return event.damage;
         }
         return 0;
+    }
+
+    GetMinHealth(): number {
+        return this.parent.GetTeam() == DotaTeam.GOODGUYS
+            ? this.parent.FindModifierByName(modifier_incapacitated_state.name) == undefined
+                ? 1
+                : -1
+            : -1;
     }
 
     GetModifierManaBonus(): number {
@@ -93,7 +102,9 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             GameRules.GetGameModeEntity().GetCustomAttributeDerivedStatValue(AttributeDerivedStats.INTELLIGENCE_MAGIC_RESIST) * -1;
         this.parent.SetBaseHealthRegen(0);
         this.parent.GetTeamNumber() != DotaTeam.GOODGUYS ? this.parent.SetBaseManaRegen(0) : this.parent.SetBaseManaRegen(40);
-
+        if (this.parent.GetTeam() == DotaTeam.BADGUYS) {
+            this.parent.SetModelScale(this.parent.GetModelScale() + 0.3);
+        }
         this.SetHasCustomTransmitterData(true);
         this.StartIntervalThink(0.05);
     }
@@ -122,6 +133,12 @@ export class modifier_heroes_passive_stats extends BaseModifier {
         }
 
         if (hero == this.parent) this.OnRefresh();
+        if (!IsServer()) {
+            return;
+        }
+        if (this.parent.GetTeam() == DotaTeam.BADGUYS) {
+            this.parent.SetModelScale(this.parent.GetModelScale() + 0.3);
+        }
     }
 
     OnTakeDamage(kv: ModifierInstanceEvent): void {
@@ -147,7 +164,7 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             return;
         }
 
-        const unit = CreateUnitByName("npc_dota_evolution_points", kv.unit.GetAbsOrigin(), true, undefined, undefined, DotaTeam.NOTEAM);
+        const unit = CreateUnitByName("npc_dota_evolution_points", kv.unit.GetAbsOrigin(), true, undefined, undefined, DotaTeam.CUSTOM_5);
 
         let restoreHealth = this.parent.GetMaxHealth() * 0.015;
         let restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.035;

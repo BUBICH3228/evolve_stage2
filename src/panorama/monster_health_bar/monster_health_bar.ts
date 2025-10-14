@@ -8,6 +8,7 @@ export class MonsterHealthBar {
     HEALTH_PROGRESS_MID = $("#HPBarMID");
     HEALTH_PROGRESS_BAR_LABEL = $("#HPBarCount") as LabelPanel;
     EVOLUTION_PANEL = $("#EvolutionPanel");
+    EVOLUTION_LABLE = $("#EvolutionPoints");
     constructor() {
         $.Schedule(2, () => {
             this.CreateOrUpdateHealthPanel();
@@ -45,6 +46,11 @@ export class MonsterHealthBar {
             const r = Math.floor(255 * (1 - normalized)) || 0;
             const g = Math.floor(255 * normalized) || 0;
             this.EVOLUTION_PANEL.style.washColor = `rgb(${r}, ${g}, 0)`;
+            if (playerID == Game.GetLocalPlayerID()) {
+                this.EVOLUTION_LABLE.text = currentXP + " / " + neededXP;
+            } else {
+                this.EVOLUTION_LABLE.SetHasClass("Hidden", true);
+            }
         }
 
         $.Schedule(0.1, () => {

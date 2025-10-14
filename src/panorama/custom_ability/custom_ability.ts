@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { HeroesData } from "../common/data/heroes_data";
+
 // eslint-disable-next-line no-var
 var HudButtons = GameUI.CustomUIConfig().HudButtons;
 // eslint-disable-next-line no-var
@@ -30,10 +33,19 @@ class CustomAbility {
                 this.CreateAbilities();
             });
         });
+        this.CreateAbilities();
         this.UpdateAbilitylevel();
     }
 
     private CreateAbilities() {
+        const Player = Players.GetLocalPlayerPortraitUnit();
+        if (!Entities.IsHero(Player)) {
+            $.Schedule(0.5, () => {
+                this.CreateAbilities();
+            });
+            return;
+        }
+        this.playerID = Entities.GetPlayerOwnerID(Player);
         if (this.ABILITY_CONTAINER.BHasClass("Hidden")) this.ABILITY_CONTAINER.SetHasClass("Hidden", false);
         this.ABILITY_CONTAINER.RemoveAndDeleteChildren();
         this.ABILITY_CONTAINER_DATA.abilityCooldownPanel = [];
@@ -47,9 +59,14 @@ class CustomAbility {
             const panel = $.CreatePanel("Panel", this.ABILITY_CONTAINER, "AbilityPanel");
             $.CreatePanel("Panel", panel, "NotLevel");
             const ability = $.CreatePanel("DOTAAbilityImage", panel, "Ability");
+            ability.AddClass(this.FindHeroClass(Players.GetPlayerSelectedHero(this.playerID)));
             ability.abilityname = abilityName;
             panel.SetPanelEvent("onactivate", () => {
-                Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, false);
+                if (GameUI.IsAltDown() == true) {
+                    Abilities.PingAbility(AbilityEntityIndex);
+                } else {
+                    Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, false);
+                }
             });
 
             panel.SetPanelEvent("onmouseover", () => {
@@ -79,6 +96,17 @@ class CustomAbility {
     }
 
     private UpdateAbilitylevel() {
+        const Player = Players.GetLocalPlayerPortraitUnit();
+        if (!Entities.IsHero(Player)) {
+            $.Schedule(0.5, () => {
+                this.UpdateAbilitylevel();
+            });
+            return;
+        }
+        const playerID = Entities.GetPlayerOwnerID(Player);
+        if (playerID != this.playerID && Players.GetTeam(this.playerID) == Players.GetTeam(playerID)) {
+            this.CreateAbilities();
+        }
         if (
             this.ABILITY_CONTAINER_DATA.abilityLevelPanel.length +
                 this.ABILITY_CONTAINER_DATA.abilityCooldownPanel.length +
@@ -164,6 +192,20 @@ class CustomAbility {
         $.Schedule(0.1, () => {
             this.UpdateAbilitylevel();
         });
+    }
+
+    private FindHeroClass(heroName: string): string {
+        const classes = Object.keys(HeroesData) as (keyof typeof HeroesData)[];
+
+        for (const className of classes) {
+            const heroesInClass = HeroesData[className];
+
+            if (heroName in heroesInClass) {
+                return String(className);
+            }
+        }
+
+        return "";
     }
 }
 

@@ -1,10 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { HeroesData, StatsData, AboutHeroData, AbilitiesData } from "../common/data/heroes_data";
 // eslint-disable-next-line no-var
-var HudButtons = GameUI.CustomUIConfig().HudButtons;
-// eslint-disable-next-line no-var
-var Constants = GameUI.CustomUIConfig().Constants;
-// eslint-disable-next-line no-var
 var DotaHUD = GameUI.CustomUIConfig().DotaHUD;
 class HeroSelection {
     OLD_HERO_NAME = "";
@@ -15,6 +11,7 @@ class HeroSelection {
     HERO_STATS_PANEL = $("#HeroStatsPanel");
     HERO_SELECTION_BUTTON = $("#HeroSelectionButton");
     HEROES_TAKEN: string[] = [];
+    HEROES_TAKEN_DATA: { heroName: string; PlayerID: PlayerID }[] = [];
     HERO_PIKER_PANEL_DATA = [
         {
             class: "trapper",
@@ -47,8 +44,9 @@ class HeroSelection {
         this.SetupHeroesClassButton(true);
         this.FixUIDOTAInterface();
 
-        GameEvents.Subscribe("hero_selection_event", (event) => {
-            this.HEROES_TAKEN.push(event.HeroName);
+        GameEvents.Subscribe("hero_selection_client_event", (event) => {
+            this.HEROES_TAKEN.push(event.HeroClass);
+            this.HEROES_TAKEN_DATA.push({ heroName: event.HeroName, PlayerID: event.PlayerID as PlayerID });
             this.SetupHeroesClassButton(false);
         });
     }
@@ -96,16 +94,27 @@ class HeroSelection {
         this.HERO_PIKER_PANEL_DATA.forEach((data) => {
             data.heroesPanel.RemoveAndDeleteChildren();
             for (const [heroName, value] of Object.entries(HeroesData[data.class])) {
-                const panel = $.CreatePanel("DOTAHeroImage", data.heroesPanel, "HeroImage");
+                const heroImageContainer = $.CreatePanel("Panel", data.heroesPanel, "HeroImageContainer");
+                const panel = $.CreatePanel("DOTAHeroImage", heroImageContainer, "HeroImage");
                 panel.heroname = heroName;
                 panel.heroimagestyle = "portrait";
                 panel.SetPanelEvent("onactivate", () => {
                     this.SetupHeroImageButton(heroName, value.abilities, value.stats, value.aboutHero);
-                    this.SetupHeroSelectionButton(heroName);
+                    this.SetupHeroSelectionButton(heroName, data.class);
                     Game.EmitSound("Item.PickUpGemShop");
                 });
-                if (this.HEROES_TAKEN.includes(heroName)) {
+                if (this.HEROES_TAKEN.includes(data.class)) {
                     panel.SetHasClass("Block", true);
+                    const findData = this.HEROES_TAKEN_DATA.find((hero) => hero.heroName === heroName);
+                    if (findData != undefined) {
+                        if (findData.heroName == heroName) {
+                            const avatar = $.CreatePanel("Panel", heroImageContainer, "PlayerInfoPanel");
+                            avatar.BLoadLayoutSnippet("PlayerInfoSnippet");
+
+                            const data = Game.GetPlayerInfo(findData.PlayerID);
+                            (avatar.FindChildTraverse("Avatar") as AvatarImage).steamid = data.player_steamid;
+                        }
+                    }
                 }
             }
             Game.EmitSound("Item.PickUpGemShop");
@@ -124,7 +133,7 @@ class HeroSelection {
         }
 
         const [heroName, value] = Object.entries(HeroesData[this.HERO_PIKER_PANEL_DATA[index].class])[0];
-        this.SetupHeroSelectionButton(heroName);
+        this.SetupHeroSelectionButton(heroName, this.HERO_PIKER_PANEL_DATA[index].class);
         this.SetupHeroImageButton(heroName, value.abilities, value.stats, value.aboutHero);
         this.CreateStatsPanel(value.stats);
     }
@@ -137,12 +146,13 @@ class HeroSelection {
         this.CreateHeroeAboutPanel(aboutHero);
     }
 
-    private SetupHeroSelectionButton(heroName: string) {
+    private SetupHeroSelectionButton(heroName: string, HeroClass: string) {
         this.HERO_SELECTION_BUTTON.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
         this.HERO_SELECTION_BUTTON.SetPanelEvent("onactivate", () => {
-            if (!this.HEROES_TAKEN.includes(heroName)) {
+            if (!this.HEROES_TAKEN.includes(HeroClass)) {
                 GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName, PlayerID: Game.GetLocalPlayerID() });
-                GameEvents.SendCustomGameEventToAllClients("hero_selection_event", {
+                GameEvents.SendCustomGameEventToAllClients("hero_selection_client_event", {
+                    HeroClass: HeroClass,
                     HeroName: heroName,
                     PlayerID: Game.GetLocalPlayerID()
                 });

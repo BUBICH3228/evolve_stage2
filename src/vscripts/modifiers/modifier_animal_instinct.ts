@@ -51,8 +51,8 @@ export class modifier_animal_instinct extends BaseModifier {
         return FrameTime();
     }
 
-    OnCreated(params: object): void {
-        if (this.parent.GetTeam() == DotaTeam.GOODGUYS) this.Destroy();
+    OnCreated(): void {
+        if (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS) this.Destroy();
     }
 }
 

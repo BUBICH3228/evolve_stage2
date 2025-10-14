@@ -24,6 +24,7 @@
 		<CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/hero_selection/hero_selection.xml" />		
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/minimap_fix/minimap_fix.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_ability/custom_ability.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/monster_upgrade_abilities/monster_upgrade_abilities.xml" />
 	</Panel>
 </root>
 

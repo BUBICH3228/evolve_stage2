@@ -44,9 +44,6 @@
     border-radius: 50%;
     z-index: 30;
     align: center center;
-    saturation: 0;
-	wash-color: #b1d76b;
-    brightness: 1.4;
 }
 
 #AbilityLevel {
@@ -154,4 +151,28 @@
     height: 18px;
     align: right bottom;
     z-index: 71;
+}
+
+.trapper {
+    saturation: 0;
+	wash-color: #272727cc;
+    brightness: 1.4;
+}
+
+.assault{
+    saturation: 0;
+	wash-color: #d40000ee;
+    brightness: 1.4;
+}
+
+.support{
+    saturation: 0;
+	wash-color: #142ebeda;
+    brightness: 1.4;
+}
+
+.medic{
+    saturation: 0;
+	wash-color: #d3b404e1;
+    brightness: 1.4;
 }

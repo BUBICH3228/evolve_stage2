@@ -81,6 +81,10 @@ export class modifier_rattletrap_harpoon_gun extends BaseModifier {
         return true;
     }
 
+    CheckState(): Partial<Record<modifierstate, boolean>> {
+        return { [ModifierState.TETHERED]: true };
+    }
+
     override OnCreated(): void {
         this.OnRefresh();
         if (!IsServer()) {
@@ -116,6 +120,7 @@ export class modifier_rattletrap_harpoon_gun extends BaseModifier {
         const targetAdjustedPullSpeed = targetPullSpeed * FrameTime();
         const meAdjustedPullSpeed = mePullSpeed * FrameTime();
         if (CalculateDistance(meOrigin, targetOrigin) >= this.maxRadiusChain) {
+            this.parent.InterruptMotionControllers(true);
             const newMeOrigin = Vector(
                 meOrigin.x + targetNormalizedDirection.x * meAdjustedPullSpeed,
                 meOrigin.y + targetNormalizedDirection.y * meAdjustedPullSpeed,
@@ -124,15 +129,15 @@ export class modifier_rattletrap_harpoon_gun extends BaseModifier {
             if (CalculateDistance(newMeOrigin, targetOrigin) > this.parent.GetHullRadius()) {
                 this.caster.SetAbsOrigin(newMeOrigin);
             }
-        }
-
-        const newTargetOrigin = Vector(
-            targetOrigin.x + meNormalizedDirection.x * targetAdjustedPullSpeed,
-            targetOrigin.y + meNormalizedDirection.y * targetAdjustedPullSpeed,
-            targetOrigin.z
-        );
-        if (CalculateDistance(meOrigin, newTargetOrigin) > this.caster.GetHullRadius()) {
-            this.parent.SetAbsOrigin(newTargetOrigin);
+        } else {
+            const newTargetOrigin = Vector(
+                targetOrigin.x + meNormalizedDirection.x * targetAdjustedPullSpeed,
+                targetOrigin.y + meNormalizedDirection.y * targetAdjustedPullSpeed,
+                targetOrigin.z
+            );
+            if (CalculateDistance(meOrigin, newTargetOrigin) > this.caster.GetHullRadius()) {
+                this.parent.SetAbsOrigin(newTargetOrigin);
+            }
         }
     }
 

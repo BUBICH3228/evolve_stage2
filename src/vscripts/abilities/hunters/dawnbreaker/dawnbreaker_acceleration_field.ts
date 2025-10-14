@@ -117,7 +117,6 @@ export class dawnbreaker_acceleration_field extends BaseAbility {
                 distance = math.min(distance, len);
                 const velocity = (direction * 1100) as Vector;
                 const duration = distance / velocity.Length2D();
-                print(duration);
                 let rate = rotation / duration;
 
                 do {

@@ -50,5 +50,7 @@
 		"AttributeIntelligenceGain"	"0"
 		"AttributeBaseAgility"	    "0"
 		"AttributeAgilityGain"	    "0"
+
+		"MovementSpeed"				"350"
 	}
 }

@@ -20,6 +20,7 @@
                     <Panel id="EvolutionPanel">
                     <DOTAScenePanel id="EvolutionScene" map="hud/shildbarburner" camera="camera_3"/>
                     </Panel>
+                    <Label id="EvolutionPoints" class="Text" text=" 1 / 1" />
                     
                 </Panel>
                 <Panel id="ShildBarContainer">

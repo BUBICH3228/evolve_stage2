@@ -30,6 +30,7 @@ export class rattletrap_scaner extends BaseAbility {
             target.AddNewModifier(this.caster, this, modifier_rattletrap_scaner_debuff.name, {
                 duration: this.GetSpecialValueFor("duration") * (1 - target.GetStatusResistance())
             });
+            PlayerResource.SendCustomErrorMessageToPlayer(target.GetPlayerOwnerID(), "#rattletrap_scaner_detection_message");
         });
 
         this.caster.AddNewModifier(this.caster, this, modifier_rattletrap_scaner.name, { duration: this.GetSpecialValueFor("duration") });
@@ -66,6 +67,13 @@ export class modifier_rattletrap_scaner_debuff extends BaseModifier {
     }
     GetModifierProvidesFOWVision(): 0 | 1 {
         return 1;
+    }
+
+    OnCreated(): void {
+        if (!IsServer()) {
+            return;
+        }
+        GameRules.ExecuteTeamPing(this.caster.GetTeam(), this.parent.GetAbsOrigin().x, this.parent.GetAbsOrigin().y, this.caster, 0);
     }
 }
 

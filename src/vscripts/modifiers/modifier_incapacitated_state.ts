@@ -6,6 +6,7 @@ export class modifier_incapacitated_state extends BaseModifier {
     private caster: CDOTA_BaseNPC = this.GetCaster()!;
     private ability: CDOTABaseAbility = this.GetAbility()!;
     private parent: CDOTA_BaseNPC = this.GetParent();
+    RenderColor!: Vector;
 
     // Modifier specials
 
@@ -47,6 +48,10 @@ export class modifier_incapacitated_state extends BaseModifier {
         if (IsClient()) {
             return;
         }
+
+        this.RenderColor = this.parent.GetRenderColor();
+
+        this.parent.SetRenderColor(255, 0, 0);
 
         CustomEvents.RegisterEventHandler(CustomEvent.CUSTOM_EVENT_ON_ORDER, (data) => this.OnCustomOrder(data as ExecuteOrderFilterEvent));
 
@@ -95,6 +100,14 @@ export class modifier_incapacitated_state extends BaseModifier {
             damage_flags: DamageFlag.NONE,
             damage: 35
         });
+    }
+
+    OnDestroy(): void {
+        if (IsClient()) {
+            return;
+        }
+
+        this.parent.SetRenderColor(this.RenderColor.x, this.RenderColor.y, this.RenderColor.z);
     }
 }
 

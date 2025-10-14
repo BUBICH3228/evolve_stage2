@@ -13,7 +13,7 @@ export class HuntersHealthbar {
     HEALTH_PROGRESS_MID = $("#HPBarMID");
     HEALTH_PROGRESS_BAR_LABEL = $("#HPBarCount") as LabelPanel;
     MAIN_PANEL = $("#MainPanel");
-    playerID = Game.GetLocalPlayerID();
+    currentPlayerID = Game.GetLocalPlayerID();
     HERO_MOVIE: HeroMovie;
     constructor() {
         const p = this.HERO_MOVIE_CONTAINER.FindChildTraverse("HeroMovie");
@@ -25,13 +25,25 @@ export class HuntersHealthbar {
     }
 
     private CreateOrUpdateHealthPanel() {
-        if (Players.GetTeam(this.playerID) != DotaTeam.GOODGUYS) {
+        const Player = Players.GetLocalPlayerPortraitUnit();
+        if (!Entities.IsHero(Player)) {
+            $.Schedule(0.5, () => {
+                this.CreateOrUpdateHealthPanel();
+            });
+            return;
+        }
+        const playerID = Entities.GetPlayerOwnerID(Player);
+        if (playerID == this.currentPlayerID && Players.GetTeam(this.currentPlayerID) != Players.GetTeam(playerID)) {
+            this.CreateOrUpdateHealthPanel();
+        }
+        this.currentPlayerID = playerID;
+        if (Players.GetTeam(this.currentPlayerID) != DotaTeam.GOODGUYS) {
             return;
         }
         if (this.MAIN_PANEL.BHasClass("Hidden")) {
             this.MAIN_PANEL.SetHasClass("Hidden", false);
         }
-        const entityIndex = Players.GetPlayerHeroEntityIndex(this.playerID);
+        const entityIndex = Players.GetPlayerHeroEntityIndex(this.currentPlayerID);
         if (entityIndex) {
             const maxHealth = Entities.GetMaxHealth(entityIndex);
             const currentHealth = Entities.GetHealth(entityIndex);
@@ -48,7 +60,7 @@ export class HuntersHealthbar {
             });
             this.SHILD_PROGRESS_BAR_LABEL.text = currentMana + " / " + maxMana;
             if (this.HERO_MOVIE != null) {
-                const PlayerInfo = Game.GetLocalPlayerInfo();
+                const PlayerInfo = Game.GetPlayerInfo(this.currentPlayerID);
                 if (this.HERO_MOVIE.heroid != PlayerInfo.player_selected_hero_id)
                     this.HERO_MOVIE.heroid = PlayerInfo.player_selected_hero_id;
                 this.HERO_MOVIE.SetPanelEvent("onactivate", function () {

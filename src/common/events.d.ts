@@ -26,6 +26,7 @@ interface CustomGameEventDeclarations {
     show_team_selection_menu: ShowTeamSelectionMenuEvent;
     show_map_selection_menu: ShowMapSelectionMenuEvent;
     hero_selection_event: HeroSelectionEvent;
+    hero_selection_client_event: HeroSelectionClientEvent;
     team_selection_event: TeamSelectionEvent;
     load_top_table: any;
 }
@@ -46,6 +47,10 @@ interface ShowTeamSelectionMenuEvent {
 interface HeroSelectionEvent {
     HeroName: string | undefined;
     PlayerID?: PlayerID;
+}
+
+interface HeroSelectionClientEvent extends HeroSelectionEvent {
+    HeroClass: string | undefined;
 }
 
 interface GetHeroAbilitiesEvent {

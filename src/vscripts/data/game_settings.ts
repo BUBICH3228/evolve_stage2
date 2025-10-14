@@ -82,8 +82,8 @@ export const Settings = {
 
         custom_exp_table: [
             0, // 1
-            30, // 2
-            50 // 3
+            40, // 2
+            60 // 3
         ]
     },
     client: {
