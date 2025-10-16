@@ -96,7 +96,8 @@
 }
 
 #KeyBindPanel {
-    width: 17px;
+    width: fit-children;
+    min-width: 17px;
     height: 17px;
     background-color: #212726;
     z-index: 50;
@@ -151,6 +152,20 @@
     height: 18px;
     align: right bottom;
     z-index: 71;
+}
+
+#AdditionalAbilityContainerPanel {
+    width: 70px;
+    height: fit-children;
+    min-height: 54px;
+    flow-children: down-wrap;
+    align: left bottom;
+    margin-bottom: 126px;
+    margin-left: 10px;
+}
+
+.AdditionalAbility {
+    saturation: 0;
 }
 
 .trapper {

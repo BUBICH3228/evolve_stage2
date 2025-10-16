@@ -8,6 +8,7 @@
     <Panel class="Root" hittest="false" hittestchildren="true">
         <Panel id="MainPanel" hittest="false" >
             <Panel id="AbilityContainerPanel" class="Hidden"/>
+            <Panel id="AdditionalAbilityContainerPanel" class=""/>
         </Panel>
     </Panel>
 </root>

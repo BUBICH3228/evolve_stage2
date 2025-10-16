@@ -206,9 +206,9 @@
         "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"  
         "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
         "FightRecapLevel"               "0"
-        "LevelsBetweenUpgrades"             "0"
+        "LevelsBetweenUpgrades"         "0"
         "MaxLevel"                      "3"
-        "IsGrantedByShard"          "0"
+        "IsGrantedByShard"              "0"
         "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
         "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 
@@ -216,7 +216,7 @@
 
         // Time     
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "16"
+        "AbilityCooldown"               "16 14 12"
         "AbilityManaCost"               "0"
         "AbilityCastPoint"              "0.25"
         "AbilityCastRange"              "1800"
@@ -238,7 +238,7 @@
         {
             "base_damage"
             {
-                "value"                 "378 378 421"
+                "value"                 "358 378 421"
                 "CalculateSpellDamageTooltip"   "1"
             }
             "impact_radius"             
@@ -271,7 +271,7 @@
         "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
         "SpellDispellableType"          "SPELL_DISPELLABLE_YES"
         "FightRecapLevel"               "0"
-        "LevelsBetweenUpgrades"             "0"
+        "LevelsBetweenUpgrades"         "0"
         "MaxLevel"                      "3"
 
         // Casting
@@ -283,7 +283,7 @@
 
         // Time     
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "16"
+        "AbilityCooldown"               "16 14 12"
 
         // Cost
         //-------------------------------------------------------------------------------------------------------------

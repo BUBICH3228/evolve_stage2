@@ -166,6 +166,8 @@ export class modifier_heroes_passive_stats extends BaseModifier {
 
         const unit = CreateUnitByName("npc_dota_evolution_points", kv.unit.GetAbsOrigin(), true, undefined, undefined, DotaTeam.CUSTOM_5);
 
+        unit.SetForwardVector(kv.unit.GetForwardVector());
+
         let restoreHealth = this.parent.GetMaxHealth() * 0.015;
         let restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.035;
 

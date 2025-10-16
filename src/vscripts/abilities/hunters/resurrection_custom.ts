@@ -20,6 +20,9 @@ export class resurrection_custom extends BaseAbility {
                 }
             },
             (thinkInterval) => {
+                if (CalculateDistance(target.GetAbsOrigin(), this.caster.GetAbsOrigin()) > 200) {
+                    this.caster.Interrupt();
+                }
                 target.Heal(this.GetSpecialValueFor("heal_per_second") * thinkInterval, this);
                 if (target.GetHealthPercent() == 100) {
                     this.caster.Interrupt();

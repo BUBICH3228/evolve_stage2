@@ -10,6 +10,16 @@ function PrecacheAllResource(context: CScriptPrecacheContext) {
     //Particle
     PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/aoe_cast.vpcf", context);
     PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/electrical_bundle.vpcf", context);
+    PrecacheResource(
+        PrecacheType.PARTICLE,
+        "particles/econ/items/bloodseeker/bloodseeker_crownfall_immortal/bloodseeker_crownfall_immortal_ruptureg.vpcf",
+        context
+    );
+    PrecacheResource(
+        PrecacheType.PARTICLE,
+        "particles/econ/items/bloodseeker/bloodseeker_ti7/bloodseeker_ti7_thirst_owner_ground.vpcf",
+        context
+    );
     //Model
     PrecacheResource(PrecacheType.MODEL, "models/props_gameplay/dummy/dummy.vmdl", context);
     PrecacheResource(PrecacheType.MODEL, "models/heroes/oracle/crystal_ball.vmdl", context);

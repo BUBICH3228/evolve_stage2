@@ -90,8 +90,8 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityCastRange"              "3000"
         "AbilityCastRangeBuffer"        "600"
-        "AbilityCastPoint"              "2"
-        "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_4"
+        "AbilityCastPoint"              "1"
+        "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
 
         // Time     
         //-------------------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@
         {
             "damage"
             {
-                "value"                             "400"
+                "value"                             "500"
             }
             "projectile_speed"          "2500"
             "scepter_stun_duration"         

@@ -15,7 +15,7 @@
 		"Ability6"	"resurrection_custom"
 		"Ability7"	"generic_hidden"
 		"Ability8"	"generic_hidden"
-		"Ability9"	"generic_hidden"
+		"Ability9"	"dash_custom"
 		"Ability10"	"generic_hidden"
 		"Ability11"	"generic_hidden"
 		"Ability12"	"generic_hidden"

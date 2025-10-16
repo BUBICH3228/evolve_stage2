@@ -48,51 +48,80 @@ class CustomAbility {
         this.playerID = Entities.GetPlayerOwnerID(Player);
         if (this.ABILITY_CONTAINER.BHasClass("Hidden")) this.ABILITY_CONTAINER.SetHasClass("Hidden", false);
         this.ABILITY_CONTAINER.RemoveAndDeleteChildren();
+        $("#AdditionalAbilityContainerPanel").RemoveAndDeleteChildren();
+
         this.ABILITY_CONTAINER_DATA.abilityCooldownPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityChargesPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityChargesLabel = [];
         this.ABILITY_CONTAINER_DATA.abilityLevelPanel = [];
         this.ABILITY_CONTAINER_DATA.abilityCooldownLabel = [];
         for (let index = 0; index < this.COUNT_ABILITY; index++) {
-            const AbilityEntityIndex = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
-            const abilityName = Abilities.GetAbilityName(AbilityEntityIndex);
-            const panel = $.CreatePanel("Panel", this.ABILITY_CONTAINER, "AbilityPanel");
-            $.CreatePanel("Panel", panel, "NotLevel");
-            const ability = $.CreatePanel("DOTAAbilityImage", panel, "Ability");
-            ability.AddClass(this.FindHeroClass(Players.GetPlayerSelectedHero(this.playerID)));
-            ability.abilityname = abilityName;
-            panel.SetPanelEvent("onactivate", () => {
-                if (GameUI.IsAltDown() == true) {
-                    Abilities.PingAbility(AbilityEntityIndex);
-                } else {
-                    Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, false);
-                }
-            });
-
-            panel.SetPanelEvent("onmouseover", () => {
-                $.DispatchEvent("DOTAShowAbilityTooltipForLevel", panel, ability.abilityname, Abilities.GetLevel(AbilityEntityIndex));
-            });
-            panel.SetPanelEvent("onmouseout", () => {
-                $.DispatchEvent("DOTAHideAbilityTooltip");
-                $.DispatchEvent("DOTAHideTextTooltip");
-            });
-            this.ABILITY_CONTAINER_DATA.abilityLevelPanel.push($.CreatePanel("CircularProgressBar", panel, "AbilityLevel"));
-            this.ABILITY_CONTAINER_DATA.abilityCooldownPanel.push($.CreatePanel("CircularProgressBar", panel, "AbilityCooldown"));
-            this.ABILITY_CONTAINER_DATA.abilityCooldownLabel.push($.CreatePanel("Label", panel, "AbilityCooldownLabel"));
-            this.ABILITY_CONTAINER_DATA.abilityChargesPanel.push($.CreatePanel("CircularProgressBar", panel, "AbilityCharges"));
-            this.ABILITY_CONTAINER_DATA.abilityChargesLabel.push($.CreatePanel("Label", panel, "AbilityChargesLabel"));
-            const keyBind = $.CreatePanel("Panel", panel, "KeyBindPanel");
-            const keyBindText = $.CreatePanel("Label", keyBind, "KeyBindPanelLabel");
-            keyBindText.text = Abilities.GetKeybind(AbilityEntityIndex);
+            this.CreateAbilitiData(index, this.ABILITY_CONTAINER, undefined);
         }
 
         if (Players.GetTeam(this.playerID) == DotaTeam.BADGUYS) {
             this.ABILITY_CONTAINER.SetHasClass("MonsterClass", true);
             this.ABILITY_CONTAINER.SetHasClass("HunterClass", false);
+            $("#AdditionalAbilityContainerPanel").SetHasClass("Hidden", true);
         } else if (Players.GetTeam(this.playerID) == DotaTeam.GOODGUYS) {
             this.ABILITY_CONTAINER.SetHasClass("MonsterClass", false);
             this.ABILITY_CONTAINER.SetHasClass("HunterClass", true);
+            $("#AdditionalAbilityContainerPanel").SetHasClass("Hidden", false);
+            this.CreateAbilitiData(8, $("#AdditionalAbilityContainerPanel"), "2");
         }
+    }
+
+    private CreateAbilitiData(index: number, container: Panel, keybind: string | undefined) {
+        const AbilityEntityIndex = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
+        const abilityName = Abilities.GetAbilityName(AbilityEntityIndex);
+        const panel = $.CreatePanel("Panel", container, "AbilityPanel");
+        $.CreatePanel("Panel", panel, "NotLevel");
+        const ability = $.CreatePanel("DOTAAbilityImage", panel, "Ability");
+        if (container != $("#AdditionalAbilityContainerPanel")) {
+            ability.AddClass(this.FindHeroClass(Players.GetPlayerSelectedHero(this.playerID)));
+        } else {
+            ability.AddClass("AdditionalAbility");
+        }
+
+        ability.abilityname = abilityName;
+        panel.SetPanelEvent("onactivate", () => {
+            if (GameUI.IsAltDown() == true) {
+                Abilities.PingAbility(AbilityEntityIndex);
+            } else {
+                Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, false);
+            }
+        });
+
+        panel.SetPanelEvent("onmouseover", () => {
+            $.DispatchEvent("DOTAShowAbilityTooltipForLevel", panel, ability.abilityname, Abilities.GetLevel(AbilityEntityIndex));
+        });
+        panel.SetPanelEvent("onmouseout", () => {
+            $.DispatchEvent("DOTAHideAbilityTooltip");
+            $.DispatchEvent("DOTAHideTextTooltip");
+        });
+        this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index] = $.CreatePanel("CircularProgressBar", panel, "AbilityLevel");
+        this.ABILITY_CONTAINER_DATA.abilityCooldownPanel[index] = $.CreatePanel("CircularProgressBar", panel, "AbilityCooldown");
+        this.ABILITY_CONTAINER_DATA.abilityCooldownLabel[index] = $.CreatePanel("Label", panel, "AbilityCooldownLabel");
+        this.ABILITY_CONTAINER_DATA.abilityChargesPanel[index] = $.CreatePanel("CircularProgressBar", panel, "AbilityCharges");
+        this.ABILITY_CONTAINER_DATA.abilityChargesLabel[index] = $.CreatePanel("Label", panel, "AbilityChargesLabel");
+        if (keybind == undefined) {
+            keybind = Abilities.GetKeybind(AbilityEntityIndex);
+        } else {
+            const command_name = `Custom_Key_Bind_${keybind}_${Date.now()}`;
+            Game.CreateCustomKeyBind(keybind, command_name);
+            Game.AddCommand(
+                command_name,
+                () => {
+                    $.Msg("KeyBind Pressed");
+                    Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, true);
+                },
+                "",
+                0
+            );
+        }
+        const keyBind = $.CreatePanel("Panel", panel, "KeyBindPanel");
+        const keyBindText = $.CreatePanel("Label", keyBind, "KeyBindPanelLabel");
+        keyBindText.text = keybind;
     }
 
     private UpdateAbilitylevel() {
@@ -113,11 +142,11 @@ class CustomAbility {
                 this.ABILITY_CONTAINER_DATA.abilityCooldownLabel.length >=
             12
         ) {
-            for (let index = 0; index < this.COUNT_ABILITY; index++) {
+            for (let index = 0; index < 9; index++) {
                 const ability = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
                 const abilityLevelPanel = this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index];
                 if (abilityLevelPanel == null) {
-                    break;
+                    continue;
                 }
                 abilityLevelPanel.max = Abilities.GetMaxLevel(ability);
                 abilityLevelPanel.min = 0;
@@ -125,9 +154,8 @@ class CustomAbility {
                 const abilityCooldownPanel = this.ABILITY_CONTAINER_DATA.abilityCooldownPanel[index];
                 const abilityChargesPanel = this.ABILITY_CONTAINER_DATA.abilityChargesPanel[index];
                 const abilityChargesLabel = this.ABILITY_CONTAINER_DATA.abilityChargesLabel[index];
-
                 if (abilityCooldownPanel == null) {
-                    break;
+                    continue;
                 }
                 const isChargeAbility = Abilities.GetSpecialValueFor(ability, "AbilityCharges") > 0;
 
@@ -149,10 +177,9 @@ class CustomAbility {
                     abilityCooldownPanel.max = Abilities.GetCooldown(ability);
                     abilityCooldownPanel.value = Abilities.GetCooldownTimeRemaining(ability);
                 }
-
                 const abilityCooldownLabel = this.ABILITY_CONTAINER_DATA.abilityCooldownLabel[index];
                 if (abilityCooldownLabel == null) {
-                    break;
+                    continue;
                 }
 
                 if (isChargeAbility == true) {
@@ -174,17 +201,18 @@ class CustomAbility {
                             ? Abilities.GetAbilityChargeRestoreTimeRemaining(ability)
                             : Abilities.GetCooldownTimeRemaining(ability)
                     );
-
-                const panel = this.ABILITY_CONTAINER.GetChild(index);
-                if (panel) {
-                    const NotLevelPanel = panel.FindChildTraverse("NotLevel");
-                    if (NotLevelPanel) {
-                        if (abilityLevelPanel.value == 0) {
-                            NotLevelPanel.SetHasClass("Hidden", false);
-                        } else {
-                            NotLevelPanel.SetHasClass("Hidden", true);
+                const children = $("#AdditionalAbilityContainerPanel").Children().concat(this.ABILITY_CONTAINER.Children());
+                if (children != undefined) {
+                    children.forEach((panel) => {
+                        const NotLevelPanel = panel.FindChildTraverse("NotLevel");
+                        if (NotLevelPanel) {
+                            if (abilityLevelPanel.value == 0) {
+                                NotLevelPanel.SetHasClass("Hidden", false);
+                            } else {
+                                NotLevelPanel.SetHasClass("Hidden", true);
+                            }
                         }
-                    }
+                    });
                 }
             }
         }

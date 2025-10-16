@@ -4,6 +4,8 @@ import { registerModifier, BaseModifier } from "../libraries/dota_ts_adapter";
 export class modifier_animal_instinct extends BaseModifier {
     // Modifier properties
     private parent: CDOTA_BaseNPC = this.GetParent();
+    IsKill = false;
+    timer: string | undefined;
 
     // Modifier specials
 
@@ -51,8 +53,65 @@ export class modifier_animal_instinct extends BaseModifier {
         return FrameTime();
     }
 
+    DeclareFunctions(): modifierfunction[] {
+        return [ModifierFunction.ON_DEATH];
+    }
+
     OnCreated(): void {
         if (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS) this.Destroy();
+
+        if (IsClient()) {
+            return;
+        }
+
+        this.StartIntervalThink(1);
+    }
+
+    OnIntervalThink(): void {
+        if (this.IsKill == false) {
+            return;
+        }
+        if (this.timer == undefined) {
+            this.timer = Timers.CreateTimer(10, () => {
+                this.IsKill = false;
+            });
+        }
+
+        const pfx = ParticleManager.CreateParticle(
+            "particles/econ/items/bloodseeker/bloodseeker_crownfall_immortal/bloodseeker_crownfall_immortal_ruptureg.vpcf",
+            ParticleAttachment.WORLDORIGIN,
+            this.parent
+        );
+
+        ParticleManager.SetParticleControl(pfx, 0, this.parent.GetAbsOrigin());
+
+        ParticleManager.DestroyAndReleaseParticle(pfx, 10, false);
+    }
+
+    OnDeath(kv: ModifierInstanceEvent): void {
+        if (kv.attacker != this.parent) {
+            return;
+        }
+
+        if (kv.unit.GetTeam() == DotaTeam.NEUTRALS) {
+            if (this.timer != undefined) {
+                Timers.RemoveTimer(this.timer);
+                this.timer = undefined;
+            }
+
+            this.IsKill = true;
+            Timers.CreateTimer(0.01, () => {
+                const pfx = ParticleManager.CreateParticle(
+                    "particles/econ/items/bloodseeker/bloodseeker_ti7/bloodseeker_ti7_thirst_owner_ground.vpcf",
+                    ParticleAttachment.WORLDORIGIN,
+                    this.parent
+                );
+
+                ParticleManager.SetParticleControl(pfx, 0, kv.unit.GetAbsOrigin());
+
+                ParticleManager.DestroyAndReleaseParticle(pfx, 25, false);
+            });
+        }
     }
 }
 

@@ -93,4 +93,27 @@
             "heal_per_second"               "140"
         }
     }
+
+    "dash_custom"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "action_move_png"
+        "ScriptFile"                   	    "abilities/hunters/dash_custom"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_OVERSHOOT | DOTA_ABILITY_BEHAVIOR_SKIP_FOR_KEYBINDS"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "3"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "dash_speed"                    "900"
+            "push_length"                   "275"
+            "duration"                      "0.25"
+        }
+    }
 }
