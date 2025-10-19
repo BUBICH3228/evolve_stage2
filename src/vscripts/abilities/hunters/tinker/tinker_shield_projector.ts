@@ -5,6 +5,8 @@ import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapt
 export class tinker_shield_projector extends BaseAbility {
     // Ability properties
     private caster: CDOTA_BaseNPC = this.GetCaster();
+    target: CDOTA_BaseNPC | undefined;
+    shieldAccumulator = 0;
 
     Spawn(): void {
         if (!IsServer()) {
@@ -21,14 +23,62 @@ export class tinker_shield_projector extends BaseAbility {
         );
     }
 
-    override OnSpellStart(): void {
-        const target = this.GetCursorTarget();
+    CastFilterResultTarget(target: CDOTA_BaseNPC): UnitFilterResult {
+        if (target == this.caster) {
+            return UnitFilterResult.FAIL_CUSTOM;
+        }
 
-        if (target == undefined) {
+        if (target.GetTeamNumber() != this.caster.GetTeamNumber()) {
+            return UnitFilterResult.FAIL_ENEMY;
+        }
+        return UnitFilterResult.SUCCESS;
+    }
+
+    GetCustomCastErrorTarget(): string {
+        return "#dota_hud_error_cant_cast_on_self";
+    }
+
+    OnAbilityPhaseStart(): boolean {
+        if (IsClient()) {
+            return true;
+        }
+
+        this.target = this.GetCursorTarget();
+        return true;
+    }
+
+    OnChannelThink(interval: number): void {
+        if (this.target == undefined) {
             return;
         }
 
-        target.AddNewModifier(this.caster, this, modifier_tinker_shield_projector.name, { duration: -1 });
+        const modifier = this.target.AddNewModifier(this.caster, this, modifier_tinker_shield_projector.name, {
+            duration: -1
+        });
+
+        if (modifier == undefined) {
+            return;
+        }
+
+        if (this.shieldAccumulator === undefined) {
+            this.shieldAccumulator = 0;
+        }
+
+        this.shieldAccumulator += this.GetSpecialValueFor("shild_regen_per_second") * interval;
+
+        const shieldToAdd = Math.floor(this.shieldAccumulator);
+
+        if (shieldToAdd > 0) {
+            const newShield = math.min(modifier.GetStackCount() + shieldToAdd, this.GetSpecialValueFor("shield_capacity_max"));
+
+            modifier.SetStackCount(newShield);
+
+            this.shieldAccumulator -= shieldToAdd;
+        }
+
+        if (modifier.GetStackCount() >= this.GetSpecialValueFor("shield_capacity_max")) {
+            this.caster.Interrupt();
+        }
     }
 }
 
@@ -76,29 +126,14 @@ export class modifier_tinker_shield_projector extends BaseModifier {
     }
 
     override OnRefresh(): void {
-        this.shieldCapacity = this.ability.GetSpecialValueFor("shield_capacity");
-
         if (!IsServer()) {
             return;
         }
-        this.SetHasCustomTransmitterData(true);
-        this.StartIntervalThink(0.1);
+        this.StartIntervalThink(FrameTime());
     }
 
     OnIntervalThink(): void {
-        this.shieldCapacity += 0.1;
         this.SendBuffRefreshToClients();
-        this.shieldCapacity -= 0.1;
-    }
-
-    AddCustomTransmitterData() {
-        return {
-            shieldCapacity: this.shieldCapacity
-        };
-    }
-
-    HandleCustomTransmitterData(data: ReturnType<this["AddCustomTransmitterData"]>): void {
-        this.shieldCapacity = data.shieldCapacity;
     }
 
     GetModifierIncomingDamageConstant(kv: ModifierAttackEvent): number {
@@ -106,15 +141,19 @@ export class modifier_tinker_shield_projector extends BaseModifier {
             return 0;
         }
 
-        if (!IsServer()) {
-            return this.shieldCapacity;
+        if (IsClient()) {
+            return this.GetStackCount();
         }
 
-        if (kv.damage > this.shieldCapacity) {
+        if (this.parent != kv.target) {
+            return 0;
+        }
+
+        if (kv.damage > this.GetStackCount()) {
             this.Destroy();
-            return -this.shieldCapacity;
+            return -this.GetStackCount();
         } else {
-            this.shieldCapacity -= kv.damage;
+            this.SetStackCount(this.GetStackCount() - kv.damage);
             this.SendBuffRefreshToClients();
             return -kv.damage;
         }

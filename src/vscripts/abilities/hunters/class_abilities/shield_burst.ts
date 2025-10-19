@@ -2,7 +2,7 @@ import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter
 import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapter";
 
 @registerAbility()
-export class tinker_shield_burst extends BaseAbility {
+export class shield_burst extends BaseAbility {
     // Ability properties
     private caster: CDOTA_BaseNPC = this.GetCaster();
 
@@ -31,13 +31,13 @@ export class tinker_shield_burst extends BaseAbility {
         );
 
         enemies.forEach((target) => {
-            target.AddNewModifier(this.caster, this, modifier_tinker_shield_burst.name, { duration: -1 });
+            target.AddNewModifier(this.caster, this, modifier_shield_burst.name, { duration: -1 });
         });
     }
 }
 
 @registerModifier()
-export class modifier_tinker_shield_burst extends BaseModifier {
+export class modifier_shield_burst extends BaseModifier {
     // Modifier properties
     private caster: CDOTA_BaseNPC = this.GetCaster()!;
     private ability: CDOTABaseAbility = this.GetAbility()!;
@@ -83,6 +83,9 @@ export class modifier_tinker_shield_burst extends BaseModifier {
     }
 
     override OnRefresh(): void {
+        if (!IsServer()) {
+            return;
+        }
         this.otherShieldCapacity = this.ability.GetSpecialValueFor("other_shield_capacity");
         this.selfShieldCapacity = this.ability.GetSpecialValueFor("self_shield_capacity");
         this.decayRate = this.ability.GetSpecialValueFor("decay_rate");
@@ -92,32 +95,27 @@ export class modifier_tinker_shield_burst extends BaseModifier {
         } else {
             this.shieldCapacity = this.otherShieldCapacity;
         }
-
-        if (!IsServer()) {
-            return;
-        }
         this.SetHasCustomTransmitterData(true);
-        this.StartIntervalThink(1);
+        this.StartIntervalThink(FrameTime());
     }
 
     OnIntervalThink(): void {
-        this.shieldCapacity = math.max(0, this.shieldCapacity - this.decayRate);
-        if (this.shieldCapacity == 0) {
+        this.shieldCapacity = math.max(0, this.shieldCapacity - this.decayRate * FrameTime());
+        this.SetStackCount(this.shieldCapacity);
+        this.SendBuffRefreshToClients();
+        if (this.GetStackCount() == 0) {
             this.Destroy();
         }
-        this.SendBuffRefreshToClients();
     }
 
     AddCustomTransmitterData() {
         return {
-            shieldCapacity: this.shieldCapacity,
-            decayRate: this.decayRate
+            shieldCapacity: this.shieldCapacity
         };
     }
 
     HandleCustomTransmitterData(data: ReturnType<this["AddCustomTransmitterData"]>): void {
         this.shieldCapacity = data.shieldCapacity;
-        this.decayRate = data.decayRate;
     }
 
     GetModifierIncomingDamageConstant(kv: ModifierAttackEvent): number {
@@ -125,8 +123,12 @@ export class modifier_tinker_shield_burst extends BaseModifier {
             return 0;
         }
 
-        if (!IsServer()) {
+        if (IsClient()) {
             return this.shieldCapacity;
+        }
+
+        if (this.parent != kv.target) {
+            return 0;
         }
 
         if (kv.damage > this.shieldCapacity) {

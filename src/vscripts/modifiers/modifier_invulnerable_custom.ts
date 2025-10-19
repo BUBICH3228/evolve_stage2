@@ -20,7 +20,10 @@ export class modifier_invulnerable_custom extends BaseModifier {
     CheckState(): Partial<Record<ModifierState, boolean>> {
         return {
             [ModifierState.INVULNERABLE]: true,
-            [ModifierState.ATTACK_IMMUNE]: true
+            [ModifierState.ATTACK_IMMUNE]: true,
+            [ModifierState.NO_HEALTH_BAR]: true,
+            [ModifierState.NO_HEALTH_BAR_FOR_ENEMIES]: true,
+            [ModifierState.NO_HEALTH_BAR_FOR_OTHER_PLAYERS]: true
         };
     }
 }

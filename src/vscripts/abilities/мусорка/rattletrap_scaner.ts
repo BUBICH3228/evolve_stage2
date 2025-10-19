@@ -1,5 +1,5 @@
-import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
-import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapter";
+import { BaseAbility, registerAbility } from "../../libraries/dota_ts_adapter";
+import { registerModifier, BaseModifier } from "../../libraries/dota_ts_adapter";
 
 @registerAbility()
 export class rattletrap_scaner extends BaseAbility {

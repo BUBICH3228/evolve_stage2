@@ -2,8 +2,8 @@ export const Settings = {
     server: {
         universal_shop_mode: false,
 
-        enable_hero_respawn: false,
-        hero_respawn_time: 10,
+        enable_hero_respawn: true,
+        hero_respawn_time: 120,
         starting_gold: 900,
         hero_start_level: 1,
         allow_same_hero_selection: false,

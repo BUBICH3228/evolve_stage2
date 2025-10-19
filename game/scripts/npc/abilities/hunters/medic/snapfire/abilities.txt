@@ -1,0 +1,94 @@
+"DOTAAbilities"
+{
+
+    "snapfire_healing_grenade"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "sniper_concussive_grenade"
+        "ScriptFile"                   	    "abilities/hunters/snapfire/snapfire_healing_grenade"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "0"
+        "AbilityCastRange"                  "1200"
+        "AbilityCastPoint"                  "0.5"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "radius"            
+            {
+                "value"                     "480"
+                "affected_by_aoe_increase"  "1"
+            }
+            "heal"
+            {
+                "value"                     "125"
+            }
+            "heal_self"
+            {
+                "value"                     "60"
+            }
+            "heal_incapped"
+            {
+                "value"                     "190"
+            }
+            "speed"
+            {
+                "value"                     "2700"
+            }
+            "AbilityCharges"        
+            {
+                "value"                     "5"
+            }
+            "AbilityChargeRestoreTime"		
+			{
+				"value"						"3"
+			}
+        }
+    }
+
+    "snapfire_acceleration_field"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "snapfire_acceleration_field"
+        "ScriptFile"                   	    "abilities/hunters/snapfire/snapfire_acceleration_field"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "60"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "radius"            
+            {
+                "value"                     "900"
+                "affected_by_aoe_increase"  "1"
+            }
+            "bonus_movement_speed"
+            {
+                "value"                     "40"
+            }
+            "bonus_attack_speed"
+            {
+                "value"                     "30"
+            }
+            "duration"              
+            {
+                "value"                     "13.5"
+            }
+        }
+    }
+}

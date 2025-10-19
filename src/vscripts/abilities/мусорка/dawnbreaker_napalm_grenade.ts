@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
-import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapter";
-import { modifier_invulnerable_custom } from "../../../modifiers/modifier_invulnerable_custom";
+import { BaseAbility, registerAbility } from "../../libraries/dota_ts_adapter";
+import { registerModifier, BaseModifier } from "../../libraries/dota_ts_adapter";
+import { modifier_invulnerable_custom } from "../../modifiers/modifier_invulnerable_custom";
 
 @registerAbility()
-export class dawnbreaker_napalm_grenade extends BaseAbility {
+export class snapfire_napalm_grenade extends BaseAbility {
     projectile_table: any;
     private caster: CDOTA_BaseNPC_Hero = this.GetCaster() as CDOTA_BaseNPC_Hero;
 
@@ -133,7 +133,7 @@ export class dawnbreaker_napalm_grenade extends BaseAbility {
                 damage_type: this.GetAbilityDamageType(),
                 damage_flags: DamageFlag.NONE
             });
-            target.AddNewModifier(this.caster, this, modifier_dawnbreaker_napalm_grenade.name, {
+            target.AddNewModifier(this.caster, this, modifier_snapfire_napalm_grenade.name, {
                 duration: this.GetSpecialValueFor("flame_duration")
             });
         });
@@ -141,7 +141,7 @@ export class dawnbreaker_napalm_grenade extends BaseAbility {
 }
 
 @registerModifier()
-export class modifier_dawnbreaker_napalm_grenade extends BaseModifier {
+export class modifier_snapfire_napalm_grenade extends BaseModifier {
     // Modifier properties
     private caster: CDOTA_BaseNPC = this.GetCaster()!;
     private ability: CDOTABaseAbility = this.GetAbility()!;

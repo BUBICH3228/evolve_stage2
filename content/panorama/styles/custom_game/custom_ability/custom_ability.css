@@ -5,8 +5,9 @@
 }
 
 #MainPanel {
-    width: 100%;
-    height:  100%;
+    width: fit-children;
+    height: fit-children;
+    flow-children: right-wrap;
 }
 
 .Hidden
@@ -15,21 +16,21 @@
 }
 
 .MonsterClass{
-    width: fit-children;
-    height: fit-children;
-    flow-children: right-wrap;
     align: center top;
     margin-top: 12%;
     margin-left: 7px;
 }
 
 .HunterClass{
+    margin-bottom: 65px;
+    margin-left: 125px;
+    align: left bottom;
+}
+
+#AbilityContainerPanel {
     width: fit-children;
     height: fit-children;
     flow-children: right-wrap;
-    align: left bottom;
-    margin-bottom: 65px;
-    margin-left: 125px;
 }
 
 #AbilityPanel  {
@@ -155,13 +156,12 @@
 }
 
 #AdditionalAbilityContainerPanel {
-    width: 70px;
+    width: fit-children;
     height: fit-children;
     min-height: 54px;
     flow-children: down-wrap;
+    flow-children: right-wrap;
     align: left bottom;
-    margin-bottom: 126px;
-    margin-left: 10px;
 }
 
 .AdditionalAbility {

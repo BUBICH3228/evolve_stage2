@@ -1,21 +1,21 @@
 "DOTAHeroes"
 {
-	"npc_dota_hero_dawnbreaker_custom"
+	"npc_dota_hero_snapfire_custom"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"override_hero"	"npc_dota_hero_dawnbreaker"
+		"override_hero"	"npc_dota_hero_snapfire"
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
-		"Ability1"	"dawnbreaker_healing_grenade"
-		"Ability2"	"dawnbreaker_napalm_grenade"
-		"Ability3"	"dawnbreaker_acceleration_field"
-		"Ability4"	"rattletrap_jetpack"
-		"Ability5"	"planetary_shield"
-		"Ability6"	"resurrection_custom"
-		"Ability7"	"generic_hidden"
-		"Ability8"	"generic_hidden"
-		"Ability9"	"dash_custom"
+		"Ability1"	"snapfire_healing_grenade"
+		"Ability2"	"snapfire_acceleration_field"
+		"Ability3"	"healing_burst"
+		"Ability4"	"generic_hidden"
+		"Ability5"	"generic_hidden"
+		"Ability6"	"generic_hidden"
+		"Ability7"	"dash_custom"
+		"Ability8"	"rattletrap_jetpack"
+		"Ability9"	"resurrection_custom"
 		"Ability10"	"generic_hidden"
 		"Ability11"	"generic_hidden"
 		"Ability12"	"generic_hidden"
@@ -33,14 +33,16 @@
         {
         }
 
-        "AttackCapabilities"	    "DOTA_UNIT_CAP_MELEE_ATTACK"
+        "AttackCapabilities"	    "DOTA_UNIT_CAP_RANGED_ATTACK"
         "AttackDamageMin"	        "40"
 		"AttackDamageMax"	        "40"
 		"AttackRate"	            "1"
 		"AttackAnimationPoint"	    "0.15"
 		"AttackAcquisitionRange"	"600"
-		"AttackRange"	            "150"
+		"AttackRange"	            "400"
         "ArmorPhysical"	            "0"
+		"ProjectileModel"           "particles/units/heroes/hero_snapfire/hero_snapfire_base_attack.vpcf"
+        "ProjectileSpeed"           "1800"
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"	        "DOTA_ATTRIBUTE_STRENGTH"

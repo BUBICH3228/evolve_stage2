@@ -11,24 +11,15 @@ export const HeroesData: HeroesDataIntefase = {
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
-                    abilityName: "rattletrap_scaner",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                3: {
-                    abilityName: "rattletrap_jetpack",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                4: {
                     abilityName: "planetary_shield",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 }
             },
             stats: {
                 health: 1600,
-                shild: 250,
-                armor: 0,
+                attackRate: 1,
                 damage: 40,
-                speed: 550
+                speed: 320
             },
             aboutHero: {
                 personality: "#ui_hero_rattletrap_personality",
@@ -40,30 +31,21 @@ export const HeroesData: HeroesDataIntefase = {
         npc_dota_hero_sniper: {
             abilities: {
                 0: {
-                    abilityName: "sniper_shrapnel",
+                    abilityName: "sniper_flamethrower",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 1: {
-                    abilityName: "sniper_assassinate",
+                    abilityName: "sniper_toxic_grenade",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
-                    abilityName: "sniper_concussive_grenade",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                3: {
-                    abilityName: "rattletrap_jetpack",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                4: {
-                    abilityName: "planetary_shield",
+                    abilityName: "defense_matrix",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 }
             },
             stats: {
                 health: 1600,
-                shild: 250,
-                armor: 0,
+                attackRate: 1,
                 damage: 70,
                 speed: 550
             },
@@ -85,22 +67,13 @@ export const HeroesData: HeroesDataIntefase = {
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
-                    abilityName: "tinker_shield_burst",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                3: {
-                    abilityName: "rattletrap_jetpack",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                4: {
-                    abilityName: "planetary_shield",
+                    abilityName: "shield_burst",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 }
             },
             stats: {
                 health: 1600,
-                shild: 250,
-                armor: 0,
+                attackRate: 1,
                 damage: 10,
                 speed: 550
             },
@@ -111,33 +84,24 @@ export const HeroesData: HeroesDataIntefase = {
         }
     },
     medic: {
-        npc_dota_hero_dawnbreaker: {
+        npc_dota_hero_snapfire: {
             abilities: {
                 0: {
-                    abilityName: "dawnbreaker_healing_grenade",
+                    abilityName: "snapfire_healing_grenade",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 1: {
-                    abilityName: "dawnbreaker_napalm_grenade",
+                    abilityName: "snapfire_acceleration_field",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 },
                 2: {
-                    abilityName: "dawnbreaker_acceleration_field",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                3: {
-                    abilityName: "rattletrap_jetpack",
-                    abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
-                },
-                4: {
-                    abilityName: "planetary_shield",
+                    abilityName: "healing_burst",
                     abilityPreview: "file://{resources}/videos/heroes/ability1.webm"
                 }
             },
             stats: {
                 health: 1600,
-                shild: 250,
-                armor: 0,
+                attackRate: 1,
                 damage: 20,
                 speed: 550
             },
@@ -174,7 +138,7 @@ export const HeroesData: HeroesDataIntefase = {
             stats: {
                 health: [8000, 13000, 18000],
                 shild: [4000, 5000, 6000],
-                armor: 0,
+                attackRate: 1,
                 damage: 70,
                 speed: 750
             },
@@ -201,8 +165,8 @@ export declare interface AbilitiesData {
 
 export declare interface StatsData {
     health: number | number[];
-    shild: number | number[];
-    armor: number;
+    shild?: number | number[];
+    attackRate: number;
     damage: number | number[];
     speed: number;
 }

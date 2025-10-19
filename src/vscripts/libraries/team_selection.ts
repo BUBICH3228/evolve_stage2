@@ -35,14 +35,6 @@ export class TeamSelection {
 
         if (newState == GameState.PRE_GAME) {
             this.SpawnMap("wraith_trap_map");
-            PauseGame(true);
-            Timers.CreateTimer("Uni1", {
-                useGameTime: false,
-                endTime: 5,
-                callback: () => {
-                    PauseGame(false);
-                }
-            });
             //Timers.CreateTimer(120, () => {
             //    CustomGameEventManager.Send_ServerToAllClients("show_map_selection_menu", { visibleState: false });
             //});
@@ -56,10 +48,12 @@ export class TeamSelection {
             const heroes = HeroList.GetAllHeroes();
             heroes.forEach((hero) => {
                 if (hero.GetTeam() == DotaTeam.GOODGUYS) {
-                    const entities = Entities.FindAllByName("spawn_hunters");
-                    FindClearSpaceForUnit(hero, entities[0].GetAbsOrigin(), true);
+                    Timers.CreateTimer(30, () => {
+                        const entities = Entities.FindAllByName("spawn_hunters");
+                        FindClearSpaceForUnit(hero, entities[0].GetAbsOrigin(), true);
+                    });
                 } else {
-                    const entities = Entities.FindAllByName("spawn_monster");
+                    const entities = Entities.FindAllByName("spawn_hunters");
                     FindClearSpaceForUnit(hero, entities[RandomInt(0, entities.length)].GetAbsOrigin(), true);
                 }
                 hero.AddNewModifier(hero, undefined, "modifier_phased", { duration: 0.01 });

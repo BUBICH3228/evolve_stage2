@@ -39,12 +39,12 @@
 		//"dota_ability_variable_damage_agi_hero"	"к урону (у героев ловкости)" // $damage_agi_hero
 		//"dota_ability_variable_damage_str_hero"	"к урону (у героев силы)" // $damage_str_hero
 
-		"DOTA_ability_variable_max_health_regen"		"макс. здоровья в секунду"			// $max_health_regen
-		"DOTA_ability_variable_hp_regen_amp"			"к здоровью от восстановления и вампиризма"			// $hp_regen_amp
-		"DOTA_ability_variable_status_resistance"		"к сопротивлению эффекта"			// $status_resistance
-		"DOTA_ability_variable_spell_amp"				"к урону от заклинаний"			// $spell_amp
-		"DOTA_ability_variable_spell_lifesteal_amp"		"к усилению вампиризма от заклинаний"			// $spell_lifesteal_amp
-		"DOTA_ability_variable_mana_regen_amp"			"к усилению восстановления маны"			// $mana_regen_amp
+		"DOTA_ability_variable_max_health_regen"										"макс. здоровья в секунду"			// $max_health_regen
+		"DOTA_ability_variable_hp_regen_amp"											"к здоровью от восстановления и вампиризма"			// $hp_regen_amp
+		"DOTA_ability_variable_status_resistance"										"к сопротивлению эффекта"			// $status_resistance
+		"DOTA_ability_variable_spell_amp"												"к урону от заклинаний"			// $spell_amp
+		"DOTA_ability_variable_spell_lifesteal_amp"										"к усилению вампиризма от заклинаний"			// $spell_lifesteal_amp
+		"DOTA_ability_variable_mana_regen_amp"											"к усилению восстановления маны"			// $mana_regen_amp
 
 		"DOTA_Tooltip_ability_goliath_smash_attack"										"Smash Attack"
 		"DOTA_Tooltip_ability_goliath_smash_attack_Description"							"Наносит сокрушительный удар по врагу."
@@ -74,7 +74,8 @@
         
 		"DOTA_Tooltip_ability_tinker_shield_projector"									"Shield Projector"
 		"DOTA_Tooltip_ability_tinker_shield_projector_Description"						"Герой выбирает одного из товарищей по команде и накладывает щит."
-		"DOTA_Tooltip_ability_tinker_shield_projector_shield_capacity"					"ПРОЧНОСТЬ ЩИТА:"
+		"DOTA_Tooltip_ability_tinker_shield_projector_shield_capacity_max"				"МАКС. ПРОЧНОСТЬ ЩИТА:"
+		"DOTA_Tooltip_ability_tinker_shield_projector_shild_regen_per_second"			"ЗАРЯДКА ЩИТА В СЕК:"
 
 		"DOTA_Tooltip_ability_tinker_orbital_barrage"									"Orbital Barrage"
 		"DOTA_Tooltip_ability_tinker_orbital_barrage_Description"						"Герой вызывает дождь из взрывных снарядов, падающих на указанную область."
@@ -83,11 +84,11 @@
 		"DOTA_Tooltip_ability_tinker_orbital_barrage_count_explosions"					"КОЛЛИЧЕСТВО ВЗРЫВОВ:"
 		"DOTA_Tooltip_ability_tinker_orbital_barrage_radius_explosions"					"РАДИУС ВЗРЫВОВ:"
 
-		"DOTA_Tooltip_ability_tinker_shield_burst"										"Shield Burst"
-		"DOTA_Tooltip_ability_tinker_shield_burst_Description"							"Герой накладывает щит на всех союзников в зоне действия."
-		"DOTA_Tooltip_ability_tinker_shield_burst_other_shield_capacity"				"ПРОЧНОСТЬ ЩИТА СОЮЗНИКОВ:"
-		"DOTA_Tooltip_ability_tinker_shield_burst_self_shield_capacity"					"ПРОЧНОСТЬ ЩИТА СЕБЕ:"
-		"DOTA_Tooltip_ability_tinker_shield_burst_decay_rate"							"ПОТЕРЯ ПРОЧНОСТИ В СЕКУНДУ:"
+		"DOTA_Tooltip_ability_shield_burst"												"Shield Burst"
+		"DOTA_Tooltip_ability_shield_burst_Description"									"Герой накладывает щит на всех союзников в зоне действия."
+		"DOTA_Tooltip_ability_shield_burst_other_shield_capacity"						"ПРОЧНОСТЬ ЩИТА СОЮЗНИКОВ:"
+		"DOTA_Tooltip_ability_shield_burst_self_shield_capacity"						"ПРОЧНОСТЬ ЩИТА СЕБЕ:"
+		"DOTA_Tooltip_ability_shield_burst_decay_rate"									"ПОТЕРЯ ПРОЧНОСТИ В СЕКУНДУ:"
 
 		"DOTA_Tooltip_ability_planetary_shield"											"Planetary Shield"
 		"DOTA_Tooltip_ability_planetary_shield_Description"								"Герой развертывает купол, который запрещает выходить и входить в него всем существам, а так же дает безпрепятсвенный обзор в нутри него."
@@ -110,33 +111,54 @@
 		"DOTA_Tooltip_ability_rattletrap_scaner_duration"								"ДЛИТЕЛЬНОСТЬ:"
 		"DOTA_Tooltip_ability_rattletrap_scaner_bonus_movement_speed"					"%ДОП. СКОРОСТЬ ПЕРЕДВИЖЕНИЯ:"
 		
-		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field"							"Acceleration Field"
-		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_Description"				"Герой повышает скорость передвижения и атаки союзников в выбранной области."
-		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_bonus_movement_speed"		"%ДОП. СКОРОСТЬ ПЕРЕДВИЖЕНИЯ:"
-		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_bonus_attack_speed"		"ДОП. СКОРОСТЬ АТТАКИ:"
-		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_duration"					"ДЛИТЕЛЬНОСТЬ:"
-		"DOTA_Tooltip_ability_dawnbreaker_acceleration_field_radius"					"РАДИУС:"
+		"DOTA_Tooltip_ability_snapfire_acceleration_field"								"Acceleration Field"
+		"DOTA_Tooltip_ability_snapfire_acceleration_field_Description"					"Герой повышает скорость передвижения и атаки союзников в выбранной области."
+		"DOTA_Tooltip_ability_snapfire_acceleration_field_bonus_movement_speed"			"%ДОП. СКОРОСТЬ ПЕРЕДВИЖЕНИЯ:"
+		"DOTA_Tooltip_ability_snapfire_acceleration_field_bonus_attack_speed"			"ДОП. СКОРОСТЬ АТТАКИ:"
+		"DOTA_Tooltip_ability_snapfire_acceleration_field_duration"						"ДЛИТЕЛЬНОСТЬ:"
+		"DOTA_Tooltip_ability_snapfire_acceleration_field_radius"						"РАДИУС:"
 
-		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade"								"Healing Grenade"
-		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_Description"					"Герой бросает в указанную облать гранату которая восстанавливает здоровье себе и союзникам."
-		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_heal"							"ВОССТАНОВЛЕНИЕ СОЮЗНИКАМ:"
-		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_heal_self"					"ВОССТАНОВЛЕНИЕ СЕБЕ:"
-		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_heal_incapped"				"ВОССТАНОВЛЕНИЕ УПАВШИМ:"
-		"DOTA_Tooltip_ability_dawnbreaker_healing_grenade_radius"						"РАДИУС:"
+		"DOTA_Tooltip_ability_snapfire_healing_grenade"									"Healing Grenade"
+		"DOTA_Tooltip_ability_snapfire_healing_grenade_Description"						"Герой бросает в указанную облать гранату которая восстанавливает здоровье себе и союзникам."
+		"DOTA_Tooltip_ability_snapfire_healing_grenade_heal"							"ВОССТАНОВЛЕНИЕ СОЮЗНИКАМ:"
+		"DOTA_Tooltip_ability_snapfire_healing_grenade_heal_self"						"ВОССТАНОВЛЕНИЕ СЕБЕ:"
+		"DOTA_Tooltip_ability_snapfire_healing_grenade_heal_incapped"					"ВОССТАНОВЛЕНИЕ УПАВШИМ:"
+		"DOTA_Tooltip_ability_snapfire_healing_grenade_radius"							"РАДИУС:"
 
-		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade"								"Napalm Grenade"
-		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_Description"					"Герой бросает в указанную облать гранату которая наносит урон и поджигает всех в радиусе."
-		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_damage"						"УРОН ПРИ ПОПАДАНИИ:"
-		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_damage_per_second"				"УРОН В СЕКУНДУ:"
-		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_flame_duration"				"ДЛИТЕЛЬНОСТЬ:"
-		"DOTA_Tooltip_ability_dawnbreaker_napalm_grenade_radius"						"РАДИУС:"
+		"DOTA_Tooltip_ability_healing_burst"											"Healing Burst"
+		"DOTA_Tooltip_ability_healing_burst_Description"								"Герой моментально восстанавливает здоровье себе и союзникам ."
+		"DOTA_Tooltip_ability_healing_burst_heal"										"ВОССТАНОВЛЕНИЕ СОЮЗНИКАМ:"
+		"DOTA_Tooltip_ability_healing_burst_heal_self"									"ВОССТАНОВЛЕНИЕ СЕБЕ:"
+		"DOTA_Tooltip_ability_healing_burst_heal_incapped"								"ВОССТАНОВЛЕНИЕ УПАВШИМ:"
+		"DOTA_Tooltip_ability_healing_burst_radius"										"РАДИУС:"
+
+		"DOTA_Tooltip_ability_snapfire_napalm_grenade"									"Napalm Grenade"
+		"DOTA_Tooltip_ability_snapfire_napalm_grenade_Description"						"Герой бросает в указанную облать гранату которая наносит урон и поджигает всех в радиусе."
+		"DOTA_Tooltip_ability_snapfire_napalm_grenade_damage"							"УРОН ПРИ ПОПАДАНИИ:"
+		"DOTA_Tooltip_ability_snapfire_napalm_grenade_damage_per_second"				"УРОН В СЕКУНДУ:"
+		"DOTA_Tooltip_ability_snapfire_napalm_grenade_flame_duration"					"ДЛИТЕЛЬНОСТЬ:"
+		"DOTA_Tooltip_ability_snapfire_napalm_grenade_radius"							"РАДИУС:"
+
+		"DOTA_Tooltip_ability_sniper_flamethrower"										"Flamethrower"
+		"DOTA_Tooltip_ability_sniper_flamethrower_Description"							"Герой поджигает всех врагов на пути от чего они получают урон."
+		"DOTA_Tooltip_ability_sniper_flamethrower_damage_per_hit"						"УРОН ЗА ПОПАДАНИИ:"
+		"DOTA_Tooltip_ability_sniper_flamethrower_duration"								"ДЛИТЕЛЬНОСТЬ:"
+		
+		"DOTA_Tooltip_ability_sniper_toxic_grenade"										"Toxic Grenade"
+		"DOTA_Tooltip_ability_sniper_toxic_grenade_Description"							"Герой бросает гранату, на месте взрыва которой появляется облако ядовитого газа. Враги, оказавшиеся в облаке, получают урон в течение длительного времени."
+		"DOTA_Tooltip_ability_sniper_toxic_grenade_damage_per_second"					"УРОН В СЕКУНДУ:"
+		"DOTA_Tooltip_ability_sniper_toxic_grenade_radius"								"РАДИУС:"
+		"DOTA_Tooltip_ability_sniper_toxic_grenade_duration"							"ДЛИТЕЛЬНОСТЬ:"
+
+		"DOTA_Tooltip_ability_defense_matrix"											"Defense Matrix"
+		"DOTA_Tooltip_ability_defense_matrix_Description"								"Герой окружает себя щитом, который поглащает большую часть урона."
+		"DOTA_Tooltip_ability_defense_matrix_damage_reduction"							"%УМЕНЬШЕНИЕ ВХОДЯЩЕГО УРОНА:"
+		"DOTA_Tooltip_ability_defense_matrix_duration"									"ДЛИТЕЛЬНОСТЬ:"
 		
 		"DOTA_Tooltip_ability_dash_custom"												"Dash"
 		"DOTA_Tooltip_ability_dash_custom_Description"									"Герой совершает рывок на небольшое расстояние"
 		"DOTA_Tooltip_ability_dash_custom_push_length"									"ДАЛЬНОСТЬ РЫВКА:"
 		
-		"DOTA_Tooltip_ability_sniper_shrapnel_Description"                              "Использует заряд шрапнели, покрывая указанную область дождём из разрывной дроби. Противники под ней получают урон и замедляются. Раскрывает туман войны в области действия."
-		"DOTA_Tooltip_ability_sniper_assassinate_Description"                           "Герой с огромного расстояния целится во вражеское существо и после небольшой задержки совершает сокрушительный выстрел, ненадолго оглушающий цель и наносящий как базовый урон, так и урон от атаки героя."
 		"DOTA_Tooltip_ability_rattletrap_jetpack_Description"   						"Герой взмывает в небо, получая перемещение и обзор в полёте. Скорость передвижения увеличивается, но герой не может атаковать и имеет уменьшенную скорость поворота."
 
 		

@@ -149,7 +149,7 @@ class HeroSelection {
     private SetupHeroSelectionButton(heroName: string, HeroClass: string) {
         this.HERO_SELECTION_BUTTON.BLoadLayoutSnippet("HeroSelectionButtonSnippet");
         this.HERO_SELECTION_BUTTON.SetPanelEvent("onactivate", () => {
-            if (!this.HEROES_TAKEN.includes(HeroClass)) {
+            if (!this.HEROES_TAKEN.includes(HeroClass) && Players.GetPlayerSelectedHero(Game.GetLocalPlayerID()) == "") {
                 GameEvents.SendCustomGameEventToServer("hero_selection_event", { HeroName: heroName, PlayerID: Game.GetLocalPlayerID() });
                 GameEvents.SendCustomGameEventToAllClients("hero_selection_client_event", {
                     HeroClass: HeroClass,

@@ -1,10 +1,11 @@
 "DOTAAbilities"
 {
+    //Классовая спосбность trapper
     "planetary_shield"
     {
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "faceless_void_chronosphere"
-        "ScriptFile"                   	    "abilities/hunters/planetary_shield"
+        "ScriptFile"                   	    "abilities/hunters/class_abilities/planetary_shield"
         "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_BOTH"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
@@ -14,14 +15,120 @@
         //-------------------------------------------------------------------------------------------------------------
         "AbilityCooldown"                   "200"
         "AbilityCastPoint"                  "0.1"
-        "AbilityChannelTime"                "4.5"
+        "AbilityChannelTime"                "0.5"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "radius"                        "1500"
-            "duration"                      "20"
+            "radius"                        "2000"
+            "duration"                      "30"
+        }
+    }
+
+    //Классовая спосбность medic
+    "healing_burst"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "healing_burst"
+        "ScriptFile"                   	    "abilities/hunters/class_abilities/healing_burst"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "Maxlevel"                          "1"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "12"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "radius"            
+            {
+                "value"                     "1800"
+                "affected_by_aoe_increase"  "1"
+            }
+            "heal"
+            {
+                "value"                     "310"
+            }
+            "heal_self"
+            {
+                "value"                     "550"
+            }
+            "heal_incapped"
+            {
+                "value"                     "300"
+            }
+        }
+    }
+
+    //Классовая спосбность support
+    "shield_burst"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "tinker_shield_burst"
+        "ScriptFile"                   	    "abilities/hunters/class_abilities/shield_burst"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
+        "Maxlevel"                          "1"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "23"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "other_shield_capacity"
+            {
+                "value"                     "500"
+                "DamageTypeTooltip"         "DAMAGE_TYPE_PURE"
+            }
+            "self_shield_capacity"
+            {
+                "value"                     "450"
+                "DamageTypeTooltip"         "DAMAGE_TYPE_PURE"
+            }
+            "decay_rate"
+            {
+                "value"                     "35"
+                "DamageTypeTooltip"         "DAMAGE_TYPE_PURE"
+            }
+        }
+    }
+
+    //Классовая спосбность assault
+    "defense_matrix"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "defense_matrix"
+        "ScriptFile"                   	    "abilities/hunters/class_abilities/defense_matrix"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
+        "Maxlevel"                          "1"
+        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_4"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "30"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
+            "duration"                      "10"
+            "damage_reduction"              "55"
         }
     }
 
@@ -116,4 +223,84 @@
             "duration"                      "0.25"
         }
     }
+    
+    //  Способности которые пока не нужны
+    // "snapfire_napalm_grenade"
+    // {
+    //     "BaseClass"		                    "ability_lua"
+    //     "AbilityTextureName"		        "batrider_flamebreak"
+    //     "ScriptFile"                   	    "abilities/hunters/snapfire/snapfire_napalm_grenade"
+    //     "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE"
+    //     "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_BOTH"
+    //     "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+    //     "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"  
+    //     "Maxlevel"                          "1"
+
+    //     // Time   
+    //     //-------------------------------------------------------------------------------------------------------------
+    //     "AbilityCooldown"                   "0"
+    //     "AbilityCastRange"                  "500"
+    //     "AbilityCastPoint"                  "0.1"
+
+    //     // Special
+    //     //-------------------------------------------------------------------------------------------------------------
+    //     "AbilityValues"
+    //     {
+    //         "radius"            
+    //         {
+    //             "value"                     "200"
+    //             "affected_by_aoe_increase"  "1"
+    //         }
+    //         "damage"
+    //         {
+    //             "value"                     "40"
+    //         }
+    //         "damage_per_second"
+    //         {
+    //             "value"                     "20"
+    //         }
+    //         "flame_duration"
+    //         {
+    //             "value"                     "2"
+    //         }
+    //         "AbilityCharges"        
+    //         {
+    //             "value"                     "5"
+    //         }
+    //         "AbilityChargeRestoreTime"		
+	// 		{
+	// 			"value"						"6"
+	// 		}
+    //         "speed"
+    //         {
+    //             "value"                     "700"
+    //         }
+    //     }
+    // }
+
+    // //пойдет другому траперу
+    // "rattletrap_scaner"
+    // {
+    //     "BaseClass"		                    "ability_lua"
+    //     "AbilityTextureName"		        "rattletrap_rocket_flare"
+    //     "ScriptFile"                   	    "abilities/hunters/rattletrap/rattletrap_scaner"
+    //     "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+    //     "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    //     "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
+    //     "Maxlevel"                          "1"
+    //     "AbilityChannelAnimation"           "ACT_DOTA_GENERIC_CHANNEL_1"
+
+    //     // Time   
+    //     //-------------------------------------------------------------------------------------------------------------
+    //     "AbilityCooldown"                   "30"
+    //     "AbilityCastPoint"                  "0.1"
+
+    //     // Special
+    //     //-------------------------------------------------------------------------------------------------------------
+    //     "AbilityValues"
+    //     {
+    //         "duration"                      "4"
+    //         "bonus_movement_speed"          "15"
+    //     }
+    // }
 }

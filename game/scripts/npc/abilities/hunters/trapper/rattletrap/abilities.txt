@@ -15,7 +15,7 @@
         // Time   
         //-------------------------------------------------------------------------------------------------------------
         "AbilityCooldown"                   "20"
-        "AbilityCastRange"                  "700"
+        "AbilityCastRange"                  "1700"
         "AbilityCastPoint"                  "0.1"
 
         // Special
@@ -26,8 +26,8 @@
             "duration"                      "4"
             "slow_movespeed_enemy"          "50"
             "speed"                         "1000"
-            "slow_movespeed_ally"           "125"
-            "max_radius_chain"              "700"
+            "slow_movespeed_ally"           "75"
+            "max_radius_chain"              "900"
         }
     }
 
@@ -49,41 +49,17 @@
         "AbilityCooldown"                   "20"
         "AbilityCastRange"                  "500"
         "AbilityCastPoint"                  "0"
-        "AbilityChannelTime"                "0.5"
+        "AbilityChannelTime"                "1"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "damage"                        "200"
-            "time_activation"               "0.9"
-            "radius"                        "350"
+            "damage"                        "100"
+            "detection_radius"              "1500"
+            "sneaking_radius"               "700"
             "max_spikes"                    "3"
-        }
-    }
-
-    "rattletrap_scaner"
-    {
-        "BaseClass"		                    "ability_lua"
-        "AbilityTextureName"		        "rattletrap_rocket_flare"
-        "ScriptFile"                   	    "abilities/hunters/rattletrap/rattletrap_scaner"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
-        "Maxlevel"                          "1"
-        "AbilityChannelAnimation"           "ACT_DOTA_GENERIC_CHANNEL_1"
-
-        // Time   
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "30"
-        "AbilityCastPoint"                  "0.1"
-
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "duration"                      "4"
-            "bonus_movement_speed"          "15"
+            "delay"                         "3"
         }
     }
 }

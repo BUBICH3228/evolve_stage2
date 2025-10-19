@@ -77,6 +77,7 @@ export class modifier_evolution_point extends BaseModifier {
             return;
         }
 
+        kv.attacker.SetMana(kv.attacker.GetMana() + 500);
         this.parent.SetHealth(this.parent.GetHealth() - 1);
     }
 }

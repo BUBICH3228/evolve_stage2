@@ -68,14 +68,14 @@ export class modifier_animal_instinct extends BaseModifier {
     }
 
     OnIntervalThink(): void {
-        if (this.IsKill == false) {
-            return;
-        }
-        if (this.timer == undefined) {
-            this.timer = Timers.CreateTimer(10, () => {
-                this.IsKill = false;
-            });
-        }
+        //if (this.IsKill == false) {
+        //    return;
+        //}
+        //if (this.timer == undefined) {
+        //    this.timer = Timers.CreateTimer(10, () => {
+        //        this.IsKill = false;
+        //    });
+        //}
 
         const pfx = ParticleManager.CreateParticle(
             "particles/econ/items/bloodseeker/bloodseeker_crownfall_immortal/bloodseeker_crownfall_immortal_ruptureg.vpcf",
@@ -85,7 +85,7 @@ export class modifier_animal_instinct extends BaseModifier {
 
         ParticleManager.SetParticleControl(pfx, 0, this.parent.GetAbsOrigin());
 
-        ParticleManager.DestroyAndReleaseParticle(pfx, 10, false);
+        ParticleManager.DestroyAndReleaseParticle(pfx, 60, false);
     }
 
     OnDeath(kv: ModifierInstanceEvent): void {
@@ -99,7 +99,7 @@ export class modifier_animal_instinct extends BaseModifier {
                 this.timer = undefined;
             }
 
-            this.IsKill = true;
+            //this.IsKill = true;
             Timers.CreateTimer(0.01, () => {
                 const pfx = ParticleManager.CreateParticle(
                     "particles/econ/items/bloodseeker/bloodseeker_ti7/bloodseeker_ti7_thirst_owner_ground.vpcf",
@@ -109,7 +109,7 @@ export class modifier_animal_instinct extends BaseModifier {
 
                 ParticleManager.SetParticleControl(pfx, 0, kv.unit.GetAbsOrigin());
 
-                ParticleManager.DestroyAndReleaseParticle(pfx, 25, false);
+                ParticleManager.DestroyAndReleaseParticle(pfx, 120, false);
             });
         }
     }

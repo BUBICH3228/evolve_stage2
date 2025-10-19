@@ -1,212 +1,79 @@
 "DOTAAbilities"
 {
-    "sniper_shrapnel"
+    "sniper_flamethrower"
     {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
-        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-        "SpellDispellableType"          "SPELL_DISPELLABLE_NO"
-        "FightRecapLevel"               "1"
-        "AbilitySound"                  "Hero_Sniper.ShrapnelShatter"
-        "MaxLevel"                      "1"
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "sniper_flamethrower"
+        "ScriptFile"                   	    "abilities/hunters/sniper/sniper_flamethrower"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"  
+        "Maxlevel"                          "1"
 
-        // Casting
+        // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastRange"              "1800"
-        "AbilityCastPoint"              "0.3"
-
-        // Time     
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "12"
-
-        // Cost
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "0"
-
-        // Stats
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityModifierSupportValue"   "0.25"  // primarily about damage
+        "AbilityCooldown"                   "17"
+        "AbilityCastRange"                  "900"
+        "AbilityCastPoint"                  "0.1"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "slow_movement_speed"   
+            "angel"            
             {
-                "value"     "-15"
+                "value"                     "15"
             }
+            "damage_per_hit"
+            {
+                "value"                     "32"
+            }
+            "interval"                      "0.2"
+            "duration"
+            {
+                "value"                     "11"
+            }
+        }
+    }
+
+    "sniper_toxic_grenade"
+    {
+        "BaseClass"		                    "ability_lua"
+        "AbilityTextureName"		        "batrider_flamebreak"
+        "ScriptFile"                   	    "abilities/hunters/sniper/sniper_toxic_grenade"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+        "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"  
+        "Maxlevel"                          "1"
+
+        // Time   
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityCooldown"                   "14"
+        "AbilityCastRange"                  "900"
+        "AbilityCastPoint"                  "0.1"
+
+        // Special
+        //-------------------------------------------------------------------------------------------------------------
+        "AbilityValues"
+        {
             "radius"            
             {
-                "value"     "500"
+                "value"                     "600"
                 "affected_by_aoe_increase"  "1"
             }
-            "shrapnel_damage"       
+            "damage_per_second"
             {
-                "value"         "80"
-
+                "value"                     "111"
             }
-            "duration"              
+            "duration"
             {
-                "value"     "4.0"
+                "value"                     "6"
             }
-            "damage_delay"          
+            "speed"
             {
-                "value"     "1.2"
-            }               
-            "slow_duration"         
-            {
-                "value"     "2"
-            }
-            "AbilityCharges"        
-            {
-                "value" "0"
-            }
-        }
-        "AbilityCastAnimation"      "ACT_DOTA_CAST_ABILITY_1"
-    }
-
-    "sniper_assassinate"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityType"                   "ABILITY_TYPE_BASIC"
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
-        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        "SpellDispellableType"          "SPELL_DISPELLABLE_NO"
-        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
-        "AbilitySound"                  "Ability.Assassinate"
-        "MaxLevel"                      "1"
-        "AbilityDraftExtraAbilities"
-        {
-            "sniper_take_aim" "shard"
-        }
-
-
-        // Casting
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastRange"              "3000"
-        "AbilityCastRangeBuffer"        "600"
-        "AbilityCastPoint"              "1"
-        "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_4"
-
-        // Time     
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "15"
-
-        // Damage.
-        //-------------------------------------------------------------------------------------------------------------
-
-        // Cost
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "0"
-        
-        // Stats
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityModifierSupportValue"   "0.0"   // Modifier just does damage
-
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "damage"
-            {
-                "value"                             "500"
-            }
-            "projectile_speed"          "2500"
-            "scepter_stun_duration"         
-            {
-                "special_bonus_scepter" "1"
-            }
-            "scepter_crit"          
-            {
-                "special_bonus_scepter" "0"
-            }
-            "scepter_cast_point"            
-            {
-                "special_bonus_scepter" "0.5"
-            }
-            "scatter_range"
-            {
-                "special_bonus_shard"   "0"
-            }
-            "scatter_width"
-            {
-                "special_bonus_shard"           "0"
-            }
-            "scatter_damage_pct"
-            {
-                "special_bonus_shard"           "0"
-            }
-            "cooldown_reduction_on_kill"        "0"
-            
-        }       
-    }
-
-    "sniper_concussive_grenade"
-    {
-        // General
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
-        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-        "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
-        "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-        "SpellDispellableType"          "SPELL_DISPELLABLE_YES"
-        "FightRecapLevel"               "0"
-        "HasScepterUpgrade"                 "0"
-        "IsGrantedByShard"              "0"
-        "MaxLevel"                      "1"
-
-        // Casting
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCastPoint"              "0.1"
-        "AbilityCastAnimation"          "ACT_DOTA_CAST_ABILITY_5"
-        
-        
-        // Time     
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "10"
-
-        // Cost
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityManaCost"               "0"
-        
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-
-            "damage"
-            {
-                "value"                 "200"
-                "CalculateSpellDamageTooltip"   "1"
-            }
-            "AbilityCastRange"      
-            {
-                "value"                         "1000"
-            }
-            "radius"        
-            {
-                    "value"     "375"
-                    "affected_by_aoe_increase"  "1"
-            }
-            "slow"      "20"
-            "debuff_duration"       "3"
-            "knockback_height"      "100"
-            "knockback_distance"        
-            {
-                "value"     "475"
-                "affected_by_aoe_increase"  "1"
-            }
-            "knockback_duration"        "0.4"
-            "self_push"                 
-            {
-                "value"         "0"
-
+                "value"                     "1200"
             }
         }
     }

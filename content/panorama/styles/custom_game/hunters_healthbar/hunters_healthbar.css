@@ -48,7 +48,7 @@
     padding-right: 5px;
 }
 
-#ShildBarContainer {
+#EnergyBarContainer {
     transform: skew( -20deg );
     width: 290px;
     padding-right: 7px;
@@ -93,12 +93,12 @@
     blur: gaussian( 1px );
 }
 
-#ShildScene {
+#EnergyScene {
     width: 100%;
     height: 100%;
     hue-rotation: -250deg;
     saturation: 0.7;
-    brightness:6;
+    brightness:2;
     opacity: 0.2;
     overflow: noclip;
     blur: gaussian( 1px );
@@ -109,15 +109,23 @@
 }
 
 #HPBarFG {
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffe4df ), color-stop( 0.48, #d76b6b ), color-stop( 0.52, #b54d52 ), to( #64241f ));
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffe4df ), color-stop( 0.48, #a39797 ), color-stop( 0.52, #b54d52 ), to( #64241f ));
 }
 
-#ShildBarMID {
+#EnergyBarMID {
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #319caf ), color-stop( 0.48, #436280 ), color-stop( 0.52, #2f667c ), to( #1f5c64 ));
 }
 
-#ShildBarFG {
+#EnergyBarFG {
     background-color: gradient( linear, 0% 0%, 0% 100%, from( #dffffd ), color-stop( 0.48, #6bd7d7 ), color-stop( 0.52, #4d9db5 ), to( #1f5c64 ));
+}
+
+#ShildBarMID {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #af8331 ), color-stop( 0.48, #806b43 ), color-stop( 0.52, #7c612f ), to( #64541f ));
+}
+
+#ShildBarFG {
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #fff8df ), color-stop( 0.48, #d7ba6b ), color-stop( 0.52, #b5994d ), to( #644e1f ));
 }
 
 .BGText {

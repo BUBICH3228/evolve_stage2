@@ -26,7 +26,15 @@ class CustomAbility {
         abilityChargesPanel: [],
         abilityChargesLabel: []
     };
-    COUNT_ABILITY = Players.GetTeam(this.playerID) == DotaTeam.BADGUYS ? 5 : 5;
+    COUNT_ABILITY = Players.GetTeam(this.playerID) == DotaTeam.BADGUYS ? 5 : 3;
+    COUNT_ADITIONAL_ABILITY = 2;
+
+    keybindMapping: { [key: number]: KeybindCommand } = {
+        0: KeybindCommand.KEYBIND_CONTROL_GROUP_4,
+        1: KeybindCommand.KEYBIND_CONTROL_GROUP_5,
+        2: KeybindCommand.KEYBIND_CONTROL_GROUP_6,
+        3: KeybindCommand.KEYBIND_CONTROL_GROUP_7
+    };
     constructor() {
         GameEvents.Subscribe("change_hero", () => {
             $.Schedule(1, () => {
@@ -60,14 +68,20 @@ class CustomAbility {
         }
 
         if (Players.GetTeam(this.playerID) == DotaTeam.BADGUYS) {
-            this.ABILITY_CONTAINER.SetHasClass("MonsterClass", true);
-            this.ABILITY_CONTAINER.SetHasClass("HunterClass", false);
+            this.MAIN_PANEL.SetHasClass("MonsterClass", true);
+            this.MAIN_PANEL.SetHasClass("HunterClass", false);
             $("#AdditionalAbilityContainerPanel").SetHasClass("Hidden", true);
         } else if (Players.GetTeam(this.playerID) == DotaTeam.GOODGUYS) {
-            this.ABILITY_CONTAINER.SetHasClass("MonsterClass", false);
-            this.ABILITY_CONTAINER.SetHasClass("HunterClass", true);
+            this.MAIN_PANEL.SetHasClass("MonsterClass", false);
+            this.MAIN_PANEL.SetHasClass("HunterClass", true);
             $("#AdditionalAbilityContainerPanel").SetHasClass("Hidden", false);
-            this.CreateAbilitiData(8, $("#AdditionalAbilityContainerPanel"), "2");
+            for (let index = 0; index < this.COUNT_ADITIONAL_ABILITY; index++) {
+                this.CreateAbilitiData(
+                    index + 6,
+                    $("#AdditionalAbilityContainerPanel"),
+                    Game.GetKeybindForCommand(this.keybindMapping[index])
+                );
+            }
         }
     }
 
@@ -112,7 +126,6 @@ class CustomAbility {
             Game.AddCommand(
                 command_name,
                 () => {
-                    $.Msg("KeyBind Pressed");
                     Abilities.ExecuteAbility(AbilityEntityIndex, Game.GetLocalPlayerInfo().player_selected_hero_entity_index, true);
                 },
                 "",
@@ -142,7 +155,7 @@ class CustomAbility {
                 this.ABILITY_CONTAINER_DATA.abilityCooldownLabel.length >=
             12
         ) {
-            for (let index = 0; index < 9; index++) {
+            for (let index = 0; index < 10; index++) {
                 const ability = Entities.GetAbility(Players.GetPlayerHeroEntityIndex(this.playerID), index);
                 const abilityLevelPanel = this.ABILITY_CONTAINER_DATA.abilityLevelPanel[index];
                 if (abilityLevelPanel == null) {

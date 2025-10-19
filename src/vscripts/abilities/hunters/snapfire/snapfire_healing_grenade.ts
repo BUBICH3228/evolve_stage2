@@ -5,7 +5,7 @@ import { modifier_incapacitated_state } from "../../../modifiers/modifier_incapa
 import { modifier_invulnerable_custom } from "../../../modifiers/modifier_invulnerable_custom";
 
 @registerAbility()
-export class dawnbreaker_healing_grenade extends BaseAbility {
+export class snapfire_healing_grenade extends BaseAbility {
     projectile_table: any;
     private caster: CDOTA_BaseNPC_Hero = this.GetCaster() as CDOTA_BaseNPC_Hero;
 
@@ -17,7 +17,7 @@ export class dawnbreaker_healing_grenade extends BaseAbility {
     }
 
     Precache(context: CScriptPrecacheContext): void {
-        PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/heroes/hunters/dawnbreaker/healing_grenade.vpcf", context);
+        PrecacheResource(PrecacheType.PARTICLE, "particles/custom/units/heroes/hunters/snapfire/healing_grenade.vpcf", context);
     }
 
     GetAOERadius(): number {
@@ -40,7 +40,7 @@ export class dawnbreaker_healing_grenade extends BaseAbility {
         healing_grenade.AddNewModifier(this.caster, this, modifier_invulnerable_custom.name, { duration: -1 });
 
         const healing_grenade_particle = ParticleManager.CreateParticle(
-            "particles/custom/units/heroes/hunters/dawnbreaker/healing_grenade.vpcf",
+            "particles/custom/units/heroes/hunters/snapfire/healing_grenade.vpcf",
             ParticleAttachment.WORLDORIGIN,
             this.caster
         );

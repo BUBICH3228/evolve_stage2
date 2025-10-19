@@ -97,7 +97,7 @@ export class modifier_telecommunication_crystal extends BaseModifier {
             return;
         }
 
-        this.parent.SetHealth(this.parent.GetHealth() - (kv.attacker.GetLevel() - 1));
+        this.parent.SetHealth(this.parent.GetHealth() - (kv.attacker.GetLevel() - 2));
         if (this.parent.GetHealth() <= 0) {
             this.parent.Kill(this.ability, this.parent);
         }
@@ -127,7 +127,6 @@ export class modifier_telecommunication_crystal extends BaseModifier {
                 }
             });
             AddFOWViewer(DotaTeam.GOODGUYS, this.parent.GetAbsOrigin(), 500, 99999999999, false);
-            AddFOWViewer(DotaTeam.BADGUYS, this.parent.GetAbsOrigin(), 500, 99999999999, false);
         });
     }
 }
@@ -197,7 +196,7 @@ export class modifier_power_telecommunication_crystal extends BaseModifier {
             return;
         }
 
-        this.parent.SetHealth(this.parent.GetHealth() - (kv.attacker.GetLevel() - 1));
+        this.parent.SetHealth(this.parent.GetHealth() - (kv.attacker.GetLevel() - 2));
         if (this.parent.GetHealth() <= 0) {
             this.parent.Kill(this.ability, this.parent);
         }

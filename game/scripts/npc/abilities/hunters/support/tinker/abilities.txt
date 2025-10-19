@@ -5,22 +5,32 @@
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "tinker_defense_matrix"
         "ScriptFile"                   	    "abilities/hunters/tinker/tinker_shield_projector"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
         "Maxlevel"                          "1"
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "25"
+        "AbilityCooldown"                   "16.4"
         "AbilityCastRange"                  "500"
         "AbilityCastPoint"                  "0.1"
+        "AbilityChannelTime"                "6.4"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "shield_capacity"               "370"
+            "shield_capacity_max"               
+            {
+                "value"                     "570"
+                "DamageTypeTooltip"         "DAMAGE_TYPE_PURE"
+            }
+            "shild_regen_per_second"
+            {
+                "value"                     "90"
+                "DamageTypeTooltip"         "DAMAGE_TYPE_PURE"
+            }
         }
     }
 
@@ -29,57 +39,33 @@
         "BaseClass"		                    "ability_lua"
         "AbilityTextureName"		        "tinker_orbital_barrage"
         "ScriptFile"                   	    "abilities/hunters/tinker/tinker_orbital_barrage"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
+        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_AOE"
         "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_ENEMY"
         "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
         "AbilityUnitDamageType"             "DAMAGE_TYPE_MAGICAL"
         "SpellImmunityType"                 "SPELL_IMMUNITY_ENEMIES_NO"
         "Maxlevel"                          "1"
         "AbilityChannelAnimation"           "ACT_DOTA_TINKER_REARM3"
-        //"AbilityCastAnimation"            "ACT_DOTA_CAST_ABILITY_3"
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "60"
-        "AbilityCastRange"                  "500"
+        "AbilityCooldown"                   "45"
+        "AbilityCastRange"                  "900"
         "AbilityCastPoint"                  "0"
-        "AbilityChannelTime"                "2.1"
 
         // Special
         //-------------------------------------------------------------------------------------------------------------
         "AbilityValues"
         {
-            "min_damage"                    "225"
-            "max_damage"                    "350"
-            "count_explosions"              "13"
-            "radius_explosions"             "200"
-            "radius"                        "400"
+            "min_damage"                    "275"
+            "max_damage"                    "400"
+            "count_explosions"              "11"
+            "launch_delay"                  "0.5"
+            "explosions_delay"              "2"
+            "dispersal"                     "4"
+            "radius_explosions"             "250"
+            "radius"                        "500"
         }
     }
 
-    "tinker_shield_burst"
-    {
-        "BaseClass"		                    "ability_lua"
-        "AbilityTextureName"		        "tinker_shield_burst"
-        "ScriptFile"                   	    "abilities/hunters/tinker/tinker_shield_burst"
-        "AbilityBehavior"                   "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-        "AbilityUnitTargetTeam"             "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-        "AbilityUnitTargetType"             "DOTA_UNIT_TARGET_HERO"
-        "Maxlevel"                          "1"
-        "AbilityCastAnimation"              "ACT_DOTA_CAST_ABILITY_2"
-
-        // Time   
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "60"
-        "AbilityCastPoint"                  "0.1"
-
-        // Special
-        //-------------------------------------------------------------------------------------------------------------
-        "AbilityValues"
-        {
-            "other_shield_capacity"         "400"
-            "self_shield_capacity"          "350"
-            "decay_rate"                    "35"
-        }
-    }
 }

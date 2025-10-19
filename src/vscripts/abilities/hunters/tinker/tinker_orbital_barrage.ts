@@ -6,9 +6,12 @@ export class tinker_orbital_barrage extends BaseAbility {
     private caster: CDOTA_BaseNPC = this.GetCaster();
     pfx!: ParticleID[];
     timer!: string[];
+    currentExplosions!: number;
 
     Precache(context: CScriptPrecacheContext): void {
         PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_invoker/invoker_sun_strike.vpcf", context);
+        PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_gyrocopter/gyro_calldown_marker.vpcf", context);
+        PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_gyrocopter/gyro_calldown_first.vpcf", context);
     }
 
     Spawn(): void {
@@ -31,14 +34,43 @@ export class tinker_orbital_barrage extends BaseAbility {
         const radiusExplosions = this.GetSpecialValueFor("radius_explosions");
         const maxDamage = this.GetSpecialValueFor("max_damage");
         const minDamage = this.GetSpecialValueFor("min_damage");
+        const launchDelay = this.GetSpecialValueFor("launch_delay");
+        const explosionsDelay = this.GetSpecialValueFor("explosions_delay");
 
-        for (let index = 0; index < countExplosions; index++) {
-            const randomPoint = Vector(RandomInt(-radius, radius), RandomInt(-radius, radius), 0);
-            randomPoint.z = 0;
-            const newpoint = (point + randomPoint) as Vector;
-            this.pfx.push(CastAoeStaticParticle(this.caster, newpoint, this.GetChannelTime(), radiusExplosions));
+        this.currentExplosions = 0;
+
+        Timers.CreateTimer(0, () => {
+            let newpoint = point;
+            if (this.currentExplosions > this.GetSpecialValueFor("dispersal")) {
+                const randomPoint = Vector(RandomInt(-radius, radius), RandomInt(-radius, radius), 0);
+                randomPoint.z = 0;
+                newpoint = (point + randomPoint) as Vector;
+            }
+
+            this.currentExplosions++;
+            const pfx = ParticleManager.CreateParticle(
+                "particles/units/heroes/hero_gyrocopter/gyro_calldown_marker.vpcf",
+                ParticleAttachment.WORLDORIGIN,
+                this.caster
+            );
+            ParticleManager.SetParticleControl(pfx, 0, newpoint);
+            ParticleManager.SetParticleControl(pfx, 1, Vector(radiusExplosions, 1, radiusExplosions * -1));
+            ParticleManager.DestroyAndReleaseParticle(pfx, explosionsDelay, true);
+
+            const pfx1 = ParticleManager.CreateParticle(
+                "particles/units/heroes/hero_gyrocopter/gyro_calldown_first.vpcf",
+                ParticleAttachment.WORLDORIGIN,
+                this.caster
+            );
+            ParticleManager.SetParticleControl(
+                pfx1,
+                0,
+                this.caster.GetAttachmentOrigin(this.caster.ScriptLookupAttachment("attach_attack1"))
+            );
+            ParticleManager.SetParticleControl(pfx1, 1, newpoint);
+            ParticleManager.SetParticleControl(pfx1, 5, Vector(radiusExplosions, radiusExplosions, 0));
             this.timer.push(
-                Timers.CreateTimer(this.GetChannelTime(), () => {
+                Timers.CreateTimer(explosionsDelay, () => {
                     const enemies = FindUnitsInRadius(
                         this.caster.GetTeamNumber(),
                         newpoint,
@@ -50,14 +82,6 @@ export class tinker_orbital_barrage extends BaseAbility {
                         FindOrder.ANY,
                         false
                     );
-
-                    const pfx = ParticleManager.CreateParticle(
-                        "particles/units/heroes/hero_invoker/invoker_sun_strike.vpcf",
-                        ParticleAttachment.WORLDORIGIN,
-                        this.caster
-                    );
-                    ParticleManager.SetParticleControl(pfx, 0, newpoint);
-                    ParticleManager.DestroyAndReleaseParticle(pfx);
                     enemies.forEach((target) => {
                         ApplyDamage({
                             victim: target,
@@ -74,7 +98,15 @@ export class tinker_orbital_barrage extends BaseAbility {
                     });
                 })
             );
-        }
+
+            if (this.currentExplosions < countExplosions) {
+                if (this.currentExplosions < this.GetSpecialValueFor("dispersal")) {
+                    return launchDelay;
+                } else {
+                    return launchDelay / this.currentExplosions;
+                }
+            }
+        });
     }
 
     OnChannelFinish(interrupted: boolean): void {

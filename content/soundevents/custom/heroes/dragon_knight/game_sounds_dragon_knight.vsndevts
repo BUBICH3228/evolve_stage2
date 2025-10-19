@@ -14,7 +14,7 @@
 		block_match_entity = 0.000000
 		vsnd_files = 
 		[
-			"sounds/weapons/hero/dawnbreaker/healing_touch_heal.vsnd",
+			"sounds/weapons/hero/snapfire/healing_touch_heal.vsnd",
 		]
 		vsnd_duration = 4.440045
 	}

@@ -45,11 +45,11 @@ export class modifier_rattletrap_sound_spikes extends BaseModifier {
     targetFlags!: UnitTargetFlags;
     targetType!: UnitTargetType;
     targetTeam!: UnitTargetTeam;
-    radius!: number;
-    timer!: string;
-    timeActivation!: number;
     damage!: number;
     damgeTable!: ApplyDamageOptions;
+    detectionRadius!: number;
+    sneakingRadius!: number;
+    delay!: number;
     // Modifier specials
 
     override IsHidden() {
@@ -84,9 +84,10 @@ export class modifier_rattletrap_sound_spikes extends BaseModifier {
     }
 
     override OnRefresh(): void {
-        this.radius = this.ability.GetSpecialValueFor("radius");
-        this.timeActivation = this.ability.GetSpecialValueFor("time_activation");
+        this.detectionRadius = this.ability.GetSpecialValueFor("detection_radius");
+        this.sneakingRadius = this.ability.GetSpecialValueFor("sneaking_radius");
         this.damage = this.ability.GetSpecialValueFor("damage");
+        this.delay = this.ability.GetSpecialValueFor("delay");
         if (!IsServer()) {
             return;
         }
@@ -98,7 +99,7 @@ export class modifier_rattletrap_sound_spikes extends BaseModifier {
             damage_type: this.ability.GetAbilityDamageType(),
             damage_flags: DamageFlag.NO_SPELL_AMPLIFICATION
         };
-        this.StartIntervalThink(FrameTime());
+        this.StartIntervalThink(this.delay);
     }
 
     OnIntervalThink(): void {
@@ -106,7 +107,7 @@ export class modifier_rattletrap_sound_spikes extends BaseModifier {
             this.parent.GetTeamNumber(),
             this.parent.GetAbsOrigin(),
             undefined,
-            this.radius,
+            this.detectionRadius,
             this.targetTeam,
             this.targetType,
             this.targetFlags,
@@ -115,37 +116,38 @@ export class modifier_rattletrap_sound_spikes extends BaseModifier {
         );
 
         if (enemies.length > 0) {
-            if (this.IsInvisible == true) {
+            AddFOWViewer(this.parent.GetTeam(), enemies[0].GetAbsOrigin(), 350, 3, false);
+            GameRules.ExecuteTeamPing(this.parent.GetTeam(), enemies[0].GetAbsOrigin().x, enemies[0].GetAbsOrigin().y, this.caster, 0);
+            if (
+                this.IsInvisible == true &&
+                CalculateDistance(enemies[0].GetAbsOrigin(), this.parent.GetAbsOrigin()) <= this.sneakingRadius
+            ) {
                 this.IsInvisible = false;
-                this.timer = Timers.CreateTimer(this.timeActivation, () => {
-                    GameRules.ExecuteTeamPing(
-                        this.parent.GetTeam(),
-                        this.parent.GetAbsOrigin().x,
-                        this.parent.GetAbsOrigin().y,
-                        this.caster,
-                        0
-                    );
-                    AddFOWViewer(this.parent.GetTeam(), this.parent.GetAbsOrigin(), this.radius, 3, false);
-                    this.damgeTable.damage = this.damage * (1 + this.caster.GetSpellAmplification(false));
-                    for (const target of enemies) {
-                        this.damgeTable.victim = target;
-                        ApplyDamage(this.damgeTable);
-                    }
-                    this.parent.Kill(undefined, this.parent);
-                    this.ability.unitData = this.ability.unitData.filter((unit) => unit.IsAlive());
-                });
+            } else {
+                this.IsInvisible = true;
             }
         } else {
             this.IsInvisible = true;
-            if (this.timer != undefined) {
-                Timers.RemoveTimer(this.timer);
-            }
         }
     }
 
     OnDestroy(): void {
-        if (this.timer != undefined) {
-            Timers.RemoveTimer(this.timer);
-        }
+        const enemies = FindUnitsInRadius(
+            this.parent.GetTeamNumber(),
+            this.parent.GetAbsOrigin(),
+            undefined,
+            this.detectionRadius,
+            this.targetTeam,
+            this.targetType,
+            this.targetFlags,
+            FindOrder.ANY,
+            false
+        );
+        enemies.forEach((target) => {
+            this.damgeTable.damage = this.damage * (1 + this.caster.GetSpellAmplification(false));
+            this.damgeTable.victim = target;
+            ApplyDamage(this.damgeTable);
+            this.ability.unitData = this.ability.unitData.filter((unit) => unit.IsAlive());
+        });
     }
 }

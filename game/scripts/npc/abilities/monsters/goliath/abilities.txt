@@ -1,5 +1,7 @@
 "DOTAAbilities"
 {
+
+    //дописать способности и поправить значения
     "goliath_smash_attack"
     {
         "BaseClass"		                    "ability_lua"
@@ -97,7 +99,7 @@
 
         // Time   
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"                   "12 10 8"
+        "AbilityCooldown"                   "9 8 7"
 
         // Cost
         //-------------------------------------------------------------------------------------------------------------
@@ -109,11 +111,11 @@
         {
             "damage"                      
 	        {
-	    	    "value"						"237 237 285"
+	    	    "value"						"437 437 485"
 	        }
             "radius"                        "300"
             "speed"                         "950"
-            "max_distance"                  "1000 1300 1500"
+            "max_distance"                  "960 960 1020"
         }
     }
 
@@ -216,7 +218,7 @@
 
         // Time     
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "16 14 12"
+        "AbilityCooldown"               "8"
         "AbilityManaCost"               "0"
         "AbilityCastPoint"              "0.25"
         "AbilityCastRange"              "1800"
@@ -238,12 +240,12 @@
         {
             "base_damage"
             {
-                "value"                 "358 378 421"
+                "value"                 "578 578 621"
                 "CalculateSpellDamageTooltip"   "1"
             }
             "impact_radius"             
             {
-                "value" "225"    
+                "value"                     "300 300 480"    
                 "affected_by_aoe_increase"  "1" 
             }
             "min_range"               "250"
@@ -254,7 +256,7 @@
             "fragment_impact_distance"    "525"
             "fragment_impact_radius"
             {
-                "value"                     "185"
+                "value"                     "200 200 240"
                 "affected_by_aoe_increase"  "1" 
             }
         }
@@ -283,7 +285,7 @@
 
         // Time     
         //-------------------------------------------------------------------------------------------------------------
-        "AbilityCooldown"               "16 14 12"
+        "AbilityCooldown"               "10"
 
         // Cost
         //-------------------------------------------------------------------------------------------------------------
@@ -302,11 +304,11 @@
             "max_distance"              "2000"
             "knockback_distance"        
             {
-                "value"         "200"
+                "value"                 "500"
             }
             "knockback_damage"
             {
-                "value"                 "303 344 380"
+                "value"                 "403 403 444"
             }
             "knockback_duration"        "0.2"
             "max_charge_time"           "1.7"

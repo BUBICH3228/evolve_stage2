@@ -12,6 +12,7 @@ export class modifier_heroes_passive_stats extends BaseModifier {
     bonusMagicalResistanceMax = 0;
     bonusMana = 0;
     bonusHealth = 0;
+    countFalls = 0;
 
     // Modifier specials
 
@@ -37,10 +38,10 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             ModifierFunction.MAGICAL_RESISTANCE_DIRECT_MODIFICATION,
             ModifierFunction.MANA_BONUS,
             ModifierFunction.HEALTH_BONUS,
-            ModifierFunction.ON_TAKEDAMAGE,
             ModifierFunction.ON_DEATH,
             ModifierFunction.INCOMING_DAMAGE_CONSTANT,
-            ModifierFunction.MIN_HEALTH
+            ModifierFunction.MIN_HEALTH,
+            ModifierFunction.ON_RESPAWN
         ];
     }
 
@@ -49,24 +50,38 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             return 0;
         }
 
-        if (event.target != this.parent || event.target.GetTeam() != DotaTeam.GOODGUYS) {
+        if (event.target != this.parent || event.target.GetTeam() == DotaTeam.BADGUYS) {
             return 0;
         }
 
+        if (event.attacker.GetTeam() == DotaTeam.BADGUYS && event.target.HasModifier(modifier_incapacitated_state.name) == true) {
+            return -event.damage;
+        }
+
         if (
-            event.damage >= event.target.GetHealth() + event.target.GetMana() &&
-            !event.target.FindModifierByName(modifier_incapacitated_state.name)
+            event.damage >= event.target.GetHealth() &&
+            event.target.HasModifier(modifier_incapacitated_state.name) == false &&
+            (!(this.countFalls % 2 === 0) || this.countFalls == 0)
         ) {
+            this.countFalls++;
             event.target.Heal(1200, undefined);
-            event.target.AddNewModifier(event.attacker, undefined, modifier_incapacitated_state.name, { duration: -1 });
+            event.target.AddNewModifier(event.target, undefined, modifier_incapacitated_state.name, { duration: -1 });
             return event.damage;
         }
         return 0;
     }
 
+    OnRespawn(event: ModifierUnitEvent): void {
+        if (event.unit != this.parent || event.unit.GetTeam() == DotaTeam.BADGUYS) {
+            return;
+        }
+        const entities = Entities.FindAllByName("spawn_hunters");
+        FindClearSpaceForUnit(event.unit, entities[0].GetAbsOrigin(), true);
+    }
+
     GetMinHealth(): number {
         return this.parent.GetTeam() == DotaTeam.GOODGUYS
-            ? this.parent.FindModifierByName(modifier_incapacitated_state.name) == undefined
+            ? this.parent.HasModifier(modifier_incapacitated_state.name) == false && (!(this.countFalls % 2 === 0) || this.countFalls == 0)
                 ? 1
                 : -1
             : -1;
@@ -100,13 +115,15 @@ export class modifier_heroes_passive_stats extends BaseModifier {
         ListenToGameEvent("dota_player_gained_level", (event) => this.OnPlayerGainedLevel(event), undefined);
         this.dotaNegativeMagicResistancePerInt =
             GameRules.GetGameModeEntity().GetCustomAttributeDerivedStatValue(AttributeDerivedStats.INTELLIGENCE_MAGIC_RESIST) * -1;
-        this.parent.SetBaseHealthRegen(0);
-        this.parent.GetTeamNumber() != DotaTeam.GOODGUYS ? this.parent.SetBaseManaRegen(0) : this.parent.SetBaseManaRegen(40);
         if (this.parent.GetTeam() == DotaTeam.BADGUYS) {
             this.parent.SetModelScale(this.parent.GetModelScale() + 0.3);
+            this.parent.SetBaseManaRegen(0);
+            this.parent.SetMana(0);
+            this.parent.SetBaseHealthRegen(5);
+        } else {
+            this.parent.SetBaseHealthRegen(0);
+            this.parent.SetBaseManaRegen(40);
         }
-        this.SetHasCustomTransmitterData(true);
-        this.StartIntervalThink(0.05);
     }
 
     override OnRefresh(): void {
@@ -115,12 +132,15 @@ export class modifier_heroes_passive_stats extends BaseModifier {
         }
         this.bonusMana =
             (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS
-                ? 250
+                ? 550
                 : (HeroesData["monster"]["npc_dota_hero_primal_beast"].stats.shild as number[])[this.parent.GetLevel() - 1]) - 75;
         this.bonusHealth =
             (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS
                 ? 1600
                 : (HeroesData["monster"]["npc_dota_hero_primal_beast"].stats.health as number[])[this.parent.GetLevel() - 1]) - 120;
+
+        this.SetHasCustomTransmitterData(true);
+        this.StartIntervalThink(0.05);
         this.parent.CalculateGenericBonuses();
         this.SendBuffRefreshToClients();
     }
@@ -141,16 +161,6 @@ export class modifier_heroes_passive_stats extends BaseModifier {
         }
     }
 
-    OnTakeDamage(kv: ModifierInstanceEvent): void {
-        if (kv.unit != this.parent) {
-            return;
-        }
-
-        if (this.parent.GetTeamNumber() == DotaTeam.GOODGUYS) {
-            this.parent.AddNewModifier(this.parent, this.ability, modifier_in_fight.name, { duration: 8 });
-        }
-    }
-
     OnDeath(kv: ModifierInstanceEvent): void {
         if (kv.unit.GetUnitName() == "npc_dota_evolution_points") {
             return;
@@ -168,9 +178,6 @@ export class modifier_heroes_passive_stats extends BaseModifier {
 
         unit.SetForwardVector(kv.unit.GetForwardVector());
 
-        let restoreHealth = this.parent.GetMaxHealth() * 0.015;
-        let restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.035;
-
         switch (kv.unit.GetLevel()) {
             case 1:
                 unit.SetBaseMaxHealth(1);
@@ -183,29 +190,20 @@ export class modifier_heroes_passive_stats extends BaseModifier {
                 unit.SetMaxHealth(2);
                 unit.SetHealth(2);
                 unit.SetDeathXP(2);
-                restoreHealth = this.parent.GetMaxHealth() * 0.025;
-                restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.06;
                 break;
             case 3:
                 unit.SetBaseMaxHealth(3);
                 unit.SetMaxHealth(3);
                 unit.SetHealth(3);
                 unit.SetDeathXP(3);
-                restoreHealth = this.parent.GetMaxHealth() * 0.055;
-                restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.11;
                 break;
             case 4:
                 unit.SetBaseMaxHealth(4);
                 unit.SetMaxHealth(4);
                 unit.SetHealth(4);
                 unit.SetDeathXP(4);
-                restoreHealth = this.parent.GetMaxHealth() * 0.1;
-                restoreMana = this.parent.GetMana() + this.parent.GetMaxMana() * 0.2;
                 break;
         }
-
-        this.parent.Heal(restoreHealth, this.ability);
-        this.parent.SetMana(restoreMana);
     }
 
     OnIntervalThink(): void {
@@ -229,45 +227,5 @@ export class modifier_heroes_passive_stats extends BaseModifier {
         this.bonusMana = data.bonusMana;
         this.bonusHealth = data.bonusHealth;
         this.dotaNegativeMagicResistancePerInt = data.dotaNegativeMagicResistancePerInt;
-    }
-}
-
-@registerModifier()
-export class modifier_in_fight extends BaseModifier {
-    // Modifier properties
-    private caster: CDOTA_BaseNPC = this.GetCaster()!;
-    private ability: CDOTABaseAbility = this.GetAbility()!;
-    private parent: CDOTA_BaseNPC = this.GetParent();
-
-    // Modifier specials
-
-    override IsHidden() {
-        return true;
-    }
-    override IsDebuff() {
-        return false;
-    }
-    override IsPurgable() {
-        return false;
-    }
-    override IsPurgeException() {
-        return false;
-    }
-    override RemoveOnDeath() {
-        return true;
-    }
-
-    override OnCreated(): void {
-        if (!IsServer()) {
-            return;
-        }
-        this.parent.SetBaseManaRegen(0);
-    }
-
-    OnDestroy(): void {
-        if (!IsServer()) {
-            return;
-        }
-        this.parent.SetBaseManaRegen(40);
     }
 }

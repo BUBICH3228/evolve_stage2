@@ -9,13 +9,13 @@
         <Panel id="MainPanel" class="Hidden" hittest="false" >
             <Panel id="HeroMovieConatiner"/>
             <Panel id="HeroBarsContainer">
-                <Panel id="ShildBarContainer">
-                    <Panel id="ShildBarBG" class="BarBG"/>
-                    <Panel id="ShildBarMID" class="BarMID"/>
-                    <Panel id="ShildBarFG" class="BarFG">
-                        <DOTAScenePanel id="ShildScene" map="hud/shildbarburner" camera="camera_1"/>
+                <Panel id="EnergyBarContainer">
+                    <Panel id="EnergyBarBG" class="BarBG"/>
+                    <Panel id="EnergyBarMID" class="BarMID"/>
+                    <Panel id="EnergyBarFG" class="BarFG">
+                        <DOTAScenePanel id="EnergyScene" map="hud/shildbarburner" camera="camera_1"/>
                     </Panel>
-                    <Label id="ShildBarCount" class="BGText" text="" />
+                    <Label id="EnergyBarCount" class="BGText" text="" />
                 </Panel>
                 <Panel id="HPBarContainer">
                     <Panel id="HPBarBG" class="BarBG"/>
@@ -23,6 +23,8 @@
                     <Panel id="HPBarFG" class="BarFG">
                         <DOTAScenePanel id="HPScene" map="hud/healthbarburner" camera="camera_1"/>
                     </Panel>
+                    <Panel id="ShildBarMID" class="BarMID"/>
+                    <Panel id="ShildBarFG" class="BarFG"/>
                     <Label id="HPBarCount" class="BGText" text="" />
                 </Panel>
             </Panel>

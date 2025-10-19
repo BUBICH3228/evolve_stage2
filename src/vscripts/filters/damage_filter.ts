@@ -18,23 +18,25 @@ export class DamageFilter {
 
         AICore.OnTakeDamage(eventData.victim, eventData.attacker);
 
-        if (event.damagetype_const == DamageTypes.PHYSICAL) {
-            const armor = eventData.victim.GetPhysicalArmorValue(false);
-            const dotaDecline = (0.058 * armor) / (1 + 0.058 * math.abs(armor));
-            event.damage = event.damage / (1 - dotaDecline);
+        // if (event.damagetype_const == DamageTypes.PHYSICAL) {
+        // const armor = eventData.victim.GetPhysicalArmorValue(false);
+        // const dotaDecline = (0.058 * armor) / (1 + 0.058 * math.abs(armor));
+        // event.damage = event.damage / (1 - dotaDecline);
 
-            let damageMult = 1 - armor / (100 + math.abs(armor));
+        // let damageMult = 1 - armor / (100 + math.abs(armor));
 
-            if (armor < 0) {
-                damageMult = 2 - damageMult;
-            }
+        // if (armor < 0) {
+        // damageMult = 2 - damageMult;
+        // }
 
-            event.damage = event.damage * damageMult;
+        // event.damage = event.damage * damageMult;
+        // }
+
+        if (eventData.victim.GetTeam() == DotaTeam.BADGUYS) {
+            const mana = eventData.victim.GetMana();
+            eventData.victim.SetMana(mana - event.damage);
+            event.damage = math.max(0, event.damage - mana);
         }
-
-        const mana = eventData.victim.GetMana();
-        eventData.victim.SetMana(mana - event.damage);
-        event.damage = math.max(0, event.damage - mana);
 
         const ability = event.entindex_inflictor_const && (EntIndexToHScript(event.entindex_inflictor_const) as CDOTABaseAbility);
         if (!ability) {
