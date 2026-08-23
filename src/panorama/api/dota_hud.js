@@ -33,22 +33,17 @@ DotaHUD.ListenToMouseEvent = function (callback) {
 };
 
 DotaHUD.IsCursorOverPanel = function (panel) {
-    if (panel == null) {
-        return false;
-    }
+    if (panel == null) return false;
 
     let cursorPos = GameUI.GetCursorPosition();
-
     let panelPos = panel.GetPositionWithinWindow();
-    let width = panel.actuallayoutwidth;
-    let height = panel.actuallayoutheight;
     
-    if (
-        ((panelPos.x < cursorPos[0] && panelPos.x + width > cursorPos[0]) && (panelPos.y < cursorPos[1] && panelPos.y + height > cursorPos[1]))
-    ) {
-        return false;
-    }
-    return true;
+    return (
+        cursorPos[0] >= panelPos.x && 
+        cursorPos[0] <= panelPos.x + panel.actuallayoutwidth &&
+        cursorPos[1] >= panelPos.y && 
+        cursorPos[1] <= panelPos.y + panel.actuallayoutheight
+    );
 };
 
 DotaHUD.GetScreenWidth = function() {

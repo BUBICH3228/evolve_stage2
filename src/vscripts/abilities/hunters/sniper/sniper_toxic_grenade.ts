@@ -12,6 +12,10 @@ export class sniper_toxic_grenade extends BaseAbility {
     // Ability properties
     private caster: CDOTA_BaseNPC = this.GetCaster();
 
+    GetAOERadius(): number {
+        return this.GetSpecialValueFor("radius");
+    }
+
     override OnSpellStart(): void {
         if (this.GetCursorPosition() == this.caster.GetAbsOrigin())
             this.caster.SetCursorPosition((this.GetCursorPosition() + this.caster.GetForwardVector()) as Vector);

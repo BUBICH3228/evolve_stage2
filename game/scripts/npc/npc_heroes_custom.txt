@@ -4,5 +4,4 @@
 #base "heroes/hunters/support/require.txt"
 #base "heroes/hunters/trapper/require.txt"
 "DOTAHeroes"
-{
-}
+{}

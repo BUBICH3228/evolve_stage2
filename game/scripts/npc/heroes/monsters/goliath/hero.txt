@@ -52,18 +52,5 @@
 		"AttributeAgilityGain"	    "0"
 
 		"MovementSpeed"				"450"
-
-		"HasInventory"				"1"
-
-		"Creature"
-        {
-            "AttachWearables"
-            {
-                "1" { "ItemDef" "33466" }
-                "2" { "ItemDef" "33467" }
-                "3" { "ItemDef" "33468" }
-                "4" { "ItemDef" "33469" }
-            }
-        }
 	}
 }

@@ -11,7 +11,7 @@ export class goliath_fire_breath extends BaseAbility {
             ProjectileManager.CreateLinearProjectile({
                 Source: this.caster,
                 Ability: this,
-                vSpawnOrigin: (this.caster.GetAbsOrigin() + Vector(180 * forwardVector.x, 180 * forwardVector.y, 180)) as Vector,
+                vSpawnOrigin: (this.caster.GetAbsOrigin() + Vector(20 * forwardVector.x, 20 * forwardVector.y, 180)) as Vector,
                 bDrawsOnMinimap: true,
                 bHasFrontalCone: true,
                 bIgnoreSource: true,

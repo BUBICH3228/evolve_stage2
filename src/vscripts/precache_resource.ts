@@ -23,6 +23,8 @@ function PrecacheAllResource(context: CScriptPrecacheContext) {
     //Model
     PrecacheResource(PrecacheType.MODEL, "models/props_gameplay/dummy/dummy.vmdl", context);
     PrecacheResource(PrecacheType.MODEL, "models/heroes/oracle/crystal_ball.vmdl", context);
+    PrecacheResource(PrecacheType.MODEL, "models/heroes/pangolier/pangolier_gyroshell2.vmdl", context);
+    PrecacheResource(PrecacheType.MODEL, "models/heroes/pangolier/pangolier_gyroshell.vmdl", context);
     PrecacheResource(PrecacheType.MODEL, "models/creeps/ancient_giant_skeleton/ancient_giant_skeleton.vmdl", context);
 
     const heroesList = LoadKeyValues("scripts/npc/npc_heroes_custom.txt");

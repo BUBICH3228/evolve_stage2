@@ -29,6 +29,9 @@ interface CustomGameEventDeclarations {
     hero_selection_client_event: HeroSelectionClientEvent;
     team_selection_event: TeamSelectionEvent;
     load_top_table: any;
+    show_button_evolution: any;
+    start_evolution: any;
+    end_evolution: any;
 }
 
 interface TeamSelectionEvent {

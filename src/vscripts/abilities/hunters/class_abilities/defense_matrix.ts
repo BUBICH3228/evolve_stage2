@@ -6,6 +6,10 @@ export class defense_matrix extends BaseAbility {
     // Ability properties
     private caster: CDOTA_BaseNPC = this.GetCaster();
 
+    Precache(context: CScriptPrecacheContext): void {
+        PrecacheResource(PrecacheType.PARTICLE, "particles/units/heroes/hero_pangolier/pangolier_tailthump_buff.vpcf", context);
+    }
+
     override OnSpellStart(): void {
         this.caster.AddNewModifier(this.caster, this, modifier_defense_matrix.name, { duration: this.GetSpecialValueFor("duration") });
     }

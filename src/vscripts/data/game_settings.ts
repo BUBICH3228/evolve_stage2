@@ -8,8 +8,8 @@ export const Settings = {
         hero_start_level: 1,
         allow_same_hero_selection: false,
         free_couriers_enabled: true,
-        hero_selection_time: 999999,
-        hero_strategy_time: 0,
+        hero_selection_time: 120,
+        hero_strategy_time: 10,
         hero_penalty_time: 0,
         hero_showcase_time: 0,
 

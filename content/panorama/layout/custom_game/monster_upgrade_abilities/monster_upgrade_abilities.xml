@@ -6,7 +6,13 @@
         <include src="file://{resources}/scripts/custom_game/monster_upgrade_abilities/monster_upgrade_abilities.js"/>
     </scripts>
     <Panel class="Root" hittest="false" hittestchildren="true">
-        
+        <Panel id="EvolutionButtonContainer" class="Collapse">
+            <Label id="EvolutionLable" class="PanelClass" text="#monster_upgrade_abilities_evolution_lable" />
+            <Panel id="KeyBind">
+                <Panel id="AnimationKeyBind" />
+                <Label id="KeyBindLable" text="V" />
+            </Panel>
+        </Panel>
         <Panel id="MainPanel" class="Collapse" hittest="false">
         <Label id="Time" text="" />
             <Label id="CountPointsLable" text="#monster_upgrade_abilities_count_points" />

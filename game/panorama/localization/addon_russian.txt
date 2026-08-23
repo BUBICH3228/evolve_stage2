@@ -106,4 +106,5 @@
 	"monster_upgrade_abilities_label_button_learn"		"ИЗУЧИТЬ"
 	"monster_upgrade_abilities_label_button_learned"	"ИЗУЧЕНО"
 	"monster_upgrade_abilities_time_left"				"Осталось: "
+	"monster_upgrade_abilities_evolution_lable"			"ЭВОЛЮЦИЯ"
 }

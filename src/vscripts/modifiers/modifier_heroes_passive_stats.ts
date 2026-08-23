@@ -113,13 +113,46 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             return;
         }
         ListenToGameEvent("dota_player_gained_level", (event) => this.OnPlayerGainedLevel(event), undefined);
+        CustomGameEventManager.RegisterListener("start_evolution", (_, event) => {
+            const hero = PlayerResource.GetSelectedHeroEntity(event.PlayerID);
+            if (hero != undefined) {
+                if (hero.GetTeam() != DotaTeam.BADGUYS) {
+                    return;
+                }
+                hero.AddNewModifier(this.caster, undefined, "modifier_pangolier_gyroshell", { duration: 9 });
+                hero.StartGestureWithPlaybackRate(GameActivity.DOTA_FLAIL, 0.3);
+                hero.SetAbilityPoints(5 - this.parent.GetLevel());
+            }
+        });
+        CustomGameEventManager.RegisterListener("end_evolution", (_, event) => {
+            const hero = PlayerResource.GetSelectedHeroEntity(event.PlayerID);
+            if (hero != undefined) {
+                if (hero.GetTeam() != DotaTeam.BADGUYS) {
+                    return;
+                }
+                hero.RemoveGesture(GameActivity.DOTA_FLAIL);
+                if (hero.GetAbilityPoints() > 0) {
+                    const currentPoints = hero.GetAbilityPoints();
+                    for (let i = 0; i < currentPoints; i++) {
+                        const ability = hero.GetAbilityByIndex(RandomInt(0, 3));
+                        if (ability != undefined) {
+                            if (ability.GetMaxLevel() != ability.GetLevel()) {
+                                hero.UpgradeAbility(ability);
+                            }
+                        }
+                    }
+                }
+
+                if (IsServer()) {
+                    hero.SetModelScale(this.parent.GetModelScale() + 0.3);
+                }
+            }
+        });
         this.dotaNegativeMagicResistancePerInt =
             GameRules.GetGameModeEntity().GetCustomAttributeDerivedStatValue(AttributeDerivedStats.INTELLIGENCE_MAGIC_RESIST) * -1;
         if (this.parent.GetTeam() == DotaTeam.BADGUYS) {
-            this.parent.SetModelScale(this.parent.GetModelScale() + 0.3);
-            this.parent.SetBaseManaRegen(0);
+            this.parent.SetBaseManaRegen(5);
             this.parent.SetMana(0);
-            this.parent.SetBaseHealthRegen(5);
         } else {
             this.parent.SetBaseHealthRegen(0);
             this.parent.SetBaseManaRegen(40);
@@ -157,7 +190,7 @@ export class modifier_heroes_passive_stats extends BaseModifier {
             return;
         }
         if (this.parent.GetTeam() == DotaTeam.BADGUYS) {
-            this.parent.SetModelScale(this.parent.GetModelScale() + 0.3);
+            CustomGameEventManager.Send_ServerToPlayer(hero.GetPlayerOwner(), "show_button_evolution", {});
         }
     }
 

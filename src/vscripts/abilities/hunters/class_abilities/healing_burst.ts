@@ -1,5 +1,4 @@
 import { BaseAbility, registerAbility } from "../../../libraries/dota_ts_adapter";
-import { registerModifier, BaseModifier } from "../../../libraries/dota_ts_adapter";
 import { modifier_incapacitated_state } from "../../../modifiers/modifier_incapacitated_state";
 
 @registerAbility()

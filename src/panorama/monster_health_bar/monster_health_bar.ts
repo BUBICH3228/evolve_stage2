@@ -24,7 +24,7 @@ export class MonsterHealthBar {
             return;
         }
         const entityIndex = Players.GetPlayerHeroEntityIndex(playerID);
-        if (entityIndex) {
+        if (entityIndex && entityIndex !== -1) {
             const maxHealth = Entities.GetMaxHealth(entityIndex);
             const currentHealth = Entities.GetHealth(entityIndex);
             const maxMana = Entities.GetMaxMana(entityIndex);

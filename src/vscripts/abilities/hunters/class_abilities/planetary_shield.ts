@@ -28,14 +28,7 @@ export class planetary_shield extends BaseAbility {
 
     OnChannelFinish(interrupted: boolean): void {
         if (interrupted == true) {
-            const heroes = HeroList.GetAllHeroes();
-
-            heroes.forEach((hero) => {
-                const ability = hero.FindAbilityByName(planetary_shield.name);
-                if (ability != undefined) {
-                    ability.EndCooldown();
-                }
-            });
+            this.EndCooldown();
             return;
         }
         this.shildSpawnPosition = this.caster.GetAbsOrigin();

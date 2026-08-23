@@ -2,23 +2,55 @@ import { HeroesData } from "../common/data/heroes_data";
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-undef */
 const Utils = GameUI.CustomUIConfig().Utils;
+const DotaHUD = GameUI.CustomUIConfig().DotaHUD;
 // eslint-disable-next-line no-var
+
 export class MonsterUpgradeAbilities {
     MAIN_PANEL = $("#MainPanel");
     POINTS_PANEL = $("#CountPointsLable");
     HERO_ABILITY_PANEL = $("#HeroAbilityPanel");
     TIME = $("#Time");
     constructor() {
-        //$.Schedule(1, () => {
-        //    this.ShowAndHideMonsterAbilityUpgradePanel();
-        //    this.Timer(14);
-        //});
+        $.Schedule(5, () => {
+            this.ShowAndHideMonsterAbilityUpgradePanel();
+            this.Timer(10);
+        });
+
+        this.StartHold(0);
+
+        GameEvents.Subscribe("show_button_evolution", () => {
+            this.ToggleEvolutionButton();
+        });
+    }
+
+    private StartHold(timer: number) {
+        if (GameUI.IsMouseDown(0) == false || !DotaHUD.IsCursorOverPanel($("#KeyBind"))) {
+            $.Schedule(0.01, () => {
+                this.StartHold(0);
+            });
+        } else {
+            $.Schedule(0.01, () => {
+                this.StartHold(timer + 1);
+            });
+        }
+        $("#AnimationKeyBind").style.height = timer + "%";
+        if (timer == 100) {
+            this.ShowAndHideMonsterAbilityUpgradePanel();
+            this.ToggleEvolutionButton();
+            GameEvents.SendCustomGameEventToServer("start_evolution", {});
+            this.Timer(9);
+        }
+    }
+
+    private ToggleEvolutionButton() {
+        $("#EvolutionButtonContainer").ToggleClass("Collapse");
     }
 
     private Timer(time: number) {
         this.TIME.text = $.Localize("#monster_upgrade_abilities_time_left") + Utils.FormatTime(Math.abs(time));
         if (time <= 0) {
             this.ShowAndHideMonsterAbilityUpgradePanel();
+            GameEvents.SendCustomGameEventToServer("end_evolution", {});
         } else {
             $.Schedule(1, () => {
                 this.Timer(time - 1);
@@ -27,6 +59,9 @@ export class MonsterUpgradeAbilities {
     }
 
     private ShowAndHideMonsterAbilityUpgradePanel() {
+        if (Players.GetTeam(Game.GetLocalPlayerID()) == DotaTeam.GOODGUYS) {
+            return;
+        }
         this.MAIN_PANEL.SetHasClass("Collapse", !this.MAIN_PANEL.BHasClass("Collapse"));
         if (this.MAIN_PANEL.BHasClass("Collapse") == false) {
             this.CreateOrUpadeMonsterAbilityUpgradePanel();
@@ -41,6 +76,12 @@ export class MonsterUpgradeAbilities {
             "value",
             String(Entities.GetAbilityPoints(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID())))
         );
+        $.Schedule(0.15, () => {
+            this.POINTS_PANEL.SetDialogVariable(
+                "value",
+                String(Entities.GetAbilityPoints(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID())))
+            );
+        });
         for (const [_, value] of Object.entries(abilities)) {
             const container = $.CreatePanel("Panel", this.HERO_ABILITY_PANEL, "AbilityContainer");
             const ability = Entities.GetAbilityByName(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()), value.abilityName);
